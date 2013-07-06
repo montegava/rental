@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="rentalModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityContainer Name="rentalModelStoreContainer">
+    <EntitySet Name="black_list" EntityType="rentalModel.Store.black_list" store:Type="Tables" Schema="rental" />
+    <EntitySet Name="flat_info" EntityType="rentalModel.Store.flat_info" store:Type="Tables" Schema="rental" />
+    <EntitySet Name="images" EntityType="rentalModel.Store.images" store:Type="Tables" Schema="rental" />
+  </EntityContainer>
+  <EntityType Name="black_list">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="STOP" Type="text" />
+    <Property Name="COMMENT" Type="text" />
+    <Property Name="TYPE_ID" Type="double" />
+  </EntityType>
+  <EntityType Name="flat_info">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="DATA" Type="date" />
+    <Property Name="ROOM_COUNT" Type="text" />
+    <Property Name="ADDRESS" Type="text" />
+    <Property Name="FLOOR" Type="text" />
+    <Property Name="BATH_UNIT" Type="text" />
+    <Property Name="BUILD" Type="text" />
+    <Property Name="FURNITURE" Type="text" />
+    <Property Name="STATE" Type="text" />
+    <Property Name="MECHANIC" Type="text" />
+    <Property Name="NAME" Type="text" />
+    <Property Name="PRICE" Type="text" />
+    <Property Name="PHONE" Type="text" />
+    <Property Name="COMMENT" Type="text" />
+    <Property Name="CONTENT" Type="text" />
+    <Property Name="LINK" Type="text" />
+    <Property Name="TERM" Type="text" />
+    <Property Name="RENT_FROM" Type="date" />
+    <Property Name="RENT_TO" Type="date" />
+    <Property Name="LESSOR" Type="text" />
+    <Property Name="FRIDGE" Type="bool" />
+    <Property Name="TV" Type="bool" />
+    <Property Name="WASHER" Type="bool" />
+    <Property Name="COOLER" Type="bool" />
+    <Property Name="REGION" Type="text" />
+  </EntityType>
+  <EntityType Name="images">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+    <Property Name="FLAT_ID" Type="int" />
+    <Property Name="IMAGE_PATH" Type="text" />
+  </EntityType>
+</Schema>

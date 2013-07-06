@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="rentalModelStoreContainer" CdmEntityContainer="rentalEntities">
+    <EntitySetMapping Name="black_list">
+      <EntityTypeMapping TypeName="rentalModel.black_list">
+        <MappingFragment StoreEntitySet="black_list">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="STOP" ColumnName="STOP" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="flat_info">
+      <EntityTypeMapping TypeName="rentalModel.flat_info">
+        <MappingFragment StoreEntitySet="flat_info">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DATA" ColumnName="DATA" />
+          <ScalarProperty Name="ROOM_COUNT" ColumnName="ROOM_COUNT" />
+          <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+          <ScalarProperty Name="FLOOR" ColumnName="FLOOR" />
+          <ScalarProperty Name="BATH_UNIT" ColumnName="BATH_UNIT" />
+          <ScalarProperty Name="BUILD" ColumnName="BUILD" />
+          <ScalarProperty Name="FURNITURE" ColumnName="FURNITURE" />
+          <ScalarProperty Name="STATE" ColumnName="STATE" />
+          <ScalarProperty Name="MECHANIC" ColumnName="MECHANIC" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+          <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+          <ScalarProperty Name="LINK" ColumnName="LINK" />
+          <ScalarProperty Name="TERM" ColumnName="TERM" />
+          <ScalarProperty Name="RENT_FROM" ColumnName="RENT_FROM" />
+          <ScalarProperty Name="RENT_TO" ColumnName="RENT_TO" />
+          <ScalarProperty Name="LESSOR" ColumnName="LESSOR" />
+          <ScalarProperty Name="FRIDGE" ColumnName="FRIDGE" />
+          <ScalarProperty Name="TV" ColumnName="TV" />
+          <ScalarProperty Name="WASHER" ColumnName="WASHER" />
+          <ScalarProperty Name="COOLER" ColumnName="COOLER" />
+          <ScalarProperty Name="REGION" ColumnName="REGION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="images">
+      <EntityTypeMapping TypeName="rentalModel.images">
+        <MappingFragment StoreEntitySet="images">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="FLAT_ID" ColumnName="FLAT_ID" />
+          <ScalarProperty Name="IMAGE_PATH" ColumnName="IMAGE_PATH" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
