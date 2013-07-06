@@ -44,3 +44,10 @@ g:\Rental_\DAL\obj\Debug\DAL.dll
 g:\Rental_\DAL\obj\Debug\DAL.pdb
 g:\Rental_\DAL\bin\Debug\MySql.Data.dll
 g:\Rental_\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+e:\_PROJ\_rental\rental\DAL\bin\Debug\DAL.dll.config
+e:\_PROJ\_rental\rental\DAL\bin\Debug\DAL.dll
+e:\_PROJ\_rental\rental\DAL\bin\Debug\DAL.pdb
+e:\_PROJ\_rental\rental\DAL\bin\Debug\MySql.Data.dll
+e:\_PROJ\_rental\rental\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+e:\_PROJ\_rental\rental\DAL\obj\Debug\DAL.dll
+e:\_PROJ\_rental\rental\DAL\obj\Debug\DAL.pdb

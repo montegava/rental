@@ -43,3 +43,9 @@ g:\Rental_\ImageProcessing\bin\Debug\tesseractengine3.dll
 g:\Rental_\ImageProcessing\obj\Debug\ImageProcessing.dll
 g:\Rental_\ImageProcessing\obj\Debug\ImageProcessing.pdb
 g:\Rental_\ImageProcessing\obj\Debug\ImageProcessing.csprojResolveAssemblyReference.cache
+e:\_PROJ\_rental\rental\ImageProcessing\bin\Debug\ImageProcessing.dll
+e:\_PROJ\_rental\rental\ImageProcessing\bin\Debug\ImageProcessing.pdb
+e:\_PROJ\_rental\rental\ImageProcessing\bin\Debug\tesseractengine3.dll
+e:\_PROJ\_rental\rental\ImageProcessing\obj\Debug\ImageProcessing.csprojResolveAssemblyReference.cache
+e:\_PROJ\_rental\rental\ImageProcessing\obj\Debug\ImageProcessing.dll
+e:\_PROJ\_rental\rental\ImageProcessing\obj\Debug\ImageProcessing.pdb
