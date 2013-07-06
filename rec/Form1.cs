@@ -6,11 +6,15 @@ using System.Drawing;
 
 using System.Text;
 using System.Windows.Forms;
+using Ninject;
+
 
 namespace rec
 {
     public partial class Form1 : Form
     {
+        public RentalApi.IRentalApi coreClient { get { return new RentalApi.RentalApiClient(); } }
+
         public Form1()
         {
             InitializeComponent();
@@ -29,6 +33,11 @@ namespace rec
                 listBox1.Items.Add(ex.Message);
                 ImageProcessing.Log.Append(ex.Message);
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            var dd = coreClient.GetData(1);
         }
     }
 }

@@ -1,6 +1,5 @@
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\RentalApi.dll.config
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\RentalApi.dll
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\RentalApi.pdb
-E:\_PROJ\_rental\rental\RentalApi\obj\Debug\RentalApi.csprojResolveAssemblyReference.cache
 E:\_PROJ\_rental\rental\RentalApi\obj\Debug\RentalApi.dll
 E:\_PROJ\_rental\rental\RentalApi\obj\Debug\RentalApi.pdb

@@ -10,6 +10,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DgvFilterPopup", "DgvFilterPopup\DgvFilterPopup.csproj", "{4B9BE5FD-303E-4270-9C4D-FA3BDE6C34EB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rec", "rec\rec.csproj", "{410BF12E-77C1-432D-9B6E-CEBC315E78AF}"
+	ProjectSection(ProjectDependencies) = postProject
+		{15B3E0D2-6217-493A-A690-158C497F5318} = {15B3E0D2-6217-493A-A690-158C497F5318}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalApi", "RentalApi\RentalApi.csproj", "{15B3E0D2-6217-493A-A690-158C497F5318}"
 EndProject

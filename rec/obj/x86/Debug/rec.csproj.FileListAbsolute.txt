@@ -36,3 +36,6 @@ e:\_PROJ\_rental\rental\rec\obj\x86\Debug\rec.Properties.Resources.resources
 e:\_PROJ\_rental\rental\rec\obj\x86\Debug\rec.csproj.GenerateResource.Cache
 e:\_PROJ\_rental\rental\rec\obj\x86\Debug\rec.exe
 e:\_PROJ\_rental\rental\rec\obj\x86\Debug\rec.pdb
+e:\_PROJ\_rental\rental\rec\bin\Debug\Ninject.dll
+e:\_PROJ\_rental\rental\rec\bin\Debug\Ninject.pdb
+e:\_PROJ\_rental\rental\rec\bin\Debug\Ninject.xml

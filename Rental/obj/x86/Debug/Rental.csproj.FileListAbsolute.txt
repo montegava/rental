@@ -178,3 +178,6 @@ e:\_PROJ\_rental\rental\Rental\obj\x86\Debug\Rental.frm.frmProgress.resources
 e:\_PROJ\_rental\rental\Rental\obj\x86\Debug\Rental.frm.NewFilter.resources
 e:\_PROJ\_rental\rental\Rental\obj\x86\Debug\Rental.Properties.Resources.resources
 e:\_PROJ\_rental\rental\Rental\obj\x86\Debug\Rental.csproj.GenerateResource.Cache
+e:\_PROJ\_rental\rental\Rental\bin\Debug\Ninject.dll
+e:\_PROJ\_rental\rental\Rental\bin\Debug\Ninject.pdb
+e:\_PROJ\_rental\rental\Rental\bin\Debug\Ninject.xml
