@@ -103,7 +103,6 @@ g:\Rental_\DgvFilterPopup\obj\Debug\DgvFilterPopup.csprojResolveAssemblyReferenc
 e:\_PROJ\_rental\rental\DgvFilterPopup\bin\Debug\DgvFilterPopup.XML
 e:\_PROJ\_rental\rental\DgvFilterPopup\bin\Debug\DgvFilterPopup.dll
 e:\_PROJ\_rental\rental\DgvFilterPopup\bin\Debug\DgvFilterPopup.pdb
-e:\_PROJ\_rental\rental\DgvFilterPopup\obj\Debug\DgvFilterPopup.csprojResolveAssemblyReference.cache
 e:\_PROJ\_rental\rental\DgvFilterPopup\obj\Debug\DgvFilterPopup.DgvDateRangeColumnFilter.resources
 e:\_PROJ\_rental\rental\DgvFilterPopup\obj\Debug\DgvFilterPopup.DgvMonthYearColumnFilter.resources
 e:\_PROJ\_rental\rental\DgvFilterPopup\obj\Debug\DgvFilterPopup.DgvNumRangeColumnFilter.resources

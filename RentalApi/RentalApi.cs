@@ -4,28 +4,34 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using DAL;
 
 namespace RentalApi
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class RentalApi : IRentalApi
     {
-        public string GetData(int value)
+        public flat_info GetFlatList(Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out Int32 pageCount, out Int32 totalRowsNumber)
         {
-            return string.Format("You entered: {0}", value);
-        }
+            pageCount = 1;
+            totalRowsNumber = 0;
+            try
+            {
+                string error;
+                return DAL.FlatManager.GetFlatById(22, out error);
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
-        {
-            if (composite == null)
-            {
-                throw new ArgumentNullException("composite");
+                //                throw new Exception("Eadsasdfasd");
+                //              return null;
             }
-            if (composite.BoolValue)
+            catch (Exception ex)
             {
-                composite.StringValue += "Suffix";
+
+                MyCustomException fault = new MyCustomException();
+                fault.MyMessage = "ThrowsTypedCustomFaultException: FaultException<MyCustomException> " + ex.Message;
+                throw new FaultException<MyCustomException>(fault, new FaultReason("No reason!"));
             }
-            return composite;
+
+
         }
     }
 }

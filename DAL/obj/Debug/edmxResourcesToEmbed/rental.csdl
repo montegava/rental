@@ -9,47 +9,47 @@
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="STOP" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="COMMENT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="TYPE_ID" Type="Double" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="STOP" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COMMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="Double" Name="TYPE_ID" />
   </EntityType>
   <EntityType Name="flat_info">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" />
-    <Property Name="DATA" Type="DateTime" />
-    <Property Name="ROOM_COUNT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="ADDRESS" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="FLOOR" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="BATH_UNIT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="BUILD" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="FURNITURE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="STATE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="MECHANIC" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="NAME" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="PRICE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="PHONE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="COMMENT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="CONTENT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="LINK" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="TERM" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="RENT_FROM" Type="DateTime" />
-    <Property Name="RENT_TO" Type="DateTime" />
-    <Property Name="LESSOR" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-    <Property Name="FRIDGE" Type="Boolean" />
-    <Property Name="TV" Type="Boolean" />
-    <Property Name="WASHER" Type="Boolean" />
-    <Property Name="COOLER" Type="Boolean" />
-    <Property Name="REGION" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="DateTime" Name="DATA" />
+    <Property Type="String" Name="ROOM_COUNT" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="ADDRESS" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FLOOR" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BATH_UNIT" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="BUILD" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="FURNITURE" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="STATE" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="MECHANIC" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="NAME" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PRICE" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="PHONE" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="COMMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="CONTENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="LINK" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="String" Name="TERM" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="DateTime" Name="RENT_FROM" />
+    <Property Type="DateTime" Name="RENT_TO" />
+    <Property Type="String" Name="LESSOR" MaxLength="65535" FixedLength="false" Unicode="false" />
+    <Property Type="Boolean" Name="FRIDGE" />
+    <Property Type="Boolean" Name="TV" />
+    <Property Type="Boolean" Name="WASHER" />
+    <Property Type="Boolean" Name="COOLER" />
+    <Property Type="String" Name="REGION" MaxLength="65535" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="images">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FLAT_ID" Type="Int32" />
-    <Property Name="IMAGE_PATH" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+    <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Type="Int32" Name="FLAT_ID" />
+    <Property Type="String" Name="IMAGE_PATH" MaxLength="65535" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

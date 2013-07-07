@@ -94,17 +94,23 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\RentalApi\rec.RentalApi.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\RentalApi\RentalApi.xsd">
+    <None Include="Service References\RentalApi\DAL.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RentalApi\rec.RentalApi.flat_info.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\RentalApi\service.wsdl" />
     <None Include="Service References\RentalApi\service.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\RentalApi\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RentalApi\System.Data.Objects.DataClasses.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RentalApi\System.Data.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

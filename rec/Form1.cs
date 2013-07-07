@@ -37,7 +37,20 @@ namespace rec
 
         private void button2_Click(object sender, EventArgs e)
         {
-            var dd = coreClient.GetData(1);
+            int activePage1 = 1;
+            int activePage;
+            int totalRowsNumber;
+            int pageCount;
+            try
+            {
+                var dd = coreClient.GetFlatList(-1, false, ref activePage1, out pageCount, out totalRowsNumber, 100);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+          
         }
     }
 }

@@ -1,2 +1,5 @@
 /*.suo
 /*.pdb
+/DAL/obj/Debug/*.cache
+
+/DAL/obj/Debug/*.cache

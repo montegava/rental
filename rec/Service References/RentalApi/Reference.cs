@@ -15,18 +15,483 @@ namespace rec.RentalApi {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="CompositeType", Namespace="http://schemas.datacontract.org/2004/07/RentalApi")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="StructuralObject", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses", IsReference=true)]
     [System.SerializableAttribute()]
-    public partial class CompositeType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(rec.RentalApi.EntityObject))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(rec.RentalApi.flat_info))]
+    public partial class StructuralObject : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EntityObject", Namespace="http://schemas.datacontract.org/2004/07/System.Data.Objects.DataClasses", IsReference=true)]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(rec.RentalApi.flat_info))]
+    public partial class EntityObject : rec.RentalApi.StructuralObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private rec.RentalApi.EntityKey EntityKeyField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public rec.RentalApi.EntityKey EntityKey {
+            get {
+                return this.EntityKeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntityKeyField, value) != true)) {
+                    this.EntityKeyField = value;
+                    this.RaisePropertyChanged("EntityKey");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="flat_info", Namespace="http://schemas.datacontract.org/2004/07/DAL", IsReference=true)]
+    [System.SerializableAttribute()]
+    public partial class flat_info : rec.RentalApi.EntityObject {
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ADDRESSField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BATH_UNITField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string BUILDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string COMMENTField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string CONTENTField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> COOLERField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> DATAField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FLOORField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> FRIDGEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string FURNITUREField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LESSORField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string LINKField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MECHANICField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NAMEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PHONEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string PRICEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string REGIONField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> RENT_FROMField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> RENT_TOField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ROOM_COUNTField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string STATEField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TERMField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> TVField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<bool> WASHERField;
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ADDRESS {
+            get {
+                return this.ADDRESSField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ADDRESSField, value) != true)) {
+                    this.ADDRESSField = value;
+                    this.RaisePropertyChanged("ADDRESS");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BATH_UNIT {
+            get {
+                return this.BATH_UNITField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BATH_UNITField, value) != true)) {
+                    this.BATH_UNITField = value;
+                    this.RaisePropertyChanged("BATH_UNIT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string BUILD {
+            get {
+                return this.BUILDField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.BUILDField, value) != true)) {
+                    this.BUILDField = value;
+                    this.RaisePropertyChanged("BUILD");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string COMMENT {
+            get {
+                return this.COMMENTField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.COMMENTField, value) != true)) {
+                    this.COMMENTField = value;
+                    this.RaisePropertyChanged("COMMENT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string CONTENT {
+            get {
+                return this.CONTENTField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.CONTENTField, value) != true)) {
+                    this.CONTENTField = value;
+                    this.RaisePropertyChanged("CONTENT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> COOLER {
+            get {
+                return this.COOLERField;
+            }
+            set {
+                if ((this.COOLERField.Equals(value) != true)) {
+                    this.COOLERField = value;
+                    this.RaisePropertyChanged("COOLER");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> DATA {
+            get {
+                return this.DATAField;
+            }
+            set {
+                if ((this.DATAField.Equals(value) != true)) {
+                    this.DATAField = value;
+                    this.RaisePropertyChanged("DATA");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FLOOR {
+            get {
+                return this.FLOORField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FLOORField, value) != true)) {
+                    this.FLOORField = value;
+                    this.RaisePropertyChanged("FLOOR");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> FRIDGE {
+            get {
+                return this.FRIDGEField;
+            }
+            set {
+                if ((this.FRIDGEField.Equals(value) != true)) {
+                    this.FRIDGEField = value;
+                    this.RaisePropertyChanged("FRIDGE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string FURNITURE {
+            get {
+                return this.FURNITUREField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.FURNITUREField, value) != true)) {
+                    this.FURNITUREField = value;
+                    this.RaisePropertyChanged("FURNITURE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ID {
+            get {
+                return this.IDField;
+            }
+            set {
+                if ((this.IDField.Equals(value) != true)) {
+                    this.IDField = value;
+                    this.RaisePropertyChanged("ID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LESSOR {
+            get {
+                return this.LESSORField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LESSORField, value) != true)) {
+                    this.LESSORField = value;
+                    this.RaisePropertyChanged("LESSOR");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string LINK {
+            get {
+                return this.LINKField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.LINKField, value) != true)) {
+                    this.LINKField = value;
+                    this.RaisePropertyChanged("LINK");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string MECHANIC {
+            get {
+                return this.MECHANICField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MECHANICField, value) != true)) {
+                    this.MECHANICField = value;
+                    this.RaisePropertyChanged("MECHANIC");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string NAME {
+            get {
+                return this.NAMEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NAMEField, value) != true)) {
+                    this.NAMEField = value;
+                    this.RaisePropertyChanged("NAME");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PHONE {
+            get {
+                return this.PHONEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PHONEField, value) != true)) {
+                    this.PHONEField = value;
+                    this.RaisePropertyChanged("PHONE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string PRICE {
+            get {
+                return this.PRICEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.PRICEField, value) != true)) {
+                    this.PRICEField = value;
+                    this.RaisePropertyChanged("PRICE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string REGION {
+            get {
+                return this.REGIONField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.REGIONField, value) != true)) {
+                    this.REGIONField = value;
+                    this.RaisePropertyChanged("REGION");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> RENT_FROM {
+            get {
+                return this.RENT_FROMField;
+            }
+            set {
+                if ((this.RENT_FROMField.Equals(value) != true)) {
+                    this.RENT_FROMField = value;
+                    this.RaisePropertyChanged("RENT_FROM");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> RENT_TO {
+            get {
+                return this.RENT_TOField;
+            }
+            set {
+                if ((this.RENT_TOField.Equals(value) != true)) {
+                    this.RENT_TOField = value;
+                    this.RaisePropertyChanged("RENT_TO");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ROOM_COUNT {
+            get {
+                return this.ROOM_COUNTField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ROOM_COUNTField, value) != true)) {
+                    this.ROOM_COUNTField = value;
+                    this.RaisePropertyChanged("ROOM_COUNT");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string STATE {
+            get {
+                return this.STATEField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.STATEField, value) != true)) {
+                    this.STATEField = value;
+                    this.RaisePropertyChanged("STATE");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string TERM {
+            get {
+                return this.TERMField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TERMField, value) != true)) {
+                    this.TERMField = value;
+                    this.RaisePropertyChanged("TERM");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> TV {
+            get {
+                return this.TVField;
+            }
+            set {
+                if ((this.TVField.Equals(value) != true)) {
+                    this.TVField = value;
+                    this.RaisePropertyChanged("TV");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<bool> WASHER {
+            get {
+                return this.WASHERField;
+            }
+            set {
+                if ((this.WASHERField.Equals(value) != true)) {
+                    this.WASHERField = value;
+                    this.RaisePropertyChanged("WASHER");
+                }
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EntityKey", Namespace="http://schemas.datacontract.org/2004/07/System.Data", IsReference=true)]
+    [System.SerializableAttribute()]
+    public partial class EntityKey : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool BoolValueField;
+        private string EntityContainerNameField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StringValueField;
+        private rec.RentalApi.EntityKeyMember[] EntityKeyValuesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EntitySetNameField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -39,27 +504,106 @@ namespace rec.RentalApi {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool BoolValue {
+        public string EntityContainerName {
             get {
-                return this.BoolValueField;
+                return this.EntityContainerNameField;
             }
             set {
-                if ((this.BoolValueField.Equals(value) != true)) {
-                    this.BoolValueField = value;
-                    this.RaisePropertyChanged("BoolValue");
+                if ((object.ReferenceEquals(this.EntityContainerNameField, value) != true)) {
+                    this.EntityContainerNameField = value;
+                    this.RaisePropertyChanged("EntityContainerName");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StringValue {
+        public rec.RentalApi.EntityKeyMember[] EntityKeyValues {
             get {
-                return this.StringValueField;
+                return this.EntityKeyValuesField;
             }
             set {
-                if ((object.ReferenceEquals(this.StringValueField, value) != true)) {
-                    this.StringValueField = value;
-                    this.RaisePropertyChanged("StringValue");
+                if ((object.ReferenceEquals(this.EntityKeyValuesField, value) != true)) {
+                    this.EntityKeyValuesField = value;
+                    this.RaisePropertyChanged("EntityKeyValues");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EntitySetName {
+            get {
+                return this.EntitySetNameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EntitySetNameField, value) != true)) {
+                    this.EntitySetNameField = value;
+                    this.RaisePropertyChanged("EntitySetName");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="EntityKeyMember", Namespace="http://schemas.datacontract.org/2004/07/System.Data")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(rec.RentalApi.flat_info))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(rec.RentalApi.EntityObject))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(rec.RentalApi.StructuralObject))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(rec.RentalApi.EntityKey))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(rec.RentalApi.EntityKeyMember[]))]
+    public partial class EntityKeyMember : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string KeyField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private object ValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Key {
+            get {
+                return this.KeyField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.KeyField, value) != true)) {
+                    this.KeyField = value;
+                    this.RaisePropertyChanged("Key");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public object Value {
+            get {
+                return this.ValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ValueField, value) != true)) {
+                    this.ValueField = value;
+                    this.RaisePropertyChanged("Value");
                 }
             }
         }
@@ -78,11 +622,8 @@ namespace rec.RentalApi {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RentalApi.IRentalApi")]
     public interface IRentalApi {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalApi/GetData", ReplyAction="http://tempuri.org/IRentalApi/GetDataResponse")]
-        string GetData(int value);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalApi/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IRentalApi/GetDataUsingDataContractResponse")]
-        rec.RentalApi.CompositeType GetDataUsingDataContract(rec.RentalApi.CompositeType composite);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalApi/GetFlatList", ReplyAction="http://tempuri.org/IRentalApi/GetFlatListResponse")]
+        rec.RentalApi.flat_info GetFlatList(int sortBy, bool orderBy, ref int activePage, out int pageCount, out int totalRowsNumber, int pageSize);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -112,12 +653,8 @@ namespace rec.RentalApi {
                 base(binding, remoteAddress) {
         }
         
-        public string GetData(int value) {
-            return base.Channel.GetData(value);
-        }
-        
-        public rec.RentalApi.CompositeType GetDataUsingDataContract(rec.RentalApi.CompositeType composite) {
-            return base.Channel.GetDataUsingDataContract(composite);
+        public rec.RentalApi.flat_info GetFlatList(int sortBy, bool orderBy, ref int activePage, out int pageCount, out int totalRowsNumber, int pageSize) {
+            return base.Channel.GetFlatList(sortBy, orderBy, ref activePage, out pageCount, out totalRowsNumber, pageSize);
         }
     }
 }

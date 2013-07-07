@@ -30,7 +30,6 @@ e:\_PROJ\_rental\rental\rec\bin\Debug\rec.exe.config
 e:\_PROJ\_rental\rental\rec\bin\Debug\rec.exe
 e:\_PROJ\_rental\rental\rec\bin\Debug\rec.pdb
 e:\_PROJ\_rental\rental\rec\bin\Debug\tesseractengine3.dll
-e:\_PROJ\_rental\rental\rec\obj\x86\Debug\rec.csprojResolveAssemblyReference.cache
 e:\_PROJ\_rental\rental\rec\obj\x86\Debug\rec.Form1.resources
 e:\_PROJ\_rental\rental\rec\obj\x86\Debug\rec.Properties.Resources.resources
 e:\_PROJ\_rental\rental\rec\obj\x86\Debug\rec.csproj.GenerateResource.Cache

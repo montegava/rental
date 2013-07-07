@@ -24,7 +24,9 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="19a28872-1026-4fb9-a1d2-1a36a6087f9d" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RentalApi/Service1/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="9b47249c-22af-47a5-b677-f7f4ee41b379" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RentalApi/Service1/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="9b83cb1f-7a42-45c6-bdeb-63aa95e3776e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RentalApi/Service1/mex" />
-    <MetadataFile FileName="RentalApi.xsd" MetadataType="Schema" ID="ad082086-8558-459f-a34b-a8db5127a826" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RentalApi/Service1/mex" />
+    <MetadataFile FileName="DAL.xsd" MetadataType="Schema" ID="df615952-6e58-42ee-8b18-1c50cd20ceb6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RentalApi/Service1/mex" />
+    <MetadataFile FileName="System.Data.Objects.DataClasses.xsd" MetadataType="Schema" ID="81ac407a-5902-4021-a14a-f9e4479a77d5" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RentalApi/Service1/mex" />
+    <MetadataFile FileName="System.Data.xsd" MetadataType="Schema" ID="b7ca4e07-4cfc-4ffa-8b81-cbcc5be99637" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/RentalApi/Service1/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
