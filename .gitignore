@@ -17,3 +17,8 @@
 
 *.pdb
 obj
+
+/DTO/obj
+/DgvFilterPopup/obj
+
+/DAL/obj

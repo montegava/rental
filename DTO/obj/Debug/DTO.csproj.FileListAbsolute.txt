@@ -1,6 +1,0 @@
-E:\_PROJ\_rental\rental\DTO\bin\Debug\DTO.dll
-E:\_PROJ\_rental\rental\DTO\bin\Debug\DTO.pdb
-E:\_PROJ\_rental\rental\DTO\bin\Debug\AutoMapper.dll
-E:\_PROJ\_rental\rental\DTO\bin\Debug\AutoMapper.xml
-E:\_PROJ\_rental\rental\DTO\obj\Debug\DTO.dll
-E:\_PROJ\_rental\rental\DTO\obj\Debug\DTO.pdb
