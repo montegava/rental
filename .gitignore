@@ -3,3 +3,17 @@
 /DAL/obj/Debug/*.cache
 
 /DAL/obj/Debug/*.cache
+
+/RentalApi/obj/Debug/*.cache
+/RentalApi/obj/Debug/*.tmp
+/RentalApi/obj/Debug/*.pdb
+
+/RentalApi/obj/Debug/RentalApi.dll
+/Rental/obj
+/Rental/bin/Debug/*.pdb
+*.pdb
+
+*.pdb
+
+*.pdb
+obj
