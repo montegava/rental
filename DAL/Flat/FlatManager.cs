@@ -5,17 +5,109 @@ using System.Text;
 
 using System.Data;
 using MySql.Data.MySqlClient;
-
+using System.Linq.Expressions;
+using LinqKit;
 
 namespace DAL
 {
+
+    public enum Fiels : int
+    {
+        ID = 0,
+        DATA = 1,
+        ROOM_COUNT = 2,
+        ADDRESS = 4
+    }
+
     public static class FlatManager
     {
+
+        public static void FlatList(string filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
+        {
+            flats = null;
+            pageCount = 1;
+            totalRowsNumber = 0;
+            try
+            {
+                IQueryable<flat_info> query = WcfOperationContext.Current.Context.flat_info;
+                #region filterby
+                if (!filterValue.Equals(string.Empty))
+                {
+                    Expression<Func<flat_info, bool>> filter = t => false;
+                    if ((filterBy & (int)Fiels.ADDRESS) > 0)
+                    {
+                        filter = filter.Or(t => t.ADDRESS.ToLower().Contains(filterValue.ToLower()));
+                    }
+                    query = query.Where(filter.Expand());
+                }
+
+
+                if (!startDate.Equals(DateTime.MinValue))
+                    query = query.Where(t => t.DATA >= startDate);
+
+                if (!endDate.Equals(DateTime.MinValue))
+                {
+                    endDate = endDate.AddDays(1);
+                    query = query.Where(t => t.DATA < endDate);
+                }
+
+
+                #endregion
+
+                #region sortby
+                //select sort column
+
+                switch ((Fiels)sortBy)
+                {
+                    case Fiels.ID:
+                        query = query.SetOrder(t => t.ID, orderBy);
+                        break;
+                    case Fiels.DATA:
+                        query = query.SetOrder(t => t.DATA, orderBy);
+                        break;
+                    case Fiels.ROOM_COUNT:
+                        query = query.SetOrder(t => t.ROOM_COUNT, orderBy);
+                        break;
+                    case Fiels.ADDRESS:
+                        query = query.SetOrder(t => t.ADDRESS, orderBy);
+                        break;
+                    default:
+                        break;
+                }
+
+
+                #endregion
+
+                flats = query.GetPage(pageSize, ref activePage, ref pageCount, ref totalRowsNumber)
+                            .AsEnumerable().Select(t=>t).ToList();
+                
+            }
+            catch (Exception ex)
+            {
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         public static List<flat_info> GetAllFlats()
         {
             using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
             {
-                String query = "select * from FLAT_INFO";
+                String query = "select  * from flat_info LIMIT 10";
                 sqlConn.Open();
                 using (MySqlCommand command = new MySqlCommand(query, sqlConn))
                 {

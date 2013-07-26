@@ -34,16 +34,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="LinqKit">
+      <HintPath>..\lib\LinqKit.dll</HintPath>
+    </Reference>
     <Reference Include="MySql.Data, Version=6.6.4.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\lib\MySql.Data.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
@@ -52,27 +60,63 @@
   <ItemGroup>
     <Compile Include="BlackList\BlackItem.cs" />
     <Compile Include="BlackList\BlackListManager.cs" />
+    <Compile Include="black_list.cs">
+      <DependentUpon>rental.tt</DependentUpon>
+    </Compile>
     <Compile Include="Enums.cs" />
+    <Compile Include="Extension.cs" />
     <Compile Include="FlatImages\FlatImageManager.cs" />
     <Compile Include="Flat\FlatManager.cs" />
+    <Compile Include="flat_info.cs">
+      <DependentUpon>rental.tt</DependentUpon>
+    </Compile>
+    <Compile Include="images.cs">
+      <DependentUpon>rental.tt</DependentUpon>
+    </Compile>
     <Compile Include="Instance.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="rental.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rental.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="rental.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rental.tt</DependentUpon>
+    </Compile>
     <Compile Include="rental.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>rental.edmx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <EntityDeploy Include="rental.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>rental.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <Compile Include="WcfOperationContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="packages.config" />
+    <EntityDeploy Include="rental.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>rental.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="rental.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>rental.edmx</DependentUpon>
+      <LastGenOutput>rental.Context.cs</LastGenOutput>
+    </None>
+    <None Include="rental.edmx.diagram">
+      <DependentUpon>rental.edmx</DependentUpon>
+    </None>
+    <None Include="rental.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>rental.edmx</DependentUpon>
+      <LastGenOutput>rental.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

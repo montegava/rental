@@ -22,7 +22,9 @@ namespace DAL
         {
             get
             {
-                return "metadata=res://*/rental.csdl|res://*/rental.ssdl|res://*/rental.msl;provider=MySql.Data.MySqlClient;provider connection string=\"server=" + ConfigurationManager.AppSettings["ServerAdress"] + ";User Id=root;password=1qazxsw2;Persist Security Info=True;database=rental\"";
+
+//                return "metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=MySql.Data.MySqlClient;provider connection string=\"server=mysql78.1gb.ru;user id=gb_x_amiravrn;password=0063c98esg;Persist Security Info=True;database=gb_x_amiravrn\"";
+              return "metadata=res://*/rental.csdl|res://*/rental.ssdl|res://*/rental.msl;provider=MySql.Data.MySqlClient;provider connection string=\"server=localhost;user id=root;password=1qazxsw2;persist security info=True;database=rental\"";
             }
         }
     }
