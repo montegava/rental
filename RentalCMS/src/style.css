@@ -1,4 +1,4 @@
-@charset "UTF-8";
+﻿@charset "UTF-8";
 
 body {
 	margin: 0 32px 25px 32px;
@@ -211,7 +211,7 @@ background:none;
 }
 
 .button {
-	background-color: #E83531;
+	//background-color: #E83531;
 	display: inline-block;
 	padding: 6px 25px 0px 25px;
 	
@@ -234,7 +234,7 @@ input.button {
 .button,
 .button a,
 .button a:hover {
-	color: #FFF;
+//	color: #FFF;
 	text-decoration: none;
 }
 
@@ -1459,7 +1459,7 @@ height:20px;
 border-top:1px solid #E77036;
 padding:10px 0;
 font-size:14px;
-color:#fff;
+//color:#fff;
 }
 .row span
 {
@@ -1516,4 +1516,226 @@ border:none;
 width:180px;
 display:block;
 height:40px;
+}
+
+TABLE.grid {
+	border-top: 1px solid #161616;
+	border-left: 1px solid #161616;
+	margin: 0 10px;
+	position: relative;
+	width: 100%;
+}
+
+ TABLE.grid TR TD INPUT[type="text"] 
+    {
+        font-size: 0.9em;
+    }
+
+ 	TABLE.grid TR TD,
+	TABLE.grid TR TH {
+		border-bottom: 1px solid #161616;
+		border-right: 1px solid #161616;
+		font-size: 0.7em;
+		height: 26px;
+		text-align: left;
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	TABLE.grid TR TH {
+		text-transform: uppercase;
+		font-size: 0.65em;
+	}
+	TABLE.grid TR TD DIV.ez-checkbox,
+	TABLE.grid TR TH DIV.ez-checkbox {
+	   background-position: center 1px; 
+	   font-size: 0;
+	}
+	TABLE.grid TR TH DIV.ez-checked,
+	TABLE.grid TR TD DIV.ez-checked {
+		background-position: center -19px;
+	}
+	TABLE.grid TR TD DIV.ez-checkbox,
+	TABLE.grid TR TH DIV.ez-checkbox,
+	TABLE.grid TR TD.icon A {
+		display: block;
+	}
+	TABLE.grid THEAD TR TH A {
+		color: #999;
+		display: block;
+		line-height: 26px;
+        position: relative;
+		text-decoration: none;
+	}
+	TABLE.grid THEAD TR TH A SPAN {
+	    display: block;
+		height: 17px;
+		position: absolute;
+		right: 0;
+		top: 5px;
+		width: 11px;
+	}
+	TABLE.grid THEAD TR TH A SPAN.sort {
+		background: transparent url("../images/state1.png") no-repeat right -2px;
+	}
+	TABLE.grid THEAD TR TH A SPAN.sort-up {
+		background: transparent url("../images/state3.png") no-repeat right -2px;
+	}
+	TABLE.grid THEAD TR TH A SPAN.sort-down {
+		background: transparent url("../images/v2/state2.png") no-repeat right center;
+	}
+	TABLE.grid TR TH.icon,
+	TABLE.grid TR TD.icon {
+	    font-size: 0;
+	    padding: 0;
+	    text-align: center;
+	}
+	    SECTION.scrollGrid TABLE.grid TR TH:last-child {
+	        border-right: 1px solid #161616;
+	    }
+	TABLE.grid TR TH.nr,
+	TABLE.grid TR TD.nr {
+	   text-align: center;
+	}
+	TABLE.grid TR:hover TD {
+		background-color: #1E2027;
+	}
+	TABLE.grid TR.hover TD *,
+	TABLE.grid TR.hover TD {
+		color: #3CF !important;
+	}
+
+    
+    	
+	SECTION.choices {
+	margin: 0 10px 5px 10px;
+	position: relative;
+}
+SECTION.threeCols DIV.left {
+	padding-right: 25px !important;
+}
+	SECTION.threeCols DIV.last {
+		padding-right: 0 !important;
+	}
+	SECTION.choices FIELDSET {
+		border: 1px solid #161616;
+		border-radius: 3px 3px 3px 3px;
+		padding: 10px;
+	}
+	SECTION.choices FIELDSET LEGEND {
+		color: #999;
+		display: block;
+		font-size: 0.75em;
+		text-transform: uppercase;
+		margin-left: 10px;
+	}
+	SECTION.choices INPUT[type="text"] {
+		width: 248px !important;
+	}
+		SECTION.choices DIV.left LABEL {
+			width: 56px !important;
+		}
+	SECTION.choices DIV.left,
+	SECTION.choices DIV.right {
+		float: left;
+	}
+	SECTION.choices DIV.left {
+		padding-right: 6px;
+		padding-top: 7px;
+	}
+	SECTION.choices DIV.right DIV.row {
+		margin-right: 5px;
+	}
+	SECTION.choices DIV.left LABEL.label {
+		width: 118px !important;
+		margin-right: 5px;
+	}
+	SECTION.choices DIV.left LABEL.labelExt2	{
+	    padding-top: 7px;
+	    width: 130px !important;
+	}
+	SECTION.choices LABEL.labelExt1 {
+		padding-top: 6px;
+	}
+	SECTION.choices DIV.right DIV.row LABEL {
+		float: none;
+		display: inline;
+	}
+	SECTION.choices DIV.right DIV.row LABEL.above {
+		float: left;
+	}
+	SECTION.choices DIV.right DIV.row LABEL.above + DIV {
+		clear: left;
+	}
+	DIV.mvUp {
+		margin-top: -21px;
+	}
+	SECTION.choices DIV.mvUp LABEL {
+			width: auto !important;
+	}
+	SECTION.choices DIV.lsCheck {
+		padding-top: 5px;
+		padding-bottom: 5px;
+	}
+	SECTION.choices DIV.lsCheck DIV.row {
+		clear: none;
+		display: inline;
+		float: none;
+		margin-right: 10px;
+	}
+		SECTION.choices DIV.lsCheck DIV.row LABEL {
+			float: none;
+			display: inline;
+		}
+		SECTION.choices DIV.lsCheck DIV.row * {
+			vertical-align: middle;
+		}
+	SECTION.choices DIV.panel {
+		float: left;
+		margin-top: 0;
+		padding-top: 5px;
+	}
+	SECTION.choices DIV.panel .button {
+		margin-left: 0;
+        margin-right: 5px;
+	}
+	SECTION.choices DIV.calendar {
+		clear: none;
+		float: left;
+		padding-right: 10px;
+	}
+	SECTION.choices INPUT.datePicker[type="text"] {
+		width: 65px !important;
+	}
+
+    DIV.areaGroup_fix1 STRONG.calendar_info {
+	display: block;
+    font-size: 0.8em;
+    font-weight: normal;
+    margin-bottom: 9px;
+    margin-top: -25px;
+}
+
+    .clearLeft,
+.clearRight,
+.clearBoth {
+	font-size: 0;
+}
+.clearLeft {
+	clear: left;
+}
+
+.clearBoth, .clearLeft, .clearRight, FIELDSET, FORM, H1, H2, H3, H4, P {
+	margin: 0;
+	padding: 0;
+}
+
+DIV.nrmRow {
+	padding-top: 5px;
+}
+
+DIV.panel {
+    float: right;
+    margin-top: 10px;
+    padding-right: 10px;
+    margin-bottom: 5px;
 }
