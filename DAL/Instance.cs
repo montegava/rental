@@ -13,7 +13,7 @@ namespace DAL
         {
             get
             {
-                return "server=" + ConfigurationManager.AppSettings["ServerAdress"] + ";User Id=root;password=1qazxsw2;Persist Security Info=True;database=rental";
+                return "server=" + "mysql78.1gb.ru" + ";User Id=gb_x_amiravrn;password=0063c98esg;Persist Security Info=True;database=gb_x_amiravrn";
             }
         }
 

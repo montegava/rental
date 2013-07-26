@@ -1,0 +1,128 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Rental.master.cs" Inherits="RentalCMS.Rental" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Агентство Аренды "АМИРА". Сдать квартиру, комнату ,дом. Снять квартиру, комнату ,дом. Сдать помещение, офис</title>
+    <meta name="description" content="Агентство Аренды АМИРА. Сдать квартиру, комнату ,дом. Снять квартиру, комнату ,дом. Сдать помещение, офис">
+    <meta name="keywords" content="дать квартиру, комнату ,дом. Снять квартиру, комнату ,дом. Сдать помещение, офис">
+    <link rel="stylesheet" type="text/css" href="./src/style.css">
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="./src/jquery.js"></script>
+    <!-- validate -->
+    <script type="text/javascript" src="./src/jquery.validate.js"></script>
+    <!-- LightBox -->
+    <script type="text/javascript" src="./src/jquery.lightbox.js"></script>
+    <link rel="stylesheet" type="text/css" href="./src/jquery.lightbox.css" media="screen">
+
+    <script type="text/javascript" src="./src/hostcms.js"></script>
+    <script type="text/javascript" src="./src/main.js"></script>
+
+    <!-- BBcode -->
+    <script type="text/javascript" src="./src/jquery.bbedit.js"></script>
+
+    <!-- Stars -->
+    <script type="text/javascript" src="./src/jquery.ui.core.js"></script>
+    <script type="text/javascript" src="./src/jquery.ui.widget.js"></script>
+    <script type="text/javascript" src="./src/jquery.ui.stars.js"></script>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+
+
+
+
+        <div class="header">
+            <a href="./index.htm" class="logo"></a>
+            <div class="menu_top">
+
+
+                <ul class="top_menu">
+                    <li class="current">
+                        <a href="./index.htm" title="Агентство Аренды &quot;АМИРА&quot;">Агентство Аренды "АМИРА"</a>
+                    </li>
+                    <li>
+                        <a href="http://amiravrn.ru/sdat-pomochenie-v-arendu/" title="Сдать помещение в аренду">Сдать квартиру, комнату ,дом</a>
+                    </li>
+
+                    <li>
+                        <a href="http://amiravrn.ru/sdat-pomochenie-v-arendu/" title="Сдать помещение в аренду">Снять квартиру, комнату ,дом</a>
+                    </li>
+
+                    <li>
+                        <a href="http://amiravrn.ru/snyat-pomeshenie-v-arendu/" title="Снять помещение в аренду">Сдать помещение, офис</a>
+                    </li>
+
+                    <li>
+                        <a href="http://amiravrn.ru/snyat-pomeshenie-v-arendu/" title="Снять помещение в аренду">Снять помещение, офис</a>
+                    </li>
+
+                    <li style="background-image: none">
+                        <a href="/Flats.aspx" title="Контакты">База квартир</a>
+                    </li>
+
+                    <li style="background-image: none">
+                        <a href="http://amiravrn.ru/kontakti/" title="Контакты">Контакты</a>
+                    </li>
+
+
+
+                </ul>
+            </div>
+            <div style="clear: both"></div>
+            <div style="clear: both"></div>
+
+        </div>
+
+        <div class="fone">
+            +7<span style="margin-right: 0.3em"> </span><span style="margin-left: -0.3em">(903</span>) 652-90-28
+        </div>
+        <div class="main">
+            <div class="left">
+                <div class="left_menu">
+
+
+                    <ul class="submenu">
+                        <li>
+                            <a href="http://amiravrn.ru/" title="Агентство &quot;АМИРА&quot;">Агентство "АМИРА"</a>
+                        </li>
+                        <li>
+                            <a href="http://amiravrn.ru/" title="Сдать квартиру, комнату ,дом">Сдать квартиру, комнату ,дом</a>
+                        </li>
+                        <li>
+                            <a href="http://amiravrn.ru/" title="Сдать помещение, офис">Сдать помещение, офис</a>
+                        </li>
+                        <li>
+                            <a href="http://amiravrn.ru/" title="Договора компании">Контакты</a>
+                        </li>
+                        <li>
+                            <a href="/Flats.aspx" title="База квартир">База квартир</a>
+                        </li>
+
+                    </ul>
+                </div>
+
+                <div style="clear: both;"></div>
+            </div>
+            <div class="right">
+
+                 <asp:ContentPlaceHolder ID="mainAreaOfPage" runat="server"/>
+
+         
+            </div>
+            <div style="clear: both"></div>
+        </div>
+        <div class="footer">
+            <div style="display: none;">
+                Работает на <a href="http://www.hostcms.ru/" title="HostCMS">HostCMS</a>
+            </div>
+            © Агентство Аренды «АМИРА», 2009. Все права защищены.<br>
+            <br>
+        </div>
+    </form>
+</body>
+</html>

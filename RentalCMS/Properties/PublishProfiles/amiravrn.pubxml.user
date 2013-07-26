@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit http://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAA2GDzsMRx1EatXgS8+euU7gAAAAACAAAAAAAQZgAAAAEAACAAAAD41d705b+bQzUbRPmorsp0TvrBxqKCQ5HJUCc1bE3mzAAAAAAOgAAAAAIAACAAAAAsTndTVN56LAkUdavB8n3m+tmLLYTYbKvZiHkvrTbZxSAAAAA3sTIlkArKCoZ9QkH/ZtHl+BDz0jq0sfok34Mts2oDrkAAAABibDrEuh72zX7/NBFJbLWKLQT3ZqQBwGRLLKUPJ+KBqEdWRILlXap1rxj7WDVD+DwOgFzfGZoKkKuF2+3a1EDs</EncryptedPassword>
+    <_PublishTargetUrl>ftp://ftp.amiravrn-ru.1gb.ru/http</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="bin/DAL.dll">
+      <publishTime>07/26/2013 03:27:12</publishTime>
+    </File>
+    <File Include="bin/MySql.Data.dll">
+      <publishTime>10/17/2012 15:19:26</publishTime>
+    </File>
+    <File Include="bin/RentalCMS.dll">
+      <publishTime>07/26/2013 03:27:12</publishTime>
+    </File>
+    <File Include="Default.aspx">
+      <publishTime>07/26/2013 02:42:04</publishTime>
+    </File>
+    <File Include="Flats.aspx">
+      <publishTime>07/26/2013 03:04:44</publishTime>
+    </File>
+    <File Include="images/bg.jpg">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="images/cat.png">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="images/fone.png">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="images/logo.png">
+      <publishTime>07/26/2013 02:35:27</publishTime>
+    </File>
+    <File Include="images/shadow-b.png">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="images/shadow-l.png">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="images/shadow-lb.png">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="images/shadow-lt.png">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="images/shadow-rb.png">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="images/shadow-rt.png">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="images/shadow-t.png">
+      <publishTime>07/26/2013 02:31:44</publishTime>
+    </File>
+    <File Include="Rental.Master">
+      <publishTime>07/26/2013 02:44:42</publishTime>
+    </File>
+    <File Include="src/captcha.php">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/hit">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/hostcms.js">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/jquery.bbedit.js">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/jquery.js">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/jquery.lightbox.css">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/jquery.lightbox.js">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/jquery.ui.core.js">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/jquery.ui.stars.js">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/jquery.ui.widget.js">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/jquery.validate.js">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/main.js">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/refresh.png">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/send.png">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="src/style.css">
+      <publishTime>07/26/2013 02:32:20</publishTime>
+    </File>
+    <File Include="Web.config">
+      <publishTime>07/26/2013 03:27:14</publishTime>
+    </File>
+  </ItemGroup>
+</Project>
