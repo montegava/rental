@@ -10,6 +10,9 @@ namespace RentalCMS
 {
     public partial class Flats : System.Web.UI.Page
     {
+        protected bool isFilterInitiated = false;
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -20,7 +23,27 @@ namespace RentalCMS
 
         private void SetDefaulData()
         {
-            var flats = DAL.FlatManager.GetAllFlats();
+            List<DAL.flat_info> flats;// = DAL.FlatManager.GetAllFlats();
+
+            int activePage = 1;
+            int totalRowsNumber;
+            int pageCount;
+
+          
+            //DAL.FlatManager.FlatList(
+            //    "", 
+            //    (int)DAL.Fiels.ID, 
+            //    DateTime.MinValue, 
+            //    DateTime.MinValue, 
+            //    (int)DAL.Fiels.ID, 
+            //    true, 
+            //    ref activePage, 
+            //    200, 
+            //    out flats, 
+            //    out pageCount,
+            //    out totalRowsNumber);
+
+            flats = DAL.FlatManager.GetAllFlats();
 
             this._lwInfoListEdit.DataSource = flats;
             this._lwInfoListEdit.DataBind();
@@ -38,6 +61,25 @@ namespace RentalCMS
             {
              
             }
+        }
+
+        protected void _btFilterData_Click(object sender, EventArgs e)
+        {
+            // Set a value that indicates, that filter was initiated
+            isFilterInitiated = true;
+            // -- check if have valid filter criteria
+          
+        }
+
+        protected void _btClearData_Click(object sender, EventArgs e)
+        {
+            // -- clean filter and reload data grid information
+            // -- clear filter
+            _tbSearchText.Text = string.Empty;
+            _tbStartDateText.Text = string.Empty;
+            _tbEndDateText.Text = string.Empty;
+            // -- clear check use for text
+            _cbOriginalName.Checked = false;
         }
 
      

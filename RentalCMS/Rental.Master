@@ -27,6 +27,11 @@
     <script type="text/javascript" src="./src/jquery.ui.core.js"></script>
     <script type="text/javascript" src="./src/jquery.ui.widget.js"></script>
     <script type="text/javascript" src="./src/jquery.ui.stars.js"></script>
+
+     <script type="text/javascript" src="/src/jquery-ui.datepicker.min.js"></script>
+
+     <link rel="stylesheet" type="text/css" href="/src/jquery-ui.datepicker.css" />
+
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
@@ -37,13 +42,13 @@
 
 
         <div class="header">
-            <a href="./index.htm" class="logo"></a>
+            <a href="./Default.aspx" class="logo"></a>
             <div class="menu_top">
 
 
                 <ul class="top_menu">
                     <li class="current">
-                        <a href="./index.htm" title="Агентство Аренды &quot;АМИРА&quot;">Агентство Аренды "АМИРА"</a>
+                        <a href="./Default.aspx" title="Агентство Аренды &quot;АМИРА&quot;">Агентство Аренды "АМИРА"</a>
                     </li>
                     <li>
                         <a href="http://amiravrn.ru/sdat-pomochenie-v-arendu/" title="Сдать помещение в аренду">Сдать квартиру, комнату ,дом</a>

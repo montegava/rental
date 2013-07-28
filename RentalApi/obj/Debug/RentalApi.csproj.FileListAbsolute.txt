@@ -7,3 +7,4 @@ E:\_PROJ\_rental\rental\RentalApi\obj\Debug\RentalApi.csprojResolveAssemblyRefer
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\DAL.dll
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\MySql.Data.dll
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\DAL.pdb
+E:\_PROJ\_rental\rental\RentalApi\bin\Debug\LinqKit.dll

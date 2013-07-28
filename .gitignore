@@ -22,3 +22,16 @@ obj
 /DgvFilterPopup/obj
 
 /DAL/obj
+
+/DAL/bin/Debug/DAL.dll
+/DAL/bin/Debug/DAL.dll.config
+/DAL/bin/Debug/EntityFramework.dll
+/DAL/bin/Debug/EntityFramework.xml
+/DAL/bin/Debug/LinqKit.dll
+/DAL/bin/Debug/MySql.Data.dll
+/DAL/bin/Release/DAL.dll
+/DAL/bin/Release/DAL.dll.config
+/DAL/bin/Release/EntityFramework.dll
+/DAL/bin/Release/EntityFramework.xml
+/DAL/bin/Release/LinqKit.dll
+/DAL/bin/Release/MySql.Data.dll
