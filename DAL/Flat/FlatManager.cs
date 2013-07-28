@@ -107,7 +107,7 @@ namespace DAL
         {
             using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
             {
-                String query = "select  * from flat_info LIMIT 10";
+                String query = "select  * from flat_info LIMIT 200";
                 sqlConn.Open();
                 using (MySqlCommand command = new MySqlCommand(query, sqlConn))
                 {
@@ -121,6 +121,10 @@ namespace DAL
                                 select new flat_info()
                                 {
                                     ID = (int)rows["Id"],
+                                    ADDRESS = (string)rows["address"],
+                                    ROOM_COUNT = (string)rows["room_count"],
+                                    DATA =   (DateTime)rows["data"]
+
                                 }).ToList();
                 }
                 sqlConn.Close();
@@ -198,9 +202,10 @@ namespace DAL
             error = String.Empty;
             try
             {
-                using (var context = new rentalEntities(ConnectionManager.ConnectionStringEntity))
+                //ConnectionManager.ConnectionStringEntity)
+                using (var context = new rentalEntities())
                 {
-                    context.flat_info.AddObject(flat);
+                    context.flat_info.Add(flat);
                     return context.SaveChanges() > 0;
                 }
             }
@@ -221,8 +226,9 @@ namespace DAL
 
             try
             {
+                //ConnectionManager.ConnectionStringEntity)
                 if (flatId > 0)
-                    using (var context = new rentalEntities(ConnectionManager.ConnectionStringEntity))
+                    using (var context = new rentalEntities())
                     {
                         result = context.flat_info.Where(f => f.ID == flatId).FirstOrDefault();
                     }
@@ -241,8 +247,8 @@ namespace DAL
 
             try
             {
-
-                using (var context = new rentalEntities(ConnectionManager.ConnectionStringEntity))
+                //ConnectionManager.ConnectionStringEntity)
+                using (var context = new rentalEntities())
                 {
                     var findedFlat = context.flat_info.Where(f => f.ID == flat.ID).FirstOrDefault();
                     if (findedFlat != null)

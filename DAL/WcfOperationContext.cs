@@ -20,8 +20,10 @@ namespace DAL
         {
             get
             {
+              //  var c = new rentalEntities();
                                                
-                return _context ?? (_context = new rentalEntities(ConnectionManager.ConnectionStringEntity));
+                //ConnectionManager.ConnectionStringEntity)
+                return _context ?? (_context = new rentalEntities());
             }
         }
 
