@@ -5,14 +5,20 @@ using System.Text;
 
 using System.Data;
 using MySql.Data.MySqlClient;
+using log4net;
 
 
 namespace DAL
 {
     public static class FlatImageManager
     {
+        public static ILog errorLog = LogManager.GetLogger("ErrorLogger");
+
+
         public static List<DAL.images> GetFlatImagesByFlatId(int flatId)
         {
+
+            
 
             using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
             {

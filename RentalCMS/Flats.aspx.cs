@@ -4,14 +4,17 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using log4net;
 
 namespace RentalCMS
 {
     public partial class Flats : System.Web.UI.Page
     {
+        public static ILog errorLog = log4net.LogManager.GetLogger(typeof(Flats));
+
         protected bool isFilterInitiated = false;
 
+        private int PageSize = 100;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -23,28 +26,31 @@ namespace RentalCMS
 
         private void SetDefaulData()
         {
+
+            errorLog.Debug("IN the function");
+
             List<DAL.flat_info> flats;// = DAL.FlatManager.GetAllFlats();
 
             int activePage = 1;
             int totalRowsNumber;
             int pageCount;
+            errorLog.Debug("Try to get");
 
-          
-            //DAL.FlatManager.FlatList(
-            //    "", 
-            //    (int)DAL.Fiels.ID, 
-            //    DateTime.MinValue, 
-            //    DateTime.MinValue, 
-            //    (int)DAL.Fiels.ID, 
-            //    true, 
-            //    ref activePage, 
-            //    200, 
-            //    out flats, 
-            //    out pageCount,
-            //    out totalRowsNumber);
+            DAL.FlatManager.FlatList(
+                "",
+                (int)DAL.Fiels.ID,
+                DateTime.MinValue,
+                DateTime.MinValue,
+                (int)DAL.Fiels.ID,
+                true,
+                ref activePage,
+                PageSize,
+                out flats,
+                out pageCount,
+                out totalRowsNumber);
 
-            flats = DAL.FlatManager.GetAllFlats();
-
+           // flats = DAL.FlatManager.GetAllFlats();
+            errorLog.Debug("Set data source");
             this._lwInfoListEdit.DataSource = flats;
             this._lwInfoListEdit.DataBind();
         }

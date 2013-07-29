@@ -1456,14 +1456,14 @@ height:20px;
 }
 .row
 {
-border-top:1px solid #E77036;
+//border-top:1px solid #E77036;
 padding:10px 0;
 font-size:14px;
 //color:#fff;
 }
 .row span
 {
-color:#fff;
+color:#0B1D7C;
 }
 .main
 {

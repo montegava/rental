@@ -1,0 +1,9 @@
+ERROR 2013-07-29 22:21:58,547   148ms Flats                  SetDefaulData      - sdfasdfasdfasdf
+ERROR 2013-07-29 22:21:58,617   218ms ErrorLogger            FlatList           - System.Exception: asdfasdf
+   ? DAL.FlatManager.FlatList(String filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, Boolean orderBy, Int32& activePage, Int32 pageSize, List`1& flats, Int32& pageCount, Int32& totalRowsNumber) ? e:\_PROJ\_rental\rental\DAL\Flat\FlatManager.cs:?????? 36
+DEBUG 2013-07-29 22:21:58,621   222ms ErrorLogger            FlatList           - System.Exception: asdfasdf
+   ? DAL.FlatManager.FlatList(String filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, Boolean orderBy, Int32& activePage, Int32 pageSize, List`1& flats, Int32& pageCount, Int32& totalRowsNumber) ? e:\_PROJ\_rental\rental\DAL\Flat\FlatManager.cs:?????? 36
+INFO  2013-07-29 22:21:58,622   223ms ErrorLogger            FlatList           - System.Exception: asdfasdf
+   ? DAL.FlatManager.FlatList(String filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, Boolean orderBy, Int32& activePage, Int32 pageSize, List`1& flats, Int32& pageCount, Int32& totalRowsNumber) ? e:\_PROJ\_rental\rental\DAL\Flat\FlatManager.cs:?????? 36
+FATAL 2013-07-29 22:21:58,622   223ms ErrorLogger            FlatList           - System.Exception: asdfasdf
+   ? DAL.FlatManager.FlatList(String filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, Boolean orderBy, Int32& activePage, Int32 pageSize, List`1& flats, Int32& pageCount, Int32& totalRowsNumber) ? e:\_PROJ\_rental\rental\DAL\Flat\FlatManager.cs:?????? 36

@@ -7,6 +7,7 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using System.Linq.Expressions;
 using LinqKit;
+using log4net;
 
 namespace DAL
 {
@@ -21,14 +22,17 @@ namespace DAL
 
     public static class FlatManager
     {
+        public static ILog errorLog = LogManager.GetLogger("ErrorLogger");
 
         public static void FlatList(string filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
         {
+            
             flats = null;
             pageCount = 1;
             totalRowsNumber = 0;
             try
             {
+
                 IQueryable<flat_info> query = WcfOperationContext.Current.Context.flat_info;
                 #region filterby
                 if (!filterValue.Equals(string.Empty))
@@ -80,11 +84,13 @@ namespace DAL
 
                 flats = query.GetPage(pageSize, ref activePage, ref pageCount, ref totalRowsNumber)
                             .AsEnumerable().Select(t=>t).ToList();
+
+                errorLog.Debug(flats.Count());
                 
             }
             catch (Exception ex)
             {
-
+                errorLog.Error(ex);
             }
         }
 
