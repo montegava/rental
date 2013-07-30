@@ -43,6 +43,10 @@ namespace DAL
                     {
                         filter = filter.Or(t => t.ADDRESS.ToLower().Contains(filterValue.ToLower()));
                     }
+                    if ((filterBy & (int)Fiels.ROOM_COUNT) > 0)
+                    {
+                        filter = filter.Or(t => t.ROOM_COUNT.ToLower().Contains(filterValue.ToLower()));
+                    }
                     query = query.Where(filter.Expand());
                 }
 

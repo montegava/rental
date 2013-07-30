@@ -15,6 +15,9 @@
     <script type="text/javascript" src="./src/jquery.validate.js"></script>
     <!-- LightBox -->
     <script type="text/javascript" src="./src/jquery.lightbox.js"></script>
+
+    <script type="text/javascript" src="./src/general.js"></script>
+
     <link rel="stylesheet" type="text/css" href="./src/jquery.lightbox.css" media="screen">
 
     <script type="text/javascript" src="./src/hostcms.js"></script>

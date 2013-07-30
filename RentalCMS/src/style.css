@@ -1581,7 +1581,7 @@ TABLE.grid {
 		background: transparent url("../images/state3.png") no-repeat right -2px;
 	}
 	TABLE.grid THEAD TR TH A SPAN.sort-down {
-		background: transparent url("../images/v2/state2.png") no-repeat right center;
+		background: transparent url("../images/state2.png") no-repeat right center;
 	}
 	TABLE.grid TR TH.icon,
 	TABLE.grid TR TD.icon {
@@ -1773,3 +1773,39 @@ font-size: 017px;
 line-height: 19px;
 }
 
+DIV.areaGroup {
+float: left;
+margin-right: 5px;
+margin-bottom: 3px;
+}
+
+DIV.SmartDropDown, DIV.SmartCollectionV1, DIV.SmartTextBox, DIV.SmartCollectionV2, DIV.SmartCollectionV3, DIV.SmartCollectionV6, DIV.SmartComposite, DIV.smartToolTipArea1, DIV.areaGroup, DIV.qualityArea, DIV.scCol, DIV.homeBox, DIV.SmartTransferExtended DIV.items, DIV.SmartCompositeV2, DIV.SmartCollectionV5, DIV.SmartCollectionV4, DIV.SmartTableEditor, DIV.ContractInfoRenew, DIV.cat-transfer {
+background-color: #F1F6E4;
+border-bottom: 1px solid #131313;
+border-right: 1px solid #131313;
+border-left: 1px solid #666;
+border-top: 1px solid #666;
+display: block;
+padding: 19px 5px 0 5px;
+}
+
+BUTTON, A.button, INPUT[type=submit] {
+border-radius: 3px;
+border: 1px solid #0B0B0B;
+color: #172196;
+font-size: 9px;
+height: 18px;   
+line-height: 18px;
+outline: none;
+overflow: visible;
+padding: 0 10px 0 10px;
+text-transform: uppercase;
+text-align: center;
+vertical-align: middle;
+background: #BEEB94;
+}
+
+SECTION.footer-tbl NAV A.selected {
+color: #3CF;
+font-size: 1.1em;
+}

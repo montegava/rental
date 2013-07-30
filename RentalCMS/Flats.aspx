@@ -79,14 +79,7 @@
 
 
 
-    <script type="text/javascript">
-        $(function () {
-
-            $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
-
-
-        });
-    </script>
+   
 
 
 
@@ -107,30 +100,37 @@
                 <thead>
                     <tr>
                         <th>
-                            <asp:LinkButton ID="lkId" runat="server" CommandName="Sort" CommandArgument="0">
-                                Номер
-                                <span id="sort0" runat="server" class="sort">&nbsp;</span>
-                            </asp:LinkButton>
-                        </th>
-
-                        <th>
-                            <asp:LinkButton ID="lkData" runat="server" CommandName="Sort" CommandArgument="1">
-                                Дата
+                            <asp:LinkButton ID="lkId" runat="server" CommandName="Sort" CommandArgument="1">
+                                №
                                 <span id="sort1" runat="server" class="sort">&nbsp;</span>
                             </asp:LinkButton>
                         </th>
 
                         <th>
-                            <asp:LinkButton ID="lkRoomCount" runat="server" CommandName="Sort" CommandArgument="2">
-                                Комтан
+                            <asp:LinkButton ID="lkData" runat="server" CommandName="Sort" CommandArgument="2">
+                                Дата
                                 <span id="sort2" runat="server" class="sort">&nbsp;</span>
                             </asp:LinkButton>
                         </th>
 
                         <th>
-                            <asp:LinkButton ID="lkAddress" runat="server" CommandName="Sort" CommandArgument="4">
-                                Адресс
+                            <asp:LinkButton ID="lkRoomCount" runat="server" CommandName="Sort" CommandArgument="4">
+                                Комтан
                                 <span id="sort4" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+                        <th>
+                            <asp:LinkButton ID="lkAddress" runat="server" CommandName="Sort" CommandArgument="8">
+                                Адресс
+                                <span id="sort8" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+                        <th>
+                            <asp:LinkButton ID="lbPhone" runat="server" CommandName="Sort" CommandArgument="16">
+                                Телефон
+                                <span id="sort16" runat="server" class="sort">&nbsp;</span>
                             </asp:LinkButton>
                         </th>
 
@@ -163,6 +163,7 @@
                     <asp:Label runat="server" ID="lbAddress"> <%# Eval("ADDRESS") %> </asp:Label>
                 </td>
 
+                <td>+7 (903) 652-90-28</td>
                 <td class="icon">
                     <asp:LinkButton ID="lbEdit" runat="server" CommandName="Action" CommandArgument="Edit" title='Посмотреть'>
                          <image src="/images/icon_view.png" width="21" height="20" title='Просмотреть' alt=""/>
@@ -200,8 +201,15 @@
         <br class="clearLeft" />
     </section>
 
+   
+       <script type="text/javascript">
+           $.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '30px', 1: '65px', 2: '65px', 3: '100px', 4: '80px', 5: '21px' });
 
+        
+               $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
 
+        
+        </script>
 
 
 </asp:Content>

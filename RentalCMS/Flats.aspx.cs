@@ -25,6 +25,15 @@ namespace RentalCMS
         protected bool isFilterInitiated = false;
 
         private int PageSize = 100;
+        
+        public static int MAX_NUMBER_OF_COLUMNS = 128;
+        
+        public static string sel_no = "sort";
+        
+        public static string sel_up = "sort-up";
+        
+        public static string sel_dw = "sort-down";
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -112,18 +121,7 @@ namespace RentalCMS
         }
 
 
-        protected void _lwInfoList_ItemCommand(object sender, ListViewCommandEventArgs e)
-        {
-            // -- get command option
-            string command = e.CommandName;
-            string argument = string.Empty;
-            if (e.CommandArgument != null)
-                argument = e.CommandArgument.ToString();
-            if (command == "Action")
-            {
-             
-            }
-        }
+     
 
         protected void _btFilterData_Click(object sender, EventArgs e)
         {
@@ -147,6 +145,18 @@ namespace RentalCMS
             SetDefaulData();
         }
 
+        protected void _lwInfoList_ItemCommand(object sender, ListViewCommandEventArgs e)
+        {
+            // -- get command option
+            string command = e.CommandName;
+            string argument = string.Empty;
+            if (e.CommandArgument != null)
+                argument = e.CommandArgument.ToString();
+            if (command == "Action")
+            {
+
+            }
+        }
      
         protected void _lwInfoList_Sorting(object sender, ListViewSortEventArgs e)
         {
@@ -161,10 +171,8 @@ namespace RentalCMS
             SetDefaulData();
             UpdateHeaderSort(this._lwInfoListEdit);
         }
-        public static int MAX_NUMBER_OF_COLUMNS = 128;
-        public static string sel_no = "sort";
-        public static string sel_up = "sort-up";
-        public static string sel_dw = "sort-down";
+
+
 
         public void UpdateHeaderSort(ListView _lwInfoList)
         {
