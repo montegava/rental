@@ -5,11 +5,21 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using log4net;
+using System.Web.UI.HtmlControls;
 
 namespace RentalCMS
 {
     public partial class Flats : System.Web.UI.Page
     {
+        public enum Fiels : int
+        {
+            NONE = 0,
+            ID = 1,
+            DATA = 2,
+            ROOM_COUNT = 4,
+            ADDRESS = 8
+        }
+
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(Flats));
 
         protected bool isFilterInitiated = false;
@@ -26,33 +36,79 @@ namespace RentalCMS
 
         private void SetDefaulData()
         {
+            int selectedFilter = (int)Fiels.NONE;
+            string selectedSearchText = _tbSearchText.Text.Trim();
+            if (!string.IsNullOrEmpty(selectedSearchText))
+            {
+                selectedFilter += _cbAddress.Checked ? (int)Fiels.ADDRESS : 0;
+                selectedFilter += _cbRoomCount.Checked ? (int)Fiels.ROOM_COUNT : 0;
+            }
+            DateTime selectedStartDate = UIConvert.ToDateTime(_tbStartDateText.Text);
+            DateTime selectedEndDate = UIConvert.ToDateTime(_tbEndDateText.Text);
+
+            // -- pagination info
+            int selectedActivePage = _plInfoGrid.PageSelected != 0 ? _plInfoGrid.PageSelected : 1;
+            int selectedPageSize = UIConvert.ToInt32(pageItems.SelectedValue, PageSize);
+            int pageCount = 0;
+            int totalRowsNumber = 0;
 
             errorLog.Debug("IN the function");
 
             List<DAL.flat_info> flats;// = DAL.FlatManager.GetAllFlats();
 
-            int activePage = 1;
-            int totalRowsNumber;
-            int pageCount;
+          
             errorLog.Debug("Try to get");
 
             DAL.FlatManager.FlatList(
-                "",
-                (int)DAL.Fiels.ID,
-                DateTime.MinValue,
-                DateTime.MinValue,
-                (int)DAL.Fiels.ID,
-                true,
-                ref activePage,
-                PageSize,
+                selectedSearchText,
+                selectedFilter,
+                selectedStartDate,
+                selectedEndDate,
+                Convert.ToInt32(SortExpression),
+                SortAscending,
+                ref selectedActivePage,
+                selectedPageSize,
                 out flats,
                 out pageCount,
                 out totalRowsNumber);
 
-           // flats = DAL.FlatManager.GetAllFlats();
+          //  flats = DAL.FlatManager.GetAllFlats();
+           
             errorLog.Debug("Set data source");
             this._lwInfoListEdit.DataSource = flats;
             this._lwInfoListEdit.DataBind();
+
+
+            // -- check if we have a valid session data
+            if (flats != null && flats.Any())
+            {
+                // -- result show button for mutiple action
+                ShowNavigation();
+
+                // Show number rows per page with spec settings
+                lbSelNumPerPage.Text = getCurrentPageNumberRows(selectedActivePage, flats.Count(), totalRowsNumber, selectedPageSize);
+
+
+                // -- set pagging data
+                _plInfoGrid.Visible = true;
+                _plInfoGrid.PageCount = pageCount;
+                _plInfoGrid.PageActive = selectedActivePage;
+            }
+          
+        }
+
+        protected string getCurrentPageNumberRows(int activePage, int itemsCount, int totalRowsNumber, int pageSize)
+        {
+            int firstCurrentPageRowNumber = (itemsCount > 0) ? (activePage - 1) * pageSize + 1 : 0;
+            int lastCurrentPageRowNumber = (activePage - 1) * pageSize + itemsCount;
+
+            return String.Format("{0} to {1} of {2}", firstCurrentPageRowNumber, lastCurrentPageRowNumber, totalRowsNumber);
+        }
+
+        private void ShowNavigation(bool toShow = true)
+        {
+            _lwInfoListEdit.Visible = toShow;
+            _navPag.Visible = toShow;
         }
 
 
@@ -74,7 +130,7 @@ namespace RentalCMS
             // Set a value that indicates, that filter was initiated
             isFilterInitiated = true;
             // -- check if have valid filter criteria
-          
+            SetDefaulData();
         }
 
         protected void _btClearData_Click(object sender, EventArgs e)
@@ -85,7 +141,10 @@ namespace RentalCMS
             _tbStartDateText.Text = string.Empty;
             _tbEndDateText.Text = string.Empty;
             // -- clear check use for text
-            _cbOriginalName.Checked = false;
+            _cbAddress.Checked = false;
+            _cbRoomCount.Checked = false;
+
+            SetDefaulData();
         }
 
      
@@ -99,7 +158,29 @@ namespace RentalCMS
                 SortAscending = true;
 
             SortExpression = e.SortExpression;
+            SetDefaulData();
+            UpdateHeaderSort(this._lwInfoListEdit);
+        }
+        public static int MAX_NUMBER_OF_COLUMNS = 128;
+        public static string sel_no = "sort";
+        public static string sel_up = "sort-up";
+        public static string sel_dw = "sort-down";
 
+        public void UpdateHeaderSort(ListView _lwInfoList)
+        {
+            // try to pars all columns
+            for (int count = 1; count <= MAX_NUMBER_OF_COLUMNS; count++)
+            {
+                // try to find a label with this name
+                HtmlGenericControl label = (HtmlGenericControl)_lwInfoList.FindControl("sort" + count.ToString());
+                if (label != null)
+                {
+                    // if label exist set call with no select
+                    label.Attributes["class"] = sel_no;
+                    if (count.ToString() == SortExpression) // if count is sort expresion set up to proper direction
+                        label.Attributes["class"] = SortAscending ? sel_up : sel_dw;
+                }
+            }
         }
 
         #region ONBase
@@ -128,10 +209,20 @@ namespace RentalCMS
             get
             {
                 object obj = ViewState["SortExpression"];
-                return (obj == null) ? String.Empty : obj.ToString();
+                return (obj == null) ? "0" : obj.ToString();
             }
         }
 
+
+        protected void pageItems_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SetDefaulData();
+        }
+
+        protected void _plInfoGrid_Paging(object sender, System.EventArgs e)
+        {
+            SetDefaulData();
+        }
         #endregion
     }
 }

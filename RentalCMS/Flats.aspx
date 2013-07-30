@@ -1,4 +1,7 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Rental.Master" AutoEventWireup="true" CodeBehind="Flats.aspx.cs" Inherits="RentalCMS.Flats" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Rental.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="Flats.aspx.cs" Inherits="RentalCMS.Flats" %>
+
+<%@ Import Namespace="System.ComponentModel" %>
+<%@ Register Assembly="SmartControls" Namespace="SmartControls" TagPrefix="Smart" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -13,7 +16,8 @@
         <fieldset>
             <legend>Фильтры</legend>
             <p id="_errorText" runat="server" class="error2 hide">
-                <asp:Label ID="_lbError" runat="server" Text=""></asp:Label></p>
+                <asp:Label ID="_lbError" runat="server" Text=""></asp:Label>
+            </p>
             <div class="left">
                 <span class="mask">
                     <asp:TextBox runat="server" ID="_tbSearchText" name="_tbSearchText"></asp:TextBox>
@@ -23,18 +27,24 @@
             <br class="clearLeft" />
             <div class="lsCheck">
                 <div class="row">
-                    <asp:CheckBox ID="_cbOriginalName" name="_cbOriginalName" runat="server"></asp:CheckBox>
-                    <label for="_cbOriginalName" title="">
-                         Адресс 
+                    <asp:CheckBox ID="_cbAddress" name="_cbAddress" runat="server"></asp:CheckBox>
+                    <label for="_cbAddress" title="">
+                        Адресс 
                     </label>
+
+                    <asp:CheckBox ID="_cbRoomCount" name="_cbRoomCount" runat="server"></asp:CheckBox>
+                    <label for="_cbRoomCount" title="">
+                        Комнат 
+                    </label>
+
                 </div>
             </div>
             <div class="nrmRow">
                 <div class="areaGroup areaGroup_fix1">
-                    <div class="row>
-                    <strong class="calendar_info">Временной интервал
-                    </strong>
-                        </div>
+                    <div class="row">
+                        <strong class="calendar_info">Временной интервал
+                        </strong>
+                    </div>
                     <div class="row calendar">
                         <label title="Select Start Date" for="_tbStartDateText" class="above">
                             Начало
@@ -66,14 +76,17 @@
         </fieldset>
     </section>
 
+
+
+
     <script type="text/javascript">
         $(function () {
 
             $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
 
-     
+
         });
-</script>
+    </script>
 
 
 
@@ -120,6 +133,8 @@
                                 <span id="sort4" runat="server" class="sort">&nbsp;</span>
                             </asp:LinkButton>
                         </th>
+
+                        <th class="icon">&nbsp;</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -135,7 +150,7 @@
                 </td>
 
                 <td>
-                    <asp:Label runat="server" ID="lbData"> <%# Eval("DATA") %> </asp:Label>
+                    <asp:Label runat="server" ID="lbData"> <%# ((DateTime)Eval("DATA")).ToShortDateString() %> </asp:Label>
                 </td>
 
 
@@ -148,9 +163,45 @@
                     <asp:Label runat="server" ID="lbAddress"> <%# Eval("ADDRESS") %> </asp:Label>
                 </td>
 
+                <td class="icon">
+                    <asp:LinkButton ID="lbEdit" runat="server" CommandName="Action" CommandArgument="Edit" title='Посмотреть'>
+                         <image src="/images/icon_view.png" width="21" height="20" title='Просмотреть' alt=""/>
+                    </asp:LinkButton>
+                </td>
+
             </tr>
         </ItemTemplate>
     </asp:ListView>
+
+
+    <section class="footer-tbl" id="_navPag" runat="server">
+        <div class="itemsPg">
+            <div class="dropDown" id="pageItems_f">
+
+                <asp:DropDownList ID="pageItems" runat="server" AutoPostBack="True" OnSelectedIndexChanged="pageItems_SelectedIndexChanged">
+                    <asp:ListItem Text="10" Value="10"></asp:ListItem>
+                    <asp:ListItem Text="25" Value="25"></asp:ListItem>
+                    <asp:ListItem Text="50" Value="50" Selected="True"></asp:ListItem>
+                    <asp:ListItem Text="100" Value="100"></asp:ListItem>
+                </asp:DropDownList>
+            </div>
+            <div class="rowscounters">
+                <asp:Label ID="lbSelNumPerPage" runat="server"></asp:Label>
+            </div>
+        </div>
+        <nav class="pager">
+            <Smart:SmartPagingLink ID="_plInfoGrid" runat="server" OnPaging="_plInfoGrid_Paging"
+                CssActivePage="selected"
+                ImageFirstPage="/images/icon_pg_left_1.png"
+                ImageBackPage="/images/icon_pg_left.png"
+                ImageNextPage="/images/icon_pg_right.png"
+                ImageLastPage="/images/icon_pg_right_2.png" />
+        </nav>
+        <br class="clearLeft" />
+    </section>
+
+
+
 
 
 </asp:Content>

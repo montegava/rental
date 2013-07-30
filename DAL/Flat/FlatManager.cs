@@ -14,10 +14,11 @@ namespace DAL
 
     public enum Fiels : int
     {
-        ID = 0,
-        DATA = 1,
-        ROOM_COUNT = 2,
-        ADDRESS = 4
+        NONE = 0,
+        ID = 1,
+        DATA = 2,
+        ROOM_COUNT = 4,
+        ADDRESS = 8
     }
 
     public static class FlatManager
@@ -76,6 +77,7 @@ namespace DAL
                         query = query.SetOrder(t => t.ADDRESS, orderBy);
                         break;
                     default:
+                        query = query.SetOrder(t => t.ID, orderBy);
                         break;
                 }
 
@@ -113,7 +115,7 @@ namespace DAL
         {
             using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
             {
-                String query = "select  * from flat_info LIMIT 200";
+                String query = "select  * from flat_info";
                 sqlConn.Open();
                 using (MySqlCommand command = new MySqlCommand(query, sqlConn))
                 {
@@ -329,7 +331,7 @@ namespace DAL
             DataTable dt = null;
             using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
             {
-                string query = "select * from FLAT_INFO order by id desc";
+                string query = "select * from flat_info order by id desc";
                 sqlConn.Open();
                 using (MySqlCommand command = new MySqlCommand(query, sqlConn))
                 {

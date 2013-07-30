@@ -83,6 +83,12 @@
     <Content Include="images\bg.jpg" />
     <Content Include="images\cat.png" />
     <Content Include="images\fone.png" />
+    <Content Include="images\icon_pg_left.png" />
+    <Content Include="images\icon_pg_left_1.png" />
+    <Content Include="images\icon_pg_right.png" />
+    <Content Include="images\icon_pg_right_2.png" />
+    <Content Include="images\icon_view.png" />
+    <Content Include="images\icon_view_sel.png" />
     <Content Include="images\logo.png" />
     <Content Include="images\shadow-b.png" />
     <Content Include="images\shadow-l.png" />
@@ -151,6 +157,7 @@
     <Compile Include="Rental.Master.designer.cs">
       <DependentUpon>Rental.Master</DependentUpon>
     </Compile>
+    <Compile Include="UIConvert.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Rental.Master" />
@@ -169,6 +176,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{bc3afc4a-aae6-4d92-88ae-1d180529afbf}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\.proj\_spider\spider\smartcontrols\SmartControls\SmartControls.csproj">
+      <Project>{63127e03-a44c-45a7-8db8-f0fc78665d85}</Project>
+      <Name>SmartControls</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

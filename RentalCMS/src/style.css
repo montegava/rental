@@ -1596,13 +1596,12 @@ TABLE.grid {
 	TABLE.grid TR TD.nr {
 	   text-align: center;
 	}
-	TABLE.grid TR:hover TD {
-		background-color: #1E2027;
+	
+    TABLE.grid TR:hover TD {
+		background-color: #84848D;
+        color: #95DDF5  !important;
 	}
-	TABLE.grid TR.hover TD *,
-	TABLE.grid TR.hover TD {
-		color: #3CF !important;
-	}
+
 
     
     	
@@ -1739,3 +1738,38 @@ DIV.panel {
     padding-right: 10px;
     margin-bottom: 5px;
 }
+
+
+.rowscounters {
+float: left;
+font-size: 8pt;
+margin: 5px;
+}
+
+SECTION.footer-tbl {
+padding: 5px 10px 0 10px;
+}
+
+
+SECTION.footer-tbl DIV.itemsPg {
+float: left;
+}
+
+div.dropDown {
+    float: left;
+}
+
+SECTION.footer-tbl NAV {
+float: right;
+font-size: 17px;
+height: 19px;
+line-height: 19px;
+padding: 0;
+min-width: 147px;
+}
+
+SECTION.footer-tbl NAV {
+font-size: 017px;
+line-height: 19px;
+}
+

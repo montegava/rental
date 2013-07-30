@@ -40,13 +40,22 @@ namespace RentalCMS {
         protected global::System.Web.UI.WebControls.TextBox _tbSearchText;
         
         /// <summary>
-        /// _cbOriginalName control.
+        /// _cbAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox _cbOriginalName;
+        protected global::System.Web.UI.WebControls.CheckBox _cbAddress;
+        
+        /// <summary>
+        /// _cbRoomCount control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox _cbRoomCount;
         
         /// <summary>
         /// _tbStartDateText control.
@@ -92,5 +101,41 @@ namespace RentalCMS {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.ListView _lwInfoListEdit;
+        
+        /// <summary>
+        /// _navPag control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _navPag;
+        
+        /// <summary>
+        /// pageItems control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList pageItems;
+        
+        /// <summary>
+        /// lbSelNumPerPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbSelNumPerPage;
+        
+        /// <summary>
+        /// _plInfoGrid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::SmartControls.SmartPagingLink _plInfoGrid;
     }
 }

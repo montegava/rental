@@ -5,7 +5,6 @@ E:\_PROJ\_rental\rental\RentalApi\obj\Debug\RentalApi.dll
 E:\_PROJ\_rental\rental\RentalApi\obj\Debug\RentalApi.pdb
 E:\_PROJ\_rental\rental\RentalApi\obj\Debug\RentalApi.csprojResolveAssemblyReference.cache
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\DAL.dll
-E:\_PROJ\_rental\rental\RentalApi\bin\Debug\MySql.Data.dll
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\DAL.pdb
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\EntityFramework.dll
 E:\_PROJ\_rental\rental\RentalApi\bin\Debug\log4net.dll
