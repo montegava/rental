@@ -26,7 +26,7 @@ namespace RentalApi
             string uploadPath = ".";//ConfigurationManager.AppSettings["UploadPath"];
 
            
-            string filePath = Path.Combine(Path.GetFullPath( System.Web. HttpContext.Current.Server.MapPath(".");), fileName);
+            string filePath = Path.Combine(Path.GetFullPath( "."), fileName);
 
             FileStream fs = null;
             try
