@@ -61,10 +61,10 @@ namespace Rental
             newImage.Save(ddd, jpegCodec, encoderParams);
 
 
-            var proxy = new RentalApi.RentalApiClient();
-            
+            var proxy = new RentalCore.RentalCoreClient();
+            var stream = new FileStream(ddd, FileMode.Open);
 
-            proxy.Upload("image.jpg", new FileStream(ddd, FileMode.Open) );
+            proxy.Upload(stream);
             proxy.Close();
         }
 

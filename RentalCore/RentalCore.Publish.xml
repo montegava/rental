@@ -1,0 +1,18 @@
+<publishData>
+  <publishTarget publishUrl="E:\_proj\wcf\">
+    <file relUrl="bin/log4net.dll" publishTime="07/31/2013 08:40:52" />
+    <file relUrl="bin/RentalCore.dll.config" publishTime="07/31/2013 13:44:49" />
+    <file relUrl="Web.config" publishTime="07/31/2013 13:44:49" />
+    <file relUrl="bin/RentalCore.pdb" publishTime="07/31/2013 13:45:35" />
+    <file relUrl="bin/RentalCore.dll" publishTime="07/31/2013 13:45:35" />
+    <file relUrl="RentalCore.RentalCore.svc" publishTime="07/31/2013 13:46:21" />
+  </publishTarget>
+  <publishTarget publishUrl="E:\_proj\Rental_\">
+    <file relUrl="RentalCore.RentalCore.svc" publishTime="07/31/2013 12:47:23" />
+    <file relUrl="bin/RentalCore.dll.config" publishTime="07/31/2013 12:44:20" />
+    <file relUrl="bin/RentalCore.dll" publishTime="07/31/2013 12:40:44" />
+    <file relUrl="Web.config" publishTime="07/31/2013 12:44:20" />
+    <file relUrl="bin/RentalCore.pdb" publishTime="07/31/2013 12:40:44" />
+  </publishTarget>
+  <publishTarget publishUrl="ftp://ftp.amiravrn-ru.1gb.ru/" />
+</publishData>
