@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="029949ae-d4c8-4133-b1ad-38aea9ed804c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:4208/RentalApi/mex" Protocol="mex" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="8b8707b4-24f2-4479-ab34-125df01c61b8" SourceId="1" SourceUrl="http://localhost:4208/RentalApi/mex" />
+    <MetadataFile FileName="Message.xsd" MetadataType="Schema" ID="7cdd0f86-5bfb-49f1-9e33-0bb90fd9ad62" SourceId="1" SourceUrl="http://localhost:4208/RentalApi/mex" />
+    <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="5747fca0-163d-4db1-9407-22ef9b706a02" SourceId="1" SourceUrl="http://localhost:4208/RentalApi/mex" />
+    <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="bc45d5a0-0eb7-46d8-8cc2-f63b4200af4a" SourceId="1" SourceUrl="http://localhost:4208/RentalApi/mex" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

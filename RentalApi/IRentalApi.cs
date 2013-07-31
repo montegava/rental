@@ -4,7 +4,6 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using DAL;
 
 namespace RentalApi
 {
@@ -12,8 +11,8 @@ namespace RentalApi
     [ServiceContract]
     public interface IRentalApi
     {
-        [OperationContract]
-        flat_info GetFlatList(Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out Int32 pageCount, out Int32 totalRowsNumber);
+            [OperationContract(IsOneWay = true)]
+            void Upload(FileTransferRequest request);
     }
 
     [DataContract]
@@ -21,5 +20,16 @@ namespace RentalApi
     {
         [DataMember]
         public string MyMessage { get; set; }
+    }
+
+    [MessageContract()]
+    public class FileTransferRequest
+    {
+        [MessageHeader(MustUnderstand = true)]
+        public string FileName;
+
+        [MessageBodyMember(Order = 1)]
+        public System.IO.Stream Data;
+
     }
 }

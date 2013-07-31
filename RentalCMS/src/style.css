@@ -1809,3 +1809,19 @@ SECTION.footer-tbl NAV A.selected {
 color: #3CF;
 font-size: 1.1em;
 }
+
+ARTICLE.details {
+float: left;
+padding-left: 10px;
+padding-top: 10px;
+width: 357px;
+}
+
+ARTICLE.details LABEL, DIV.multiselectExt2 LABEL {
+float: left;
+width: 90px;
+}
+
+ARTICLE.details INPUT[type="text"], textarea {
+width: 255px !important;
+}

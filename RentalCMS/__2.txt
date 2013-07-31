@@ -1186,3 +1186,111 @@
 2013-07-30 22:03:58,548 [6] DEBUG RentalCMS.Flats - Try to get
 2013-07-30 22:03:58,915 [6] DEBUG ErrorLogger - 50
 2013-07-30 22:03:58,915 [6] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 22:22:42,142 [7] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 22:22:42,151 [7] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 22:22:44,009 [7] DEBUG ErrorLogger - 50
+2013-07-30 22:22:44,011 [7] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 22:28:21,125 [10] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 22:28:21,135 [10] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 22:28:22,669 [10] DEBUG ErrorLogger - 50
+2013-07-30 22:28:22,672 [10] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 22:28:26,108 [9] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 22:28:26,108 [9] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 22:28:26,524 [9] DEBUG ErrorLogger - 50
+2013-07-30 22:28:26,525 [9] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 22:31:39,973 [6] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 22:31:39,973 [6] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 22:31:40,908 [6] DEBUG ErrorLogger - 50
+2013-07-30 22:31:40,908 [6] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 22:33:25,506 [6] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 22:33:25,506 [6] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 22:33:25,999 [6] DEBUG ErrorLogger - 50
+2013-07-30 22:33:25,999 [6] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:06:08,028 [8] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:06:08,038 [8] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:06:09,913 [8] DEBUG ErrorLogger - 50
+2013-07-30 23:06:09,915 [8] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:11:45,424 [9] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:11:45,434 [9] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:11:47,612 [9] DEBUG ErrorLogger - 50
+2013-07-30 23:11:47,615 [9] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:12:53,444 [5] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:12:53,444 [5] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:12:54,227 [5] DEBUG ErrorLogger - 50
+2013-07-30 23:12:54,227 [5] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:22:50,137 [7] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:22:50,148 [7] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:22:51,622 [7] DEBUG ErrorLogger - 50
+2013-07-30 23:22:51,624 [7] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:23:54,253 [9] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:23:54,263 [9] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:23:55,897 [9] DEBUG ErrorLogger - 50
+2013-07-30 23:23:55,899 [9] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:26:52,737 [14] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:26:52,737 [14] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:26:53,231 [14] DEBUG ErrorLogger - 50
+2013-07-30 23:26:53,231 [14] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:26:57,810 [10] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:26:57,810 [10] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:26:58,303 [10] DEBUG ErrorLogger - 50
+2013-07-30 23:26:58,303 [10] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:27:02,346 [12] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:27:02,346 [12] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:27:02,838 [12] DEBUG ErrorLogger - 50
+2013-07-30 23:27:02,838 [12] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:27:08,999 [13] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:27:08,999 [13] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:27:09,491 [13] DEBUG ErrorLogger - 50
+2013-07-30 23:27:09,491 [13] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:27:24,855 [12] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:27:24,855 [12] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:27:25,346 [12] DEBUG ErrorLogger - 50
+2013-07-30 23:27:25,347 [12] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:30:16,338 [18] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:30:16,349 [18] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:30:17,447 [18] DEBUG ErrorLogger - 50
+2013-07-30 23:30:17,450 [18] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:38:47,908 [10] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:38:47,917 [10] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:38:49,410 [10] DEBUG ErrorLogger - 50
+2013-07-30 23:38:49,412 [10] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:39:50,748 [8] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:39:50,749 [8] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:39:51,168 [8] DEBUG ErrorLogger - 50
+2013-07-30 23:39:51,168 [8] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:41:29,031 [15] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:41:29,031 [15] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:41:29,458 [15] DEBUG ErrorLogger - 50
+2013-07-30 23:41:29,458 [15] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:44:39,954 [8] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:44:39,954 [8] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:44:40,368 [8] DEBUG ErrorLogger - 50
+2013-07-30 23:44:40,368 [8] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:44:46,528 [9] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:44:46,528 [9] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:44:46,992 [9] DEBUG ErrorLogger - 50
+2013-07-30 23:44:46,993 [9] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:44:52,286 [18] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:44:52,286 [18] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:44:52,769 [18] DEBUG ErrorLogger - 50
+2013-07-30 23:44:52,769 [18] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:48:07,013 [22] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:48:07,013 [22] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:48:07,426 [22] DEBUG ErrorLogger - 50
+2013-07-30 23:48:07,426 [22] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:54:35,116 [24] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:54:35,116 [24] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:54:35,529 [24] DEBUG ErrorLogger - 50
+2013-07-30 23:54:35,529 [24] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:54:44,350 [22] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:54:44,350 [22] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:54:44,771 [22] DEBUG ErrorLogger - 50
+2013-07-30 23:54:44,771 [22] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:54:54,935 [22] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:54:54,935 [22] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:54:55,348 [22] DEBUG ErrorLogger - 50
+2013-07-30 23:54:55,348 [22] DEBUG RentalCMS.Flats - Set data source
+2013-07-30 23:54:56,555 [31] DEBUG RentalCMS.Flats - IN the function
+2013-07-30 23:54:56,555 [31] DEBUG RentalCMS.Flats - Try to get
+2013-07-30 23:54:56,968 [31] DEBUG ErrorLogger - 50
+2013-07-30 23:54:56,969 [31] DEBUG RentalCMS.Flats - Set data source

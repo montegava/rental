@@ -154,7 +154,10 @@ namespace RentalCMS
                 argument = e.CommandArgument.ToString();
             if (command == "Action")
             {
+                HiddenField hiddenFieldID = (HiddenField)e.Item.FindControl("hfID");
+                int selectedID = Convert.ToInt32(hiddenFieldID.Value);
 
+                this.Response.Redirect("~/FlatManager.aspx?id=" + selectedID);
             }
         }
      

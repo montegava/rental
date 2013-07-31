@@ -4,34 +4,55 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using DAL;
+using System.Text;
+using System.IO;
+using System.Configuration;
+using System.Web;
 
 namespace RentalApi
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     public class RentalApi : IRentalApi
     {
-        public flat_info GetFlatList(Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out Int32 pageCount, out Int32 totalRowsNumber)
+        public void Upload(FileTransferRequest request)
         {
-            pageCount = 1;
-            totalRowsNumber = 0;
+            string fileName = request.FileName;
+
+            //if (ConfigurationManager.AppSettings["UploadPath"] == null)
+            //{
+            //    throw new ApplicationException("Missing upload path");
+            //}
+
+            string uploadPath = ".";//ConfigurationManager.AppSettings["UploadPath"];
+
+           
+            string filePath = Path.Combine(Path.GetFullPath( System.Web. HttpContext.Current.Server.MapPath(".");), fileName);
+
+            FileStream fs = null;
             try
             {
-                string error;
-                return DAL.FlatManager.GetFlatById(22, out error);
-
-                //                throw new Exception("Eadsasdfasd");
-                //              return null;
+                fs = File.Create(filePath);
+                byte[] buffer = new byte[1024];
+                int read = 0;
+                while ((read = request.Data.Read(buffer, 0, buffer.Length)) != 0)
+                {
+                    fs.Write(buffer, 0, read);
+                }
             }
-            catch (Exception ex)
+            finally
             {
+                if (fs != null)
+                {
+                    fs.Close();
+                    fs.Dispose();
+                }
 
-                MyCustomException fault = new MyCustomException();
-                fault.MyMessage = "ThrowsTypedCustomFaultException: FaultException<MyCustomException> " + ex.Message;
-                throw new FaultException<MyCustomException>(fault, new FaultReason("No reason!"));
+                if (request.Data != null)
+                {
+                    request.Data.Close();
+                    request.Data.Dispose();
+                }
             }
-
-
         }
     }
 }

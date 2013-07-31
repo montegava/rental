@@ -22,7 +22,7 @@ namespace DAL
 
             using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
             {
-                String query = "select * from IMAGES i where i.Flat_Id = @flatId";
+                String query = "select * from images i where i.Flat_Id = @flatId";
                 sqlConn.Open();
                 using (MySqlCommand command = new MySqlCommand(query, sqlConn))
                 {

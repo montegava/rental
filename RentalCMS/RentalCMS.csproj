@@ -44,9 +44,12 @@
       <HintPath>..\lib\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions">
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity">
       <Private>True</Private>
@@ -65,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Default.aspx" />
+    <Content Include="FlatManager.aspx" />
     <Content Include="Flats.aspx" />
     <Content Include="images\bg.jpg" />
     <Content Include="images\cat.png" />
@@ -76,6 +80,7 @@
     <Content Include="images\icon_view.png" />
     <Content Include="images\icon_view_sel.png" />
     <Content Include="images\logo.png" />
+    <Content Include="images\no_image.png" />
     <Content Include="images\shadow-b.png" />
     <Content Include="images\shadow-l.png" />
     <Content Include="images\shadow-lb.png" />
@@ -86,6 +91,7 @@
     <Content Include="images\state1.png" />
     <Content Include="images\state2.png" />
     <Content Include="images\state3.png" />
+    <Content Include="Properties\DataSources\DAL.flat_info.datasource" />
     <Content Include="src\captcha.php" />
     <Content Include="src\general.js" />
     <Content Include="src\hostcms.js" />
@@ -129,6 +135,13 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FlatManager.aspx.cs">
+      <DependentUpon>FlatManager.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="FlatManager.aspx.designer.cs">
+      <DependentUpon>FlatManager.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Flats.aspx.cs">
       <DependentUpon>Flats.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -168,6 +181,12 @@
       <Project>{63127e03-a44c-45a7-8db8-f0fc78665d85}</Project>
       <Name>SmartControls</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Media\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

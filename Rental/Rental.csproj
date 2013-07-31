@@ -45,6 +45,8 @@
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -83,6 +85,11 @@
     </Compile>
     <Compile Include="frm\NewFilter.Designer.cs">
       <DependentUpon>NewFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\RentalApi\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="src\Advert.cs" />
@@ -150,6 +157,16 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Service References\RentalApi\Message.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RentalApi\service.wsdl" />
+    <None Include="Service References\RentalApi\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RentalApi\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
@@ -169,8 +186,19 @@
     <Content Include="1360539379_88861.ico" />
     <Content Include="1360539611_20606.ico" />
     <Content Include="errors\error.txt" />
+    <None Include="Service References\RentalApi\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RentalApi\configuration.svcinfo" />
+    <None Include="Service References\RentalApi\configuration91.svcinfo" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\RentalApi\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

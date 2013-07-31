@@ -11,7 +11,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAL.dll">
-      <publishTime>07/30/2013 20:35:54</publishTime>
+      <publishTime>07/30/2013 23:34:27</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/26/2013 04:00:52</publishTime>
@@ -20,7 +20,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2012 22:12:14</publishTime>
     </File>
     <File Include="bin/log4net.dll">
-      <publishTime>11/06/2012 12:09:02</publishTime>
+      <publishTime>06/11/2012 12:09:02</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -32,7 +32,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/RentalCMS.dll">
-      <publishTime>07/30/2013 20:35:54</publishTime>
+      <publishTime>07/30/2013 23:34:28</publishTime>
     </File>
     <File Include="bin/SmartControls.dll">
       <publishTime>07/30/2013 01:35:19</publishTime>
@@ -52,8 +52,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="Default.aspx">
       <publishTime>07/26/2013 02:42:04</publishTime>
     </File>
+    <File Include="FlatManager.aspx">
+      <publishTime>07/30/2013 23:56:10</publishTime>
+    </File>
     <File Include="Flats.aspx">
-      <publishTime>07/30/2013 20:33:09</publishTime>
+      <publishTime>07/30/2013 22:17:56</publishTime>
     </File>
     <File Include="images/bg.jpg">
       <publishTime>07/26/2013 02:31:44</publishTime>
@@ -84,6 +87,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     </File>
     <File Include="images/logo.png">
       <publishTime>07/26/2013 02:35:27</publishTime>
+    </File>
+    <File Include="images/no_image.png">
+      <publishTime>07/30/2013 23:50:11</publishTime>
     </File>
     <File Include="images/shadow-b.png">
       <publishTime>07/26/2013 02:31:44</publishTime>
@@ -215,7 +221,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/style.css">
-      <publishTime>07/30/2013 19:31:29</publishTime>
+      <publishTime>07/30/2013 23:47:21</publishTime>
     </File>
     <File Include="Web.config">
       <publishTime>07/30/2013 00:25:48</publishTime>

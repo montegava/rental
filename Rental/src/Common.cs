@@ -7,11 +7,83 @@ using System.Windows.Forms;
 using System.Collections;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Imaging;
+using System.Drawing.Drawing2D;
+using System.IO;
 
 namespace Rental
 {
     class Common
     {
+
+        /// <summary> 
+        /// Saves an image as a jpeg image, with the given quality 
+        /// </summary> 
+        /// <param name="path">Path to which the image would be saved.</param> 
+        // <param name="quality">An integer from 0 to 100, with 100 being the 
+        /// highest quality</param> 
+        public static void SaveJpeg(string path, Image img, int quality)
+        {
+            var maxW = 500;
+            var maxH = 500;
+
+
+            double mul1 = (double)maxW / img.Width;
+            double mul2 = (double)maxH / img.Height;
+            double mul = Math.Max(mul1, mul2);  // mul1 >= mul2 ? mul1 : mul2;
+
+            var newWidth = (int)(img.Width * mul);
+            var newHeight = (int)(img.Height * mul);
+
+            if (quality < 0 || quality > 100)
+                throw new ArgumentOutOfRangeException("quality must be between 0 and 100.");
+
+
+            // Encoder parameter for image quality 
+            EncoderParameter qualityParam = new EncoderParameter(System.Drawing.Imaging.Encoder.Quality, quality);
+            // Jpeg image codec 
+            ImageCodecInfo jpegCodec = GetEncoderInfo("image/jpeg");
+
+            EncoderParameters encoderParams = new EncoderParameters(1);
+            encoderParams.Param[0] = qualityParam;
+
+
+            Bitmap newImage = new Bitmap(newWidth, newHeight);
+            using (Graphics gr = Graphics.FromImage(newImage))
+            {
+                gr.SmoothingMode = SmoothingMode.Default;
+                gr.InterpolationMode = InterpolationMode.Default;
+                gr.PixelOffsetMode = PixelOffsetMode.HighQuality;
+                gr.DrawImage(img, new Rectangle(0, 0, newWidth, newHeight));
+            }
+
+            var ddd = Guid.NewGuid().ToString() + ".jpg";
+            newImage.Save(ddd, jpegCodec, encoderParams);
+
+
+            var proxy = new RentalApi.RentalApiClient();
+            
+
+            proxy.Upload("image.jpg", new FileStream(ddd, FileMode.Open) );
+            proxy.Close();
+        }
+
+        /// <summary> 
+        /// Returns the image codec with the given mime type 
+        /// </summary> 
+        private static ImageCodecInfo GetEncoderInfo(string mimeType)
+        {
+            // Get image codecs for all image formats 
+            ImageCodecInfo[] codecs = ImageCodecInfo.GetImageEncoders();
+
+            // Find the correct image codec 
+            for (int i = 0; i < codecs.Length; i++)
+                if (codecs[i].MimeType == mimeType)
+                    return codecs[i];
+            return null;
+        } 
+
+
         public static double DoubleCut(double val)
         {
             double valr = Math.Round(val, 2);

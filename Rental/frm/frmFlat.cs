@@ -252,6 +252,9 @@ namespace Rental
             OpenFileDialog dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
+                Common.SaveJpeg(@"c:\ddd.jpg", Image.FromFile(dialog.FileName), 50);
+                return;
+
                 string destFolder = ConfigurationManager.AppSettings["ServerDir"];
                 if (!Directory.Exists(destFolder))
                 {
@@ -269,6 +272,11 @@ namespace Rental
                 }
 
                 File.Copy(dialog.FileName, destImagePath);
+
+               
+
+
+
                 var fi = new DAL.images() { ID = -1, FLAT_ID = FlatId, IMAGE_PATH = destImagePath };
                 var item = new ListViewItem();
                 item.Tag = fi;

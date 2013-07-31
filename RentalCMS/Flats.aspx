@@ -79,7 +79,7 @@
 
 
 
-   
+
 
 
 
@@ -146,6 +146,7 @@
             <tr>
 
                 <td runat="server" id="trNumber">
+                    <asp:HiddenField ID="hfID" Value='<%# Eval("ID") %>' runat="server" />
                     <asp:Label runat="server" ID="lbId">  <%# Eval("ID") %> </asp:Label>
                 </td>
 
@@ -201,15 +202,15 @@
         <br class="clearLeft" />
     </section>
 
-   
-       <script type="text/javascript">
-           $.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '30px', 1: '65px', 2: '65px', 3: '100px', 4: '80px', 5: '21px' });
 
-        
-               $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
+    <script type="text/javascript">
+        $.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '30px', 1: '65px', 2: '65px', 3: '100px', 4: '80px', 5: '21px' });
 
-        
-        </script>
+
+        $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
+
+
+    </script>
 
 
 </asp:Content>

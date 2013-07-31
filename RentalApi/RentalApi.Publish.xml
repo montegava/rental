@@ -1,0 +1,9 @@
+<publishData>
+  <publishTarget publishUrl="ftp://ftp.amiravrn-ru.1gb.ru/http/">
+    <file relUrl="RentalApi.RentalApi.svc" publishTime="07/31/2013 02:11:45" />
+    <file relUrl="bin/RentalApi.dll" publishTime="07/31/2013 02:11:21" />
+    <file relUrl="bin/RentalApi.dll.config" publishTime="07/31/2013 02:07:17" />
+    <file relUrl="bin/RentalApi.pdb" publishTime="07/31/2013 02:11:21" />
+    <file relUrl="Web.config" publishTime="07/31/2013 02:07:17" />
+  </publishTarget>
+</publishData>
