@@ -27,12 +27,19 @@
             <br class="clearLeft" />
             <div class="lsCheck">
                 <div class="row">
-                    <asp:CheckBox ID="_cbAddress" name="_cbAddress" runat="server"></asp:CheckBox>
+
+                    <asp:RadioButton ID="_cbAddress" runat="server" Checked="true" GroupName="filter" />
+
+
+                    
                     <label for="_cbAddress" title="">
-                        Адресс 
+                        Адрес 
                     </label>
 
-                    <asp:CheckBox ID="_cbRoomCount" name="_cbRoomCount" runat="server"></asp:CheckBox>
+
+                     <asp:RadioButton ID="_cbRoomCount" runat="server" Checked="false"  GroupName="filter" />
+
+                    
                     <label for="_cbRoomCount" title="">
                         Комнат 
                     </label>
@@ -115,14 +122,14 @@
 
                         <th>
                             <asp:LinkButton ID="lkRoomCount" runat="server" CommandName="Sort" CommandArgument="4">
-                                Комтан
+                                Комнат
                                 <span id="sort4" runat="server" class="sort">&nbsp;</span>
                             </asp:LinkButton>
                         </th>
 
                         <th>
                             <asp:LinkButton ID="lkAddress" runat="server" CommandName="Sort" CommandArgument="8">
-                                Адресс
+                                Адрес
                                 <span id="sort8" runat="server" class="sort">&nbsp;</span>
                             </asp:LinkButton>
                         </th>

@@ -27,7 +27,7 @@ namespace DAL
 
         public static void FlatList(string filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
         {
-            
+
             flats = null;
             pageCount = 1;
             totalRowsNumber = 0;
@@ -89,31 +89,16 @@ namespace DAL
                 #endregion
 
                 flats = query.GetPage(pageSize, ref activePage, ref pageCount, ref totalRowsNumber)
-                            .AsEnumerable().Select(t=>t).ToList();
+                            .AsEnumerable().Select(t => t).ToList();
 
                 errorLog.Debug(flats.Count());
-                
+
             }
             catch (Exception ex)
             {
                 errorLog.Error(ex);
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         public static List<flat_info> GetAllFlats()
         {
@@ -135,7 +120,7 @@ namespace DAL
                                     ID = (int)rows["Id"],
                                     ADDRESS = (string)rows["address"],
                                     ROOM_COUNT = (string)rows["room_count"],
-                                    DATA =   (DateTime)rows["data"]
+                                    DATA = (DateTime)rows["data"]
 
                                 }).ToList();
                 }
@@ -209,47 +194,34 @@ namespace DAL
             return false;
         }
 
-        public static bool AddNewFlat(flat_info flat, out string error)
+        public static bool AddNewFlat(flat_info flat)
         {
-            error = String.Empty;
             try
             {
-                //ConnectionManager.ConnectionStringEntity)
-                using (var context = new rentalEntities())
-                {
-                    context.flat_info.Add(flat);
-                    return context.SaveChanges() > 0;
-                }
+                var context = WcfOperationContext.Current.Context;
+                context.flat_info.Add(flat);
+                context.SaveChanges();
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                errorLog.Error(ex);
                 return false;
             }
-
             return true;
-
         }
 
-        public static flat_info GetFlatById(int flatId, out string error)
+        public static flat_info GetFlatById(int flatId)
         {
             flat_info result = null;
-            error = String.Empty;
-
             try
             {
-                //ConnectionManager.ConnectionStringEntity)
                 if (flatId > 0)
-                    using (var context = new rentalEntities())
-                    {
-                        result = context.flat_info.Where(f => f.ID == flatId).FirstOrDefault();
-                    }
+                    result = WcfOperationContext.Current.Context.flat_info.Where(f => f.ID == flatId).FirstOrDefault();
             }
             catch (Exception ex)
             {
-                error = ex.Message;
+                errorLog.Error(ex);
             }
-
             return result;
         }
 

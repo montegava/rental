@@ -96,3 +96,63 @@
 30.07.2013 22:34:45	Begin download
 30.07.2013 22:34:49	Begin download
 30.07.2013 22:34:54	Begin download
+01.08.2013 21:29:24	Begin download
+01.08.2013 21:29:25	Exclude list count: 3903
+01.08.2013 21:29:25	CAMELOT flat
+01.08.2013 21:29:27		 Current poster date: 02.08.2013
+01.08.2013 21:29:28		Page count: 8
+01.08.2013 21:29:36	Begin download
+01.08.2013 21:29:36	Exclude list count: 3903
+01.08.2013 21:29:36	CAMELOT house
+01.08.2013 21:29:37		 Current poster date: 01.01.0001
+01.08.2013 21:29:37		ERROR on Camelot: Can't find max page count
+01.08.2013 21:29:44	Begin download
+01.08.2013 21:29:45	Exclude list count: 3903
+01.08.2013 21:29:45	IRR
+01.08.2013 21:29:51		Camelot tPage count: 5
+01.08.2013 21:30:05	Begin download
+01.08.2013 21:30:05	Exclude list count: 3903
+01.08.2013 21:30:05	AVITO flat
+01.08.2013 21:30:06		ERROR on load page http://www.avito.ru/catalog/kvartiry-24/voronezh-625810/params.201_1060.504_5256  ERROR on get page http://www.avito.ru/catalog/kvartiry-24/voronezh-625810/params.201_1060.504_5256. Exception: Удаленный сервер возвратил ошибку: (404) Не найден.
+01.08.2013 21:30:12	Begin download
+01.08.2013 21:30:13	Exclude list count: 3903
+01.08.2013 21:30:13	AVITO house
+01.08.2013 21:30:13		ERROR on load page http://www.avito.ru/catalog/doma_dachi_kottedzhi-25/voronezh-625810/params.202_1065  ERROR on get page http://www.avito.ru/catalog/doma_dachi_kottedzhi-25/voronezh-625810/params.202_1065. Exception: Удаленный сервер возвратил ошибку: (404) Не найден.
+01.08.2013 21:30:17	Begin download
+01.08.2013 21:30:17	Exclude list count: 3903
+01.08.2013 21:30:17	Slando
+01.08.2013 21:30:17	-----------------------Page number: 1
+01.08.2013 21:30:17		Loading....: http://voronezh.vor.slando.ru/nedvizhimost/arenda-kvartir/dolgosrochnaya-arenda-kvartir/
+01.08.2013 21:30:18		Page size: 85881
+01.08.2013 21:30:18		Collect links
+01.08.2013 21:30:18		Link count: 0
+01.08.2013 21:30:18	-----------------------Page number: 2
+01.08.2013 21:30:18		Loading....: http://voronezh.vor.slando.ru/nedvizhimost/arenda-kvartir/dolgosrochnaya-arenda-kvartir/?page=2
+01.08.2013 21:30:19		Page size: 97222
+01.08.2013 21:30:19		Collect links
+01.08.2013 21:30:19		Link count: 0
+01.08.2013 21:30:19	-----------------------Page number: 3
+01.08.2013 21:30:19		Loading....: http://voronezh.vor.slando.ru/nedvizhimost/arenda-kvartir/dolgosrochnaya-arenda-kvartir/?page=3
+01.08.2013 21:30:19		Page size: 97230
+01.08.2013 21:30:19		Collect links
+01.08.2013 21:30:19		Link count: 0
+01.08.2013 21:30:26	Begin download
+01.08.2013 21:30:26	Exclude list count: 3903
+01.08.2013 21:30:26	Slando
+01.08.2013 21:30:26	-----------------------Page number: 1
+01.08.2013 21:30:26		Loading....: http://voronezh.vor.slando.ru/nedvizhimost/arenda-domov/
+01.08.2013 21:30:27		Page size: 85043
+01.08.2013 21:30:27		Collect links
+01.08.2013 21:30:27		Link count: 0
+01.08.2013 21:30:31	Begin download
+01.08.2013 21:30:32	Exclude list count: 3903
+01.08.2013 21:30:32	MoyaReklama 1 
+01.08.2013 21:30:32		Page count: 37
+01.08.2013 21:30:50	Begin download
+01.08.2013 21:30:50	Exclude list count: 3903
+01.08.2013 21:30:50	MoyaReklama 1 
+01.08.2013 21:30:51		Page count: 19
+01.08.2013 21:31:00	Begin download
+01.08.2013 21:31:00	Exclude list count: 3903
+01.08.2013 21:31:00	MoyaReklama 1 
+01.08.2013 21:31:01		Page count: 2

@@ -38,9 +38,7 @@ namespace RentalCMS
         {
             if (SelectedId > 0)
             {
-                string error;
-                var flat = DAL.FlatManager.GetFlatById(SelectedId, out error);
-
+                var flat = DAL.FlatManager.GetFlatById(SelectedId);
                 if (flat != null)
                 {
                     tblAddress.Text = flat.ADDRESS;

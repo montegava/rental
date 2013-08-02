@@ -15,7 +15,7 @@ namespace DAL
             DataTable dt = null;
             using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
             {
-                string query = "SELECT * FROM BLACK_LIST ORDER BY id";
+                string query = "SELECT * FROM  black_list ORDER BY id";
                 sqlConn.Open();
                 using (MySqlCommand command = new MySqlCommand(query, sqlConn))
                 {
@@ -56,7 +56,7 @@ namespace DAL
             DataTable dt = null;
             using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
             {
-                string query = String.Format(@"SELECT * FROM BLACK_LIST WHERE id ={0}", blackId); ;
+                string query = String.Format(@"SELECT * FROM black_list WHERE id ={0}", blackId); ;
                 sqlConn.Open();
                 using (MySqlCommand command = new MySqlCommand(query, sqlConn))
                 {
@@ -81,7 +81,7 @@ namespace DAL
             {
                 using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
                 {
-                    string query = @"delete from BLACK_LIST where Id=@blackId";
+                    string query = @"delete from where black_list Id=@blackId";
                     sqlConn.Open();
                     using (MySqlCommand command = new MySqlCommand(query, sqlConn))
                     {

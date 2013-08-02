@@ -10,7 +10,7 @@
     <article class="details">
 
         <div class="row">
-            <label runat="server" text="Адресс" >Адресс</label>
+            <label runat="server" text="Адресс" >Адрес</label>
             
             <asp:TextBox ID="tblAddress" TextMode="multiline" Rows="3" runat="server"></asp:TextBox>
         </div>

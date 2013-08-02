@@ -22,7 +22,7 @@ namespace Rental
         /// <param name="path">Path to which the image would be saved.</param> 
         // <param name="quality">An integer from 0 to 100, with 100 being the 
         /// highest quality</param> 
-        public static void SaveJpeg(string path, Image img, int quality)
+        public static string SaveJpeg(Image img, int quality)
         {
             var maxW = 500;
             var maxH = 500;
@@ -57,15 +57,16 @@ namespace Rental
                 gr.DrawImage(img, new Rectangle(0, 0, newWidth, newHeight));
             }
 
+            var RepositoryDirectory = @"Media";
+            string fileName = Guid.NewGuid() + ".jpg";
+            string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}_{1}\\{2}", DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString(), fileName));
+            string dir = Path.GetDirectoryName(filePath);
+            if (!Directory.Exists(dir))
+                Directory.CreateDirectory(dir);
             var ddd = Guid.NewGuid().ToString() + ".jpg";
-            newImage.Save(ddd, jpegCodec, encoderParams);
+            newImage.Save(filePath, jpegCodec, encoderParams);
+            return filePath;
 
-
-            var proxy = new RentalApi.RentalApiClient();
-            
-
-            proxy.Upload("image.jpg", new FileStream(ddd, FileMode.Open) );
-            proxy.Close();
         }
 
         /// <summary> 
@@ -81,7 +82,7 @@ namespace Rental
                 if (codecs[i].MimeType == mimeType)
                     return codecs[i];
             return null;
-        } 
+        }
 
 
         public static double DoubleCut(double val)
@@ -179,7 +180,7 @@ namespace Rental
             }
         }
 
-   
+
         public static void SetGridStyle(DataGridView grid)
         {
             if (grid != null)

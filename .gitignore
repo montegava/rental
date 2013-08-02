@@ -35,3 +35,4 @@ obj
 /DAL/bin/Release/EntityFramework.xml
 /DAL/bin/Release/LinqKit.dll
 /DAL/bin/Release/MySql.Data.dll
+/Rental/bin/Debug/Media

@@ -134,7 +134,7 @@ namespace Rental
             Common.SetColumlOption(grdFlats, "ID", "№", 45, ref displayIndex);
             Common.SetColumlOption(grdFlats, "DATA", "ДАТА ДОБВЛЕНИЯ", 102, ref displayIndex);
             Common.SetColumlOption(grdFlats, "ROOM_COUNT", "КОЛИЧЕСТВО КОМНАТ", 107, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "ADDRESS", "АДРЕСС", 200, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "ADDRESS", "АДРЕС", 200, ref displayIndex);
             Common.SetColumlOption(grdFlats, "PHONE", "ТЕЛЕФОН", 80, ref displayIndex);
             Common.SetColumlOption(grdFlats, "FURNITURE", "МЕБЕЛЬ", 80, ref displayIndex);
             Common.SetColumlOption(grdFlats, "PRICE", "ЦЕНА", 80, ref displayIndex);

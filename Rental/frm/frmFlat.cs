@@ -48,8 +48,7 @@ namespace Rental
 
         private void LoadFlatInfo()
         {
-            string  error;
-            var flat = FlatManager.GetFlatById(FlatId, out error);
+            var flat = FlatManager.GetFlatById(FlatId);
             if (flat != null)
             {
                 this.intupADDRESS.Text = flat.ADDRESS;
@@ -109,7 +108,7 @@ namespace Rental
             DAL.flat_info flat = Form2Flat();
             if (EdtMode == EditMode.emAddNew)
             {
-                FlatManager.AddNewFlat(flat, out error);
+                FlatManager.AddNewFlat(flat);
                 this.FlatId = flat.ID;
             }
             else if (EdtMode == EditMode.emEdit)
@@ -124,11 +123,19 @@ namespace Rental
             #region Saving Images
             //if (EdtMode == EditMode.emEdit)
             //    FlatImageManager.DeleteAllByFlatId(FlatId);
+           
+
+
+            
             foreach (ListViewItem item in lvImagList.Items)
             {
                 var flatImage = ((DAL.images)item.Tag);
-                FlatImageManager.AddFlatImage(flat.ID, flatImage.IMAGE_PATH);
+                var imgPath = flatImage.IMAGE_PATH;
+            
+                FlatImageManager.AddFlatImage(flat.ID, imgPath);
             }
+
+          
             #endregion
 
         }
@@ -173,6 +180,7 @@ namespace Rental
 
             result.REGION = inputREGION.Text;
 
+            
             return result;
         }
 
@@ -252,43 +260,26 @@ namespace Rental
             OpenFileDialog dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                Common.SaveJpeg(@"c:\ddd.jpg", Image.FromFile(dialog.FileName), 50);
-                return;
+                var compressedImage = Common.SaveJpeg(Image.FromFile(dialog.FileName), 50);
 
-                string destFolder = ConfigurationManager.AppSettings["ServerDir"];
-                if (!Directory.Exists(destFolder))
-                {
-                    MessageBox.Show("Невозможно сохранить изображение на удаленном сервере!", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    return;
-                }
+                var proxy = new RentalCore.RentalCoreClient();
+                var imgPath = proxy.Upload(new FileStream(compressedImage, FileMode.Open));
+                proxy.Close();
+
+                var fi = new DAL.images() { ID = -1, FLAT_ID = FlatId, IMAGE_PATH = imgPath };
 
 
-                string destImagePath = destFolder + "\\" + Path.GetFileName(dialog.FileName);
-                int copynum = 1;
-                while (File.Exists(destImagePath))
-                {
-                    destImagePath = destFolder + "\\" + Path.GetFileNameWithoutExtension(dialog.FileName) + "(" + copynum + ")." + Path.GetExtension(dialog.FileName);
-                    copynum++;
-                }
-
-                File.Copy(dialog.FileName, destImagePath);
-
-               
-
-
-
-                var fi = new DAL.images() { ID = -1, FLAT_ID = FlatId, IMAGE_PATH = destImagePath };
                 var item = new ListViewItem();
                 item.Tag = fi;
-                item.Text = Path.GetFileNameWithoutExtension(destImagePath);
+                item.Text = Path.GetFileNameWithoutExtension(compressedImage);
 
                 var selItem = lvImagList.Items.Add(item);
-                selItem.Selected = true;
+               // selItem.Selected = true;
 
-                pbImage.Image = Image.FromFile(destImagePath);
+                pbImage.Image. = Image.FromFile(compressedImage);
 
-                if (EdtMode == EditMode.emEdit)
-                    FlatImageManager.AddFlatImage(FlatId, destImagePath);
+                //if (EdtMode == EditMode.emEdit)
+                //    FlatImageManager.AddFlatImage(FlatId, destImagePath);
 
             }
         }
@@ -297,19 +288,67 @@ namespace Rental
         {
             if (lvImagList.SelectedItems.Count > 0)
             {
-                string fileName = GetFilePath(((DAL.images)lvImagList.SelectedItems[0].Tag).IMAGE_PATH);
+                string fileName = ((DAL.images)lvImagList.SelectedItems[0].Tag).IMAGE_PATH;
                 if (File.Exists(fileName))
+                {
+
                     pbImage.Image = Image.FromFile(fileName);
+                }
                 else
-                    pbImage.Image = null;
+                {
+                    DownloadFile(fileName);
+                    if (File.Exists(fileName))
+                        pbImage.Image = Image.FromFile(fileName);
+                    else
+                        pbImage.Image = null;
+                }
             }
+        }
+
+        private void DownloadFile(string filePath)
+        {
+            var proxy = new RentalCore.RentalCoreClient();
+
+
+            var data = proxy.DownloadFile(filePath);
+
+            FileStream fs = null;
+            try
+            {
+                fs = File.Create(filePath);
+                byte[] buffer = new byte[1024];
+                int read = 0;
+                while ((read = data.Read(buffer, 0, buffer.Length)) != 0)
+                {
+                    fs.Write(buffer, 0, read);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                if (fs != null)
+                {
+                    fs.Close();
+                    fs.Dispose();
+                }
+
+                if (data != null)
+                {
+                    data.Close();
+                    data.Dispose();
+                }
+            }
+
+            proxy.Close();
         }
 
         private void pbImage_DoubleClick(object sender, EventArgs e)
         {
             if (lvImagList.SelectedItems.Count > 0)
             {
-                string fileName = ConfigurationManager.AppSettings["ServerDir"] +"\\"+((DAL.images)lvImagList.SelectedItems[0].Tag).IMAGE_PATH;
+                string fileName = ConfigurationManager.AppSettings["ServerDir"] + "\\" + ((DAL.images)lvImagList.SelectedItems[0].Tag).IMAGE_PATH;
                 if (File.Exists(fileName))
                     System.Diagnostics.Process.Start(fileName);
             }
