@@ -276,7 +276,7 @@ namespace Rental
                 var selItem = lvImagList.Items.Add(item);
                // selItem.Selected = true;
 
-                pbImage.Image. = Image.FromFile(compressedImage);
+                //pbImage.Image = Image.FromFile(compressedImage);
 
                 //if (EdtMode == EditMode.emEdit)
                 //    FlatImageManager.AddFlatImage(FlatId, destImagePath);

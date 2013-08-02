@@ -36,3 +36,6 @@ obj
 /DAL/bin/Release/LinqKit.dll
 /DAL/bin/Release/MySql.Data.dll
 /Rental/bin/Debug/Media
+
+/DgvFilterPopup/bin/Debug/DgvFilterPopup.XML
+/DgvFilterPopup/bin/Debug/DgvFilterPopup.dll
