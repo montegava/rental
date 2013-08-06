@@ -102,32 +102,8 @@ namespace DAL
 
         public static List<flat_info> GetAllFlats()
         {
-            using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
-            {
-                String query = "select  * from flat_info";
-                sqlConn.Open();
-                using (MySqlCommand command = new MySqlCommand(query, sqlConn))
-                {
-                    DataSet ds = new DataSet();
-                    MySqlDataAdapter ret = new MySqlDataAdapter();
-                    ret.SelectCommand = command;
-                    ret.Fill(ds);
-
-                    if (ds != null && ds.Tables[0].Rows.Count > 0)
-                        return (from rows in ds.Tables[0].AsEnumerable()
-                                select new flat_info()
-                                {
-                                    ID = (int)rows["Id"],
-                                    ADDRESS = (string)rows["address"],
-                                    ROOM_COUNT = (string)rows["room_count"],
-                                    DATA = (DateTime)rows["data"]
-
-                                }).ToList();
-                }
-                sqlConn.Close();
-            }
-
-            return new List<flat_info>();
+            var context = WcfOperationContext.Current.Context;
+            return context.flat_info.Select(f => f).ToList();
         }
 
         /// <summary>

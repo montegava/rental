@@ -274,8 +274,7 @@ namespace Rental
                 item.Text = Path.GetFileNameWithoutExtension(compressedImage);
 
                 var selItem = lvImagList.Items.Add(item);
-               // selItem.Selected = true;
-
+               
                 //pbImage.Image = Image.FromFile(compressedImage);
 
                 //if (EdtMode == EditMode.emEdit)
