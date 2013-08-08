@@ -58,6 +58,42 @@ namespace RentalCMS {
         protected global::System.Web.UI.WebControls.RadioButton _cbRoomCount;
         
         /// <summary>
+        /// rbFloor control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbFloor;
+        
+        /// <summary>
+        /// rbPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbPrice;
+        
+        /// <summary>
+        /// rbFurniture control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbFurniture;
+        
+        /// <summary>
+        /// rbDistinct control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton rbDistinct;
+        
+        /// <summary>
         /// _tbStartDateText control.
         /// </summary>
         /// <remarks>

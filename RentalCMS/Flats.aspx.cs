@@ -17,7 +17,11 @@ namespace RentalCMS
             ID = 1,
             DATA = 2,
             ROOM_COUNT = 4,
-            ADDRESS = 8
+            ADDRESS = 8,
+            FLOOR = 32,
+            PRICE = 64,
+            FURNITURE = 128,
+            REGION = 256,
         }
 
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(Flats));
@@ -51,6 +55,15 @@ namespace RentalCMS
             {
                 selectedFilter += _cbAddress.Checked ? (int)Fiels.ADDRESS : 0;
                 selectedFilter += _cbRoomCount.Checked ? (int)Fiels.ROOM_COUNT : 0;
+
+                selectedFilter += rbFloor.Checked ? (int)Fiels.FLOOR : 0;
+
+                selectedFilter += rbPrice.Checked ? (int)Fiels.PRICE : 0;
+
+                selectedFilter += rbFurniture.Checked ? (int)Fiels.FURNITURE : 0;
+
+                selectedFilter += rbDistinct.Checked ? (int)Fiels.REGION : 0;
+
             }
             DateTime selectedStartDate = UIConvert.ToDateTime(_tbStartDateText.Text);
             DateTime selectedEndDate = UIConvert.ToDateTime(_tbEndDateText.Text);

@@ -70,11 +70,11 @@
                     </li>
 
                     <li style="background-image: none">
-                        <a href="/Flats.aspx" title="Контакты">База квартир</a>
+                        <a href="/Flats.aspx" >База квартир</a>
                     </li>
 
                     <li style="background-image: none">
-                        <a href="http://amiravrn.ru/kontakti/" title="Контакты">Контакты</a>
+                        <a href="/Contacts.aspx" title="Контакты">Контакты</a>
                     </li>
 
 
@@ -105,7 +105,7 @@
                             <a href="http://amiravrn.ru/" title="Сдать помещение, офис">Сдать помещение, офис</a>
                         </li>
                         <li>
-                            <a href="http://amiravrn.ru/" title="Договора компании">Контакты</a>
+                            <a href="/Contacts.aspx" >Контакты</a>
                         </li>
                         <li>
                             <a href="/Flats.aspx" title="База квартир">База квартир</a>

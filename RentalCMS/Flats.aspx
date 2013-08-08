@@ -44,6 +44,39 @@
                         Комнат 
                     </label>
 
+
+                    
+                     <asp:RadioButton ID="rbFloor" runat="server" Checked="false"  GroupName="filter" />
+
+                    
+                    <label  title="">
+                        Этаж 
+                    </label>
+
+                    
+                     <asp:RadioButton ID="rbPrice" runat="server" Checked="false"  GroupName="filter" />
+
+                    
+                    <label  title="">
+                        Цена 
+                    </label>
+
+                    
+                     <asp:RadioButton ID="rbFurniture" runat="server" Checked="false"  GroupName="filter" />
+
+                    
+                    <label   title="">
+                        Мебель 
+                    </label>
+
+                    
+                     <asp:RadioButton ID="rbDistinct" runat="server" Checked="false"  GroupName="filter" />
+
+                    
+                    <label   title="">
+                        Район 
+                    </label>
+
                 </div>
             </div>
             <div class="nrmRow">
@@ -99,7 +132,7 @@
 
 
 
-
+    <div style="overflow: auto;overflow-y: hidden;">
 
     <asp:ListView ID="_lwInfoListEdit" runat="server" OnSorting="_lwInfoList_Sorting" OnItemCommand="_lwInfoList_ItemCommand">
         <LayoutTemplate>
@@ -134,12 +167,39 @@
                             </asp:LinkButton>
                         </th>
 
-                        <th>
-                            <asp:LinkButton ID="lbPhone" runat="server" CommandName="Sort" CommandArgument="16">
-                                Телефон
-                                <span id="sort16" runat="server" class="sort">&nbsp;</span>
+                                    <th>
+                            <asp:LinkButton ID="lbDistinct" runat="server" CommandName="Sort" CommandArgument="256">
+                                Район
+                                <span id="sort256" runat="server" class="sort">&nbsp;</span>
                             </asp:LinkButton>
                         </th>
+
+                        <th>
+                            <asp:LinkButton ID="lbFloor" runat="server" CommandName="Sort" CommandArgument="32">
+                                Этаж
+                                <span id="sort32" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+                          <th>
+                            <asp:LinkButton ID="lbPrice" runat="server" CommandName="Sort" CommandArgument="64">
+                                Цена
+                                <span id="sort64" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+
+                          <th>
+                            <asp:LinkButton ID="lbFurniture" runat="server" CommandName="Sort" CommandArgument="128">
+                                Мебель
+                                <span id="sort128" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+
+                    
+
+
 
                         <th class="icon">&nbsp;</th>
                     </tr>
@@ -170,8 +230,26 @@
                 <td>
                     <asp:Label runat="server" ID="lbAddress"> <%# Eval("ADDRESS") %> </asp:Label>
                 </td>
+                
+                 <td>
+                    <asp:Label runat="server" ID="lbDistinct"> <%# Eval("REGION") %> </asp:Label>
+                </td>
 
-                <td>+7 (903) 652-90-28</td>
+
+                  <td>
+                    <asp:Label runat="server" ID="lbFloor"> <%# Eval("FLOOR") %> </asp:Label>
+                </td>
+
+                  <td>
+                    <asp:Label runat="server" ID="lbPrice"> <%# Eval("PRICE") %> </asp:Label>
+                </td>
+
+                  <td>
+                    <asp:Label runat="server" ID="lbFurniture"> <%# Eval("FURNITURE") %> </asp:Label>
+                </td>
+
+              
+
                 <td class="icon">
                     <asp:LinkButton ID="lbEdit" runat="server" CommandName="Action" CommandArgument="Edit" title='Посмотреть'>
                          <image src="/images/icon_view.png" width="21" height="20" title='Просмотреть' alt=""/>
@@ -182,6 +260,7 @@
         </ItemTemplate>
     </asp:ListView>
 
+        </div>
 
     <section class="footer-tbl" id="_navPag" runat="server">
         <div class="itemsPg">
@@ -210,14 +289,14 @@
     </section>
 
 
-    <script type="text/javascript">
-        $.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '30px', 1: '65px', 2: '65px', 3: '100px', 4: '80px', 5: '21px' });
+   <%-- <script type="text/javascript">
+        $.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '30px', 1: '65px', 2: '65px', 3: '100px', 4: '80px', 5: '21px', 6: '21px', 7: '21px', 8: '21px', 9: '21px' });
 
 
         $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
 
 
-    </script>
+    </script>--%>
 
 
 </asp:Content>

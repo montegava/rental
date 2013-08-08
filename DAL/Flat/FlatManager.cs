@@ -18,12 +18,16 @@ namespace DAL
         ID = 1,
         DATA = 2,
         ROOM_COUNT = 4,
-        ADDRESS = 8
+        ADDRESS = 8,
+        FLOOR = 32,
+        PRICE = 64,
+        FURNITURE = 128,
+        REGION = 256,
     }
 
     public static class FlatManager
     {
-        public static ILog errorLog = LogManager.GetLogger("ErrorLogger");
+        public static readonly ILog errorLog = LogManager.GetLogger("TestApplication"); 
 
         public static void FlatList(string filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
         {
@@ -47,6 +51,26 @@ namespace DAL
                     {
                         filter = filter.Or(t => t.ROOM_COUNT.ToLower().Contains(filterValue.ToLower()));
                     }
+
+
+                    if ((filterBy & (int)Fiels.FLOOR) > 0)
+                    {
+                        filter = filter.Or(t => t.FLOOR.ToLower().Contains(filterValue.ToLower()));
+                    }
+                    if ((filterBy & (int)Fiels.FURNITURE) > 0)
+                    {
+                        filter = filter.Or(t => t.FURNITURE.ToLower().Contains(filterValue.ToLower()));
+                    }
+                    if ((filterBy & (int)Fiels.PRICE) > 0)
+                    {
+                        filter = filter.Or(t => t.PRICE.ToLower().Contains(filterValue.ToLower()));
+                    }
+                    if ((filterBy & (int)Fiels.REGION) > 0)
+                    {
+                        filter = filter.Or(t => t.REGION.ToLower().Contains(filterValue.ToLower()));
+                    }
+
+
                     query = query.Where(filter.Expand());
                 }
 
@@ -172,8 +196,12 @@ namespace DAL
 
         public static bool AddNewFlat(flat_info flat)
         {
+
+            errorLog.Error("AddNewFlat");
+
             try
             {
+            
                 var context = WcfOperationContext.Current.Context;
                 context.flat_info.Add(flat);
                 context.SaveChanges();
@@ -188,6 +216,8 @@ namespace DAL
 
         public static flat_info GetFlatById(int flatId)
         {
+            errorLog.Error("GetFlatById");
+
             flat_info result = null;
             try
             {
@@ -280,6 +310,8 @@ namespace DAL
 
         public static DataTable GetAllFlatsAsDataTable()
         {
+            errorLog.Error("GetAllFlatsAsDataTable");
+
             DataTable dt = null;
             using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
             {
@@ -307,6 +339,8 @@ namespace DAL
 
         public static DataTable GetDataTableFromDataReader(IDataReader dataReader)
         {
+            errorLog.Error("GetDataTableFromDataReader");
+
             DataTable schemaTable = dataReader.GetSchemaTable();
             DataTable resultTable = new DataTable();
 

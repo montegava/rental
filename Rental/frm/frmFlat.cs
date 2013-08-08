@@ -10,11 +10,15 @@ using DAL;
 using System.IO;
 using System.Linq.Expressions;
 using System.Configuration;
+using log4net;
 
 namespace Rental
 {
     public partial class frmFlat : Form
     {
+        public static ILog errorLog = LogManager.GetLogger("ErrorLogger");
+
+
         private EditMode EdtMode;
         public int FlatId = -1;
         private DataRow dataRow = null;
@@ -104,6 +108,8 @@ namespace Rental
 
         private void Save()
         {
+            errorLog.Error("ADD NEW ONE");
+
             string error = null;
             DAL.flat_info flat = Form2Flat();
             if (EdtMode == EditMode.emAddNew)
