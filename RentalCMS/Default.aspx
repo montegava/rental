@@ -8,7 +8,7 @@
     <h1 style="text-align: center;" class="h1"><span style="font-size: medium;"><strong>Агентство Аренды «АМИРА»</strong> </span></h1>
 
     <p style="text-align: justify;">
-        <span style="font-size: medium;"><a href="http://amiravrn.ru/ob-agentstve-adeliya/" title="О компании">Компания<span style="margin-right: 0.3em"> </span><span style="margin-left: -0.3em">«</span>АМИРА»</a> успешно работает на&nbsp;воронежском рынке аренды жилой и&nbsp;коммерческой недвижимости уже&nbsp;более 4 лет. Здесь работают профессионалы&nbsp;— грамотные, ответственные люди. Мы&nbsp;располагаем&nbsp;<em>самой большой базой по&nbsp;аренде в&nbsp;режиме online</em>.<br>
+        <span style="font-size: medium;">Компания «АМИРА» успешно работает на&nbsp;воронежском рынке аренды жилой и&nbsp;коммерческой недвижимости уже&nbsp;более 4 лет. Здесь работают профессионалы&nbsp;— грамотные, ответственные люди. Мы&nbsp;располагаем&nbsp;<em>самой большой базой по&nbsp;аренде в&nbsp;режиме online</em>.<br>
             <br>
         </span>
     </p>
@@ -90,7 +90,7 @@
         <span style="font-size: medium;">Определение бюджета.<strong><br>
         </strong></span>
     </p>
-    <p style="text-align: justify;"><span style="font-size: medium;"><strong></strong></span><span style="font-size: medium;">Определите бюджет. Посетите раздел сайта <a href="http://amiravrn.ru/RealPricing.aspx" title="О ценах"><em>Реальные цены по&nbsp;аренде жилья</em></a>.</span><span style="font-size: medium;">&nbsp;</span></p>
+    <p style="text-align: justify;"><span style="font-size: medium;"><strong></strong></span><span style="font-size: medium;">Определите бюджет. Посетите раздел сайта <a href="/RealPricing.aspx" title="О ценах"><em>Реальные цены по&nbsp;аренде жилья</em></a>.</span><span style="font-size: medium;">&nbsp;</span></p>
     <p style="text-align: justify;">
         <br>
         <span style="font-size: medium;">Ваш выбор.</span><strong><br>

@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using log4net;
 using System.Web.UI.HtmlControls;
+using RentalCMS.RentalCore;
+
 
 namespace RentalCMS
 {
@@ -76,23 +78,38 @@ namespace RentalCMS
 
             errorLog.Debug("IN the function");
 
-            List<DAL.flat_info> flats;// = DAL.FlatManager.GetAllFlats();
+            DAL.flat_info[] flats;// = DAL.FlatManager.GetAllFlats();
 
           
             errorLog.Debug("Try to get");
 
-            DAL.FlatManager.FlatList(
-                selectedSearchText,
+
+            var core = new RentalCoreClient();
+            core.FlatList(                selectedSearchText,
                 selectedFilter,
                 selectedStartDate,
                 selectedEndDate,
                 Convert.ToInt32(SortExpression),
                 SortAscending,
                 ref selectedActivePage,
-                selectedPageSize,
                 out flats,
                 out pageCount,
-                out totalRowsNumber);
+                out totalRowsNumber, selectedPageSize);
+
+
+
+            //DAL.FlatManager.FlatList(
+            //    selectedSearchText,
+            //    selectedFilter,
+            //    selectedStartDate,
+            //    selectedEndDate,
+            //    Convert.ToInt32(SortExpression),
+            //    SortAscending,
+            //    ref selectedActivePage,
+            //    selectedPageSize,
+            //    out flats,
+            //    out pageCount,
+            //    out totalRowsNumber);
 
           //  flats = DAL.FlatManager.GetAllFlats();
            

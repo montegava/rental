@@ -4,6 +4,8 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.IO;
+using DAL;
 
 namespace RentalCore
 {
@@ -16,7 +18,12 @@ namespace RentalCore
         string Upload(System.IO.Stream data);
 
         [OperationContract(IsOneWay = false)]
-        System.IO.Stream DownloadFile(string remotePath);
+        Stream DownloadFile(string remotePath);
+
+        [OperationContract]
+        void FlatList(string filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber);
+        
+
     }
 
 

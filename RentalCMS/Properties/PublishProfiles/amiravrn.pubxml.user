@@ -11,16 +11,16 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAL.dll">
-      <publishTime>08/07/2013 19:52:18</publishTime>
+      <publishTime>08/08/2013 21:11:11</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 04:00:52</publishTime>
     </File>
     <File Include="bin/LinqKit.dll">
       <publishTime>09/09/2012 22:12:14</publishTime>
     </File>
     <File Include="bin/log4net.dll">
-      <publishTime>06/11/2012 12:09:02</publishTime>
+      <publishTime>11/06/2012 12:09:02</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -32,13 +32,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/RentalCMS.dll">
-      <publishTime>08/07/2013 19:52:19</publishTime>
+      <publishTime>08/08/2013 22:04:31</publishTime>
     </File>
     <File Include="bin/SmartControls.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 01:35:19</publishTime>
     </File>
     <File Include="bin/System.Data.DataSetExtensions.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>03/18/2010 17:31:26</publishTime>
     </File>
     <File Include="bin/System.Data.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -47,190 +47,205 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/System.Web.Entity.dll">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>03/18/2010 17:31:26</publishTime>
     </File>
     <File Include="Contacts.aspx">
-      <publishTime>07/08/2013 20:30:14</publishTime>
+      <publishTime>08/08/2013 20:26:01</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>08/01/2013 20:07:26</publishTime>
+      <publishTime>08/08/2013 21:14:26</publishTime>
     </File>
     <File Include="FlatManager.aspx">
-      <publishTime>08/01/2013 20:08:59</publishTime>
+      <publishTime>01/08/2013 20:08:59</publishTime>
     </File>
     <File Include="Flats.aspx">
-      <publishTime>08/07/2013 19:50:50</publishTime>
+      <publishTime>08/08/2013 21:55:59</publishTime>
     </File>
     <File Include="images/bg.jpg">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/cat.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/fone.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/icon_pg_left.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 01:25:25</publishTime>
     </File>
     <File Include="images/icon_pg_left_1.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 01:25:25</publishTime>
     </File>
     <File Include="images/icon_pg_right.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 01:25:25</publishTime>
     </File>
     <File Include="images/icon_pg_right_2.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 01:25:25</publishTime>
     </File>
     <File Include="images/icon_view.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 19:43:32</publishTime>
     </File>
     <File Include="images/icon_view_sel.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 19:43:32</publishTime>
     </File>
     <File Include="images/logo.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:35:27</publishTime>
     </File>
     <File Include="images/no_image.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 23:50:11</publishTime>
     </File>
     <File Include="images/shadow-b.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/shadow-l.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/shadow-lb.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/shadow-lt.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/shadow-rb.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/shadow-rt.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/shadow-t.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:31:44</publishTime>
     </File>
     <File Include="images/state1.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 06:14:27</publishTime>
     </File>
     <File Include="images/state2.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 06:14:38</publishTime>
     </File>
     <File Include="images/state3.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 06:14:48</publishTime>
     </File>
     <File Include="packages.config">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/29/2013 23:19:40</publishTime>
     </File>
     <File Include="Properties/DataSources/DAL.flat_info.datasource">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/31/2013 00:59:49</publishTime>
+    </File>
+    <File Include="RealPricing.aspx">
+      <publishTime>08/08/2013 21:07:49</publishTime>
     </File>
     <File Include="Rental.Master">
-      <publishTime>07/08/2013 20:08:34</publishTime>
+      <publishTime>08/07/2013 20:08:34</publishTime>
+    </File>
+    <File Include="Service References/RentalCore/configuration.svcinfo">
+      <publishTime>08/08/2013 21:47:25</publishTime>
+    </File>
+    <File Include="Service References/RentalCore/configuration91.svcinfo">
+      <publishTime>08/08/2013 21:47:25</publishTime>
+    </File>
+    <File Include="Service References/RentalCore/Reference.svcmap">
+      <publishTime>08/08/2013 21:47:26</publishTime>
+    </File>
+    <File Include="Service References/RentalCore/service.wsdl">
+      <publishTime>08/08/2013 21:47:25</publishTime>
     </File>
     <File Include="src/captcha.php">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/general.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 20:22:34</publishTime>
     </File>
     <File Include="src/hit">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/hostcms.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/images/ui-bg_diagonals-thick_18_b81900_40x40.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-bg_diagonals-thick_20_666666_40x40.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-bg_flat_10_000000_40x100.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-bg_glass_100_f6f6f6_1x400.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-bg_glass_100_fdf5ce_1x400.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-bg_glass_65_ffffff_1x400.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-bg_gloss-wave_35_f6a828_500x100.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-bg_highlight-soft_100_eeeeee_1x100.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-bg_highlight-soft_75_ffe45c_1x100.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-icons_222222_256x240.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-icons_228ef1_256x240.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-icons_ef8c08_256x240.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-icons_ffd27a_256x240.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/images/ui-icons_ffffff_256x240.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
     <File Include="src/jquery-ui.datepicker.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 07:05:30</publishTime>
     </File>
     <File Include="src/jquery-ui.datepicker.min.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 06:58:35</publishTime>
     </File>
     <File Include="src/jquery.bbedit.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/jquery.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/jquery.lightbox.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/jquery.lightbox.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/jquery.ui.core.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/jquery.ui.stars.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/jquery.ui.widget.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/jquery.validate.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/main.js">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/refresh.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/send.png">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/style.css">
-      <publishTime>01/01/0001 00:00:00</publishTime>
+      <publishTime>07/30/2013 23:47:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/01/2013 23:35:45</publishTime>
+      <publishTime>08/08/2013 22:41:02</publishTime>
     </File>
   </ItemGroup>
 </Project>

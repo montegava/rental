@@ -94,6 +94,12 @@
     <Content Include="images\state3.png" />
     <Content Include="Properties\DataSources\DAL.flat_info.datasource" />
     <Content Include="RealPricing.aspx" />
+    <Content Include="Service References\RentalCore\configuration91.svcinfo" />
+    <Content Include="Service References\RentalCore\configuration.svcinfo" />
+    <Content Include="Service References\RentalCore\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </Content>
     <Content Include="src\captcha.php" />
     <Content Include="src\general.js" />
     <Content Include="src\hostcms.js" />
@@ -173,6 +179,11 @@
     <Compile Include="Rental.Master.designer.cs">
       <DependentUpon>Rental.Master</DependentUpon>
     </Compile>
+    <Compile Include="Service References\RentalCore\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="UIConvert.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +192,19 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\aaaaaaaaaaaaaa.pubxml" />
     <None Include="Properties\PublishProfiles\amiravrn.pubxml" />
+    <None Include="Service References\RentalCore\DAL.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RentalCore\Message.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\RentalCore\service.wsdl" />
+    <None Include="Service References\RentalCore\service.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\RentalCore\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -189,13 +213,13 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\spider\.trunk\smartcontrols\SmartControls\SmartControls.csproj">
-      <Project>{63127e03-a44c-45a7-8db8-f0fc78665d85}</Project>
-      <Name>SmartControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{bc3afc4a-aae6-4d92-88ae-1d180529afbf}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\.proj\_spider\spider\smartcontrols\SmartControls\SmartControls.csproj">
+      <Project>{63127e03-a44c-45a7-8db8-f0fc78665d85}</Project>
+      <Name>SmartControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -203,6 +227,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\RentalCore\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

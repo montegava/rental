@@ -8,6 +8,7 @@ using System.IO;
 using log4net;
 using System.ServiceModel.Activation;
 using System.Web;
+using DAL;
 
 namespace RentalCore
 {
@@ -31,7 +32,7 @@ namespace RentalCore
 
                 var RepositoryDirectory = @"d:\hst\amiravrn-ru_bd4c5401\http\Media";
                 string fileName = Guid.NewGuid() + ".jpg";
-                file = "Media\\"+fileName;
+                file = "Media\\" + fileName;
                 string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}_{1}\\{2}", DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString(), fileName));
                 string dir = Path.GetDirectoryName(filePath);
 
@@ -102,6 +103,12 @@ namespace RentalCore
             if (File.Exists(filePath))
                 result = new FileStream(filePath, FileMode.Open);
             return result;
+        }
+
+        public void FlatList(string filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
+        {
+            pageCount = 0;
+            FlatManager.FlatList(filterValue, filterBy, startDate, endDate, sortBy, orderBy, ref activePage, pageSize, out flats, out totalRowsNumber, out totalRowsNumber);
         }
     }
 }

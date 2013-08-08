@@ -31,49 +31,49 @@
                     <asp:RadioButton ID="_cbAddress" runat="server" Checked="true" GroupName="filter" />
 
 
-                    
+
                     <label for="_cbAddress" title="">
                         Адрес 
                     </label>
 
 
-                     <asp:RadioButton ID="_cbRoomCount" runat="server" Checked="false"  GroupName="filter" />
+                    <asp:RadioButton ID="_cbRoomCount" runat="server" Checked="false" GroupName="filter" />
 
-                    
+
                     <label for="_cbRoomCount" title="">
                         Комнат 
                     </label>
 
 
-                    
-                     <asp:RadioButton ID="rbFloor" runat="server" Checked="false"  GroupName="filter" />
 
-                    
-                    <label  title="">
+                    <asp:RadioButton ID="rbFloor" runat="server" Checked="false" GroupName="filter" />
+
+
+                    <label title="">
                         Этаж 
                     </label>
 
-                    
-                     <asp:RadioButton ID="rbPrice" runat="server" Checked="false"  GroupName="filter" />
 
-                    
-                    <label  title="">
+                    <asp:RadioButton ID="rbPrice" runat="server" Checked="false" GroupName="filter" />
+
+
+                    <label title="">
                         Цена 
                     </label>
 
-                    
-                     <asp:RadioButton ID="rbFurniture" runat="server" Checked="false"  GroupName="filter" />
 
-                    
-                    <label   title="">
+                    <asp:RadioButton ID="rbFurniture" runat="server" Checked="false" GroupName="filter" />
+
+
+                    <label title="">
                         Мебель 
                     </label>
 
-                    
-                     <asp:RadioButton ID="rbDistinct" runat="server" Checked="false"  GroupName="filter" />
 
-                    
-                    <label   title="">
+                    <asp:RadioButton ID="rbDistinct" runat="server" Checked="false" GroupName="filter" />
+
+
+                    <label title="">
                         Район 
                     </label>
 
@@ -132,135 +132,135 @@
 
 
 
-    <div style="overflow: auto;overflow-y: hidden;">
+    <div style="overflow: auto; overflow-y: hidden;">
 
-    <asp:ListView ID="_lwInfoListEdit" runat="server" OnSorting="_lwInfoList_Sorting" OnItemCommand="_lwInfoList_ItemCommand">
-        <LayoutTemplate>
-            <table class="grid">
-                <thead>
-                    <tr>
-                        <th>
-                            <asp:LinkButton ID="lkId" runat="server" CommandName="Sort" CommandArgument="1">
-                                №
+        <asp:ListView ID="_lwInfoListEdit" runat="server" OnSorting="_lwInfoList_Sorting" OnItemCommand="_lwInfoList_ItemCommand">
+            <LayoutTemplate>
+                <table class="grid">
+                    <thead>
+                        <tr>
+                            <th>
+                                <asp:LinkButton ID="lkId" runat="server" CommandName="Sort" CommandArgument="1">
+                                    №
                                 <span id="sort1" runat="server" class="sort">&nbsp;</span>
-                            </asp:LinkButton>
-                        </th>
+                                </asp:LinkButton>
+                            </th>
 
-                        <th>
-                            <asp:LinkButton ID="lkData" runat="server" CommandName="Sort" CommandArgument="2">
-                                Дата
+                            <th>
+                                <asp:LinkButton ID="lkData" runat="server" CommandName="Sort" CommandArgument="2">
+                                    Дата
                                 <span id="sort2" runat="server" class="sort">&nbsp;</span>
-                            </asp:LinkButton>
-                        </th>
+                                </asp:LinkButton>
+                            </th>
 
-                        <th>
-                            <asp:LinkButton ID="lkRoomCount" runat="server" CommandName="Sort" CommandArgument="4">
-                                Комнат
+                            <th>
+                                <asp:LinkButton ID="lkRoomCount" runat="server" CommandName="Sort" CommandArgument="4">
+                                    Комнат
                                 <span id="sort4" runat="server" class="sort">&nbsp;</span>
-                            </asp:LinkButton>
-                        </th>
+                                </asp:LinkButton>
+                            </th>
 
-                        <th>
-                            <asp:LinkButton ID="lkAddress" runat="server" CommandName="Sort" CommandArgument="8">
-                                Адрес
+                            <th>
+                                <asp:LinkButton ID="lkAddress" runat="server" CommandName="Sort" CommandArgument="8">
+                                    Адрес
                                 <span id="sort8" runat="server" class="sort">&nbsp;</span>
-                            </asp:LinkButton>
-                        </th>
+                                </asp:LinkButton>
+                            </th>
 
-                                    <th>
-                            <asp:LinkButton ID="lbDistinct" runat="server" CommandName="Sort" CommandArgument="256">
-                                Район
+                            <th>
+                                <asp:LinkButton ID="lbDistinct" runat="server" CommandName="Sort" CommandArgument="256">
+                                    Район
                                 <span id="sort256" runat="server" class="sort">&nbsp;</span>
-                            </asp:LinkButton>
-                        </th>
+                                </asp:LinkButton>
+                            </th>
 
-                        <th>
-                            <asp:LinkButton ID="lbFloor" runat="server" CommandName="Sort" CommandArgument="32">
-                                Этаж
+                            <th>
+                                <asp:LinkButton ID="lbFloor" runat="server" CommandName="Sort" CommandArgument="32">
+                                    Этаж
                                 <span id="sort32" runat="server" class="sort">&nbsp;</span>
-                            </asp:LinkButton>
-                        </th>
+                                </asp:LinkButton>
+                            </th>
 
-                          <th>
-                            <asp:LinkButton ID="lbPrice" runat="server" CommandName="Sort" CommandArgument="64">
-                                Цена
+                            <th>
+                                <asp:LinkButton ID="lbPrice" runat="server" CommandName="Sort" CommandArgument="64">
+                                    Цена
                                 <span id="sort64" runat="server" class="sort">&nbsp;</span>
-                            </asp:LinkButton>
-                        </th>
+                                </asp:LinkButton>
+                            </th>
 
 
-                          <th>
-                            <asp:LinkButton ID="lbFurniture" runat="server" CommandName="Sort" CommandArgument="128">
-                                Мебель
+                            <th>
+                                <asp:LinkButton ID="lbFurniture" runat="server" CommandName="Sort" CommandArgument="128">
+                                    Мебель
                                 <span id="sort128" runat="server" class="sort">&nbsp;</span>
-                            </asp:LinkButton>
-                        </th>
-
-
-                    
+                                </asp:LinkButton>
+                            </th>
 
 
 
-                        <th class="icon">&nbsp;</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr id="itemPlaceholder" runat="server"></tr>
-                </tbody>
-            </table>
-        </LayoutTemplate>
-        <ItemTemplate>
-            <tr>
-
-                <td runat="server" id="trNumber">
-                    <asp:HiddenField ID="hfID" Value='<%# Eval("ID") %>' runat="server" />
-                    <asp:Label runat="server" ID="lbId">  <%# Eval("ID") %> </asp:Label>
-                </td>
-
-                <td>
-                    <asp:Label runat="server" ID="lbData"> <%# ((DateTime)Eval("DATA")).ToShortDateString() %> </asp:Label>
-                </td>
 
 
-                <td>
-                    <asp:Label runat="server" ID="lblRoomCount"> <%# Eval("ROOM_COUNT") %> </asp:Label>
-                </td>
+
+                            <th class="icon">&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="itemPlaceholder" runat="server"></tr>
+                    </tbody>
+                </table>
+            </LayoutTemplate>
+            <ItemTemplate>
+                <tr>
+
+                    <td runat="server" id="trNumber">
+                        <asp:HiddenField ID="hfID" Value='<%# Eval("ID") %>' runat="server" />
+                        <asp:Label runat="server" ID="lbId">  <%# Eval("ID") %> </asp:Label>
+                    </td>
+
+                    <td>
+                        <asp:Label runat="server" ID="lbData"> <%# ((DateTime)Eval("DATA")).ToShortDateString() %> </asp:Label>
+                    </td>
 
 
-                <td>
-                    <asp:Label runat="server" ID="lbAddress"> <%# Eval("ADDRESS") %> </asp:Label>
-                </td>
-                
-                 <td>
-                    <asp:Label runat="server" ID="lbDistinct"> <%# Eval("REGION") %> </asp:Label>
-                </td>
+                    <td>
+                        <asp:Label runat="server" ID="lblRoomCount"> <%# Eval("ROOM_COUNT") %> </asp:Label>
+                    </td>
 
 
-                  <td>
-                    <asp:Label runat="server" ID="lbFloor"> <%# Eval("FLOOR") %> </asp:Label>
-                </td>
+                    <td>
+                        <asp:Label runat="server" ID="lbAddress"> <%# Eval("ADDRESS") %> </asp:Label>
+                    </td>
 
-                  <td>
-                    <asp:Label runat="server" ID="lbPrice"> <%# Eval("PRICE") %> </asp:Label>
-                </td>
+                    <td>
+                        <asp:Label runat="server" ID="lbDistinct"> <%# Eval("REGION") %> </asp:Label>
+                    </td>
 
-                  <td>
-                    <asp:Label runat="server" ID="lbFurniture"> <%# Eval("FURNITURE") %> </asp:Label>
-                </td>
 
-              
+                    <td>
+                        <asp:Label runat="server" ID="lbFloor"> <%# Eval("FLOOR") %> </asp:Label>
+                    </td>
 
-                <td class="icon">
-                    <asp:LinkButton ID="lbEdit" runat="server" CommandName="Action" CommandArgument="Edit" title='Посмотреть'>
+                    <td>
+                        <asp:Label runat="server" ID="lbPrice"> <%# Eval("PRICE") %> </asp:Label>
+                    </td>
+
+                    <td>
+                        <asp:Label runat="server" ID="lbFurniture"> <%# Eval("FURNITURE") %> </asp:Label>
+                    </td>
+
+
+
+                    <td class="icon">
+                        <asp:LinkButton ID="lbEdit" runat="server" CommandName="Action" CommandArgument="Edit" title='Посмотреть'>
                          <image src="/images/icon_view.png" width="21" height="20" title='Просмотреть' alt=""/>
-                    </asp:LinkButton>
-                </td>
+                        </asp:LinkButton>
+                    </td>
 
-            </tr>
-        </ItemTemplate>
-    </asp:ListView>
+                </tr>
+            </ItemTemplate>
+        </asp:ListView>
 
-        </div>
+    </div>
 
     <section class="footer-tbl" id="_navPag" runat="server">
         <div class="itemsPg">
@@ -289,7 +289,7 @@
     </section>
 
 
-   <%-- <script type="text/javascript">
+    <%-- <script type="text/javascript">
         $.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '30px', 1: '65px', 2: '65px', 3: '100px', 4: '80px', 5: '21px', 6: '21px', 7: '21px', 8: '21px', 9: '21px' });
 
 
@@ -297,6 +297,4 @@
 
 
     </script>--%>
-
-
 </asp:Content>
