@@ -73,7 +73,7 @@
         <span style="font-size: medium;">Есть возможность заблаговременно ознакомиться с&nbsp;договором оказания услуг, с&nbsp;договором найма.&nbsp;</span>
     </p>
     <p>
-        <span style="font-size: medium;">Мы&nbsp;специализиремся по&nbsp;найму и&nbsp;аренде недвижимости.</span>
+        <span style="font-size: medium;">Мы&nbsp;специализируемся по&nbsp;найму и&nbsp;аренде недвижимости.</span>
     </p>
     <p>
         <span style="font-size: medium;">Мы&nbsp;любим свою работу и&nbsp;своих клиентов!</span>
@@ -90,7 +90,7 @@
         <span style="font-size: medium;">Определение бюджета.<strong><br>
         </strong></span>
     </p>
-    <p style="text-align: justify;"><span style="font-size: medium;"><strong></strong></span><span style="font-size: medium;">Определите бюджет. Посетите раздел сайта <a href="http://amiravrn.ru/tseny-po-arende-zhilya-v-moskve/" title="О ценах"><em>Реальные цены по&nbsp;аренде жилья</em></a>.</span><span style="font-size: medium;">&nbsp;</span></p>
+    <p style="text-align: justify;"><span style="font-size: medium;"><strong></strong></span><span style="font-size: medium;">Определите бюджет. Посетите раздел сайта <a href="http://amiravrn.ru/RealPricing.aspx" title="О ценах"><em>Реальные цены по&nbsp;аренде жилья</em></a>.</span><span style="font-size: medium;">&nbsp;</span></p>
     <p style="text-align: justify;">
         <br>
         <span style="font-size: medium;">Ваш выбор.</span><strong><br>

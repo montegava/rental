@@ -18,7 +18,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalCMS", "RentalCMS\Rent
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalCore", "RentalCore\RentalCore.csproj", "{1E23A2D8-FE3C-40E5-9970-655285C869B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartControls", "D:\.proj\_spider\spider\smartcontrols\SmartControls\SmartControls.csproj", "{63127E03-A44C-45A7-8DB8-F0FC78665D85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartControls", "..\..\spider\.trunk\smartcontrols\SmartControls\SmartControls.csproj", "{63127E03-A44C-45A7-8DB8-F0FC78665D85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
