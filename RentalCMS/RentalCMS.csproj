@@ -94,6 +94,7 @@
     <Content Include="images\state3.png" />
     <Content Include="Properties\DataSources\DAL.flat_info.datasource" />
     <Content Include="RealPricing.aspx" />
+    <Content Include="Service References\RentalCore\item.disco" />
     <Content Include="Service References\RentalCore\configuration91.svcinfo" />
     <Content Include="Service References\RentalCore\configuration.svcinfo" />
     <Content Include="Service References\RentalCore\Reference.svcmap">
@@ -192,19 +193,22 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\aaaaaaaaaaaaaa.pubxml" />
     <None Include="Properties\PublishProfiles\amiravrn.pubxml" />
-    <None Include="Service References\RentalCore\DAL.xsd">
+    <None Include="Service References\RentalCore\item.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RentalCore\Message.xsd">
+    <None Include="Service References\RentalCore\item1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\RentalCore\service.wsdl" />
-    <None Include="Service References\RentalCore\service.xsd">
+    <None Include="Service References\RentalCore\item2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RentalCore\service1.xsd">
+    <None Include="Service References\RentalCore\item3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\RentalCore\item4.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Service References\RentalCore\RentalCore.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -216,6 +220,10 @@
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{bc3afc4a-aae6-4d92-88ae-1d180529afbf}</Project>
       <Name>DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentalCommon\RentalCommon.csproj">
+      <Project>{b7dd43f7-85e7-4434-9742-8b87c451686c}</Project>
+      <Name>RentalCommon</Name>
     </ProjectReference>
     <ProjectReference Include="D:\.proj\_spider\spider\smartcontrols\SmartControls\SmartControls.csproj">
       <Project>{63127e03-a44c-45a7-8db8-f0fc78665d85}</Project>

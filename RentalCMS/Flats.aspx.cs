@@ -8,37 +8,52 @@ using log4net;
 using System.Web.UI.HtmlControls;
 using RentalCMS.RentalCore;
 
+using RentalCommon;
 
 namespace RentalCMS
 {
+
+   
+
+
+
     public partial class Flats : System.Web.UI.Page
     {
-        public enum Fiels : int
-        {
-            NONE = 0,
-            ID = 1,
-            DATA = 2,
-            ROOM_COUNT = 4,
-            ADDRESS = 8,
-            FLOOR = 32,
-            PRICE = 64,
-            FURNITURE = 128,
-            REGION = 256,
-        }
+       
 
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(Flats));
 
         protected bool isFilterInitiated = false;
 
         private int PageSize = 100;
-        
+
         public static int MAX_NUMBER_OF_COLUMNS = 128;
-        
+
         public static string sel_no = "sort";
-        
+
         public static string sel_up = "sort-up";
-        
+
         public static string sel_dw = "sort-down";
+
+        public List<Filter> Filters 
+        {
+            get 
+            {
+                var f = Session["Filters"] as List<Filter>;
+                if (f != null)
+                    return f;
+                else
+                {
+                     Session["Filters"] = new List<Filter>();
+                }
+                return Session["Filters"] as List<Filter>;
+            }
+
+            set
+            {
+                Session["Filters"] = value;
+            }
+        }
 
 
         protected void Page_Load(object sender, EventArgs e)
@@ -47,26 +62,15 @@ namespace RentalCMS
             {
                 SetDefaulData();
             }
+            else
+            {
+              
+            }
         }
 
         private void SetDefaulData()
         {
-            int selectedFilter = (int)Fiels.NONE;
-            string selectedSearchText = _tbSearchText.Text.Trim();
-            if (!string.IsNullOrEmpty(selectedSearchText))
-            {
-                selectedFilter += _cbAddress.Checked ? (int)Fiels.ADDRESS : 0;
-                selectedFilter += _cbRoomCount.Checked ? (int)Fiels.ROOM_COUNT : 0;
 
-                selectedFilter += rbFloor.Checked ? (int)Fiels.FLOOR : 0;
-
-                selectedFilter += rbPrice.Checked ? (int)Fiels.PRICE : 0;
-
-                selectedFilter += rbFurniture.Checked ? (int)Fiels.FURNITURE : 0;
-
-                selectedFilter += rbDistinct.Checked ? (int)Fiels.REGION : 0;
-
-            }
             DateTime selectedStartDate = UIConvert.ToDateTime(_tbStartDateText.Text);
             DateTime selectedEndDate = UIConvert.ToDateTime(_tbEndDateText.Text);
 
@@ -80,16 +84,17 @@ namespace RentalCMS
 
             DAL.flat_info[] flats;// = DAL.FlatManager.GetAllFlats();
 
-          
+
             errorLog.Debug("Try to get");
 
 
             var core = new RentalCoreClient();
-            core.FlatList(                selectedSearchText,
-                selectedFilter,
+            core.FlatList(this.Filters.ToArray(),
                 selectedStartDate,
+
                 selectedEndDate,
-                Convert.ToInt32(SortExpression),
+
+                 Convert.ToInt32(SortExpression),
                 SortAscending,
                 ref selectedActivePage,
                 out flats,
@@ -111,8 +116,8 @@ namespace RentalCMS
             //    out pageCount,
             //    out totalRowsNumber);
 
-          //  flats = DAL.FlatManager.GetAllFlats();
-           
+            //  flats = DAL.FlatManager.GetAllFlats();
+
             errorLog.Debug("Set data source");
             this._lwInfoListEdit.DataSource = flats;
             this._lwInfoListEdit.DataBind();
@@ -133,7 +138,7 @@ namespace RentalCMS
                 _plInfoGrid.PageCount = pageCount;
                 _plInfoGrid.PageActive = selectedActivePage;
             }
-          
+
         }
 
         protected string getCurrentPageNumberRows(int activePage, int itemsCount, int totalRowsNumber, int pageSize)
@@ -151,7 +156,7 @@ namespace RentalCMS
         }
 
 
-     
+
 
         protected void _btFilterData_Click(object sender, EventArgs e)
         {
@@ -159,6 +164,25 @@ namespace RentalCMS
             isFilterInitiated = true;
             // -- check if have valid filter criteria
             SetDefaulData();
+        }
+
+        protected void btnAddFilterClick(object sender, EventArgs e)
+        {
+            var t = _tbSearchText.Text;
+            if (!string.IsNullOrEmpty(t))
+            { 
+                var f = (Fiels)Convert.ToInt32(ddlFields.SelectedValue);
+                this.Filters.Add(new Filter() { Field = f, Value = t });
+                _tbSearchText.Text = string.Empty;
+                FillFilters();
+            }
+        }
+
+
+        protected void FillFilters()
+        {
+            rFilters.DataSource = this.Filters;
+            rFilters.DataBind();
         }
 
         protected void _btClearData_Click(object sender, EventArgs e)
@@ -172,7 +196,11 @@ namespace RentalCMS
             _cbAddress.Checked = false;
             _cbRoomCount.Checked = false;
 
+            this.Filters = null;
+            FillFilters();
             SetDefaulData();
+
+
         }
 
         protected void _lwInfoList_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -190,7 +218,7 @@ namespace RentalCMS
                 this.Response.Redirect("~/FlatManager.aspx?id=" + selectedID);
             }
         }
-     
+
         protected void _lwInfoList_Sorting(object sender, ListViewSortEventArgs e)
         {
             // string i = e.SortExpression;

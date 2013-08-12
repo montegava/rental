@@ -10,4 +10,6 @@ namespace DAL
         PHONE = 0,
         WORD = 1
     }
+
+   
 }

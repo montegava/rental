@@ -9,6 +9,7 @@ using log4net;
 using System.ServiceModel.Activation;
 using System.Web;
 using DAL;
+using RentalCommon;
 
 namespace RentalCore
 {
@@ -105,10 +106,10 @@ namespace RentalCore
             return result;
         }
 
-        public void FlatList(string filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
+        public void FlatList(List<Filter> filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
         {
             pageCount = 0;
-            FlatManager.FlatList(filterValue, filterBy, startDate, endDate, sortBy, orderBy, ref activePage, pageSize, out flats, out totalRowsNumber, out totalRowsNumber);
+            FlatManager.FlatList(filterBy, startDate, endDate, sortBy, orderBy, ref activePage, pageSize, out flats, out totalRowsNumber, out totalRowsNumber);
         }
     }
 }

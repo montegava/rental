@@ -6,6 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using System.IO;
 using DAL;
+using RentalCommon;
 
 namespace RentalCore
 {
@@ -21,7 +22,7 @@ namespace RentalCore
         Stream DownloadFile(string remotePath);
 
         [OperationContract]
-        void FlatList(string filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber);
+        void FlatList(List<Filter> filters, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber);
         
 
     }

@@ -1061,6 +1061,11 @@ namespace Rental
         {
             AddStar();
         }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }

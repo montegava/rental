@@ -211,7 +211,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="1360539379_88861.ico" />
     <Content Include="1360539611_20606.ico" />
     <Content Include="errors\error.txt" />
     <None Include="Service References\RentalCore\Reference.svcmap">

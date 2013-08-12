@@ -18,11 +18,31 @@
             <p id="_errorText" runat="server" class="error2 hide">
                 <asp:Label ID="_lbError" runat="server" Text=""></asp:Label>
             </p>
-            <div class="left">
-                <span class="mask">
-                    <asp:TextBox runat="server" ID="_tbSearchText" name="_tbSearchText"></asp:TextBox>
-                </span>
+
+            <asp:TextBox runat="server" ID="_tbSearchText" name="_tbSearchText"></asp:TextBox>
+
+            <div class="dropDown">
+                <asp:DropDownList runat="server" ID="ddlFields">
+                    <asp:ListItem Selected="True" Text="Адрес" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Комнат" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="Этаж" Value="5"></asp:ListItem>
+                    <asp:ListItem Text="Цена" Value="12"></asp:ListItem>
+                    <asp:ListItem Text="Мебель" Value="8"></asp:ListItem>
+                </asp:DropDownList>
             </div>
+
+            <asp:Button Text="Добавить" runat="server" OnClick="btnAddFilterClick" />
+
+
+            <asp:Repeater runat="server" ID="rFilters">
+                <ItemTemplate>
+                    <div class="row">
+                        <strong><asp:Label Text='<%# DataBinder.Eval(Container.DataItem, "Field") %>' runat="server" /></strong>
+                        <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Value") %>' />
+                    </div>
+                </ItemTemplate>
+
+            </asp:Repeater>
 
             <br class="clearLeft" />
             <div class="lsCheck">
@@ -140,59 +160,59 @@
                     <thead>
                         <tr>
                             <th>
-                                <asp:LinkButton ID="lkId" runat="server" CommandName="Sort" CommandArgument="1">
-                                    №
-                                <span id="sort1" runat="server" class="sort">&nbsp;</span>
+                                <asp:LinkButton ID="lkId" runat="server" CommandName="Sort" CommandArgument='1'>
+                                    <span id="sort1" runat="server" class="sort">&nbsp;</span>
+                                    #
                                 </asp:LinkButton>
                             </th>
 
                             <th>
-                                <asp:LinkButton ID="lkData" runat="server" CommandName="Sort" CommandArgument="2">
+                                <asp:LinkButton ID="lkData" runat="server" CommandName="Sort" CommandArgument='2'>
                                     Дата
                                 <span id="sort2" runat="server" class="sort">&nbsp;</span>
                                 </asp:LinkButton>
                             </th>
 
                             <th>
-                                <asp:LinkButton ID="lkRoomCount" runat="server" CommandName="Sort" CommandArgument="4">
+                                <asp:LinkButton ID="lkRoomCount" runat="server" CommandName="Sort" CommandArgument='3'>
                                     Комнат
+                                <span id="sort3" runat="server" class="sort">&nbsp;</span>
+                                </asp:LinkButton>
+                            </th>
+
+                            <th>
+                                <asp:LinkButton ID="lkAddress" runat="server" CommandName="Sort" CommandArgument='4'>
+                                    Адрес
                                 <span id="sort4" runat="server" class="sort">&nbsp;</span>
                                 </asp:LinkButton>
                             </th>
 
                             <th>
-                                <asp:LinkButton ID="lkAddress" runat="server" CommandName="Sort" CommandArgument="8">
-                                    Адрес
-                                <span id="sort8" runat="server" class="sort">&nbsp;</span>
-                                </asp:LinkButton>
-                            </th>
-
-                            <th>
-                                <asp:LinkButton ID="lbDistinct" runat="server" CommandName="Sort" CommandArgument="256">
+                                <asp:LinkButton ID="lbRegion" runat="server" CommandName="Sort" CommandArgument='25'>
                                     Район
-                                <span id="sort256" runat="server" class="sort">&nbsp;</span>
+                                <span id="sort25" runat="server" class="sort">&nbsp;</span>
                                 </asp:LinkButton>
                             </th>
 
                             <th>
-                                <asp:LinkButton ID="lbFloor" runat="server" CommandName="Sort" CommandArgument="32">
+                                <asp:LinkButton ID="lbFloor" runat="server" CommandName="Sort" CommandArgument='5'>
                                     Этаж
-                                <span id="sort32" runat="server" class="sort">&nbsp;</span>
+                                <span id="sort5" runat="server" class="sort">&nbsp;</span>
                                 </asp:LinkButton>
                             </th>
 
                             <th>
-                                <asp:LinkButton ID="lbPrice" runat="server" CommandName="Sort" CommandArgument="64">
+                                <asp:LinkButton ID="lbPrice" runat="server" CommandName="Sort" CommandArgument='12'>
                                     Цена
-                                <span id="sort64" runat="server" class="sort">&nbsp;</span>
+                                <span id="sort12" runat="server" class="sort">&nbsp;</span>
                                 </asp:LinkButton>
                             </th>
 
 
                             <th>
-                                <asp:LinkButton ID="lbFurniture" runat="server" CommandName="Sort" CommandArgument="128">
+                                <asp:LinkButton ID="lbFurniture" runat="server" CommandName="Sort" CommandArgument='8'>
                                     Мебель
-                                <span id="sort128" runat="server" class="sort">&nbsp;</span>
+                                <span id="sort8" runat="server" class="sort">&nbsp;</span>
                                 </asp:LinkButton>
                             </th>
 
@@ -289,12 +309,12 @@
     </section>
 
 
-    <%-- <script type="text/javascript">
-        $.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '30px', 1: '65px', 2: '65px', 3: '100px', 4: '80px', 5: '21px', 6: '21px', 7: '21px', 8: '21px', 9: '21px' });
+    <script type="text/javascript">
+        $.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '26px', 1: '64px', 2: '60px', 3: '180px', 4: '90px', 5: '60px', 6: '60px', 7: '60px', 8: '21px' });
 
 
         $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
 
 
-    </script>--%>
+    </script>
 </asp:Content>

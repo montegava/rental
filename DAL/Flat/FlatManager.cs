@@ -8,28 +8,16 @@ using MySql.Data.MySqlClient;
 using System.Linq.Expressions;
 using LinqKit;
 using log4net;
+using RentalCommon;
 
 namespace DAL
 {
 
-    public enum Fiels : int
-    {
-        NONE = 0,
-        ID = 1,
-        DATA = 2,
-        ROOM_COUNT = 4,
-        ADDRESS = 8,
-        FLOOR = 32,
-        PRICE = 64,
-        FURNITURE = 128,
-        REGION = 256,
-    }
-
     public static class FlatManager
     {
-        public static readonly ILog errorLog = LogManager.GetLogger("TestApplication"); 
+        public static readonly ILog errorLog = LogManager.GetLogger("TestApplication");
 
-        public static void FlatList(string filterValue, Int32 filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
+        public static void FlatList(List<Filter> filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
         {
 
             flats = null;
@@ -40,39 +28,99 @@ namespace DAL
 
                 IQueryable<flat_info> query = WcfOperationContext.Current.Context.flat_info;
                 #region filterby
-                if (!filterValue.Equals(string.Empty))
+
+                foreach (var f in filterBy)
                 {
-                    Expression<Func<flat_info, bool>> filter = t => false;
-                    if ((filterBy & (int)Fiels.ADDRESS) > 0)
+                    Expression<Func<flat_info, bool>> filter = t => true;
+                    if (!string.IsNullOrEmpty(f.Value))
                     {
-                        filter = filter.Or(t => t.ADDRESS.ToLower().Contains(filterValue.ToLower()));
-                    }
-                    if ((filterBy & (int)Fiels.ROOM_COUNT) > 0)
-                    {
-                        filter = filter.Or(t => t.ROOM_COUNT.ToLower().Contains(filterValue.ToLower()));
-                    }
+                        switch (f.Field)
+                        {
+                            case Fiels.ID:
+                                filter = filter.And(t => t.ID.ToString().Contains(f.Value.ToLower()));
+                                break;
 
+                            case Fiels.ROOM_COUNT:
+                                filter = filter.And(t => t.ROOM_COUNT.Contains(f.Value.ToLower()));
+                                break;
 
-                    if ((filterBy & (int)Fiels.FLOOR) > 0)
-                    {
-                        filter = filter.Or(t => t.FLOOR.ToLower().Contains(filterValue.ToLower()));
-                    }
-                    if ((filterBy & (int)Fiels.FURNITURE) > 0)
-                    {
-                        filter = filter.Or(t => t.FURNITURE.ToLower().Contains(filterValue.ToLower()));
-                    }
-                    if ((filterBy & (int)Fiels.PRICE) > 0)
-                    {
-                        filter = filter.Or(t => t.PRICE.ToLower().Contains(filterValue.ToLower()));
-                    }
-                    if ((filterBy & (int)Fiels.REGION) > 0)
-                    {
-                        filter = filter.Or(t => t.REGION.ToLower().Contains(filterValue.ToLower()));
-                    }
+                            case Fiels.ADDRESS:
+                                filter = filter.And(t => t.ADDRESS.Contains(f.Value.ToLower()));
+                                break;
 
+                            case Fiels.FLOOR:
+                                filter = filter.And(t => t.FLOOR.Contains(f.Value.ToLower()));
+                                break;
+
+                            case Fiels.BATH_UNIT:
+                                filter = filter.And(t => t.BATH_UNIT.Contains(f.Value.ToLower()));
+                                break;
+
+                            case Fiels.BUILD:
+                                filter = filter.And(t => t.BUILD.Contains(f.Value.ToLower()));
+                                break;
+
+                            case Fiels.FURNITURE:
+                                filter = filter.And(t => t.FURNITURE.Contains(f.Value.ToLower()));
+                                break;
+
+                            case Fiels.STATE:
+                                filter = filter.And(t => t.STATE.Contains(f.Value.ToLower()));
+                                break;
+
+                            case Fiels.MECHANIC:
+                                filter = filter.And(t => t.MECHANIC.Contains(f.Value.ToLower()));
+                                break;
+
+                            case Fiels.NAME:
+                                filter = filter.And(t => t.NAME.Contains(f.Value.ToLower()));
+                                break;
+
+                            case Fiels.PRICE:
+                                filter = filter.And(t => t.ADDRESS.Contains(f.Value.ToLower()));
+                        
+                                break;
+
+                            case Fiels.PHONE:
+                                filter = filter.And(t => t.PRICE.Contains(f.Value.ToLower()));
+                                break;
+
+                            case Fiels.COMMENT:
+                                filter = filter.And(t => t.ADDRESS.Contains(f.Value.ToLower()));
+                        
+                                break;
+                            case Fiels.CONTENT:
+                                filter = filter.And(t => t.COMMENT.Contains(f.Value.ToLower()));
+                        
+                                break;
+                            case Fiels.LINK:
+                                filter = filter.And(t => t.LINK.Contains(f.Value.ToLower()));
+                        
+                                break;
+
+                            case Fiels.TERM:
+                                filter = filter.And(t => t.TERM.Contains(f.Value.ToLower()));
+                        
+                                break;
+                            case Fiels.LESSOR:
+                                filter = filter.And(t => t.LESSOR.Contains(f.Value.ToLower()));
+                        
+                                break;
+                          
+                            case Fiels.REGION:
+                                filter = filter.And(t => t.REGION.Contains(f.Value.ToLower()));
+                        
+                                break;
+                        }
+                     
+
+                      
+                    }
 
                     query = query.Where(filter.Expand());
                 }
+
+               
 
 
                 if (!startDate.Equals(DateTime.MinValue))

@@ -7,13 +7,13 @@
                 return;
             }
             var filename = window.location.href.match(/.*\/(.*)\..*?$/)[1];
-            
+
             var div = $("#tooltip");
             if (div.length == 0) {
                 div = $('<div id="tooltip">').toggle(false).appendTo(document.body);
             }
 
-            var text = $(this).text().replace(/^[\s\*]+|[\s*]+$/g, ""); ;
+            var text = $(this).text().replace(/^[\s\*]+|[\s*]+$/g, "");;
             var hint = SpiderLanguage["HINT_" + text] || SpiderLanguage["HINT_" + filename + "_" + text] || "Tooltip for text <b>" + filename + "_" + text + "</b>";
 
             //DEBUG
@@ -27,11 +27,11 @@
                                 .stop(true, true)
                                 .fadeIn()
                                 .position({
-                                my: "left top",
-                                at: "right bottom",
-                                of: event, 
-                                offset: "2 2"
-                            });
+                                    my: "left top",
+                                    at: "right bottom",
+                                    of: event,
+                                    offset: "2 2"
+                                });
                         },
                         function () {
                             div.stop(true, true).fadeOut();
@@ -655,7 +655,7 @@
                 status = 'false';
             }
             if (count_nr > 0) {
-                DEF_ALERTRESTRICTELEMENT.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
+                DEF_ALERTRESTRICTELEMENT.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
                 DEF_ALERTRESTRICTELEMENT.data.targetID = $(this).attr('id');
                 $.fn.composeDialog(DEF_ALERTRESTRICTELEMENT);
             }
@@ -665,7 +665,7 @@
                 $.fn.composeDialog(DEF_ALERTDELETEONEITEMSTATUS);
             }
             else {
-                DEF_ALERTDELETEONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
+                DEF_ALERTDELETEONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
                 DEF_ALERTDELETEONEITEM.data.targetID = $(this).attr('id');
                 $.fn.composeDialog(DEF_ALERTDELETEONEITEM);
             }
@@ -678,7 +678,7 @@
             var deactivate = $(this).find("img").attr('src').indexOf("ok.png") != -1;
 
             var firstCol = $(this).closest("TR").find("TD:lt(1)");
-            var elements = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
+            var elements = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
             if (deactivate) {
                 DEF_ALERTDEACTIVATEONEITEM.data.elementsName = elements;
                 DEF_ALERTDEACTIVATEONEITEM.data.targetID = id;
@@ -697,7 +697,7 @@
             if ($(this).hasClass("noaction")) { event.preventDefault(); return; }
             DEF_ALERTPASSWORDONEITEM.data.targetID = $(this).attr('id');
             var firstCol = $(this).closest("TR").find("TD:lt(1)");
-            DEF_ALERTPASSWORDONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
+            DEF_ALERTPASSWORDONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
             $.fn.composeDialog(DEF_ALERTPASSWORDONEITEM);
             return false;
         });
@@ -707,7 +707,7 @@
             var firstCol = $(this).closest("TR").find("TD:lt(1)");
             if ($(this).hasClass("noaction")) { event.preventDefault(); return; }
             DEF_ALERTEXPORTONEITEM.data.targetID = $(this).attr('id');
-            DEF_ALERTEXPORTONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
+            DEF_ALERTEXPORTONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
             $.fn.composeDialog(DEF_ALERTEXPORTONEITEM);
             return false;
         });
@@ -738,7 +738,7 @@
 
                     if (error == 0) {
 
-                        DEF_ASSETIMPORTSTATUSHISTORY.data.elementsName = [{ name: statusRow}];
+                        DEF_ASSETIMPORTSTATUSHISTORY.data.elementsName = [{ name: statusRow }];
 
                         $.fn.composeDialog(DEF_ASSETIMPORTSTATUSHISTORY);
 
@@ -774,7 +774,7 @@
 
                     if (error == 0) {
 
-                        DEF_ASSETIMPORTSTATUSHISTORY.data.elementsName = [{ name: statusRow}];
+                        DEF_ASSETIMPORTSTATUSHISTORY.data.elementsName = [{ name: statusRow }];
 
                         $.fn.composeDialog(DEF_ASSETIMPORTSTATUSHISTORY);
 
@@ -891,60 +891,9 @@
         });
     },
 
-    $.fn.renderDropDownsRandomNr = 1,
-    $.fn.renderDropDownsInside = function () {
-        this.each(function (index) {
-            $('SELECT:not([multiple])', $(this)).renderDropDowns();
+   
 
-            $('SELECT:not([multiple])', $(this)).each(function () {
-                if ($(".ddList", $(this).parent()).length) return;
-                $(this).dropDownBox($.fn.ddl_settings)
-            });
-        });
-    },
 
-    $.fn.renderDropDowns = function () {
-        return this.each(function (index) {
-            var randomNr = $.fn.renderDropDownsRandomNr++;
-            if (!(/\{IDX\}/).test($(this).attr("id")) && !(/\{ID\}/).test($(this).attr("id")) && !$(this).parent().hasClass("dropDown") && !($(this).parents(".template").length > 0)) {
-
-                var ID = $(this).attr("id");
-                var NAME = $(this).attr("name");
-
-                var HEIGHT = parseInt($(this).css("height"), 10);
-                if (HEIGHT <= 100) {
-                    HEIGHT = 105;
-                }
-                var WIDTH = parseInt($(this).css("width"), 10);
-                if (WIDTH <= 0) {
-                    WIDTH = 290;
-                }
-                randomNr++;
-                if (ID == undefined) {
-                    ID = 'select_auto_ID' + randomNr;
-                }
-                else {
-                    ID = ID.replace(/(\s+)/g, "_");
-                }
-                if (NAME == undefined) {
-                    NAME = 'select_auto_NAME' + randomNr;
-                }
-                else {
-                    NAME = NAME.replace(/(\s+)/g, "_");
-                }
-
-                $(this).attr("id", ID).attr("name", NAME).css("height", HEIGHT).css("width", WIDTH);
-                var htmlAround = '<div class="dropDown" id="' + ID + '_f"><div class="dropDownIn"><span class="value">&nbsp;</span></div></div>';
-
-                var dd_clone = $(this).clone(true);
-                var _this = this;
-                $(".dropDownIn", $(htmlAround)).each(function (index) {
-                    $(dd_clone).insertAfter(this);
-                    $(_this).replaceWith($(this).parent());
-                });
-            }
-        });
-    } //end function renderDropDowns
 
 
     $.fn.showLoader = function () {
@@ -983,7 +932,7 @@
 
 jQuery(function ($) {
 
-    $("select:not([multiple])").renderDropDowns();
+
 
     $.fn.leftMenuAction();
     $.fn.fixTabMenu();
@@ -1060,12 +1009,7 @@ jQuery(function ($) {
         $.fn.pageReadOnly();
     }
     else {
-        $("select:not([multiple])").filter(function (index) {
-            if ((/\{ID\}/).test($(this).attr("id"))) {
-                return false;
-            }
-            return true;
-        }).dropDownBox($.fn.ddl_settings);
+      
     }
 
     $.fn.advanceCustomFilterSettings();

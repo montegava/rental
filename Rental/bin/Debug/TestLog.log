@@ -1,0 +1,24 @@
+[START LOG] 
+2013-08-07 22:30:10,158 [10] ERROR - Test log
+[END LOG] 
+[START LOG] 
+2013-08-07 22:36:04,988 [10] ERROR - Test log
+2013-08-07 22:36:07,984 [10] ERROR - GetAllFlatsAsDataTable
+2013-08-07 22:36:08,737 [10] ERROR - GetDataTableFromDataReader
+2013-08-07 22:36:50,525 [10] ERROR - add
+2013-08-07 22:36:50,560 [10] ERROR - System.ArgumentException: ArgumentException
+   ? DAL.FlatManager.AddNewFlat(flat_info flat) ? e:\_PROJ\_rental\rental\DAL\Flat\FlatManager.cs:?????? 204
+2013-08-07 22:36:50,575 [10] ERROR - GetAllFlatsAsDataTable
+2013-08-07 22:36:50,747 [10] ERROR - GetDataTableFromDataReader
+[START LOG] 
+2013-08-08 23:03:01,976 [10] ERROR - Test log
+2013-08-08 23:03:03,658 [10] ERROR - GetAllFlatsAsDataTable
+2013-08-08 23:03:05,055 [10] ERROR - GetDataTableFromDataReader
+[START LOG] 
+2013-08-11 23:51:23,450 [1] ERROR - Test log
+2013-08-11 23:51:25,339 [1] ERROR - GetAllFlatsAsDataTable
+2013-08-11 23:51:26,266 [1] ERROR - GetDataTableFromDataReader
+[END LOG] 
+[START LOG] 
+2013-08-12 22:14:14,877 [9] ERROR - Test log
+[END LOG] 

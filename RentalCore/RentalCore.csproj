@@ -60,6 +60,10 @@
       <Project>{bc3afc4a-aae6-4d92-88ae-1d180529afbf}</Project>
       <Name>DAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\RentalCommon\RentalCommon.csproj">
+      <Project>{b7dd43f7-85e7-4434-9742-8b87c451686c}</Project>
+      <Name>RentalCommon</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
