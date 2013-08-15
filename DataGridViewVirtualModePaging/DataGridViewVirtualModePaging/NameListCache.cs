@@ -12,8 +12,6 @@ namespace DataGridViewVirtualModePaging
     {
         public RentalCore.flat_info Flat;
 
-        
-
         public FlatRow(RentalCore.flat_info flat)
         {
             Flat = flat;

@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.программаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -139,6 +139,10 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cbSites = new System.Windows.Forms.ToolStripComboBox();
             this.bw = new System.ComponentModel.BackgroundWorker();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -172,6 +176,7 @@
             this.btnAddBadPhone.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -348,13 +353,13 @@
             this.lvAdverts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvAdverts.FullRowSelect = true;
             this.lvAdverts.GridLines = true;
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "listViewGroup1";
-            listViewGroup6.Header = "sdfasd";
-            listViewGroup6.Name = "sdf";
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "listViewGroup1";
+            listViewGroup4.Header = "sdfasd";
+            listViewGroup4.Name = "sdf";
             this.lvAdverts.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup3,
+            listViewGroup4});
             this.lvAdverts.Location = new System.Drawing.Point(3, 28);
             this.lvAdverts.Name = "lvAdverts";
             this.lvAdverts.Size = new System.Drawing.Size(731, 247);
@@ -452,13 +457,13 @@
             this.lvStars.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvStars.FullRowSelect = true;
             this.lvStars.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
-            listViewGroup2.Header = "sdfasd";
-            listViewGroup2.Name = "sdf";
+            listViewGroup5.Header = "ListViewGroup";
+            listViewGroup5.Name = "listViewGroup1";
+            listViewGroup6.Header = "sdfasd";
+            listViewGroup6.Name = "sdf";
             this.lvStars.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup5,
+            listViewGroup6});
             this.lvStars.Location = new System.Drawing.Point(3, 28);
             this.lvStars.Name = "lvStars";
             this.lvStars.Size = new System.Drawing.Size(731, 247);
@@ -646,6 +651,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.grdFlats);
+            this.panel3.Controls.Add(this.panel4);
             this.panel3.Controls.Add(this.tsSearch);
             this.panel3.Controls.Add(this.toolStrip4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -660,13 +666,13 @@
             this.grdFlats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdFlats.Cursor = System.Windows.Forms.Cursors.Default;
             this.grdFlats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdFlats.Location = new System.Drawing.Point(0, 25);
+            this.grdFlats.Location = new System.Drawing.Point(0, 56);
             this.grdFlats.MultiSelect = false;
             this.grdFlats.Name = "grdFlats";
             this.grdFlats.ReadOnly = true;
             this.grdFlats.RowHeadersVisible = false;
             this.grdFlats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdFlats.Size = new System.Drawing.Size(745, 207);
+            this.grdFlats.Size = new System.Drawing.Size(745, 176);
             this.grdFlats.TabIndex = 2;
             this.grdFlats.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             this.grdFlats.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
@@ -1310,6 +1316,41 @@
             this.bw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bw_DoWork);
             this.bw.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
             // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.button1);
+            this.panel4.Controls.Add(this.textBox1);
+            this.panel4.Controls.Add(this.comboBox1);
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel4.Location = new System.Drawing.Point(0, 25);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(745, 31);
+            this.panel4.TabIndex = 5;
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(6, 3);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 21);
+            this.comboBox1.TabIndex = 0;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(133, 3);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(276, 20);
+            this.textBox1.TabIndex = 1;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(415, 3);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 20);
+            this.button1.TabIndex = 2;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1375,6 +1416,8 @@
             this.statusStrip1.PerformLayout();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1487,6 +1530,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripButton btnSettings;
         private System.Windows.Forms.ColumnHeader columnHeader9;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

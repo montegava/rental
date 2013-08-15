@@ -113,11 +113,6 @@
     <Compile Include="frm\NewFilter.Designer.cs">
       <DependentUpon>NewFilter.cs</DependentUpon>
     </Compile>
-    <Compile Include="Service References\RentalCore\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="src\Advert.cs" />
     <Compile Include="frmMain.cs">
@@ -184,26 +179,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\RentalCore\Message.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RentalCore\service.wsdl" />
-    <None Include="Service References\RentalCore\service.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RentalCore\service1.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
-      <Project>{BC3AFC4A-AAE6-4D92-88AE-1D180529AFBF}</Project>
+      <Project>{bc3afc4a-aae6-4d92-88ae-1d180529afbf}</Project>
       <Name>DAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DgvFilterPopup\DgvFilterPopup.csproj">
-      <Project>{4B9BE5FD-303E-4270-9C4D-FA3BDE6C34EB}</Project>
-      <Name>DgvFilterPopup</Name>
     </ProjectReference>
     <ProjectReference Include="..\ImageProcessing\ImageProcessing.csproj">
       <Project>{B6208E23-D22C-4BA5-B791-D69DC9EE9EFC}</Project>
@@ -213,18 +194,9 @@
   <ItemGroup>
     <Content Include="1360539611_20606.ico" />
     <Content Include="errors\error.txt" />
-    <None Include="Service References\RentalCore\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\RentalCore\configuration.svcinfo" />
-    <None Include="Service References\RentalCore\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\RentalCore\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.0">
