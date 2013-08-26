@@ -11,7 +11,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAL.dll">
-      <publishTime>08/08/2013 21:11:11</publishTime>
+      <publishTime>08/16/2013 16:47:06</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/26/2013 04:00:52</publishTime>
@@ -20,7 +20,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2012 22:12:14</publishTime>
     </File>
     <File Include="bin/log4net.dll">
-      <publishTime>11/06/2012 12:09:02</publishTime>
+      <publishTime>06/11/2012 12:09:02</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -32,10 +32,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/RentalCMS.dll">
-      <publishTime>08/08/2013 22:04:31</publishTime>
+      <publishTime>08/16/2013 16:47:07</publishTime>
+    </File>
+    <File Include="bin/RentalCommon.dll">
+      <publishTime>08/16/2013 16:47:04</publishTime>
     </File>
     <File Include="bin/SmartControls.dll">
-      <publishTime>07/30/2013 01:35:19</publishTime>
+      <publishTime>08/16/2013 16:47:05</publishTime>
     </File>
     <File Include="bin/System.Data.DataSetExtensions.dll">
       <publishTime>03/18/2010 17:31:26</publishTime>
@@ -56,10 +59,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/08/2013 21:14:26</publishTime>
     </File>
     <File Include="FlatManager.aspx">
-      <publishTime>01/08/2013 20:08:59</publishTime>
+      <publishTime>08/01/2013 20:08:59</publishTime>
     </File>
     <File Include="Flats.aspx">
-      <publishTime>08/08/2013 21:55:59</publishTime>
+      <publishTime>08/13/2013 00:15:49</publishTime>
     </File>
     <File Include="images/bg.jpg">
       <publishTime>07/26/2013 02:31:44</publishTime>
@@ -134,16 +137,22 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/08/2013 21:07:49</publishTime>
     </File>
     <File Include="Rental.Master">
-      <publishTime>08/07/2013 20:08:34</publishTime>
+      <publishTime>07/08/2013 20:08:34</publishTime>
     </File>
     <File Include="Service References/RentalCore/configuration.svcinfo">
-      <publishTime>08/08/2013 21:47:25</publishTime>
+      <publishTime>08/13/2013 00:44:08</publishTime>
     </File>
     <File Include="Service References/RentalCore/configuration91.svcinfo">
-      <publishTime>08/08/2013 21:47:25</publishTime>
+      <publishTime>08/13/2013 00:44:08</publishTime>
+    </File>
+    <File Include="Service References/RentalCore/item.disco">
+      <publishTime>08/13/2013 00:44:08</publishTime>
     </File>
     <File Include="Service References/RentalCore/Reference.svcmap">
-      <publishTime>08/08/2013 21:47:26</publishTime>
+      <publishTime>08/13/2013 00:44:08</publishTime>
+    </File>
+    <File Include="Service References/RentalCore/RentalCore.wsdl">
+      <publishTime>08/13/2013 00:44:08</publishTime>
     </File>
     <File Include="Service References/RentalCore/service.wsdl">
       <publishTime>08/08/2013 21:47:25</publishTime>
@@ -152,7 +161,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/general.js">
-      <publishTime>07/30/2013 20:22:34</publishTime>
+      <publishTime>08/12/2013 23:39:37</publishTime>
     </File>
     <File Include="src/hit">
       <publishTime>07/26/2013 02:32:20</publishTime>
@@ -245,7 +254,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/30/2013 23:47:21</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/08/2013 22:41:02</publishTime>
+      <publishTime>08/16/2013 16:47:32</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -32,95 +32,117 @@ namespace DAL
                 foreach (var f in filterBy)
                 {
                     Expression<Func<flat_info, bool>> filter = t => true;
-                    if (!string.IsNullOrEmpty(f.Value))
+                    if (!string.IsNullOrEmpty(f.StartValue))
                     {
                         switch (f.Field)
                         {
                             case Fiels.ID:
-                                filter = filter.And(t => t.ID.ToString().Contains(f.Value.ToLower()));
+                                int id = int.Parse(f.StartValue);
+                                filter = filter.And(t => t.ID == id);
                                 break;
 
                             case Fiels.ROOM_COUNT:
-                                filter = filter.And(t => t.ROOM_COUNT.Contains(f.Value.ToLower()));
+                                int roomCount = int.Parse(f.StartValue);
+                                if (f.Comparator == ComapreType.NONE)
+                                    filter = filter.And(t => t.ROOM_COUNT == roomCount);
+                                if (f.Comparator == ComapreType.MORE)
+                                    filter = filter.And(t => (t.ROOM_COUNT) > roomCount);
+                                if (f.Comparator == ComapreType.LESS)
+                                    filter = filter.And(t => (t.ROOM_COUNT) < roomCount);
+                                if (f.Comparator == ComapreType.BETWEEN)
+                                {
+                                    int roomCountTo = int.Parse(f.EndValue);
+                                    filter = filter.And(t => (t.ROOM_COUNT) >= roomCount && (t.ROOM_COUNT) <= roomCountTo);
+                                }
                                 break;
 
                             case Fiels.ADDRESS:
-                                filter = filter.And(t => t.ADDRESS.Contains(f.Value.ToLower()));
+                                filter = filter.And(t => t.ADDRESS.Contains(f.StartValue.ToLower()));
                                 break;
 
                             case Fiels.FLOOR:
-                                filter = filter.And(t => t.FLOOR.Contains(f.Value.ToLower()));
+
+                                int floor = int.Parse(f.StartValue);
+                                if (f.Comparator == ComapreType.NONE)
+                                    filter = filter.And(t => t.FLOOR == floor);
+                                if (f.Comparator == ComapreType.MORE)
+                                    filter = filter.And(t => t.FLOOR > floor);
+                                if (f.Comparator == ComapreType.LESS)
+                                    filter = filter.And(t => t.FLOOR < floor);
+                                if (f.Comparator == ComapreType.BETWEEN)
+                                {
+                                    int floorTo = int.Parse(f.EndValue);
+                                    filter = filter.And(t => t.FLOOR >= floor && t.FLOOR <= floorTo);
+                                }
                                 break;
 
                             case Fiels.BATH_UNIT:
-                                filter = filter.And(t => t.BATH_UNIT.Contains(f.Value.ToLower()));
+                                filter = filter.And(t => t.BATH_UNIT.Contains(f.StartValue.ToLower()));
                                 break;
 
                             case Fiels.BUILD:
-                                filter = filter.And(t => t.BUILD.Contains(f.Value.ToLower()));
+                                filter = filter.And(t => t.BUILD.Contains(f.StartValue.ToLower()));
                                 break;
 
                             case Fiels.FURNITURE:
-                                filter = filter.And(t => t.FURNITURE.Contains(f.Value.ToLower()));
+                                filter = filter.And(t => t.FURNITURE.Contains(f.StartValue));
                                 break;
 
                             case Fiels.STATE:
-                                filter = filter.And(t => t.STATE.Contains(f.Value.ToLower()));
+                                filter = filter.And(t => t.STATE.Contains(f.StartValue.ToLower()));
                                 break;
 
                             case Fiels.MECHANIC:
-                                filter = filter.And(t => t.MECHANIC.Contains(f.Value.ToLower()));
+                                filter = filter.And(t => t.MECHANIC.Contains(f.StartValue.ToLower()));
                                 break;
 
                             case Fiels.NAME:
-                                filter = filter.And(t => t.NAME.Contains(f.Value.ToLower()));
+                                filter = filter.And(t => t.NAME.Contains(f.StartValue.ToLower()));
                                 break;
 
                             case Fiels.PRICE:
-                                filter = filter.And(t => t.ADDRESS.Contains(f.Value.ToLower()));
-                        
+                                filter = filter.And(t => t.PRICE.Contains(f.StartValue.ToLower()));
+
                                 break;
 
                             case Fiels.PHONE:
-                                filter = filter.And(t => t.PRICE.Contains(f.Value.ToLower()));
+                                filter = filter.And(t => t.PHONE.Contains(f.StartValue.ToLower()));
                                 break;
 
                             case Fiels.COMMENT:
-                                filter = filter.And(t => t.ADDRESS.Contains(f.Value.ToLower()));
-                        
+                                filter = filter.And(t => t.COMMENT.Contains(f.StartValue.ToLower()));
+
                                 break;
                             case Fiels.CONTENT:
-                                filter = filter.And(t => t.COMMENT.Contains(f.Value.ToLower()));
-                        
+                                filter = filter.And(t => t.CONTENT.Contains(f.StartValue.ToLower()));
+
                                 break;
                             case Fiels.LINK:
-                                filter = filter.And(t => t.LINK.Contains(f.Value.ToLower()));
-                        
+                                filter = filter.And(t => t.LINK.Contains(f.StartValue.ToLower()));
+
                                 break;
 
                             case Fiels.TERM:
-                                filter = filter.And(t => t.TERM.Contains(f.Value.ToLower()));
-                        
+                                filter = filter.And(t => t.TERM.Contains(f.StartValue.ToLower()));
+
                                 break;
                             case Fiels.LESSOR:
-                                filter = filter.And(t => t.LESSOR.Contains(f.Value.ToLower()));
-                        
+                                filter = filter.And(t => t.LESSOR.Contains(f.StartValue.ToLower()));
+
                                 break;
-                          
+
                             case Fiels.REGION:
-                                filter = filter.And(t => t.REGION.Contains(f.Value.ToLower()));
-                        
+                                filter = filter.And(t => t.REGION.Contains(f.StartValue));
+
                                 break;
                         }
-                     
 
-                      
+
+
                     }
 
                     query = query.Where(filter.Expand());
                 }
-
-               
 
 
                 if (!startDate.Equals(DateTime.MinValue))
@@ -136,13 +158,9 @@ namespace DAL
                 #endregion
 
                 #region sortby
-                //select sort column
 
                 switch ((Fiels)sortBy)
                 {
-                    case Fiels.ID:
-                        query = query.SetOrder(t => t.ID, orderBy);
-                        break;
                     case Fiels.DATA:
                         query = query.SetOrder(t => t.DATA, orderBy);
                         break;
@@ -152,6 +170,69 @@ namespace DAL
                     case Fiels.ADDRESS:
                         query = query.SetOrder(t => t.ADDRESS, orderBy);
                         break;
+                    case Fiels.FLOOR:
+                        query = query.SetOrder(t => t.FLOOR, orderBy);
+                        break;
+                    case Fiels.BATH_UNIT:
+                        query = query.SetOrder(t => t.BATH_UNIT, orderBy);
+                        break;
+                    case Fiels.BUILD:
+                        query = query.SetOrder(t => t.BUILD, orderBy);
+                        break;
+                    case Fiels.FURNITURE:
+                        query = query.SetOrder(t => t.FURNITURE, orderBy);
+                        break;
+                    case Fiels.STATE:
+                        query = query.SetOrder(t => t.STATE, orderBy);
+                        break;
+                    case Fiels.MECHANIC:
+                        query = query.SetOrder(t => t.MECHANIC, orderBy);
+                        break;
+                    case Fiels.NAME:
+                        query = query.SetOrder(t => t.NAME, orderBy);
+                        break;
+                    case Fiels.PRICE:
+                        query = query.SetOrder(t => t.PRICE, orderBy);
+                        break;
+                    case Fiels.PHONE:
+                        query = query.SetOrder(t => t.PHONE, orderBy);
+                        break;
+                    case Fiels.COMMENT:
+                        query = query.SetOrder(t => t.COMMENT, orderBy);
+                        break;
+                    case Fiels.CONTENT:
+                        query = query.SetOrder(t => t.CONTENT, orderBy);
+                        break;
+                    case Fiels.LINK:
+                        query = query.SetOrder(t => t.LINK, orderBy);
+                        break;
+                    case Fiels.TERM:
+                        query = query.SetOrder(t => t.TERM, orderBy);
+                        break;
+                    case Fiels.RENT_FROM:
+                        query = query.SetOrder(t => t.RENT_FROM, orderBy);
+                        break;
+                    case Fiels.RENT_TO:
+                        query = query.SetOrder(t => t.RENT_TO, orderBy);
+                        break;
+                    case Fiels.LESSOR:
+                        query = query.SetOrder(t => t.LESSOR, orderBy);
+                        break;
+                    case Fiels.FRIDGE:
+                        query = query.SetOrder(t => t.FRIDGE, orderBy);
+                        break;
+                    case Fiels.TV:
+                        query = query.SetOrder(t => t.TV, orderBy);
+                        break;
+                    case Fiels.WASHER:
+                        query = query.SetOrder(t => t.WASHER, orderBy);
+                        break;
+                    case Fiels.COOLER:
+                        query = query.SetOrder(t => t.COOLER, orderBy);
+                        break;
+                    case Fiels.REGION:
+                        query = query.SetOrder(t => t.REGION, orderBy);
+                        break;
                     default:
                         query = query.SetOrder(t => t.ID, orderBy);
                         break;
@@ -160,11 +241,7 @@ namespace DAL
 
                 #endregion
 
-                flats = query.GetPage(pageSize, ref activePage, ref pageCount, ref totalRowsNumber)
-                            .AsEnumerable().Select(t => t).ToList();
-
-                errorLog.Debug(flats.Count());
-
+                flats = query.GetPage(pageSize, ref activePage, ref pageCount, ref totalRowsNumber).AsEnumerable().ToList();
             }
             catch (Exception ex)
             {
@@ -207,9 +284,11 @@ namespace DAL
                                 {
                                     ID = (int)rows["id"],
                                     DATA = rows.Field<DateTime>("data"),
-                                    ROOM_COUNT = rows["room_count"].ToString(),
+                                    // ROOM_COUNT = rows["room_count"] == DBNull.Value ? null : (int?)rows["room_count"],
+                                    ROOM_COUNT = (int)rows["room_count"],
                                     ADDRESS = rows["address"].ToString(),
-                                    FLOOR = rows["floor"].ToString(),
+                                    // FLOOR = rows["floor"] == DBNull.Value ? null : (int?)rows["floor"],
+                                    FLOOR = (int)rows["floor"],
                                     BATH_UNIT = rows["bath_unit"].ToString(),
                                     BUILD = rows["build"].ToString(),
                                     FURNITURE = rows["furniture"].ToString(),
@@ -249,7 +328,7 @@ namespace DAL
 
             try
             {
-            
+
                 var context = WcfOperationContext.Current.Context;
                 context.flat_info.Add(flat);
                 context.SaveChanges();

@@ -16,9 +16,9 @@ namespace DAL
     {
         public int ID { get; set; }
         public Nullable<System.DateTime> DATA { get; set; }
-        public string ROOM_COUNT { get; set; }
+        public Nullable<int> ROOM_COUNT { get; set; }
         public string ADDRESS { get; set; }
-        public string FLOOR { get; set; }
+        public Nullable<int> FLOOR { get; set; }
         public string BATH_UNIT { get; set; }
         public string BUILD { get; set; }
         public string FURNITURE { get; set; }

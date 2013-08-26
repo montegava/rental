@@ -13,13 +13,13 @@ using RentalCommon;
 namespace RentalCMS
 {
 
-   
+
 
 
 
     public partial class Flats : System.Web.UI.Page
     {
-       
+
 
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(Flats));
 
@@ -35,37 +35,59 @@ namespace RentalCMS
 
         public static string sel_dw = "sort-down";
 
-        public List<Filter> Filters 
+        public List<Filter> GetFilters()
         {
-            get 
+            List<Filter> result = new List<Filter>();
+
+            //Кол-во комнат
+            if ((ddlRoomCount.SelectedIndex) > 0)
             {
-                var f = Session["Filters"] as List<Filter>;
-                if (f != null)
-                    return f;
-                else
-                {
-                     Session["Filters"] = new List<Filter>();
-                }
-                return Session["Filters"] as List<Filter>;
+                var field = this.CreateFilter(ddlRoomCount.SelectedItem.Text, Fiels.ROOM_COUNT);
+                result.Add(field);
             }
 
-            set
+            //Адрес
+            if (!string.IsNullOrEmpty(tbAddress.Text))
             {
-                Session["Filters"] = value;
+                var field = this.CreateFilter(tbAddress.Text, Fiels.ADDRESS);
+                result.Add(field);
             }
+
+            //Район 
+            if ( (ddlRegion.SelectedIndex) > 0)
+            {
+                var field = this.CreateFilter(ddlRegion.SelectedItem.Text, Fiels.REGION);
+                result.Add(field);
+            }
+
+            //Этаж
+            if (ddlFloor.SelectedIndex > 0)
+            {
+                var field = this.CreateFilter(ddlFloor.SelectedItem.Text, Fiels.FLOOR);
+                result.Add(field);
+            }
+
+            //Мебель
+            if ( ddlFurniture.SelectedIndex > 0)
+            {
+                var field = this.CreateFilter(ddlFurniture.SelectedItem.Text, Fiels.FURNITURE);
+                result.Add(field);
+            }
+
+            //Цена
+            if (!string.IsNullOrEmpty(tbPrice.Text))
+            {
+                var field = this.CreateFilter(tbPrice.Text, Fiels.PRICE);
+                result.Add(field);
+            }
+
+            return result;
         }
-
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
-            {
                 SetDefaulData();
-            }
-            else
-            {
-              
-            }
         }
 
         private void SetDefaulData()
@@ -89,13 +111,15 @@ namespace RentalCMS
 
 
             var core = new RentalCoreClient();
-            core.FlatList(this.Filters.ToArray(),
-                selectedStartDate,
+            core.FlatList(this.GetFilters().ToArray(),
 
+                selectedStartDate,
                 selectedEndDate,
 
-                 Convert.ToInt32(SortExpression),
+                Convert.ToInt32(SortExpression),
+
                 SortAscending,
+
                 ref selectedActivePage,
                 out flats,
                 out pageCount,
@@ -103,36 +127,19 @@ namespace RentalCMS
 
 
 
-            //DAL.FlatManager.FlatList(
-            //    selectedSearchText,
-            //    selectedFilter,
-            //    selectedStartDate,
-            //    selectedEndDate,
-            //    Convert.ToInt32(SortExpression),
-            //    SortAscending,
-            //    ref selectedActivePage,
-            //    selectedPageSize,
-            //    out flats,
-            //    out pageCount,
-            //    out totalRowsNumber);
 
-            //  flats = DAL.FlatManager.GetAllFlats();
+
 
             errorLog.Debug("Set data source");
             this._lwInfoListEdit.DataSource = flats;
             this._lwInfoListEdit.DataBind();
 
 
-            // -- check if we have a valid session data
             if (flats != null && flats.Any())
             {
-                // -- result show button for mutiple action
                 ShowNavigation();
-
                 // Show number rows per page with spec settings
                 lbSelNumPerPage.Text = getCurrentPageNumberRows(selectedActivePage, flats.Count(), totalRowsNumber, selectedPageSize);
-
-
                 // -- set pagging data
                 _plInfoGrid.Visible = true;
                 _plInfoGrid.PageCount = pageCount;
@@ -158,49 +165,23 @@ namespace RentalCMS
 
 
 
-        protected void _btFilterData_Click(object sender, EventArgs e)
+        protected void ApplyFilters(object sender, EventArgs e)
         {
-            // Set a value that indicates, that filter was initiated
             isFilterInitiated = true;
-            // -- check if have valid filter criteria
             SetDefaulData();
         }
 
-        protected void btnAddFilterClick(object sender, EventArgs e)
+        protected void ClearFilters(object sender, EventArgs e)
         {
-            var t = _tbSearchText.Text;
-            if (!string.IsNullOrEmpty(t))
-            { 
-                var f = (Fiels)Convert.ToInt32(ddlFields.SelectedValue);
-                this.Filters.Add(new Filter() { Field = f, Value = t });
-                _tbSearchText.Text = string.Empty;
-                FillFilters();
-            }
-        }
-
-
-        protected void FillFilters()
-        {
-            rFilters.DataSource = this.Filters;
-            rFilters.DataBind();
-        }
-
-        protected void _btClearData_Click(object sender, EventArgs e)
-        {
-            // -- clean filter and reload data grid information
-            // -- clear filter
-            _tbSearchText.Text = string.Empty;
+            tbAddress.Text = string.Empty;
             _tbStartDateText.Text = string.Empty;
             _tbEndDateText.Text = string.Empty;
-            // -- clear check use for text
-            _cbAddress.Checked = false;
-            _cbRoomCount.Checked = false;
-
-            this.Filters = null;
-            FillFilters();
+            ddlFloor.SelectedIndex = 0;
+            ddlRegion.SelectedIndex = 0;
+            ddlRoomCount.SelectedIndex = 0;
+            ddlFurniture.SelectedIndex = 0;
+            tbPrice.Text = string.Empty;
             SetDefaulData();
-
-
         }
 
         protected void _lwInfoList_ItemCommand(object sender, ListViewCommandEventArgs e)
@@ -251,6 +232,57 @@ namespace RentalCMS
                 }
             }
         }
+
+
+        private Filter CreateFilter(string value, Fiels field)
+        {
+
+            var result = new Filter();
+            result.Field = field;
+
+            var comparator = this.GetComparator(value);
+            result.Comparator = comparator;
+
+            switch (comparator)
+            {
+                case ComapreType.NONE:
+                    result.StartValue = value;
+                    break;
+                case ComapreType.MORE:
+                    result.StartValue = value.Split('>')[1];
+                    break;
+                case ComapreType.LESS:
+                    result.StartValue = value.Split( '<')[0];
+                    break;
+                case ComapreType.BETWEEN:
+                    string[] vals = value.Split('-');
+                    var start = (vals[0]);
+                    var end = (vals[1]);
+                    result.StartValue = start;
+                    result.EndValue = end;
+                    break;
+                default:
+                    break;
+            }
+            return result;
+        }
+
+        private ComapreType GetComparator(string text)
+        {
+            var result = ComapreType.NONE;
+
+            if (!string.IsNullOrEmpty(text))
+            {
+                if (text.Contains('>'))
+                    result = ComapreType.MORE;
+                if (text.Contains('<'))
+                    result = ComapreType.LESS;
+                if (text.Contains('-'))
+                    result = ComapreType.BETWEEN;
+            }
+            return result;
+        }
+
 
         #region ONBase
 

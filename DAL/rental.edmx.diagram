@@ -4,10 +4,10 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ce032570665493581d817542c540a8b" Name="Diagram1">
-        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.images" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="3ce032570665493581d817542c540a8b" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="1.275994644163174" PointY="7.8023612237546409" />
+        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="8.7138747483090846" PointY="3.7169721739911346" />
+        <EntityTypeShape EntityType="rentalModel.images" Width="1.5" PointX="5.8541579162022837" PointY="31.761683538445123" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

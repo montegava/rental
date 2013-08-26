@@ -62,7 +62,7 @@ namespace Rental
                 this.inputCONTENT.Text = flat.CONTENT;
                 this.chCooler.Checked = flat.COOLER ?? false;
                 this.Text = "Информация о квартите № " + flat.ID + " от " + flat.DATA.ToString();
-                this.intupFLOOR.Text = flat.FLOOR;
+                this.intupFLOOR.Text = flat.FLOOR.ToString();
                 this.chFridge.Checked = flat.FRIDGE ?? false;
                 this.intupFURNITURE.Text = flat.FURNITURE;
                 this.inputLESSOR.Text = flat.LESSOR;
@@ -74,7 +74,7 @@ namespace Rental
                 this.inputREGION.Text = flat.REGION;
                 this.inputRENT_FROM.Text = flat.RENT_FROM.ToString();
                 this.inputRENT_TO.Text = flat.RENT_TO.ToString();
-                this.intupROOM_COUNT.Text = flat.ROOM_COUNT;
+                this.intupROOM_COUNT.Text =   flat.ROOM_COUNT.ToString();
                 this.intupSTATE.Text = flat.STATE;
                 this.inputTERM.Text = flat.TERM;
                 this.chTV.Checked = flat.TV ?? false;
@@ -156,7 +156,7 @@ namespace Rental
 
             result.ID = FlatId;
             result.DATA = DateTime.Now;
-            result.ROOM_COUNT = intupROOM_COUNT.Text;
+            result.ROOM_COUNT = int.Parse(intupROOM_COUNT.Text);
             result.ADDRESS = intupADDRESS.Text;
 
             result.FLOOR = intupFLOOR.Text;

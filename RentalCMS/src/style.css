@@ -1825,3 +1825,53 @@ width: 90px;
 ARTICLE.details INPUT[type="text"], textarea {
 width: 255px !important;
 }
+
+
+.span16 {
+  width: 1180px;
+}
+.span15 {
+  width: 1105px;
+}
+.span14 {
+  width: 1030px;
+}
+.span13 {
+  width: 955px;
+}
+.span12 {
+  width: 880px;
+}
+.span11 {
+  width: 805px;
+}
+.span10 {
+  width: 730px;
+}
+.span9 {
+  width: 655px;
+}
+.span8 {
+  width: 580px;
+}
+.span7 {
+  width: 505px;
+}
+.span6 {
+  width: 430px;
+}
+.span5 {
+  width: 355px;
+}
+.span4 {
+  width: 280px;
+}
+.span3 {
+  width: 205px;
+}
+.span2 {
+  width: 130px;
+}
+.span1 {
+  width: 55px;
+}

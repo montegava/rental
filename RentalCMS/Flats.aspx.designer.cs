@@ -13,103 +13,58 @@ namespace RentalCMS {
     public partial class Flats {
         
         /// <summary>
-        /// _errorText control.
+        /// ddlRoomCount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl _errorText;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRoomCount;
         
         /// <summary>
-        /// _lbError control.
+        /// tbAddress control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label _lbError;
+        protected global::System.Web.UI.WebControls.TextBox tbAddress;
         
         /// <summary>
-        /// _tbSearchText control.
+        /// ddlRegion control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox _tbSearchText;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRegion;
         
         /// <summary>
-        /// ddlFields control.
+        /// ddlFloor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlFields;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFloor;
         
         /// <summary>
-        /// rFilters control.
+        /// ddlFurniture control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rFilters;
+        protected global::System.Web.UI.WebControls.DropDownList ddlFurniture;
         
         /// <summary>
-        /// _cbAddress control.
+        /// tbPrice control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton _cbAddress;
-        
-        /// <summary>
-        /// _cbRoomCount control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton _cbRoomCount;
-        
-        /// <summary>
-        /// rbFloor control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbFloor;
-        
-        /// <summary>
-        /// rbPrice control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbPrice;
-        
-        /// <summary>
-        /// rbFurniture control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbFurniture;
-        
-        /// <summary>
-        /// rbDistinct control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.RadioButton rbDistinct;
+        protected global::System.Web.UI.WebControls.TextBox tbPrice;
         
         /// <summary>
         /// _tbStartDateText control.

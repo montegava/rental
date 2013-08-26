@@ -2,103 +2,62 @@
 
 <%@ Import Namespace="System.ComponentModel" %>
 <%@ Register Assembly="SmartControls" Namespace="SmartControls" TagPrefix="Smart" %>
-
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
+
 <asp:Content ID="Content2" ContentPlaceHolderID="mainAreaOfPage" runat="server">
-
-
-
-
-
 
     <section class="choices">
         <fieldset>
             <legend>Фильтры</legend>
-            <p id="_errorText" runat="server" class="error2 hide">
-                <asp:Label ID="_lbError" runat="server" Text=""></asp:Label>
-            </p>
 
-            <asp:TextBox runat="server" ID="_tbSearchText" name="_tbSearchText"></asp:TextBox>
+            <div class="row">
+                <asp:Literal>Кол-во комнат</asp:Literal>
+                <asp:DropDownList runat="server" ID="ddlRoomCount">
+                    <asp:ListItem Selected="True" Text="-- не важно --" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="1" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="2" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="3" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="4" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="5" Value="5"></asp:ListItem>
+                    <asp:ListItem Text=">5" Value=">5"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:Literal>Адрес:</asp:Literal>
+                <asp:TextBox runat="server" ID="tbAddress" name="_tbSearchText"></asp:TextBox>
+            </div>
 
-            <div class="dropDown">
-                <asp:DropDownList runat="server" ID="ddlFields">
-                    <asp:ListItem Selected="True" Text="Адрес" Value="4"></asp:ListItem>
-                    <asp:ListItem Text="Комнат" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Этаж" Value="5"></asp:ListItem>
-                    <asp:ListItem Text="Цена" Value="12"></asp:ListItem>
-                    <asp:ListItem Text="Мебель" Value="8"></asp:ListItem>
+            <div class="row">
+                <asp:Literal>Район</asp:Literal>
+                <asp:DropDownList runat="server" ID="ddlRegion">
+                    <asp:ListItem Selected="True" Text="-- не важно --" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="Коминтерновский" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="Ж/Д" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="Левобережный" Value="3"></asp:ListItem>
+                    <asp:ListItem Text="Советский" Value="4"></asp:ListItem>
+                    <asp:ListItem Text="Ленинский" Value="5"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:Literal>Этаж</asp:Literal>
+                <asp:DropDownList runat="server" ID="ddlFloor">
+                    <asp:ListItem Selected="True" Text="-- не важно --" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="5<" Value="5"></asp:ListItem>
+                    <asp:ListItem Text="5-8" Value="5-8"></asp:ListItem>
+                    <asp:ListItem Text="9-12" Value="9-12"></asp:ListItem>
+                    <asp:ListItem Text=">13" Value="13"></asp:ListItem>
+                </asp:DropDownList>
+                <asp:Literal>Мебель</asp:Literal>
+                <asp:DropDownList runat="server" ID="ddlFurniture">
+                    <asp:ListItem Selected="True" Text="-- не важно --" Value="0"></asp:ListItem>
+                    <asp:ListItem Text="есть" Value="1"></asp:ListItem>
+                    <asp:ListItem Text="нет" Value="2"></asp:ListItem>
+                    <asp:ListItem Text="частично" Value="3"></asp:ListItem>
                 </asp:DropDownList>
             </div>
 
-            <asp:Button Text="Добавить" runat="server" OnClick="btnAddFilterClick" />
-
-
-            <asp:Repeater runat="server" ID="rFilters">
-                <ItemTemplate>
-                    <div class="row">
-                        <strong><asp:Label Text='<%# DataBinder.Eval(Container.DataItem, "Field") %>' runat="server" /></strong>
-                        <asp:Label runat="server" Text='<%# DataBinder.Eval(Container.DataItem, "Value") %>' />
-                    </div>
-                </ItemTemplate>
-
-            </asp:Repeater>
-
-            <br class="clearLeft" />
-            <div class="lsCheck">
-                <div class="row">
-
-                    <asp:RadioButton ID="_cbAddress" runat="server" Checked="true" GroupName="filter" />
-
-
-
-                    <label for="_cbAddress" title="">
-                        Адрес 
-                    </label>
-
-
-                    <asp:RadioButton ID="_cbRoomCount" runat="server" Checked="false" GroupName="filter" />
-
-
-                    <label for="_cbRoomCount" title="">
-                        Комнат 
-                    </label>
-
-
-
-                    <asp:RadioButton ID="rbFloor" runat="server" Checked="false" GroupName="filter" />
-
-
-                    <label title="">
-                        Этаж 
-                    </label>
-
-
-                    <asp:RadioButton ID="rbPrice" runat="server" Checked="false" GroupName="filter" />
-
-
-                    <label title="">
-                        Цена 
-                    </label>
-
-
-                    <asp:RadioButton ID="rbFurniture" runat="server" Checked="false" GroupName="filter" />
-
-
-                    <label title="">
-                        Мебель 
-                    </label>
-
-
-                    <asp:RadioButton ID="rbDistinct" runat="server" Checked="false" GroupName="filter" />
-
-
-                    <label title="">
-                        Район 
-                    </label>
-
-                </div>
+            <div class="row">
+                <asp:Literal>Цена</asp:Literal>
+                <asp:TextBox runat="server" ID="tbPrice"></asp:TextBox>
             </div>
+
             <div class="nrmRow">
                 <div class="areaGroup areaGroup_fix1">
                     <div class="row">
@@ -125,10 +84,10 @@
                 <br class="clearLeft" />
             </div>
             <div class="panel">
-                <asp:LinkButton ID="_btFilterData" runat="server" CssClass="button " OnClick="_btFilterData_Click">
+                <asp:LinkButton ID="_btFilterData" runat="server" CssClass="button " OnClick="ApplyFilters">
                     Применить
                 </asp:LinkButton>
-                <asp:LinkButton ID="_lbClearData" runat="server" CssClass="button " OnClick="_btClearData_Click">
+                <asp:LinkButton ID="_lbClearData" runat="server" CssClass="button " OnClick="ClearFilters">
                     Сбросить
                 </asp:LinkButton><br class="clearLeft" />
             </div>

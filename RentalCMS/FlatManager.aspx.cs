@@ -42,7 +42,7 @@ namespace RentalCMS
                 if (flat != null)
                 {
                     tblAddress.Text = flat.ADDRESS;
-                    lblRoomCount.Text = flat.ROOM_COUNT;
+                    lblRoomCount.Text = Convert.ToString(flat.ROOM_COUNT);
                     lblPhone.Text = "+7 (903) 652-90-28";
                 }
                 
