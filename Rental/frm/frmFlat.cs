@@ -159,7 +159,7 @@ namespace Rental
             result.ROOM_COUNT = int.Parse(intupROOM_COUNT.Text);
             result.ADDRESS = intupADDRESS.Text;
 
-            result.FLOOR = int.Parse( intupFLOOR.Text);
+            result.FLOOR = intupFLOOR.Text;
             result.BATH_UNIT = intupBATH_UNIT.Text;
             result.BUILD = intupBUILD.Text;
 
