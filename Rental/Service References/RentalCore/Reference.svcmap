@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="50bb6096-be75-45d5-8b74-1a9fc004f4fe" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:8732/RentalCore/" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="238853d2-326d-4e3c-be5a-17b197fa515a" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd4" />
+    <MetadataFile FileName="RentalCore.wsdl" MetadataType="Wsdl" ID="79a7349f-e32b-400e-996e-7c07eb6469d2" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?wsdl" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="77024cf4-2f43-4076-a90a-b3c570aa20f9" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?disco" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="aa82121c-29be-416c-a94b-9c342d45f31b" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd1" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="b6c48426-cfba-488f-a0c6-7bb45f0db4fa" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd0" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="feb2f467-9ef8-4b28-a829-833c07a655a4" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd3" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="255c7894-e69a-440a-a46a-755f60f4c268" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
