@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using DAL;
 using Rental.frm;
 using System.Linq;
-using DgvFilterPopup;
+
 
 using log4net;
 using log4net.Config;
@@ -26,20 +26,24 @@ namespace Rental
     public partial class frmMain : Form
     {
         public static readonly ILog testLogger = LogManager.GetLogger("TestApplication"); 
-      
 
-        // List of tab 
         private Dictionary<string, TabPage> pages = new Dictionary<string, TabPage>();
+
         private volatile int page_count_for_load = 0;
+        
         private volatile int page_count_loaded = 0;
+        
         // Спарсенные за раз объявы
         private List<Advert> m_adverts = new List<Advert>();
+        
         // Список исключений = телефоны, слова
         private List<black_list> m_exclude;
+        
         private BindingSource bindingSource = new BindingSource();
 
 
         #region LoadSaveClose
+
         public frmMain()
         {
             InitializeComponent();
@@ -157,8 +161,6 @@ namespace Rental
             Common.SetColumlOption(grdFlats, "RENT_FROM", "СДАЕТСЯ С", 80, ref displayIndex);
             Common.SetColumlOption(grdFlats, "RENT_TO", "СДАЕТСЯ ПО", 80, ref displayIndex);
             Common.SetColumlOption(grdFlats, "REGION", "РАЙОН", 80, ref displayIndex);
-
-            new DgvFilterManager(grdFlats);
 
 
         }

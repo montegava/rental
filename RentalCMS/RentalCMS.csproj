@@ -217,6 +217,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\spider\.trunk\smartcontrols\SmartControls\SmartControls.csproj">
+      <Project>{63127e03-a44c-45a7-8db8-f0fc78665d85}</Project>
+      <Name>SmartControls</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{bc3afc4a-aae6-4d92-88ae-1d180529afbf}</Project>
       <Name>DAL</Name>
@@ -224,10 +228,6 @@
     <ProjectReference Include="..\RentalCommon\RentalCommon.csproj">
       <Project>{b7dd43f7-85e7-4434-9742-8b87c451686c}</Project>
       <Name>RentalCommon</Name>
-    </ProjectReference>
-    <ProjectReference Include="D:\.proj\_spider\spider\smartcontrols\SmartControls\SmartControls.csproj">
-      <Project>{63127e03-a44c-45a7-8db8-f0fc78665d85}</Project>
-      <Name>SmartControls</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

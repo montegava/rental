@@ -19,8 +19,6 @@ namespace RentalCore
     {
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(RentalCore));
 
-
-
         public string Upload(Stream data)
         {
 
@@ -95,7 +93,6 @@ namespace RentalCore
             return file;
         }
 
-
         public Stream DownloadFile(string remotePath)
         {
             Stream result = null;
@@ -108,8 +105,12 @@ namespace RentalCore
 
         public void FlatList(List<Filter> filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
         {
-            pageCount = 0;
-            FlatManager.FlatList(filterBy, startDate, endDate, sortBy, orderBy, ref activePage, pageSize, out flats, out totalRowsNumber, out totalRowsNumber);
+            FlatManager.FlatList(filterBy, startDate, endDate, sortBy, orderBy, ref activePage, pageSize, out flats, out pageCount, out totalRowsNumber);
+        }
+
+        public bool CheckUrlIfExist(string url, out flat_info flat)
+        {
+            return FlatManager.CheckUrlIfExist(url, out flat);
         }
     }
 }
