@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using DAL;
 using Rental.frm;
 using System.Linq;
-using DgvFilterPopup;
+
 
 using log4net;
 using log4net.Config;
@@ -158,7 +158,7 @@ namespace Rental
             Common.SetColumlOption(grdFlats, "RENT_TO", "СДАЕТСЯ ПО", 80, ref displayIndex);
             Common.SetColumlOption(grdFlats, "REGION", "РАЙОН", 80, ref displayIndex);
 
-            new DgvFilterManager(grdFlats);
+          
 
 
         }

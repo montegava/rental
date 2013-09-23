@@ -63,16 +63,16 @@ namespace Rental
                     if (onCheckCansel())
                         return result;
                     DAL.flat_info flat = null;
-                    if (FlatManager.CheckUrlIfExist(url, out flat) && flat != null)
-                    {
-                        Log.Append("\t\tAlready in DB!");
-                        Advert a = Convetor.Flat2Advert(flat);
-                        a.IsStar = true;
-                        a.IsBlocked = false;
-                        a.ImageIndex = (int)ImageMode.imSlando;
-                        result.Add(a);
-                        continue;
-                    }
+                    //if (FlatManager.CheckUrlIfExist(url, out flat) && flat != null)
+                    //{
+                    //    Log.Append("\t\tAlready in DB!");
+                    //    Advert a = Convetor.Flat2Advert(flat);
+                    //    a.IsStar = true;
+                    //    a.IsBlocked = false;
+                    //    a.ImageIndex = (int)ImageMode.imSlando;
+                    //    result.Add(a);
+                    //    continue;
+                    //}
                     #endregion
                     Log.Append("\t\tLoading...");
                     Advert advert = GetAdvertByUrl(url);
