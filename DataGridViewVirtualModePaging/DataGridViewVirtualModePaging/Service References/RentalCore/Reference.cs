@@ -15,6 +15,199 @@ namespace DataGridViewVirtualModePaging.RentalCore {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Filter", Namespace="http://schemas.datacontract.org/2004/07/RentalCommon")]
+    [System.SerializableAttribute()]
+    public partial class Filter : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DataGridViewVirtualModePaging.RentalCore.ComapreType ComparatorField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string EndValueField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private DataGridViewVirtualModePaging.RentalCore.Fiels FieldField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string StartValueField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DataGridViewVirtualModePaging.RentalCore.ComapreType Comparator {
+            get {
+                return this.ComparatorField;
+            }
+            set {
+                if ((this.ComparatorField.Equals(value) != true)) {
+                    this.ComparatorField = value;
+                    this.RaisePropertyChanged("Comparator");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string EndValue {
+            get {
+                return this.EndValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EndValueField, value) != true)) {
+                    this.EndValueField = value;
+                    this.RaisePropertyChanged("EndValue");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public DataGridViewVirtualModePaging.RentalCore.Fiels Field {
+            get {
+                return this.FieldField;
+            }
+            set {
+                if ((this.FieldField.Equals(value) != true)) {
+                    this.FieldField = value;
+                    this.RaisePropertyChanged("Field");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string StartValue {
+            get {
+                return this.StartValueField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.StartValueField, value) != true)) {
+                    this.StartValueField = value;
+                    this.RaisePropertyChanged("StartValue");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ComapreType", Namespace="http://schemas.datacontract.org/2004/07/RentalCommon")]
+    public enum ComapreType : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NONE = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MORE = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        LESS = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        BETWEEN = 3,
+    }
+    
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Fiels", Namespace="http://schemas.datacontract.org/2004/07/RentalCommon")]
+    public enum Fiels : int {
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NONE = 0,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ID = 1,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        DATA = 2,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ROOM_COUNT = 3,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        ADDRESS = 4,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        FLOOR = 5,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        BATH_UNIT = 6,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        BUILD = 7,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        FURNITURE = 8,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        STATE = 9,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        MECHANIC = 10,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        NAME = 11,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PRICE = 12,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        PHONE = 13,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        COMMENT = 14,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        CONTENT = 15,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        LINK = 16,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        TERM = 17,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RENT_FROM = 18,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        RENT_TO = 19,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        LESSOR = 20,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        FRIDGE = 21,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        TV = 22,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        WASHER = 23,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        COOLER = 24,
+        
+        [System.Runtime.Serialization.EnumMemberAttribute()]
+        REGION = 25,
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="flat_info", Namespace="http://schemas.datacontract.org/2004/07/DAL")]
     [System.SerializableAttribute()]
     public partial class flat_info : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -44,7 +237,7 @@ namespace DataGridViewVirtualModePaging.RentalCore {
         private System.Nullable<System.DateTime> DATAField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string FLOORField;
+        private System.Nullable<int> FLOORField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.Nullable<bool> FRIDGEField;
@@ -83,7 +276,7 @@ namespace DataGridViewVirtualModePaging.RentalCore {
         private System.Nullable<System.DateTime> RENT_TOField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string ROOM_COUNTField;
+        private System.Nullable<int> ROOM_COUNTField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string STATEField;
@@ -199,12 +392,12 @@ namespace DataGridViewVirtualModePaging.RentalCore {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string FLOOR {
+        public System.Nullable<int> FLOOR {
             get {
                 return this.FLOORField;
             }
             set {
-                if ((object.ReferenceEquals(this.FLOORField, value) != true)) {
+                if ((this.FLOORField.Equals(value) != true)) {
                     this.FLOORField = value;
                     this.RaisePropertyChanged("FLOOR");
                 }
@@ -368,12 +561,12 @@ namespace DataGridViewVirtualModePaging.RentalCore {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public string ROOM_COUNT {
+        public System.Nullable<int> ROOM_COUNT {
             get {
                 return this.ROOM_COUNTField;
             }
             set {
-                if ((object.ReferenceEquals(this.ROOM_COUNTField, value) != true)) {
+                if ((this.ROOM_COUNTField.Equals(value) != true)) {
                     this.ROOM_COUNTField = value;
                     this.RaisePropertyChanged("ROOM_COUNT");
                 }
@@ -453,7 +646,10 @@ namespace DataGridViewVirtualModePaging.RentalCore {
         System.IO.Stream DownloadFile(string remotePath);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatList", ReplyAction="http://tempuri.org/IRentalCore/FlatListResponse")]
-        void FlatList(string filterValue, int filterBy, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DataGridViewVirtualModePaging.RentalCore.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize);
+        void FlatList(DataGridViewVirtualModePaging.RentalCore.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DataGridViewVirtualModePaging.RentalCore.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/CheckUrlIfExist", ReplyAction="http://tempuri.org/IRentalCore/CheckUrlIfExistResponse")]
+        bool CheckUrlIfExist(out DataGridViewVirtualModePaging.RentalCore.flat_info flat, string url);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -491,8 +687,12 @@ namespace DataGridViewVirtualModePaging.RentalCore {
             return base.Channel.DownloadFile(remotePath);
         }
         
-        public void FlatList(string filterValue, int filterBy, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DataGridViewVirtualModePaging.RentalCore.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize) {
-            base.Channel.FlatList(filterValue, filterBy, startDate, endDate, sortBy, orderBy, ref activePage, out flats, out pageCount, out totalRowsNumber, pageSize);
+        public void FlatList(DataGridViewVirtualModePaging.RentalCore.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DataGridViewVirtualModePaging.RentalCore.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize) {
+            base.Channel.FlatList(filters, startDate, endDate, sortBy, orderBy, ref activePage, out flats, out pageCount, out totalRowsNumber, pageSize);
+        }
+        
+        public bool CheckUrlIfExist(out DataGridViewVirtualModePaging.RentalCore.flat_info flat, string url) {
+            return base.Channel.CheckUrlIfExist(out flat, url);
         }
     }
 }

@@ -102,6 +102,9 @@
     <None Include="Service References\RentalCore\RentalCore3.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Service References\RentalCore\RentalCore4.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WebReferences Include="Web References\" />

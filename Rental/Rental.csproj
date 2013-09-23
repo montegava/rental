@@ -129,6 +129,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="src\avito\Avito.cs" />
+    <Compile Include="src\Cache.cs" />
     <Compile Include="src\camelot\Camelot.cs" />
     <Compile Include="src\Common.cs" />
     <Compile Include="src\Const.cs" />
@@ -211,6 +212,10 @@
     <ProjectReference Include="..\ImageProcessing\ImageProcessing.csproj">
       <Project>{B6208E23-D22C-4BA5-B791-D69DC9EE9EFC}</Project>
       <Name>ImageProcessing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RentalCommon\RentalCommon.csproj">
+      <Project>{b7dd43f7-85e7-4434-9742-8b87c451686c}</Project>
+      <Name>RentalCommon</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

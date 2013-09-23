@@ -21,6 +21,7 @@
     <MetadataSource Address="http://amiravrn.ru/RentalCore.RentalCore.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
+    <MetadataFile FileName="RentalCore4.xsd" MetadataType="Schema" ID="8582225b-e295-4d12-bac7-91fc0106a28b" SourceId="1" SourceUrl="http://amiravrn.ru/RentalCore.RentalCore.svc?xsd=xsd4" />
     <MetadataFile FileName="RentalCore.disco" MetadataType="Disco" ID="a7527ff8-ffbf-46a4-8b87-00639bafedff" SourceId="1" SourceUrl="http://amiravrn.ru/RentalCore.RentalCore.svc?disco" />
     <MetadataFile FileName="RentalCore.xsd" MetadataType="Schema" ID="f4c214c6-9041-46d3-80b0-3ccd6bbe058f" SourceId="1" SourceUrl="http://amiravrn.ru/RentalCore.RentalCore.svc?xsd=xsd0" />
     <MetadataFile FileName="RentalCore1.xsd" MetadataType="Schema" ID="4df5072e-311c-4974-9c11-ffe6a7b782ef" SourceId="1" SourceUrl="http://amiravrn.ru/RentalCore.RentalCore.svc?xsd=xsd1" />

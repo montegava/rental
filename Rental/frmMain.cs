@@ -13,7 +13,7 @@ using System.Linq;
 
 using log4net;
 using log4net.Config;
-
+using Rental.src;
 
 namespace Rental
 {
@@ -37,6 +37,8 @@ namespace Rental
         // Список исключений = телефоны, слова
         private List<black_list> m_exclude;
         private BindingSource bindingSource = new BindingSource();
+        NameListCache _cache = null;
+        const int PAGE_SIZE = 5000;
 
 
         #region LoadSaveClose
@@ -64,8 +66,66 @@ namespace Rental
             cbSites.ComboBox.DisplayMember = "Value";
             cbSites.ComboBox.ValueMember = "Key";
 
+
+            _cache = new NameListCache(PAGE_SIZE);
+
+            int displayIndex = 0;
+            Common.SetColumlOption(grdFlats, "ID", "№", 45, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "DATA", "ДАТА ДОБВЛЕНИЯ", 102, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "ROOM_COUNT", "КОЛИЧЕСТВО КОМНАТ", 107, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "ADDRESS", "АДРЕС", 200, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "PHONE", "ТЕЛЕФОН", 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "FURNITURE", "МЕБЕЛЬ", 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "PRICE", "ЦЕНА", 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "LESSOR", "КТО СДАЛ", 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "FLOOR", "ЭТАЖ", 45, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "BATH_UNIT", "САНУЗЕЛ", 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "BUILD", "ВИД ДОМА", 85, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "STATE", "СОСТОЯНИЕ", 85, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "MECHANIC", "МЕБЕЛЬ", 85, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "NAME", "ФИО", 100, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "TERM", "СРОК СДАЧИ", 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "RENT_FROM", "СДАЕТСЯ С", 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "RENT_TO", "СДАЕТСЯ ПО", 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "REGION", "РАЙОН", 80, ref displayIndex);
+
+            Common.SetColumlOption(grdFlats, "CONTENT", "CONTENT", 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, "LINK", "LINK", 80, ref displayIndex);
+         
+
+
+             
+
+
+
+            grdFlats.CellValueNeeded +=   new DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
+
+            grdFlats.VirtualMode = true;
+
+            grdFlats.RowCount = (int)_cache.TotalRowsNumber;
+
             //cbSites.ComboBox.Selectedva = Properties.Settings.Default.cbSites != null ? Properties.Settings.Default.cbSites : -1;
 
+        }
+
+
+        private void dataGridView1_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
+        {
+            _cache.LoadPage(e.RowIndex);
+
+            if (e.RowIndex > 50)
+            {
+
+            }
+
+            int rowIndex = e.RowIndex % _cache.PageSize;
+
+            if (rowIndex > 2000)
+            {
+                var dddd = 4;
+            }
+
+            e.Value = _cache.CachedData[rowIndex][e.ColumnIndex];
         }
 
         private void FillTree()
@@ -95,7 +155,7 @@ namespace Rental
                         FillBlackList();
                         return;
                     case "tabStar":
-                        FillFlatGridStar();
+                        //FillFlatGridStar();
                         return;
                 }
             }
@@ -134,35 +194,7 @@ namespace Rental
             dataGridViewContactList.Columns["STOP"].Width = dataGridViewContactList.Columns["COMMENT"].Width = 200;
         }
 
-        private void FillFlatGridStar()
-        {
-            bindingSource.DataSource = FlatManager.GetAllFlatsAsDataTable();
-            grdFlats.DataSource = bindingSource;
-            int displayIndex = 0;
-            Common.SetColumlOption(grdFlats, "ID", "№", 45, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "DATA", "ДАТА ДОБВЛЕНИЯ", 102, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "ROOM_COUNT", "КОЛИЧЕСТВО КОМНАТ", 107, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "ADDRESS", "АДРЕС", 200, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "PHONE", "ТЕЛЕФОН", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "FURNITURE", "МЕБЕЛЬ", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "PRICE", "ЦЕНА", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "LESSOR", "КТО СДАЛ", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "FLOOR", "ЭТАЖ", 45, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "BATH_UNIT", "САНУЗЕЛ", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "BUILD", "ВИД ДОМА", 85, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "STATE", "СОСТОЯНИЕ", 85, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "MECHANIC", "МЕБЕЛЬ", 85, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "NAME", "ФИО", 100, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "TERM", "СРОК СДАЧИ", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "RENT_FROM", "СДАЕТСЯ С", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "RENT_TO", "СДАЕТСЯ ПО", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "REGION", "РАЙОН", 80, ref displayIndex);
-
-          
-
-
-        }
-
+      
         #region Worker
         private void BeforeStart()
         {
@@ -805,8 +837,8 @@ namespace Rental
                 string error = null;
                 if (!FlatManager.DeleteFlat(flatId, out error))
                     MessageBox.Show(error);
-                else
-                    FillFlatGridStar();
+                //else
+                //    FillFlatGridStar();
             }
         }
 
@@ -973,8 +1005,8 @@ namespace Rental
                 flatId = Convert.ToInt32(grdFlats.CurrentRow.Cells[0].Value);
                 var flat = new frmFlat(EditMode.emEdit, flatId);
                 flat.ShowDialog();
-                if (flat.DialogResult == DialogResult.OK)
-                    FillFlatGridStar();
+                //if (flat.DialogResult == DialogResult.OK)
+                //    FillFlatGridStar();
             }
             catch (Exception ex)
             {
@@ -997,7 +1029,7 @@ namespace Rental
 
         private void btnStarReload_Click(object sender, EventArgs e)
         {
-            FillFlatGridStar();
+            //FillFlatGridStar();
         }
 
         /// <summary>
@@ -1050,7 +1082,7 @@ namespace Rental
             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 int fid = frm.FlatId;
-                FillFlatGridStar();
+               // FillFlatGridStar();
                 ((CurrencyManager)this.BindingContext[grdFlats.DataSource]).Position = 0;
 
 

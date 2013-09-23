@@ -199,14 +199,18 @@ namespace Rental
 
         public static void SetColumlOption(DataGridView grid, string columnName, string headerText, int width, ref int displayIndex, bool visible = true)
         {
-            if (grid != null && grid.Columns[columnName] != null)
-            {
+            if (grid.Columns[columnName] == null)
+                grid.Columns.Add(columnName, columnName);
+
+
+
+
+
                 grid.Columns[columnName].Visible = visible;
                 grid.Columns[columnName].DisplayIndex = displayIndex;
                 grid.Columns[columnName].Width = width;
                 grid.Columns[columnName].HeaderText = headerText;
                 displayIndex++;
-            }
         }
     }
 }

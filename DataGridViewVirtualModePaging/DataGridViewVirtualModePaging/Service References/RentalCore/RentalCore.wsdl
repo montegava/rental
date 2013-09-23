@@ -5,7 +5,8 @@
       <xsd:import schemaLocation="http://amiravrn.ru/RentalCore.RentalCore.svc?xsd=xsd1" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://amiravrn.ru/RentalCore.RentalCore.svc?xsd=xsd0" namespace="http://schemas.microsoft.com/Message" />
       <xsd:import schemaLocation="http://amiravrn.ru/RentalCore.RentalCore.svc?xsd=xsd2" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://amiravrn.ru/RentalCore.RentalCore.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DAL" />
+      <xsd:import schemaLocation="http://amiravrn.ru/RentalCore.RentalCore.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RentalCommon" />
+      <xsd:import schemaLocation="http://amiravrn.ru/RentalCore.RentalCore.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DAL" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IRentalCore_Upload_InputMessage">
@@ -26,6 +27,12 @@
   <wsdl:message name="IRentalCore_FlatList_OutputMessage">
     <wsdl:part name="parameters" element="tns:FlatListResponse" />
   </wsdl:message>
+  <wsdl:message name="IRentalCore_CheckUrlIfExist_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUrlIfExist" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_CheckUrlIfExist_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckUrlIfExistResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRentalCore">
     <wsdl:operation name="Upload">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/Upload" message="tns:IRentalCore_Upload_InputMessage" />
@@ -38,6 +45,10 @@
     <wsdl:operation name="FlatList">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatList" message="tns:IRentalCore_FlatList_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatListResponse" message="tns:IRentalCore_FlatList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CheckUrlIfExist">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/CheckUrlIfExist" message="tns:IRentalCore_CheckUrlIfExist_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/CheckUrlIfExistResponse" message="tns:IRentalCore_CheckUrlIfExist_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRentalCore" type="tns:IRentalCore">
@@ -62,6 +73,15 @@
     </wsdl:operation>
     <wsdl:operation name="FlatList">
       <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckUrlIfExist">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/CheckUrlIfExist" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

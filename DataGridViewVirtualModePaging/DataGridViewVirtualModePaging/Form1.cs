@@ -43,6 +43,10 @@ namespace DataGridViewVirtualModePaging
 
 			int rowIndex = e.RowIndex % _cache.PageSize;
 
+            if (rowIndex > 2000)
+            {
+                var dddd = 4;
+            }
 
           e.Value = _cache.CachedData[rowIndex][e.ColumnIndex];
 		}
