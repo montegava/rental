@@ -11,7 +11,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
   </PropertyGroup>
   <ItemGroup>
     <File Include="bin/DAL.dll">
-      <publishTime>08/26/2013 23:58:30</publishTime>
+      <publishTime>09/10/2013 07:15:18</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/26/2013 04:00:52</publishTime>
@@ -20,7 +20,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2012 22:12:14</publishTime>
     </File>
     <File Include="bin/log4net.dll">
-      <publishTime>11/06/2012 12:09:02</publishTime>
+      <publishTime>06/11/2012 12:09:02</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -32,10 +32,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
     <File Include="bin/RentalCMS.dll">
-      <publishTime>08/26/2013 23:58:31</publishTime>
+      <publishTime>09/10/2013 07:15:19</publishTime>
     </File>
     <File Include="bin/RentalCommon.dll">
-      <publishTime>08/26/2013 23:58:30</publishTime>
+      <publishTime>09/10/2013 07:15:18</publishTime>
     </File>
     <File Include="bin/SmartControls.dll">
       <publishTime>08/16/2013 16:47:05</publishTime>
@@ -56,13 +56,13 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/08/2013 20:26:01</publishTime>
     </File>
     <File Include="Default.aspx">
-      <publishTime>08/08/2013 21:14:26</publishTime>
+      <publishTime>09/10/2013 07:08:15</publishTime>
     </File>
     <File Include="FlatManager.aspx">
-      <publishTime>01/08/2013 20:08:59</publishTime>
+      <publishTime>08/01/2013 20:08:59</publishTime>
     </File>
     <File Include="Flats.aspx">
-      <publishTime>08/26/2013 23:45:34</publishTime>
+      <publishTime>09/10/2013 07:10:58</publishTime>
     </File>
     <File Include="images/bg.jpg">
       <publishTime>07/26/2013 02:31:44</publishTime>
@@ -134,10 +134,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/31/2013 00:59:49</publishTime>
     </File>
     <File Include="RealPricing.aspx">
-      <publishTime>08/08/2013 21:07:49</publishTime>
+      <publishTime>09/10/2013 07:08:54</publishTime>
     </File>
     <File Include="Rental.Master">
-      <publishTime>08/07/2013 20:08:34</publishTime>
+      <publishTime>09/10/2013 07:13:56</publishTime>
     </File>
     <File Include="Service References/RentalCore/configuration.svcinfo">
       <publishTime>08/13/2013 00:44:08</publishTime>
@@ -254,7 +254,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>08/26/2013 15:34:05</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>08/27/2013 00:27:53</publishTime>
+      <publishTime>09/10/2013 07:15:25</publishTime>
     </File>
   </ItemGroup>
 </Project>

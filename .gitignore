@@ -39,3 +39,6 @@ obj
 
 /DgvFilterPopup/bin/Debug/DgvFilterPopup.XML
 /DgvFilterPopup/bin/Debug/DgvFilterPopup.dll
+/DAL/bin/Release/RentalCommon.dll
+/RentalCommon/bin/Release/RentalCommon.dll
+/RentalCore/bin/Release/RentalCommon.dll

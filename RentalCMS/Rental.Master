@@ -54,19 +54,19 @@
                         <a href="./Default.aspx" title="Агентство Аренды &quot;АМИРА&quot;">Агентство Аренды "АМИРА"</a>
                     </li>
                     <li>
-                        <a href="http://amiravrn.ru/sdat-pomochenie-v-arendu/" title="Сдать помещение в аренду">Сдать квартиру, комнату ,дом</a>
+                        <a href="http://amiravrn.ru/Default.aspx" title="Сдать помещение в аренду">Сдать квартиру, комнату ,дом</a>
                     </li>
 
                     <li>
-                        <a href="http://amiravrn.ru/sdat-pomochenie-v-arendu/" title="Сдать помещение в аренду">Снять квартиру, комнату ,дом</a>
+                        <a href="http://amiravrn.ru/Default.aspx" title="Сдать помещение в аренду">Снять квартиру, комнату ,дом</a>
                     </li>
 
                     <li>
-                        <a href="http://amiravrn.ru/snyat-pomeshenie-v-arendu/" title="Снять помещение в аренду">Сдать помещение, офис</a>
+                        <a href="http://amiravrn.ru/Default.aspx" title="Снять помещение в аренду">Сдать помещение, офис</a>
                     </li>
 
                     <li>
-                        <a href="http://amiravrn.ru/snyat-pomeshenie-v-arendu/" title="Снять помещение в аренду">Снять помещение, офис</a>
+                        <a href="http://amiravrn.ru/Default.aspx" title="Снять помещение в аренду">Снять помещение, офис</a>
                     </li>
 
                     <li style="background-image: none">
@@ -124,11 +124,7 @@
             </div>
             <div style="clear: both"></div>
         </div>
-        <div class="footer">
-            <div style="display: none;">
-                Работает на <a href="http://www.hostcms.ru/" title="HostCMS">HostCMS</a>
-            </div>
-            © Агентство Аренды «АМИРА», 2009. Все права защищены.<br>
+        <div class="footer">© Агентство Аренды «АМИРА», 2009. Все права защищены.<br>
             <br>
         </div>
     </form>

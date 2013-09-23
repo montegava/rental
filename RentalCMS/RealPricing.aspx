@@ -6,7 +6,7 @@
 
 
 
-    <h1 class="h1" style="text-align: center;"><span style="font-size: medium; color: #000000;"><strong>Цены по аренде жилья в Воронеже 2013 г.</strong></span></h1>
+   <%-- <h1 class="h1" style="text-align: center;"><span style="font-size: medium; color: #000000;"><strong>Цены по аренде жилья в Воронеже 2013 г.</strong></span></h1>
     <p style="text-align: right;">
         <span style="font-size: medium; color: #000000;">&nbsp;</span><br />
         <span style="font-size: medium; color: #000000;">Вы хотите дешево&nbsp;или хорошо?<br />
@@ -104,5 +104,5 @@
                 <nobr><nobr>что-то</nobr>&nbsp;</nobr>
                 &nbsp;&nbsp;с ним&nbsp;не&nbsp;так. И&nbsp;помните, что<span style="margin-right: 0.3em"> </span><span style="margin-left: -0.3em">&laquo;</span>Скупой платит дважды&raquo;.</span><br />
             <span style="font-size: medium; color: #000000;">&nbsp;</span>
-        </p>
+        </p>--%>
 </asp:Content>

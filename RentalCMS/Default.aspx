@@ -13,7 +13,7 @@
         </span>
     </p>
 
-    <p style="text-align: justify;"><span style="font-size: medium;"></span><span style="font-size: medium;">С помощью нашей фирмы Вы&nbsp;можете:&nbsp;</span></p>
+   <%-- <p style="text-align: justify;"><span style="font-size: medium;"></span><span style="font-size: medium;">С помощью нашей фирмы Вы&nbsp;можете:&nbsp;</span></p>
     <p style="text-align: justify;"><span style="font-size: medium;">— снять&nbsp;или сдать квартиру, комнату, дом;</span></p>
     <p style="text-align: justify;"><span style="font-size: medium;">— снять&nbsp;или сдать офис, склад, помещение свободного назначения;</span></p>
     <p style="text-align: justify;"><span style="font-size: medium;">— перезаключить договор найма жилого помещения.</span></p>
@@ -104,6 +104,6 @@
         <span style="font-size: medium;">Комиссия.<strong><br>
         </strong></span>
     </p>
-    <p style="text-align: justify;"><span style="font-size: medium;">Оплата происходит при&nbsp;фактическом оказании услуги, то&nbsp;есть при&nbsp;подписании договора найма жилого помещения<span style="margin-right: 0.3em"> </span><span style="margin-left: -0.3em">(</span>при&nbsp;передаче ключей от&nbsp;квартиры). Иные условия свидетельствуют о&nbsp;возможном мошенничестве со&nbsp;стороны псевдо-агентства,&nbsp;или частных маклеров.&nbsp;</span></p>
+    <p style="text-align: justify;"><span style="font-size: medium;">Оплата происходит при&nbsp;фактическом оказании услуги, то&nbsp;есть при&nbsp;подписании договора найма жилого помещения<span style="margin-right: 0.3em"> </span><span style="margin-left: -0.3em">(</span>при&nbsp;передаче ключей от&nbsp;квартиры). Иные условия свидетельствуют о&nbsp;возможном мошенничестве со&nbsp;стороны псевдо-агентства,&nbsp;или частных маклеров.&nbsp;</span></p>--%>
 
 </asp:Content>

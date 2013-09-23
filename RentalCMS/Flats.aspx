@@ -180,7 +180,7 @@
 
 
 
-                            <th class="icon">&nbsp;</th>
+                            <th>Фото</th>
                         </tr>
                     </thead>
                     <tbody>
