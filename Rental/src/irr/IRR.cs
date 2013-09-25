@@ -4,11 +4,15 @@ using System.Linq;
 using System.Text;
 using DAL;
 using System.Text.RegularExpressions;
+using log4net;
 
 namespace Rental
 {
     class IRR
     {
+        public static readonly ILog Log = LogManager.GetLogger("TestApplication");
+
+
         // Founded list
         public List<Advert> m_adverts = new List<Advert>();
         // Exclude list
@@ -167,7 +171,7 @@ namespace Rental
                 result.Content += adv_content;
             }
             else
-                Log.Append("\tERROR on parse contacts");
+                Log.Debug("\tERROR on parse contacts");
 
             if (result != null && result.Content != null && result.Content.Length > 0)
             {

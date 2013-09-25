@@ -10,12 +10,14 @@ using System.Threading;
 using ImageProcessing;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
-//using System.Windows.Forms;
+using log4net;
 
 namespace Rental
 {
     public class Slando
     {
+        public static readonly ILog Log = LogManager.GetLogger("TestApplication");
+
         public List<Advert> m_adverts = new List<Advert>();
         private List<DAL.black_list> m_Exclude;
 
@@ -50,7 +52,7 @@ namespace Rental
                         linklist.Add(m.Groups[1].ToString());
                     m = m.NextMatch();
                 }
-                Log.Append("\tLink count: " + linklist.Count.ToString());
+                Log.Debug("\tLink count: " + linklist.Count.ToString());
                 onSetPageCountForLoad(linklist.Count);
                 onSetUIProgress();
 
@@ -58,7 +60,7 @@ namespace Rental
                 //2. Load
                 foreach (string url in linklist)
                 {
-                    Log.Append("\t\tGet link: " + url);
+                    Log.Debug("\t\tGet link: " + url);
                     #region 2.1. Check if url already uploaded and added
                     if (onCheckCansel())
                         return result;
@@ -74,7 +76,7 @@ namespace Rental
                     //    continue;
                     //}
                     #endregion
-                    Log.Append("\t\tLoading...");
+                    Log.Debug("\t\tLoading...");
                     Advert advert = GetAdvertByUrl(url);
                     if (advert != null)
                         result.Add(advert);
@@ -83,7 +85,7 @@ namespace Rental
                 }
             }
             else
-                Log.Append("\tContent is empty ");
+                Log.Debug("\tContent is empty ");
             return result;
         }
 
@@ -103,7 +105,7 @@ namespace Rental
 
             if (string.IsNullOrEmpty(error))
             {
-                Log.Append("\t\tPage size: " + page.Length.ToString());
+                Log.Debug("\t\tPage size: " + page.Length.ToString());
                 result = GetAdvert(page, url);
                 if (result != null)
                 {
@@ -113,13 +115,13 @@ namespace Rental
                 }
             }
             else
-                Log.Append("\t\tERROR: " + error);
+                Log.Debug("\t\tERROR: " + error);
             return result;
         }
 
         public Advert GetAdvert(string contentPage, string url)
         {
-            Log.Append("\t\tGetAdvert");
+            Log.Debug("\t\tGetAdvert");
             Advert result = new Advert();
 
             #region Phone
@@ -130,7 +132,7 @@ namespace Rental
             {
 
                 var imageUrl = String.Format("http://voronezh.vor.slando.ru/ajax/misc/phoneimage/{0}/?nomobile=1", m.Groups[1].ToString());
-                Log.Append("\t\tLoad image: " + imageUrl);
+                Log.Debug("\t\tLoad image: " + imageUrl);
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(imageUrl);
                 request.CookieContainer = new CookieContainer();
                 request.CookieContainer.Add(WebPage.Cookies);
@@ -148,8 +150,8 @@ namespace Rental
                 using (var stream = response.GetResponseStream())
                 {
                     Image bmp = Bitmap.FromStream(stream);
-                    Log.Append("\t\tdone");
-                    Log.Append("\t\tRecognition...");
+                    Log.Debug("\t\tdone");
+                    Log.Debug("\t\tRecognition...");
                     string phone = string.Empty;
                     try
                     {
@@ -158,10 +160,10 @@ namespace Rental
                     catch (Exception ex)
                     {
 
-                        Log.Append("\t\tERROR: " + ex.Message + "\r\n"+ ex.InnerException + ex.InnerException + ex.Source + ex.TargetSite + ex.HelpLink + ex.ToString() );
+                        Log.Debug("\t\tERROR: " + ex.Message + "\r\n"+ ex.InnerException + ex.InnerException + ex.Source + ex.TargetSite + ex.HelpLink + ex.ToString() );
                     }
                     
-                    Log.Append("\t\tdone. " + phone);
+                    Log.Debug("\t\tdone. " + phone);
                     phone = phone.Replace("-", "");
                     phone = phone.Replace("(", "");
                     phone = phone.Replace(")", "");

@@ -9,11 +9,15 @@ using System.Drawing;
 using System.IO;
 using System.Threading;
 using ImageProcessing;
+using log4net;
 
 namespace Rental
 {
     public class Avito
     {
+        public static readonly ILog Log = LogManager.GetLogger("TestApplication");
+
+
         public List<Advert> m_adverts = new List<Advert>();
         private List<DAL.black_list> m_Exclude;
 
@@ -94,7 +98,7 @@ namespace Rental
             Advert result = null;
             string error;
             WebPage.Cookies = null;
-            Log.Append("\tLoadPage " + url);
+            Log.Debug("\tLoadPage " + url);
             string page = WebPage.LoadPage(url, Encoding.GetEncoding("utf-8"), out error);
             onSetPageCountLoaded(1);
             onSetUIProgress();
@@ -175,7 +179,7 @@ namespace Rental
             Match m = Regex.Match(contentPage, @"<a id=""showPhoneBtn"".*?href=""(.*?)""", RegexOptions.Singleline);
             if (m.Success && m.Groups.Count > 1)
             {
-                Log.Append("\tLoadPage item " + "http://m.avito.ru" + m.Groups[1]);
+                Log.Debug("\tLoadPage item " + "http://m.avito.ru" + m.Groups[1]);
 
                 string phone = string.Empty;
                 string error = String.Empty;
@@ -221,7 +225,7 @@ namespace Rental
                    
 
 
-                    Log.Append("\tphone after recognition: " + phone);
+                    Log.Debug("\tphone after recognition: " + phone);
                     phone = phone.Replace("-", "");
                     phone = phone.Replace("(", "");
                     phone = phone.Replace(")", "");
@@ -233,7 +237,7 @@ namespace Rental
                     result.Phones.AddRange(phones);
                 }
                 else
-                    Log.Append("ERROR: " + error);
+                    Log.Debug("ERROR: " + error);
 
             }
             #endregion

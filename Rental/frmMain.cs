@@ -25,7 +25,7 @@ namespace Rental
 
     public partial class frmMain : Form
     {
-        public static readonly ILog testLogger = LogManager.GetLogger("TestApplication");
+        public static readonly ILog Log = LogManager.GetLogger("TestApplication");
         private BackgroundWorker Worker {get; set;}
 
         // List of tab 
@@ -54,7 +54,7 @@ namespace Rental
             Worker.RunWorkerCompleted += this.RunWorkerCompleted;
 
 
-            testLogger.Error("Test log"); 
+           
 
             //Login
             frmLogin frm = new frmLogin(this);
@@ -216,16 +216,18 @@ namespace Rental
 
         private void DoWork(object sender, DoWorkEventArgs e)
         {
-            Log.Append("Begin download");
+            
+
+            Log.Debug("Begin download");
             #region Get Stor words
             if (m_exclude != null)
                 m_exclude.Clear();
             m_exclude = BlackListManager.GetAllBlackLists();
 
             if (m_exclude != null && m_exclude.Count != 0)
-                Log.Append("Exclude list count: " + m_exclude.Count);
+                Log.Debug("Exclude list count: " + m_exclude.Count);
             else
-                Log.Append("Exclude list is emty");
+                Log.Debug("Exclude list is emty");
             #endregion
 
             page_count_for_load = 0;
@@ -309,7 +311,7 @@ namespace Rental
         private void getMoyaReklama(int type)
         {
             #region Load 1st page
-            Log.Append("MoyaReklama 1 ");
+            Log.Debug("MoyaReklama 1 ");
 
             string urlPattern = Const.CNT_MOYAREKLAMA_URL_1;
             switch (type)
@@ -335,7 +337,7 @@ namespace Rental
             #endregion
 
             if (!String.IsNullOrEmpty(error))
-                Log.Append("\tERROR on load page " + url + "  " + error);
+                Log.Debug("\tERROR on load page " + url + "  " + error);
             else
             {
 
@@ -355,7 +357,7 @@ namespace Rental
                     page_count = ((int)(all / 15)) + (all % 15 > 0 ? 1 : 0);
 
                 }
-                Log.Append("\tPage count: " + page_count);
+                Log.Debug("\tPage count: " + page_count);
                 #endregion
 
                 m_adverts.AddRange(mr.GetAdvertList(page));
@@ -373,7 +375,7 @@ namespace Rental
                     onSetPageCountLoaded(1);
                     onSetUIProgress();
                     if (!String.IsNullOrEmpty(error))
-                        Log.Append(error);
+                        Log.Debug(error);
                     else
                         m_adverts.AddRange(mr.GetAdvertList(page));
                 }
@@ -385,7 +387,7 @@ namespace Rental
         private void GetCamelot(bool forFlat = true)
         {
             #region Load 1st page
-            Log.Append("CAMELOT " + (forFlat ? "flat" : "house"));
+            Log.Debug("CAMELOT " + (forFlat ? "flat" : "house"));
             string url = forFlat ? Const.CNT_CAMELOT_FLAT_URL : Const.CNT_CAMELOT_BUILD_URL;
             string error;
             string page = WebPage.LoadPage(url, Encoding.GetEncoding("windows-1251"), out error);
@@ -396,11 +398,11 @@ namespace Rental
             #endregion
 
             if (!String.IsNullOrEmpty(error))
-                Log.Append("\tERROR on load page " + url + "  " + error);
+                Log.Debug("\tERROR on load page " + url + "  " + error);
             else
             {
                 DateTime posterDate = Camelot.GetPosterDate(page);
-                Log.Append("\t Current poster date: " + posterDate.ToShortDateString());
+                Log.Debug("\t Current poster date: " + posterDate.ToShortDateString());
 
                 #region Get page count and url pattern
                 int page_count = 0;
@@ -416,18 +418,18 @@ namespace Rental
                         {
                             page_count = Int32.Parse(m.Groups[1].ToString());
                             url_pattern = Const.CNT_CAMELOT_DOMAIN + url_pattern.Replace("-page-" + page_count + "-", "-page-{0}-");
-                            Log.Append("\tPage count: " + page_count.ToString());
+                            Log.Debug("\tPage count: " + page_count.ToString());
                         }
                         catch (Exception ex)
                         {
-                            Log.Append("\tERROR Camelot convert count: " + ex.Message);
+                            Log.Debug("\tERROR Camelot convert count: " + ex.Message);
                         }
                     }
                     else
-                        Log.Append("\tERROR on Camelot: Can't find max page count");
+                        Log.Debug("\tERROR on Camelot: Can't find max page count");
                 }
                 else
-                    Log.Append("\tERROR on Camelot: Can't find max page count");
+                    Log.Debug("\tERROR on Camelot: Can't find max page count");
                 #endregion
 
                 Camelot camelot = new Camelot(m_exclude);
@@ -453,7 +455,7 @@ namespace Rental
                     onSetPageCountLoaded(1);
                     onSetUIProgress();
                     if (!String.IsNullOrEmpty(error))
-                        Log.Append(error);
+                        Log.Debug(error);
                     else
                         m_adverts.AddRange(camelot.GetAdvertList(page, posterDate));
                 }
@@ -463,7 +465,7 @@ namespace Rental
         private void GetIRR()
         {
             #region Load 1st page
-            Log.Append("IRR");
+            Log.Debug("IRR");
             string error;
             string page = WebPage.LoadPage(Const.CNT_IRR_URL, Encoding.GetEncoding("utf-8"), out error);
             onSetPageCountForLoad(1);
@@ -473,7 +475,7 @@ namespace Rental
             #endregion
 
             if (!String.IsNullOrEmpty(error))
-                Log.Append("\tERROR on load page " + Const.CNT_IRR_URL + "  " + error);
+                Log.Debug("\tERROR on load page " + Const.CNT_IRR_URL + "  " + error);
             else
             {
                 #region Get page count
@@ -481,12 +483,12 @@ namespace Rental
                 var m = Regex.Match(page, @"<span>...</span>[\s]*</li>[\s]*<li>[\s]*<a[\s]href="".*?"">(.*?)</a>", RegexOptions.Singleline);
                 if (!m.Success || (m.Groups.Count < 2) || !(Int32.TryParse(m.Groups[1].ToString(), out page_count)))
                 {
-                    Log.Append("\tERROR on Camelot: Can't find max page count");
+                    Log.Debug("\tERROR on Camelot: Can't find max page count");
                     return;
                 }
                 if (page_count > 5)
                     page_count = 5;
-                Log.Append("\tCamelot tPage count: " + page_count);
+                Log.Debug("\tCamelot tPage count: " + page_count);
                 #endregion
 
                 IRR irr = new IRR(m_exclude);
@@ -511,7 +513,7 @@ namespace Rental
                     onSetPageCountLoaded(1);
                     onSetUIProgress();
                     if (!String.IsNullOrEmpty(error))
-                        Log.Append(error);
+                        Log.Debug(error);
                     else
                         m_adverts.AddRange(irr.GetAdvertList(page));
                 }
@@ -521,7 +523,7 @@ namespace Rental
         private void GetAvito(bool forFlat = true)
         {
             #region Load 1st page
-            Log.Append("AVITO " + (forFlat ? "flat" : "house"));
+            Log.Debug("AVITO " + (forFlat ? "flat" : "house"));
             string url = forFlat ? Const.CNT_AVITO_FLAT_URL : Const.CNT_AVITO_BUILD_URL;
             string error;
             string page = WebPage.LoadPage(url, Encoding.GetEncoding("utf-8"), out error);
@@ -532,12 +534,12 @@ namespace Rental
             #endregion
 
             if (!String.IsNullOrEmpty(error))
-                Log.Append("\tERROR on load page " + url + "  " + error);
+                Log.Debug("\tERROR on load page " + url + "  " + error);
             else
             {
                 //2. Get page count
                 int page_count = forFlat ? 3 : 1;
-                Log.Append("\tPage count: " + page_count.ToString());
+                Log.Debug("\tPage count: " + page_count.ToString());
 
                 if (Worker.CancellationPending)
                     return;
@@ -563,7 +565,7 @@ namespace Rental
                     onSetPageCountLoaded(1);
                     onSetUIProgress();
                     if (!String.IsNullOrEmpty(error))
-                        Log.Append(error);
+                        Log.Debug(error);
                     else
                         m_adverts.AddRange(avito.GetAdvertList(page));
                 }
@@ -572,20 +574,20 @@ namespace Rental
 
         private void GetSlando(bool forFlat = true)
         {
-            Log.Append("Slando");
+            Log.Debug("Slando");
             string url = forFlat ? Const.CNT_SLANDO_FLAT_URL : Const.CNT_SLANDO_BUILD_URL;
-            Log.Append("-----------------------Page number: 1");
-            Log.Append("\tLoading....: " + url);
+            Log.Debug("-----------------------Page number: 1");
+            Log.Debug("\tLoading....: " + url);
             string error;
             string page = WebPage.LoadPage(url, Encoding.GetEncoding("utf-8"), out error);
             onSetPageCountForLoad(1);
             onSetUIProgress();
             if (onCheckCansel()) return;
             if (!String.IsNullOrEmpty(error))
-                Log.Append("\tERROR on Avito load page " + url + "  " + error);
+                Log.Debug("\tERROR on Avito load page " + url + "  " + error);
             else
             {
-                Log.Append("\tPage size: " + page.Length);
+                Log.Debug("\tPage size: " + page.Length);
                 int page_count = forFlat ? 3 : 1;
                 if (Worker.CancellationPending) return;
                 Slando slando = new Slando(m_exclude);
@@ -601,23 +603,23 @@ namespace Rental
 
                 //Get 1st page
                 if (m_adverts == null) m_adverts = new List<Advert>();
-                Log.Append("\tCollect links");
+                Log.Debug("\tCollect links");
                 m_adverts.AddRange(slando.GetAdvertList(page));
                 //3. Get All adv
                 for (int i = 2; i <= page_count; i++)
                 {
-                    Log.Append("-----------------------Page number: " + i);
+                    Log.Debug("-----------------------Page number: " + i);
                     if (onCheckCansel()) return;
-                    Log.Append("\tLoading....: " + url + "?page=" + i);
+                    Log.Debug("\tLoading....: " + url + "?page=" + i);
                     page = WebPage.LoadPage(url + "?page=" + i, Encoding.GetEncoding("windows-1251"), out error);
                     onSetPageCountLoaded(1);
                     onSetUIProgress();
                     if (!String.IsNullOrEmpty(error))
-                        Log.Append("\tERROR on Avito load page " + url + "/page" + i + "  " + error);
+                        Log.Debug("\tERROR on Avito load page " + url + "/page" + i + "  " + error);
                     else
                     {
-                        Log.Append("\tPage size: " + page.Length);
-                        Log.Append("\tCollect links");
+                        Log.Debug("\tPage size: " + page.Length);
+                        Log.Debug("\tCollect links");
                         m_adverts.AddRange(slando.GetAdvertList(page));
                     }
                 }
@@ -755,7 +757,7 @@ namespace Rental
         /// <summary>
         /// Начать загрузку
         /// </summary>
-        private void Run()
+        private void Start()
         {
             menuStart.Enabled = false;
             btnStart.Enabled = false;
@@ -788,7 +790,7 @@ namespace Rental
         /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
-            Run();
+            Start();
         }
 
         /// <summary>
@@ -798,7 +800,7 @@ namespace Rental
         /// <param name="e"></param>
         private void menuStart_Click(object sender, EventArgs e)
         {
-            Run();
+            Start();
         }
 
         /// <summary>
