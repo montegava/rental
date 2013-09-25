@@ -13,8 +13,7 @@ namespace Rental
     public partial class frmBlackItem : Form
     {
         private int id = -1;
-        private DataRow dataRow = null;
-
+    
         public frmBlackItem()
         {
             InitializeComponent();

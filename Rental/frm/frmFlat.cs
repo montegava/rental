@@ -21,8 +21,7 @@ namespace Rental
 
         private EditMode EdtMode;
         public int FlatId = -1;
-        private DataRow dataRow = null;
-
+      
         public frmFlat(Advert advert, EditMode edtype)
         {
             InitializeComponent();

@@ -38,7 +38,6 @@ namespace rec
         private void button2_Click(object sender, EventArgs e)
         {
             int activePage1 = 1;
-            int activePage;
             int totalRowsNumber;
             int pageCount;
             try
