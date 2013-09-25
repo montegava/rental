@@ -405,9 +405,6 @@ namespace DAL
                 error = ex.Message;
                 return false;
             }
-
-            return true;
-
         }
 
         public static bool DeleteFlat(int flatId, out string error)

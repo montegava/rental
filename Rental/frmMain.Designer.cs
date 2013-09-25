@@ -30,14 +30,15 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.программаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStop = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -137,12 +138,11 @@
             this.toolStrip3 = new System.Windows.Forms.ToolStrip();
             this.btnSettings = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnPlay = new System.Windows.Forms.ToolStripButton();
+            this.btnStart = new System.Windows.Forms.ToolStripButton();
             this.btnStop = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cbSites = new System.Windows.Forms.ToolStripComboBox();
-            this.bw = new System.ComponentModel.BackgroundWorker();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -201,7 +201,8 @@
             // программаToolStripMenuItem
             // 
             this.программаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuStart});
+            this.menuStart,
+            this.menuStop});
             this.программаToolStripMenuItem.Name = "программаToolStripMenuItem";
             this.программаToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.программаToolStripMenuItem.Text = "Программа";
@@ -209,9 +210,16 @@
             // menuStart
             // 
             this.menuStart.Name = "menuStart";
-            this.menuStart.Size = new System.Drawing.Size(162, 22);
+            this.menuStart.Size = new System.Drawing.Size(184, 22);
             this.menuStart.Text = "Начать загрузку";
             this.menuStart.Click += new System.EventHandler(this.menuStart_Click);
+            // 
+            // menuStop
+            // 
+            this.menuStop.Name = "menuStop";
+            this.menuStop.Size = new System.Drawing.Size(184, 22);
+            this.menuStop.Text = "Завершить загрузку";
+            this.menuStop.Click += new System.EventHandler(this.menuStop_Click);
             // 
             // настройкиToolStripMenuItem
             // 
@@ -353,13 +361,13 @@
             this.lvAdverts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvAdverts.FullRowSelect = true;
             this.lvAdverts.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
-            listViewGroup2.Header = "sdfasd";
-            listViewGroup2.Name = "sdf";
+            listViewGroup5.Header = "ListViewGroup";
+            listViewGroup5.Name = "listViewGroup1";
+            listViewGroup6.Header = "sdfasd";
+            listViewGroup6.Name = "sdf";
             this.lvAdverts.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup5,
+            listViewGroup6});
             this.lvAdverts.Location = new System.Drawing.Point(3, 28);
             this.lvAdverts.Name = "lvAdverts";
             this.lvAdverts.Size = new System.Drawing.Size(731, 247);
@@ -457,13 +465,13 @@
             this.lvStars.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvStars.FullRowSelect = true;
             this.lvStars.GridLines = true;
-            listViewGroup3.Header = "ListViewGroup";
-            listViewGroup3.Name = "listViewGroup1";
-            listViewGroup4.Header = "sdfasd";
-            listViewGroup4.Name = "sdf";
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "sdfasd";
+            listViewGroup2.Name = "sdf";
             this.lvStars.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup1,
+            listViewGroup2});
             this.lvStars.Location = new System.Drawing.Point(3, 28);
             this.lvStars.Name = "lvStars";
             this.lvStars.Size = new System.Drawing.Size(731, 247);
@@ -1242,7 +1250,8 @@
             // lblCounter
             // 
             this.lblCounter.AutoSize = false;
-            this.lblCounter.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCounter.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.lblCounter.ForeColor = System.Drawing.Color.White;
             this.lblCounter.Name = "lblCounter";
             this.lblCounter.Size = new System.Drawing.Size(100, 17);
             this.lblCounter.Text = "0:0";
@@ -1266,7 +1275,7 @@
             this.toolStrip3.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnSettings,
             this.toolStripSeparator8,
-            this.btnPlay,
+            this.btnStart,
             this.btnStop,
             this.toolStripSeparator13,
             this.toolStripLabel1,
@@ -1291,15 +1300,15 @@
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 43);
             // 
-            // btnPlay
+            // btnStart
             // 
-            this.btnPlay.Image = ((System.Drawing.Image)(resources.GetObject("btnPlay.Image")));
-            this.btnPlay.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
-            this.btnPlay.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(131, 40);
-            this.btnPlay.Text = "Начать загрузку";
-            this.btnPlay.Click += new System.EventHandler(this.btnStart_Click);
+            this.btnStart.Image = ((System.Drawing.Image)(resources.GetObject("btnStart.Image")));
+            this.btnStart.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(131, 40);
+            this.btnStart.Text = "Начать загрузку";
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // btnStop
             // 
@@ -1343,13 +1352,6 @@
             this.cbSites.Name = "cbSites";
             this.cbSites.Size = new System.Drawing.Size(200, 23);
             this.cbSites.SelectedIndexChanged += new System.EventHandler(this.cbSites_SelectedIndexChanged);
-            // 
-            // bw
-            // 
-            this.bw.WorkerReportsProgress = true;
-            this.bw.WorkerSupportsCancellation = true;
-            this.bw.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bw_DoWork);
-            this.bw.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bw_RunWorkerCompleted);
             // 
             // frmMain
             // 
@@ -1435,7 +1437,7 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStrip toolStrip3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
-        private System.Windows.Forms.ToolStripButton btnPlay;
+        private System.Windows.Forms.ToolStripButton btnStart;
         private System.Windows.Forms.ToolStripButton btnStop;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator13;
         private System.Windows.Forms.TreeView tree;
@@ -1463,7 +1465,6 @@
         private System.Windows.Forms.TabControl mainTabControl;
         private System.Windows.Forms.TabPage tabLoad;
         private System.Windows.Forms.TabPage tabStar;
-        private System.ComponentModel.BackgroundWorker bw;
         private System.Windows.Forms.TabPage tabBlackList;
         private System.Windows.Forms.ToolStrip btnAddBadPhone;
         private System.Windows.Forms.ToolStripButton btnAdd2BlackList;
@@ -1534,6 +1535,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ToolStripMenuItem menuStop;
     }
 }
 

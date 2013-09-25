@@ -8,7 +8,6 @@ using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
 using tesseract;
 using System.Reflection;

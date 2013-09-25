@@ -25,8 +25,8 @@ namespace Rental
 
     public partial class frmMain : Form
     {
-        public static readonly ILog testLogger = LogManager.GetLogger("TestApplication"); 
-      
+        public static readonly ILog testLogger = LogManager.GetLogger("TestApplication");
+        private BackgroundWorker Worker {get; set;}
 
         // List of tab 
         private Dictionary<string, TabPage> pages = new Dictionary<string, TabPage>();
@@ -49,6 +49,11 @@ namespace Rental
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            Worker = new BackgroundWorker();
+            Worker.DoWork += this.DoWork;
+            Worker.RunWorkerCompleted += this.RunWorkerCompleted;
+
+
             testLogger.Error("Test log"); 
 
             //Login
@@ -196,35 +201,20 @@ namespace Rental
 
       
         #region Worker
-        private void BeforeStart()
-        {
-            menuStart.Enabled = btnPlay.Enabled = false;
-            lvAdverts.Items.Clear();
-            lvStars.Items.Clear();
-        }
 
-        private void AfterEnd()
+        private void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            menuStart.Enabled = btnPlay.Enabled = btnStop.Enabled = true;
+            menuStart.Enabled = true;
+            btnStart.Enabled = true;
             AdvertToListView(m_adverts);
             cbCountAll.Text = lvAdverts.Items.Count.ToString();
             cbFilteredCount.Text = lvStars.Items.Count.ToString();
             ProgressBar.Value = 0;
             tabControlAdvList.SelectedIndex = 1;
-        }
-
-        private void bw_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-            AfterEnd();
             MessageBox.Show("Загрузка завершена");
         }
 
-        private void bw_DoWork(object sender, DoWorkEventArgs e)
-        {
-            Start();
-        }
-
-        private void Start()
+        private void DoWork(object sender, DoWorkEventArgs e)
         {
             Log.Append("Begin download");
             #region Get Stor words
@@ -549,7 +539,7 @@ namespace Rental
                 int page_count = forFlat ? 3 : 1;
                 Log.Append("\tPage count: " + page_count.ToString());
 
-                if (bw.CancellationPending)
+                if (Worker.CancellationPending)
                     return;
                 Avito avito = new Avito(m_exclude);
                 avito.onSetUIProgress += onSetUIProgress;
@@ -597,7 +587,7 @@ namespace Rental
             {
                 Log.Append("\tPage size: " + page.Length);
                 int page_count = forFlat ? 3 : 1;
-                if (bw.CancellationPending) return;
+                if (Worker.CancellationPending) return;
                 Slando slando = new Slando(m_exclude);
                 slando.onSetUIProgress += onSetUIProgress;
                 slando.onSetPageCountForLoad += onSetPageCountForLoad;
@@ -662,7 +652,7 @@ namespace Rental
 
         private bool onCheckCansel()
         {
-            return bw.CancellationPending;
+            return Worker.CancellationPending;
         }
         #endregion
 
@@ -755,20 +745,80 @@ namespace Rental
             }
 
 
+        
         }
+
+
+
+
+
+        /// <summary>
+        /// Начать загрузку
+        /// </summary>
+        private void Run()
+        {
+            menuStart.Enabled = false;
+            btnStart.Enabled = false;
+            lvAdverts.Items.Clear();
+            lvStars.Items.Clear();
+            Worker.RunWorkerAsync();
+        }
+
+        /// <summary>
+        /// Завершить загрузку
+        /// </summary>
+        private void Stop()
+        {
+            if (Worker.IsBusy)
+            {
+                btnStop.Enabled = false;
+                Worker.CancelAsync();
+            }
+        }
+
 
         /////////////////
 
+        
+
+        /// <summary>
+        /// Начать загрузку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
-            BeforeStart();
-            bw.RunWorkerAsync();
+            Run();
         }
 
+        /// <summary>
+        /// Начать загрузку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void menuStart_Click(object sender, EventArgs e)
         {
-            BeforeStart();
-            bw.RunWorkerAsync();
+            Run();
+        }
+
+        /// <summary>
+        /// Завершить загрузку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void menuStop_Click(object sender, EventArgs e)
+        {
+            Stop();
+        }
+
+        /// <summary>
+        /// Завершить загрузку
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void tspStop_Click(object sender, EventArgs e)
+        {
+            Stop();
         }
 
         private void lvAdverts_SelectedIndexChanged(object sender, EventArgs e)
@@ -889,14 +939,7 @@ namespace Rental
                 onAddContacts2BlackList(lvAdverts.SelectedItems[0].Tag as Advert);
         }
 
-        private void tspStop_Click(object sender, EventArgs e)
-        {
-            if (bw.IsBusy)
-            {
-                btnStop.Enabled = false;
-                bw.CancelAsync();
-            }
-        }
+    
 
         private void cbSites_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -1098,6 +1141,8 @@ namespace Rental
         {
 
         }
+
+     
     }
 
 }

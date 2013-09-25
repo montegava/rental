@@ -50,7 +50,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>1360539611_20606.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -174,7 +175,8 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="errors\mockup.ppt" />
+    <None Include="img\camelot_close.pdn" />
+    <None Include="img\mr_close.pdn" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DAL.flat_info.datasource" />
     <None Include="Properties\Settings.settings">
@@ -202,7 +204,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\RentalCore\RentalCore.wsdl" />
-    <None Include="web.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAL\DAL.csproj">
@@ -219,8 +220,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="1360539611_20606.ico" />
-    <Content Include="errors\error.txt" />
     <None Include="Service References\RentalCore\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
@@ -256,6 +255,35 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\RentalCore\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\1323510897_apply.png" />
+    <Content Include="img\1360539611_20606.ico" />
+    <Content Include="img\add.png" />
+    <Content Include="img\camelot.png" />
+    <Content Include="img\camelot_close.png" />
+    <Content Include="img\database-refresh-icon.png" />
+    <Content Include="img\delete.png" />
+    <Content Include="img\edit.png" />
+    <Content Include="img\favicon.ico" />
+    <Content Include="img\faviconavito.ico" />
+    <Content Include="img\faviconirr.ico" />
+    <Content Include="img\faviconslando.ico" />
+    <Content Include="img\filter.png" />
+    <Content Include="img\filter16.png" />
+    <Content Include="img\fon.png" />
+    <Content Include="img\fon2.png" />
+    <Content Include="img\irr.png" />
+    <Content Include="img\irrclose.png" />
+    <Content Include="img\Misc-User-icon.png" />
+    <Content Include="img\moyareklama.png" />
+    <Content Include="img\mr_close.png" />
+    <Content Include="img\Refresh-icon.png" />
+    <Content Include="img\Reload-icon.png" />
+    <Content Include="img\Search.png" />
+    <Content Include="img\Star-Full-icon.png" />
+    <Content Include="img\_active__settings.png" />
+    <Content Include="img\_active__settings_2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

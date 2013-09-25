@@ -74,7 +74,7 @@ namespace Rental
                 this.inputREGION.Text = flat.REGION;
                 this.inputRENT_FROM.Text = flat.RENT_FROM.ToString();
                 this.inputRENT_TO.Text = flat.RENT_TO.ToString();
-                this.intupROOM_COUNT.Text =   flat.ROOM_COUNT.ToString();
+                this.intupROOM_COUNT.Text = flat.ROOM_COUNT.ToString();
                 this.intupSTATE.Text = flat.STATE;
                 this.inputTERM.Text = flat.TERM;
                 this.chTV.Checked = flat.TV ?? false;
@@ -129,19 +129,19 @@ namespace Rental
             #region Saving Images
             //if (EdtMode == EditMode.emEdit)
             //    FlatImageManager.DeleteAllByFlatId(FlatId);
-           
 
 
-            
+
+
             foreach (ListViewItem item in lvImagList.Items)
             {
                 var flatImage = ((DAL.images)item.Tag);
                 var imgPath = flatImage.IMAGE_PATH;
-            
+
                 FlatImageManager.AddFlatImage(flat.ID, imgPath);
             }
 
-          
+
             #endregion
 
         }
@@ -161,7 +161,7 @@ namespace Rental
 
             int floor;
             result.FLOOR = int.TryParse(intupFLOOR.Text, out floor) ? (int?)floor : null;
-            
+
             result.BATH_UNIT = intupBATH_UNIT.Text;
             result.BUILD = intupBUILD.Text;
 
@@ -188,7 +188,7 @@ namespace Rental
 
             result.REGION = inputREGION.Text;
 
-            
+
             return result;
         }
 
@@ -282,7 +282,7 @@ namespace Rental
                 item.Text = Path.GetFileNameWithoutExtension(compressedImage);
 
                 var selItem = lvImagList.Items.Add(item);
-               
+
                 //pbImage.Image = Image.FromFile(compressedImage);
 
                 //if (EdtMode == EditMode.emEdit)
@@ -330,9 +330,7 @@ namespace Rental
                     fs.Write(buffer, 0, read);
                 }
             }
-            catch (Exception ex)
-            {
-            }
+            catch { }
             finally
             {
                 if (fs != null)
