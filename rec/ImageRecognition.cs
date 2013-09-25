@@ -1,20 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-
 using System.Text;
-
-
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using System.Drawing.Imaging;
 using System.IO;
 using tesseract;
 using System.Reflection;
-
-
-
 
 namespace ImageProcessing
 {
@@ -128,7 +121,7 @@ namespace ImageProcessing
                     image = FillTransporate(image);
                 image = ResizeImage(image);
 
-                return ocr.Apply(image); 
+                return ocr.Apply(image);
             }
             catch (Exception e)
             {

@@ -26,18 +26,19 @@ namespace Rental
     public partial class frmMain : Form
     {
         public static readonly ILog Log = LogManager.GetLogger("TestApplication");
-        private BackgroundWorker Worker {get; set;}
+        private BackgroundWorker Worker = new BackgroundWorker();
 
         // List of tab 
         private Dictionary<string, TabPage> pages = new Dictionary<string, TabPage>();
         private volatile int page_count_for_load = 0;
         private volatile int page_count_loaded = 0;
-        // Спарсенные за раз объявы
-        private List<Advert> m_adverts = new List<Advert>();
-        // Список исключений = телефоны, слова
-        private List<black_list> m_exclude;
-        private BindingSource bindingSource = new BindingSource();
-        NameListCache _cache = null;
+        
+        
+        private List<Advert> AdvertList = new List<Advert>();
+        
+        private List<black_list> BlackList = new List<black_list>();
+        
+        NameListCache Cache = null;
         const int PAGE_SIZE = 5000;
 
 
@@ -49,19 +50,17 @@ namespace Rental
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            Worker = new BackgroundWorker();
+            Log.Debug("Application started.");
+
             Worker.DoWork += this.DoWork;
             Worker.RunWorkerCompleted += this.RunWorkerCompleted;
-
-
-           
 
             //Login
             frmLogin frm = new frmLogin(this);
           // frm.ShowDialog();
 
 
-            SetFormSize();
+            LoadFormSize();
             tabControlAdvList.SelectedIndex = 1;
             FillTree();
             OnVisible(tree.Nodes[0]);
@@ -72,7 +71,7 @@ namespace Rental
             cbSites.ComboBox.ValueMember = "Key";
 
 
-            _cache = new NameListCache(PAGE_SIZE);
+            this.Cache = new NameListCache(PAGE_SIZE);
 
             int displayIndex = 0;
             Common.SetColumlOption(grdFlats, "ID", "№", 45, ref displayIndex);
@@ -107,7 +106,7 @@ namespace Rental
 
             grdFlats.VirtualMode = true;
 
-            grdFlats.RowCount = (int)_cache.TotalRowsNumber;
+            grdFlats.RowCount = (int)Cache.TotalRowsNumber;
 
             //cbSites.ComboBox.Selectedva = Properties.Settings.Default.cbSites != null ? Properties.Settings.Default.cbSites : -1;
 
@@ -116,21 +115,9 @@ namespace Rental
 
         private void dataGridView1_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
         {
-            _cache.LoadPage(e.RowIndex);
-
-            if (e.RowIndex > 50)
-            {
-
-            }
-
-            int rowIndex = e.RowIndex % _cache.PageSize;
-
-            if (rowIndex > 2000)
-            {
-                var dddd = 4;
-            }
-
-            e.Value = _cache.CachedData[rowIndex][e.ColumnIndex];
+            Cache.LoadPage(e.RowIndex);
+            int rowIndex = e.RowIndex % Cache.PageSize;
+            e.Value = Cache.CachedData[rowIndex][e.ColumnIndex];
         }
 
         private void FillTree()
@@ -169,7 +156,7 @@ namespace Rental
         /// <summary>
         /// Load windows size
         /// </summary>
-        private void SetFormSize()
+        private void LoadFormSize()
         {
             this.Top = Properties.Settings.Default.Top;
             this.Left = Properties.Settings.Default.Left;
@@ -177,15 +164,7 @@ namespace Rental
             this.Height = Properties.Settings.Default.Length;
         }
 
-        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            Properties.Settings.Default.cbSites = ((int)cbSites.ComboBox.SelectedValue);
-            Properties.Settings.Default.Width = this.Width;
-            Properties.Settings.Default.Length = this.Height;
-            Properties.Settings.Default.Top = this.Top;
-            Properties.Settings.Default.Left = this.Left;
-            Properties.Settings.Default.Save();
-        }
+      
 
         #endregion
 
@@ -206,7 +185,7 @@ namespace Rental
         {
             menuStart.Enabled = true;
             btnStart.Enabled = true;
-            AdvertToListView(m_adverts);
+            AdvertToListView(AdvertList);
             cbCountAll.Text = lvAdverts.Items.Count.ToString();
             cbFilteredCount.Text = lvStars.Items.Count.ToString();
             ProgressBar.Value = 0;
@@ -216,25 +195,16 @@ namespace Rental
 
         private void DoWork(object sender, DoWorkEventArgs e)
         {
-            
+            Log.Info("Begin download");
 
-            Log.Debug("Begin download");
-            #region Get Stor words
-            if (m_exclude != null)
-                m_exclude.Clear();
-            m_exclude = BlackListManager.GetAllBlackLists();
-
-            if (m_exclude != null && m_exclude.Count != 0)
-                Log.Debug("Exclude list count: " + m_exclude.Count);
-            else
-                Log.Debug("Exclude list is emty");
-            #endregion
+            BlackList.Clear();
+            BlackList.AddRange(BlackListManager.GetAllBlackLists());
 
             page_count_for_load = 0;
             page_count_loaded = 0;
 
-            if (m_adverts != null)
-                m_adverts.Clear();
+            if (AdvertList != null)
+                AdvertList.Clear();
 
             switch ((ParcingMode)Properties.Settings.Default.cbSites)
             //switch ((ParcingMode)cbSites.ComboBox.SelectedValue)
@@ -341,7 +311,7 @@ namespace Rental
             else
             {
 
-                MoyaReklama mr = new MoyaReklama(m_exclude);
+                MoyaReklama mr = new MoyaReklama(BlackList);
                 mr.onSetUIProgress += onSetUIProgress;
                 mr.onSetPageCountForLoad += onSetPageCountForLoad;
                 mr.onSetPageCountLoaded += onSetPageCountLoaded;
@@ -360,7 +330,7 @@ namespace Rental
                 Log.Debug("\tPage count: " + page_count);
                 #endregion
 
-                m_adverts.AddRange(mr.GetAdvertList(page));
+                AdvertList.AddRange(mr.GetAdvertList(page));
                 if (page_count > 0)
                     onSetPageCountForLoad(page_count - 1);
                 onSetUIProgress();
@@ -377,7 +347,7 @@ namespace Rental
                     if (!String.IsNullOrEmpty(error))
                         Log.Debug(error);
                     else
-                        m_adverts.AddRange(mr.GetAdvertList(page));
+                        AdvertList.AddRange(mr.GetAdvertList(page));
                 }
 
 
@@ -432,7 +402,7 @@ namespace Rental
                     Log.Debug("\tERROR on Camelot: Can't find max page count");
                 #endregion
 
-                Camelot camelot = new Camelot(m_exclude);
+                Camelot camelot = new Camelot(BlackList);
                 camelot.onSetUIProgress += onSetUIProgress;
                 camelot.onSetPageCountForLoad += onSetPageCountForLoad;
                 camelot.onSetPageCountLoaded += onSetPageCountLoaded;
@@ -443,7 +413,7 @@ namespace Rental
                 onSetPageCountLoaded(1);
                 onSetUIProgress();
 
-                m_adverts.AddRange(camelot.GetAdvertList(page, posterDate));
+                AdvertList.AddRange(camelot.GetAdvertList(page, posterDate));
 
                 //3. Get All adv
                 for (int i = 2; i <= page_count; i++)
@@ -457,7 +427,7 @@ namespace Rental
                     if (!String.IsNullOrEmpty(error))
                         Log.Debug(error);
                     else
-                        m_adverts.AddRange(camelot.GetAdvertList(page, posterDate));
+                        AdvertList.AddRange(camelot.GetAdvertList(page, posterDate));
                 }
             }
         }
@@ -491,7 +461,7 @@ namespace Rental
                 Log.Debug("\tCamelot tPage count: " + page_count);
                 #endregion
 
-                IRR irr = new IRR(m_exclude);
+                IRR irr = new IRR(BlackList);
                 irr.onSetUIProgress += onSetUIProgress;
                 irr.onSetPageCountForLoad += onSetPageCountForLoad;
                 irr.onSetPageCountLoaded += onSetPageCountLoaded;
@@ -502,7 +472,7 @@ namespace Rental
                 onSetPageCountLoaded(1);
                 onSetUIProgress();
 
-                m_adverts.AddRange(irr.GetAdvertList(page));
+                AdvertList.AddRange(irr.GetAdvertList(page));
 
                 //3. Get All adv
                 for (int i = 2; i <= page_count; i++)
@@ -515,7 +485,7 @@ namespace Rental
                     if (!String.IsNullOrEmpty(error))
                         Log.Debug(error);
                     else
-                        m_adverts.AddRange(irr.GetAdvertList(page));
+                        AdvertList.AddRange(irr.GetAdvertList(page));
                 }
             }
         }
@@ -543,7 +513,7 @@ namespace Rental
 
                 if (Worker.CancellationPending)
                     return;
-                Avito avito = new Avito(m_exclude);
+                Avito avito = new Avito(BlackList);
                 avito.onSetUIProgress += onSetUIProgress;
                 avito.onSetPageCountForLoad += onSetPageCountForLoad;
                 avito.onSetPageCountLoaded += onSetPageCountLoaded;
@@ -554,7 +524,7 @@ namespace Rental
                 onSetPageCountLoaded(1);
                 onSetUIProgress();
 
-                m_adverts.AddRange(avito.GetAdvertList(page));
+                AdvertList.AddRange(avito.GetAdvertList(page));
 
                 //3. Get All adv
                 for (int i = 2; i <= page_count; i++)
@@ -567,7 +537,7 @@ namespace Rental
                     if (!String.IsNullOrEmpty(error))
                         Log.Debug(error);
                     else
-                        m_adverts.AddRange(avito.GetAdvertList(page));
+                        AdvertList.AddRange(avito.GetAdvertList(page));
                 }
             }
         }
@@ -590,7 +560,7 @@ namespace Rental
                 Log.Debug("\tPage size: " + page.Length);
                 int page_count = forFlat ? 3 : 1;
                 if (Worker.CancellationPending) return;
-                Slando slando = new Slando(m_exclude);
+                Slando slando = new Slando(BlackList);
                 slando.onSetUIProgress += onSetUIProgress;
                 slando.onSetPageCountForLoad += onSetPageCountForLoad;
                 slando.onSetPageCountLoaded += onSetPageCountLoaded;
@@ -602,9 +572,9 @@ namespace Rental
                 onSetUIProgress();
 
                 //Get 1st page
-                if (m_adverts == null) m_adverts = new List<Advert>();
+                if (AdvertList == null) AdvertList = new List<Advert>();
                 Log.Debug("\tCollect links");
-                m_adverts.AddRange(slando.GetAdvertList(page));
+                AdvertList.AddRange(slando.GetAdvertList(page));
                 //3. Get All adv
                 for (int i = 2; i <= page_count; i++)
                 {
@@ -620,7 +590,7 @@ namespace Rental
                     {
                         Log.Debug("\tPage size: " + page.Length);
                         Log.Debug("\tCollect links");
-                        m_adverts.AddRange(slando.GetAdvertList(page));
+                        AdvertList.AddRange(slando.GetAdvertList(page));
                     }
                 }
             }
@@ -1144,6 +1114,20 @@ namespace Rental
 
         }
 
+        /// <summary>
+        /// Сохранить размеры экрана перед закрытием
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default.cbSites = ((int)cbSites.ComboBox.SelectedValue);
+            Properties.Settings.Default.Width = this.Width;
+            Properties.Settings.Default.Length = this.Height;
+            Properties.Settings.Default.Top = this.Top;
+            Properties.Settings.Default.Left = this.Left;
+            Properties.Settings.Default.Save();
+        }
      
     }
 
