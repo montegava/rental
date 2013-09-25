@@ -17,9 +17,7 @@ namespace Rental
 {
     public partial class frmFlat : Form
     {
-        public static ILog errorLog = LogManager.GetLogger("ErrorLogger");
-
-
+        private static ILog errorLog = LogManager.GetLogger("ErrorLogger");
         private EditMode EdtMode;
         public int FlatId = -1;
       
@@ -115,10 +113,7 @@ namespace Rental
 
         private void Save()
         {
-            errorLog.Error("ADD NEW ONE");
-
-            string error = null;
-            DAL.flat_info flat = Form2Flat();
+            flat_info flat = Form2Flat();
             if (EdtMode == EditMode.emAddNew)
             {
                 NameListCache.proxy.FlatAdd(flat);
@@ -127,14 +122,6 @@ namespace Rental
             else if (EdtMode == EditMode.emEdit)
                 NameListCache.proxy.FlatUpdate(flat);
 
-
-            #region Saving Images
-            //if (EdtMode == EditMode.emEdit)
-            //    FlatImageManager.DeleteAllByFlatId(FlatId);
-
-
-
-
             foreach (ListViewItem item in lvImagList.Items)
             {
                 var flatImage = ((DAL.images)item.Tag);
@@ -142,10 +129,6 @@ namespace Rental
 
                 FlatImageManager.AddFlatImage(flat.ID, imgPath);
             }
-
-
-            #endregion
-
         }
 
         /// <summary>
@@ -158,7 +141,10 @@ namespace Rental
 
             result.ID = FlatId;
             result.DATA = DateTime.Now;
-            result.ROOM_COUNT = int.Parse(intupROOM_COUNT.Text);
+
+            int roomCount;
+            result.ROOM_COUNT = int.TryParse(intupROOM_COUNT.Text, out roomCount)? (int?)roomCount : null;
+
             result.ADDRESS = intupADDRESS.Text;
 
             int floor;
