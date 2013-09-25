@@ -197,19 +197,16 @@ namespace Rental
         {
             Log.Info("Begin download");
 
-            BlackList.Clear();
-            BlackList.AddRange(BlackListManager.GetAllBlackLists());
-
             page_count_for_load = 0;
             page_count_loaded = 0;
+            BlackList.Clear();
+            AdvertList.Clear();
 
-            if (AdvertList != null)
-                AdvertList.Clear();
+            BlackList.AddRange(BlackListManager.GetAllBlackLists());
 
             switch ((ParcingMode)Properties.Settings.Default.cbSites)
-            //switch ((ParcingMode)cbSites.ComboBox.SelectedValue)
             {
-                case ParcingMode.pmAll:
+                case ParcingMode.All:
 
                     var sw = new System.Diagnostics.Stopwatch();
                     sw.Start();
@@ -245,34 +242,34 @@ namespace Rental
 
                     //MessageBox.Show(String.Format("Моя реклама: {0}\r\nCamelot: {1}\r\nIRR: {2}\r\nAvito: {3}\r\nSlando: {4}", MoyaReklamaElapsed, CamelotElapsed, IRRElapsed, AvitoElapsed, SlandoElapsed));
                     break;
-                case ParcingMode.pmCamelotFlat:
+                case ParcingMode.CamelotFlat:
                     GetCamelot(true);
                     break;
-                case ParcingMode.pmCamelotHouse:
+                case ParcingMode.CamelotHouse:
                     GetCamelot(false);
                     break;
-                case ParcingMode.pmMoyaReklama1:
+                case ParcingMode.MoyaReklamaFlat:
                     getMoyaReklama(1);
                     break;
-                case ParcingMode.pmMoyaReklama2:
+                case ParcingMode.MoyaReklamaRoom:
                     getMoyaReklama(2);
                     break;
-                case ParcingMode.pmMoyaReklama3:
+                case ParcingMode.MoyaReklamaHouse:
                     getMoyaReklama(3);
                     break;
-                case ParcingMode.pmIRR:
+                case ParcingMode.IRR:
                     GetIRR();
                     break;
-                case ParcingMode.pmAvitoFlat:
+                case ParcingMode.AvitoFlat:
                     GetAvito(true);
                     break;
                 case ParcingMode.pmAvitoHouse:
                     GetAvito(false);
                     break;
-                case ParcingMode.pmSlandoFlat:
+                case ParcingMode.SlandoFlat:
                     GetSlando(true);
                     break;
-                case ParcingMode.pmSlandoHouse:
+                case ParcingMode.SlandoHouse:
                     GetSlando(false);
                     break;
             }

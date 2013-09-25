@@ -27,17 +27,22 @@ namespace Rental
     /// </summary>
     public enum ParcingMode
     {
-        pmAll = 0,//--все сайты--
-        pmCamelotFlat = 1,//Камелот
-        pmCamelotHouse = 2,//Камелот
-        pmMoyaReklama1 = 31,//Моя реклама
-        pmMoyaReklama2 = 32,//Моя реклама
-        pmMoyaReklama3 = 33,//Моя реклама
-        pmIRR = 4,//Из рук в руки
-        pmAvitoFlat = 5,//Avito - квартиры
+        All = 0,//--все сайты--
+        
+        CamelotFlat = 1,//Камелот квартиры
+        CamelotHouse = 2,//Камелот дома
+
+        MoyaReklamaFlat = 31,//Моя реклама снять_квартиру
+        MoyaReklamaRoom = 32,//Моя реклама снять_комнату
+        MoyaReklamaHouse = 33,//Моя реклама снять_дом
+
+        IRR = 4,//Из рук в руки
+
+        AvitoFlat = 5,//Avito - квартиры
         pmAvitoHouse = 6,//Avito - дома
-        pmSlandoFlat = 7,//Slando - квартиры
-        pmSlandoHouse = 8//Slando - дома
+
+        SlandoFlat = 7,//Slando - квартиры
+        SlandoHouse = 8//Slando - дома
     }
 
 

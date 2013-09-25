@@ -7,10 +7,10 @@ using DAL;
 namespace Rental
 {
     public class KeyValue
-       {
+    {
         public int Key { get; set; }
         public string Value { get; set; }
-    
+
     }
 
     public static class Convetor
@@ -19,44 +19,45 @@ namespace Rental
         {
             switch (mode)
             {
-                case ParcingMode.pmAll:
+                case ParcingMode.All:
                     return "--все сайты--";
-                case ParcingMode.pmCamelotFlat:
+
+                case ParcingMode.CamelotFlat:
                     return "Камелот - квартиры";
-                case ParcingMode.pmCamelotHouse:
+                case ParcingMode.CamelotHouse:
                     return "Камелот - дома";
 
-                case ParcingMode.pmMoyaReklama1:
-                    return "Моя реклама снять_квартиру";
-                case ParcingMode.pmMoyaReklama2:
-                    return "Моя реклама снять_комнату";
-                case ParcingMode.pmMoyaReklama3:
-                    return "Моя реклама снять_дом";
+                case ParcingMode.MoyaReklamaFlat:
+                    return "Моя реклама снять квартиру";
+                case ParcingMode.MoyaReklamaRoom:
+                    return "Моя реклама снять комнату";
+                case ParcingMode.MoyaReklamaHouse:
+                    return "Моя реклама снять дом";
 
-                case ParcingMode.pmIRR:
+                case ParcingMode.IRR:
                     return "Из рук в руки";
-                case ParcingMode.pmAvitoFlat:
+
+                case ParcingMode.AvitoFlat:
                     return "Avito - квартиры";
                 case ParcingMode.pmAvitoHouse:
                     return "Avito - дома";
-                case ParcingMode.pmSlandoFlat:
+
+                case ParcingMode.SlandoFlat:
                     return "Slando - квартиры";
-                case ParcingMode.pmSlandoHouse:
+                case ParcingMode.SlandoHouse:
                     return "Slando - дома";
+                default:
+                    throw new Exception(string.Format("Неизвестный тип [ParcingMode] = {0}", (int)mode));
             }
-
-            return String.Empty;
-
-
         }
 
         public static List<KeyValue> GetParcingModeDataSource()
         {
             var result = new List<KeyValue>();
 
-            foreach (ParcingMode item in Enum.GetValues(typeof(ParcingMode))  )
+            foreach (ParcingMode item in Enum.GetValues(typeof(ParcingMode)))
             {
-                result.Add(new KeyValue (){ Key = (int)item, Value = ParcingModeToString(item) });
+                result.Add(new KeyValue() { Key = (int)item, Value = ParcingModeToString(item) });
             }
 
             return result;
