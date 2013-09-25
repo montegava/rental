@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
 using System.Net;
 using System.Drawing;
 using System.IO;
@@ -11,6 +10,8 @@ using ImageProcessing;
 using System.Text.RegularExpressions;
 using System.Web.Script.Serialization;
 using log4net;
+using Rental.src;
+
 
 namespace Rental
 {
@@ -64,17 +65,16 @@ namespace Rental
                     #region 2.1. Check if url already uploaded and added
                     if (onCheckCansel())
                         return result;
-                    DAL.flat_info flat = null;
-                    //if (FlatManager.CheckUrlIfExist(url, out flat) && flat != null)
-                    //{
-                    //    Log.Append("\t\tAlready in DB!");
-                    //    Advert a = Convetor.Flat2Advert(flat);
-                    //    a.IsStar = true;
-                    //    a.IsBlocked = false;
-                    //    a.ImageIndex = (int)ImageMode.imSlando;
-                    //    result.Add(a);
-                    //    continue;
-                    //}
+                    DAL.flat_info flat = NameListCache.proxy.FlatByUrl(url);
+                    if (flat != null)
+                    {
+                        Advert a = Convetor.Flat2Advert(flat);
+                        a.IsStar = true;
+                        a.IsBlocked = false;
+                        a.ImageIndex = (int)ImageMode.imSlando;
+                        result.Add(a);
+                        continue;
+                    }
                     #endregion
                     Log.Debug("\t\tLoading...");
                     Advert advert = GetAdvertByUrl(url);
