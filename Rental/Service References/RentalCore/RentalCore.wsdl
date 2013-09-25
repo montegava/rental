@@ -33,6 +33,24 @@
   <wsdl:message name="IRentalCore_FlatByUrl_OutputMessage">
     <wsdl:part name="parameters" element="tns:FlatByUrlResponse" />
   </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatById_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlatById" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlatByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlatAdd" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlatAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlatUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlatUpdateResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRentalCore">
     <wsdl:operation name="Upload">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/Upload" message="tns:IRentalCore_Upload_InputMessage" />
@@ -49,6 +67,18 @@
     <wsdl:operation name="FlatByUrl">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatByUrl" message="tns:IRentalCore_FlatByUrl_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatByUrlResponse" message="tns:IRentalCore_FlatByUrl_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlatById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatById" message="tns:IRentalCore_FlatById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatByIdResponse" message="tns:IRentalCore_FlatById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlatAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatAdd" message="tns:IRentalCore_FlatAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatAddResponse" message="tns:IRentalCore_FlatAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlatUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatUpdate" message="tns:IRentalCore_FlatUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatUpdateResponse" message="tns:IRentalCore_FlatUpdate_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRentalCore" type="tns:IRentalCore">
@@ -82,6 +112,33 @@
     </wsdl:operation>
     <wsdl:operation name="FlatByUrl">
       <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatByUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlatById">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlatAdd">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlatUpdate">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatUpdate" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

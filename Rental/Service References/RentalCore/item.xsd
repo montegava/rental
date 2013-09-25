@@ -11,10 +11,12 @@
       <xs:element minOccurs="0" name="ADDRESS" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BATH_UNIT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BUILD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CATEGORY" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="COMMENT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CONTENT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="COOLER" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="DATA" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EMAIL" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FLOOR" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="FRIDGE" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="FURNITURE" nillable="true" type="xs:string" />
@@ -32,6 +34,7 @@
       <xs:element minOccurs="0" name="STATE" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TERM" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TV" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TYPE" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="WASHER" nillable="true" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>

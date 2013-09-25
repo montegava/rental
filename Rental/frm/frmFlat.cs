@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Configuration;
 using log4net;
+using Rental.src;
 
 namespace Rental
 {
@@ -51,7 +52,7 @@ namespace Rental
 
         private void LoadFlatInfo()
         {
-            var flat = FlatManager.GetFlatById(FlatId);
+            var flat = NameListCache.proxy.FlatById(FlatId);
             if (flat != null)
             {
                 this.intupADDRESS.Text = flat.ADDRESS;
@@ -77,6 +78,9 @@ namespace Rental
                 this.intupSTATE.Text = flat.STATE;
                 this.inputTERM.Text = flat.TERM;
                 this.chTV.Checked = flat.TV ?? false;
+                this.inputEmail.Text = flat.EMAIL;
+                this.inputCategory.Text = flat.CATEGORY;
+                this.inputType.Text = flat.TYPE;
             }
         }
 
@@ -102,6 +106,10 @@ namespace Rental
 
                 inputREGION.SelectedIndex = 0;
 
+                inputType.SelectedIndex = 0;
+
+                inputCategory.SelectedIndex = 0;
+
             }
         }
 
@@ -113,17 +121,12 @@ namespace Rental
             DAL.flat_info flat = Form2Flat();
             if (EdtMode == EditMode.emAddNew)
             {
-                FlatManager.AddNewFlat(flat);
+                NameListCache.proxy.FlatAdd(flat);
                 this.FlatId = flat.ID;
             }
             else if (EdtMode == EditMode.emEdit)
-                FlatManager.UpdateFlat(flat, out error);
+                NameListCache.proxy.FlatUpdate(flat);
 
-            if (!String.IsNullOrWhiteSpace(error))
-            {
-                MessageBox.Show(error);
-                return;
-            }
 
             #region Saving Images
             //if (EdtMode == EditMode.emEdit)

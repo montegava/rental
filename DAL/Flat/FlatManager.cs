@@ -266,90 +266,57 @@ namespace DAL
             return context.flat_info.Select(f => f).ToList();
         }
 
-        public static bool AddNewFlat(flat_info flat)
+        public static void FlatAdd(flat_info flat)
         {
-
-            errorLog.Error("AddNewFlat");
-
-            try
-            {
-
-                var context = WcfOperationContext.Current.Context;
-                context.flat_info.Add(flat);
-                context.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                errorLog.Error(ex);
-                return false;
-            }
-            return true;
+            var context = WcfOperationContext.Current.Context;
+            context.flat_info.Add(flat);
+            context.SaveChanges();
         }
 
         public static flat_info GetFlatById(int flatId)
         {
-            errorLog.Error("GetFlatById");
-
-            flat_info result = null;
-            try
-            {
-                if (flatId > 0)
-                    result = WcfOperationContext.Current.Context.flat_info.Where(f => f.ID == flatId).FirstOrDefault();
-            }
-            catch (Exception ex)
-            {
-                errorLog.Error(ex);
-            }
-            return result;
+            return WcfOperationContext.Current.Context.flat_info.Where(f => f.ID == flatId).FirstOrDefault();
         }
 
-        public static bool UpdateFlat(flat_info flat, out string error)
+        public static void FlatUpdate(flat_info flat)
         {
-            error = String.Empty;
-
-            try
+            var context = WcfOperationContext.Current.Context;
+            var findedFlat = context.flat_info.Where(f => f.ID == flat.ID).FirstOrDefault();
+            if (findedFlat != null)
             {
-                //ConnectionManager.ConnectionStringEntity)
-                using (var context = new rentalEntities())
-                {
-                    var findedFlat = context.flat_info.Where(f => f.ID == flat.ID).FirstOrDefault();
-                    if (findedFlat != null)
-                    {
-                        findedFlat.ADDRESS = flat.ADDRESS;
-                        findedFlat.BATH_UNIT = flat.BATH_UNIT;
-                        findedFlat.BUILD = flat.BUILD;
-                        findedFlat.COMMENT = flat.COMMENT;
-                        findedFlat.CONTENT = flat.CONTENT;
-                        findedFlat.COOLER = flat.COOLER;
-                        findedFlat.DATA = flat.DATA;
-                        findedFlat.FLOOR = flat.FLOOR;
-                        findedFlat.FRIDGE = flat.FRIDGE;
-                        findedFlat.FURNITURE = flat.FURNITURE;
+                findedFlat.ADDRESS = flat.ADDRESS;
+                findedFlat.BATH_UNIT = flat.BATH_UNIT;
+                findedFlat.BUILD = flat.BUILD;
+                findedFlat.COMMENT = flat.COMMENT;
+                findedFlat.CONTENT = flat.CONTENT;
+                findedFlat.COOLER = flat.COOLER;
+                findedFlat.DATA = flat.DATA;
+                findedFlat.FLOOR = flat.FLOOR;
+                findedFlat.FRIDGE = flat.FRIDGE;
+                findedFlat.FURNITURE = flat.FURNITURE;
 
-                        findedFlat.LESSOR = flat.LESSOR;
-                        findedFlat.LINK = flat.LINK;
-                        findedFlat.MECHANIC = flat.MECHANIC;
-                        findedFlat.NAME = flat.NAME;
-                        findedFlat.PHONE = flat.PHONE;
-                        findedFlat.PRICE = flat.PRICE;
-                        findedFlat.REGION = flat.REGION;
-                        findedFlat.RENT_FROM = flat.RENT_FROM;
-                        findedFlat.RENT_TO = flat.RENT_TO;
-                        findedFlat.ROOM_COUNT = flat.ROOM_COUNT;
-                        findedFlat.STATE = flat.STATE;
-                        findedFlat.TERM = flat.TERM;
-                        findedFlat.TV = flat.TV;
-                        findedFlat.WASHER = flat.WASHER;
-                        context.SaveChanges();
-                    }
-                    return true;
-                }
+                findedFlat.LESSOR = flat.LESSOR;
+                findedFlat.LINK = flat.LINK;
+                findedFlat.MECHANIC = flat.MECHANIC;
+                findedFlat.NAME = flat.NAME;
+                findedFlat.PHONE = flat.PHONE;
+                findedFlat.PRICE = flat.PRICE;
+                findedFlat.REGION = flat.REGION;
+                findedFlat.RENT_FROM = flat.RENT_FROM;
+                findedFlat.RENT_TO = flat.RENT_TO;
+                findedFlat.ROOM_COUNT = flat.ROOM_COUNT;
+                findedFlat.STATE = flat.STATE;
+                findedFlat.TERM = flat.TERM;
+                findedFlat.TV = flat.TV;
+                findedFlat.WASHER = flat.WASHER;
+
+                findedFlat.TYPE = flat.TYPE;
+                findedFlat.CATEGORY = flat.CATEGORY;
+                findedFlat.EMAIL = flat.EMAIL;
+
+                context.SaveChanges();
             }
-            catch (Exception ex)
-            {
-                error = ex.Message;
-                return false;
-            }
+
         }
 
         public static bool DeleteFlat(int flatId, out string error)

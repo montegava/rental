@@ -28,6 +28,14 @@ namespace RentalCore
         [OperationContract]
         flat_info FlatByUrl(string url);
 
+        [OperationContract]
+        flat_info FlatById(int id);
+
+        [OperationContract]
+        void FlatAdd(flat_info flat);
+
+        [OperationContract]
+        void FlatUpdate(flat_info flat);
     }
 
 

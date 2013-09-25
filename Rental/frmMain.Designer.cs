@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.программаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,7 +77,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tbContent = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lblLink = new System.Windows.Forms.LinkLabel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lbContacts = new System.Windows.Forms.ListBox();
@@ -160,7 +159,6 @@
             this.toolStrip2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.tabStar.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -361,13 +359,13 @@
             this.lvAdverts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvAdverts.FullRowSelect = true;
             this.lvAdverts.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
-            listViewGroup2.Header = "sdfasd";
-            listViewGroup2.Name = "sdf";
+            listViewGroup5.Header = "ListViewGroup";
+            listViewGroup5.Name = "listViewGroup1";
+            listViewGroup6.Header = "sdfasd";
+            listViewGroup6.Name = "sdf";
             this.lvAdverts.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup5,
+            listViewGroup6});
             this.lvAdverts.Location = new System.Drawing.Point(3, 28);
             this.lvAdverts.Name = "lvAdverts";
             this.lvAdverts.Size = new System.Drawing.Size(731, 247);
@@ -465,13 +463,13 @@
             this.lvStars.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvStars.FullRowSelect = true;
             this.lvStars.GridLines = true;
-            listViewGroup3.Header = "ListViewGroup";
-            listViewGroup3.Name = "listViewGroup1";
-            listViewGroup4.Header = "sdfasd";
-            listViewGroup4.Name = "sdf";
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "sdfasd";
+            listViewGroup2.Name = "sdf";
             this.lvStars.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup1,
+            listViewGroup2});
             this.lvStars.Location = new System.Drawing.Point(3, 28);
             this.lvStars.Name = "lvStars";
             this.lvStars.Size = new System.Drawing.Size(731, 247);
@@ -570,7 +568,7 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.groupBox4);
-            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.lblLink);
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
@@ -584,9 +582,9 @@
             // 
             this.groupBox4.Controls.Add(this.tbContent);
             this.groupBox4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox4.Location = new System.Drawing.Point(3, 51);
+            this.groupBox4.Location = new System.Drawing.Point(3, 34);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(577, 90);
+            this.groupBox4.Size = new System.Drawing.Size(577, 107);
             this.groupBox4.TabIndex = 6;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Содержание:";
@@ -599,26 +597,17 @@
             this.tbContent.Multiline = true;
             this.tbContent.Name = "tbContent";
             this.tbContent.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tbContent.Size = new System.Drawing.Size(571, 71);
+            this.tbContent.Size = new System.Drawing.Size(571, 88);
             this.tbContent.TabIndex = 0;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Controls.Add(this.lblLink);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox3.Location = new System.Drawing.Point(3, 16);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(577, 35);
-            this.groupBox3.TabIndex = 5;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Ссылка на объявление:";
             // 
             // lblLink
             // 
             this.lblLink.AutoSize = true;
-            this.lblLink.Location = new System.Drawing.Point(16, 16);
+            this.lblLink.Dock = System.Windows.Forms.DockStyle.Top;
+            this.lblLink.Location = new System.Drawing.Point(3, 16);
             this.lblLink.Name = "lblLink";
-            this.lblLink.Size = new System.Drawing.Size(0, 13);
+            this.lblLink.Padding = new System.Windows.Forms.Padding(5, 0, 0, 5);
+            this.lblLink.Size = new System.Drawing.Size(5, 18);
             this.lblLink.TabIndex = 2;
             this.lblLink.Click += new System.EventHandler(this.lblLink_Click);
             // 
@@ -1389,10 +1378,9 @@
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.tabStar.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
@@ -1457,7 +1445,6 @@
         private System.Windows.Forms.ToolStripMenuItem menuStart;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ImageList imglistSites;
-        private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListBox lbContacts;
         private System.Windows.Forms.LinkLabel lblLink;

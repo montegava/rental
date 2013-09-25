@@ -39,5 +39,8 @@ namespace DAL
         public Nullable<bool> WASHER { get; set; }
         public Nullable<bool> COOLER { get; set; }
         public string REGION { get; set; }
+        public string EMAIL { get; set; }
+        public string CATEGORY { get; set; }
+        public string TYPE { get; set; }
     }
 }

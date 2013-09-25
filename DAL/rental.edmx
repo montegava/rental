@@ -48,6 +48,9 @@
           <Property Name="WASHER" Type="bool" />
           <Property Name="COOLER" Type="bool" />
           <Property Name="REGION" Type="text" />
+          <Property Name="EMAIL" Type="text" />
+          <Property Name="CATEGORY" Type="text" />
+          <Property Name="TYPE" Type="text" />
         </EntityType>
         <EntityType Name="images">
           <Key>
@@ -104,6 +107,9 @@
           <Property Type="Boolean" Name="WASHER" />
           <Property Type="Boolean" Name="COOLER" />
           <Property Type="String" Name="REGION" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMAIL" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CATEGORY" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TYPE" MaxLength="65535" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="images">
           <Key>
@@ -132,6 +138,9 @@
           <EntitySetMapping Name="flat_info">
             <EntityTypeMapping TypeName="rentalModel.flat_info">
               <MappingFragment StoreEntitySet="flat_info">
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
                 <ScalarProperty Name="REGION" ColumnName="REGION" />
                 <ScalarProperty Name="COOLER" ColumnName="COOLER" />
                 <ScalarProperty Name="WASHER" ColumnName="WASHER" />
@@ -189,6 +198,12 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
+    <Diagrams>
+      <Diagram Name="rental">
+        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416657" />
+        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="2.75" PointY="0.75" Height="6.4032194010416665" />
+        <EntityTypeShape EntityType="rentalModel.images" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937499996" />
+      </Diagram>
+    </Diagrams>
   </Designer>
 </edmx:Edmx>

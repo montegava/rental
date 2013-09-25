@@ -115,5 +115,20 @@ namespace RentalCore
         {
             return FlatManager.FlatByUrl(url);
         }
+
+        public flat_info FlatById(int id)
+        {
+            return FlatManager.GetFlatById(id);
+        }
+
+        public void FlatAdd(flat_info flat)
+        {
+            FlatManager.FlatAdd(flat);
+        }
+
+        public void FlatUpdate(flat_info flat)
+        {
+            FlatManager.FlatUpdate(flat);
+        }
     }
 }

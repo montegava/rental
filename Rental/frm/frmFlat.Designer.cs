@@ -81,6 +81,12 @@
             this.inputRENT_FROM = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.inputTERM = new System.Windows.Forms.ComboBox();
+            this.inputEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
+            this.lblCategory = new System.Windows.Forms.Label();
+            this.inputCategory = new System.Windows.Forms.ComboBox();
+            this.lblType = new System.Windows.Forms.Label();
+            this.inputType = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.context.SuspendLayout();
@@ -92,7 +98,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(349, 112);
+            this.label1.Location = new System.Drawing.Point(349, 163);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(106, 13);
             this.label1.TabIndex = 0;
@@ -100,7 +106,7 @@
             // 
             // intupADDRESS
             // 
-            this.intupADDRESS.Location = new System.Drawing.Point(93, 59);
+            this.intupADDRESS.Location = new System.Drawing.Point(93, 72);
             this.intupADDRESS.Multiline = true;
             this.intupADDRESS.Name = "intupADDRESS";
             this.intupADDRESS.Size = new System.Drawing.Size(304, 45);
@@ -133,7 +139,7 @@
             "7",
             "8",
             "9"});
-            this.intupROOM_COUNT.Location = new System.Drawing.Point(461, 109);
+            this.intupROOM_COUNT.Location = new System.Drawing.Point(461, 160);
             this.intupROOM_COUNT.Name = "intupROOM_COUNT";
             this.intupROOM_COUNT.Size = new System.Drawing.Size(88, 21);
             this.intupROOM_COUNT.TabIndex = 2;
@@ -141,7 +147,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(43, 62);
+            this.label2.Location = new System.Drawing.Point(43, 75);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(44, 13);
             this.label2.TabIndex = 3;
@@ -190,7 +196,7 @@
             "23",
             "24",
             "25"});
-            this.intupFLOOR.Location = new System.Drawing.Point(249, 109);
+            this.intupFLOOR.Location = new System.Drawing.Point(249, 160);
             this.intupFLOOR.Name = "intupFLOOR";
             this.intupFLOOR.Size = new System.Drawing.Size(88, 21);
             this.intupFLOOR.TabIndex = 5;
@@ -198,7 +204,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(210, 112);
+            this.label3.Location = new System.Drawing.Point(210, 163);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 4;
@@ -224,7 +230,7 @@
             "-- неизвестно --",
             "совместно",
             "раздельно"});
-            this.intupBATH_UNIT.Location = new System.Drawing.Point(93, 145);
+            this.intupBATH_UNIT.Location = new System.Drawing.Point(93, 196);
             this.intupBATH_UNIT.Name = "intupBATH_UNIT";
             this.intupBATH_UNIT.Size = new System.Drawing.Size(88, 21);
             this.intupBATH_UNIT.TabIndex = 7;
@@ -232,7 +238,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(38, 148);
+            this.label4.Location = new System.Drawing.Point(38, 199);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 6;
@@ -260,7 +266,7 @@
             "панельный",
             "коттедж",
             "часть дома"});
-            this.intupBUILD.Location = new System.Drawing.Point(93, 109);
+            this.intupBUILD.Location = new System.Drawing.Point(93, 160);
             this.intupBUILD.Name = "intupBUILD";
             this.intupBUILD.Size = new System.Drawing.Size(88, 21);
             this.intupBUILD.TabIndex = 9;
@@ -268,7 +274,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 112);
+            this.label5.Location = new System.Drawing.Point(32, 163);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 8;
@@ -277,7 +283,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(41, 241);
+            this.label6.Location = new System.Drawing.Point(41, 283);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(46, 13);
             this.label6.TabIndex = 10;
@@ -292,9 +298,9 @@
             "есть",
             "нет",
             "частично"});
-            this.intupFURNITURE.Location = new System.Drawing.Point(93, 238);
+            this.intupFURNITURE.Location = new System.Drawing.Point(93, 280);
             this.intupFURNITURE.Name = "intupFURNITURE";
-            this.intupFURNITURE.Size = new System.Drawing.Size(456, 21);
+            this.intupFURNITURE.Size = new System.Drawing.Size(150, 21);
             this.intupFURNITURE.TabIndex = 11;
             // 
             // intupSTATE
@@ -307,7 +313,7 @@
             "новая",
             "хорошее",
             "плохое"});
-            this.intupSTATE.Location = new System.Drawing.Point(249, 148);
+            this.intupSTATE.Location = new System.Drawing.Point(249, 199);
             this.intupSTATE.Name = "intupSTATE";
             this.intupSTATE.Size = new System.Drawing.Size(88, 21);
             this.intupSTATE.TabIndex = 13;
@@ -315,7 +321,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(187, 148);
+            this.label7.Location = new System.Drawing.Point(187, 199);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 13);
             this.label7.TabIndex = 12;
@@ -329,16 +335,16 @@
             "-- неизвестно --",
             "отсутствует",
             "присутствует"});
-            this.intupMECHANIC.Location = new System.Drawing.Point(93, 268);
+            this.intupMECHANIC.Location = new System.Drawing.Point(93, 310);
             this.intupMECHANIC.Name = "intupMECHANIC";
-            this.intupMECHANIC.Size = new System.Drawing.Size(456, 21);
+            this.intupMECHANIC.Size = new System.Drawing.Size(88, 21);
             this.intupMECHANIC.TabIndex = 15;
             this.intupMECHANIC.SelectedIndexChanged += new System.EventHandler(this.intupMECHANIC_SelectedIndexChanged);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 271);
+            this.label8.Location = new System.Drawing.Point(14, 313);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(73, 13);
             this.label8.TabIndex = 14;
@@ -346,7 +352,7 @@
             // 
             // inputNAME
             // 
-            this.inputNAME.Location = new System.Drawing.Point(93, 28);
+            this.inputNAME.Location = new System.Drawing.Point(93, 19);
             this.inputNAME.Name = "inputNAME";
             this.inputNAME.Size = new System.Drawing.Size(456, 20);
             this.inputNAME.TabIndex = 16;
@@ -354,7 +360,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(9, 31);
+            this.label9.Location = new System.Drawing.Point(9, 22);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(78, 13);
             this.label9.TabIndex = 17;
@@ -363,7 +369,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(44, 327);
+            this.label10.Location = new System.Drawing.Point(44, 350);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 19;
@@ -371,7 +377,7 @@
             // 
             // intupPRICE
             // 
-            this.intupPRICE.Location = new System.Drawing.Point(93, 324);
+            this.intupPRICE.Location = new System.Drawing.Point(93, 347);
             this.intupPRICE.Name = "intupPRICE";
             this.intupPRICE.Size = new System.Drawing.Size(171, 20);
             this.intupPRICE.TabIndex = 18;
@@ -379,7 +385,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(7, 353);
+            this.label11.Location = new System.Drawing.Point(7, 378);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(70, 13);
             this.label11.TabIndex = 21;
@@ -387,7 +393,7 @@
             // 
             // intupCOMMENT
             // 
-            this.intupCOMMENT.Location = new System.Drawing.Point(93, 350);
+            this.intupCOMMENT.Location = new System.Drawing.Point(93, 375);
             this.intupCOMMENT.Multiline = true;
             this.intupCOMMENT.Name = "intupCOMMENT";
             this.intupCOMMENT.Size = new System.Drawing.Size(456, 46);
@@ -396,7 +402,7 @@
             // btnCancel
             // 
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancel.Location = new System.Drawing.Point(358, 670);
+            this.btnCancel.Location = new System.Drawing.Point(353, 694);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 22;
@@ -407,7 +413,7 @@
             // btnOk
             // 
             this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOk.Location = new System.Drawing.Point(480, 670);
+            this.btnOk.Location = new System.Drawing.Point(475, 694);
             this.btnOk.Name = "btnOk";
             this.btnOk.Size = new System.Drawing.Size(75, 23);
             this.btnOk.TabIndex = 23;
@@ -477,13 +483,13 @@
             this.contextAdd,
             this.contextDel});
             this.context.Name = "context";
-            this.context.Size = new System.Drawing.Size(125, 48);
+            this.context.Size = new System.Drawing.Size(127, 48);
             // 
             // contextAdd
             // 
             this.contextAdd.Image = ((System.Drawing.Image)(resources.GetObject("contextAdd.Image")));
             this.contextAdd.Name = "contextAdd";
-            this.contextAdd.Size = new System.Drawing.Size(124, 22);
+            this.contextAdd.Size = new System.Drawing.Size(126, 22);
             this.contextAdd.Text = "Добавить";
             this.contextAdd.Click += new System.EventHandler(this.contextAdd_Click);
             // 
@@ -491,12 +497,18 @@
             // 
             this.contextDel.Image = ((System.Drawing.Image)(resources.GetObject("contextDel.Image")));
             this.contextDel.Name = "contextDel";
-            this.contextDel.Size = new System.Drawing.Size(124, 22);
+            this.contextDel.Size = new System.Drawing.Size(126, 22);
             this.contextDel.Text = "Удалить";
             this.contextDel.Click += new System.EventHandler(this.contextDel_Click);
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.lblType);
+            this.groupBox5.Controls.Add(this.inputType);
+            this.groupBox5.Controls.Add(this.lblCategory);
+            this.groupBox5.Controls.Add(this.inputCategory);
+            this.groupBox5.Controls.Add(this.inputEmail);
+            this.groupBox5.Controls.Add(this.lblEmail);
             this.groupBox5.Controls.Add(this.lvImagList);
             this.groupBox5.Controls.Add(this.pbImage);
             this.groupBox5.Controls.Add(this.btnAddNewImage);
@@ -538,7 +550,7 @@
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox5.Location = new System.Drawing.Point(0, 127);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(561, 537);
+            this.groupBox5.Size = new System.Drawing.Size(561, 561);
             this.groupBox5.TabIndex = 25;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Информация";
@@ -548,7 +560,7 @@
             this.lvImagList.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1});
             this.lvImagList.GridLines = true;
-            this.lvImagList.Location = new System.Drawing.Point(93, 431);
+            this.lvImagList.Location = new System.Drawing.Point(93, 456);
             this.lvImagList.Name = "lvImagList";
             this.lvImagList.Size = new System.Drawing.Size(292, 97);
             this.lvImagList.TabIndex = 40;
@@ -564,7 +576,7 @@
             // pbImage
             // 
             this.pbImage.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbImage.Location = new System.Drawing.Point(391, 402);
+            this.pbImage.Location = new System.Drawing.Point(391, 427);
             this.pbImage.Name = "pbImage";
             this.pbImage.Size = new System.Drawing.Size(158, 124);
             this.pbImage.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -575,7 +587,7 @@
             // btnAddNewImage
             // 
             this.btnAddNewImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddNewImage.Location = new System.Drawing.Point(93, 402);
+            this.btnAddNewImage.Location = new System.Drawing.Point(93, 427);
             this.btnAddNewImage.Name = "btnAddNewImage";
             this.btnAddNewImage.Size = new System.Drawing.Size(144, 23);
             this.btnAddNewImage.TabIndex = 37;
@@ -586,7 +598,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.inputREGION);
-            this.groupBox3.Location = new System.Drawing.Point(403, 54);
+            this.groupBox3.Location = new System.Drawing.Point(403, 67);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(146, 49);
             this.groupBox3.TabIndex = 36;
@@ -626,7 +638,7 @@
             // 
             this.chCooler.AutoSize = true;
             this.chCooler.Enabled = false;
-            this.chCooler.Location = new System.Drawing.Point(399, 295);
+            this.chCooler.Location = new System.Drawing.Point(458, 312);
             this.chCooler.Name = "chCooler";
             this.chCooler.Size = new System.Drawing.Size(96, 17);
             this.chCooler.TabIndex = 34;
@@ -637,7 +649,7 @@
             // 
             this.chWasher.AutoSize = true;
             this.chWasher.Enabled = false;
-            this.chWasher.Location = new System.Drawing.Point(257, 295);
+            this.chWasher.Location = new System.Drawing.Point(325, 312);
             this.chWasher.Name = "chWasher";
             this.chWasher.Size = new System.Drawing.Size(129, 17);
             this.chWasher.TabIndex = 33;
@@ -648,7 +660,7 @@
             // 
             this.chTV.AutoSize = true;
             this.chTV.Enabled = false;
-            this.chTV.Location = new System.Drawing.Point(197, 295);
+            this.chTV.Location = new System.Drawing.Point(282, 312);
             this.chTV.Name = "chTV";
             this.chTV.Size = new System.Drawing.Size(40, 17);
             this.chTV.TabIndex = 32;
@@ -659,7 +671,7 @@
             // 
             this.chFridge.AutoSize = true;
             this.chFridge.Enabled = false;
-            this.chFridge.Location = new System.Drawing.Point(93, 295);
+            this.chFridge.Location = new System.Drawing.Point(191, 312);
             this.chFridge.Name = "chFridge";
             this.chFridge.Size = new System.Drawing.Size(93, 17);
             this.chFridge.TabIndex = 31;
@@ -669,7 +681,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(376, 151);
+            this.label16.Location = new System.Drawing.Point(376, 202);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(52, 13);
             this.label16.TabIndex = 29;
@@ -696,7 +708,7 @@
             "Хозяин",
             "Мы",
             "Агенство"});
-            this.inputLESSOR.Location = new System.Drawing.Point(461, 148);
+            this.inputLESSOR.Location = new System.Drawing.Point(461, 199);
             this.inputLESSOR.Name = "inputLESSOR";
             this.inputLESSOR.Size = new System.Drawing.Size(88, 21);
             this.inputLESSOR.TabIndex = 30;
@@ -704,7 +716,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(258, 193);
+            this.label15.Location = new System.Drawing.Point(258, 242);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(18, 13);
             this.label15.TabIndex = 28;
@@ -713,7 +725,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(408, 190);
+            this.label14.Location = new System.Drawing.Point(408, 239);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(19, 13);
             this.label14.TabIndex = 27;
@@ -721,14 +733,14 @@
             // 
             // inputRENT_TO
             // 
-            this.inputRENT_TO.Location = new System.Drawing.Point(428, 187);
+            this.inputRENT_TO.Location = new System.Drawing.Point(428, 236);
             this.inputRENT_TO.Name = "inputRENT_TO";
             this.inputRENT_TO.Size = new System.Drawing.Size(121, 20);
             this.inputRENT_TO.TabIndex = 25;
             // 
             // inputRENT_FROM
             // 
-            this.inputRENT_FROM.Location = new System.Drawing.Point(278, 190);
+            this.inputRENT_FROM.Location = new System.Drawing.Point(278, 239);
             this.inputRENT_FROM.Name = "inputRENT_FROM";
             this.inputRENT_FROM.Size = new System.Drawing.Size(119, 20);
             this.inputRENT_FROM.TabIndex = 24;
@@ -736,7 +748,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(23, 193);
+            this.label12.Location = new System.Drawing.Point(23, 242);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(64, 13);
             this.label12.TabIndex = 22;
@@ -761,16 +773,102 @@
             this.inputTERM.Items.AddRange(new object[] {
             "на длительный срок",
             "на сутки"});
-            this.inputTERM.Location = new System.Drawing.Point(93, 189);
+            this.inputTERM.Location = new System.Drawing.Point(93, 238);
             this.inputTERM.Name = "inputTERM";
             this.inputTERM.Size = new System.Drawing.Size(150, 21);
             this.inputTERM.TabIndex = 23;
+            // 
+            // inputEmail
+            // 
+            this.inputEmail.Location = new System.Drawing.Point(93, 45);
+            this.inputEmail.Name = "inputEmail";
+            this.inputEmail.Size = new System.Drawing.Size(226, 20);
+            this.inputEmail.TabIndex = 44;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(55, 48);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.TabIndex = 43;
+            this.lblEmail.Text = "Email";
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(19, 126);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(60, 13);
+            this.lblCategory.TabIndex = 45;
+            this.lblCategory.Text = "Категория";
+            // 
+            // inputCategory
+            // 
+            this.inputCategory.AutoCompleteCustomSource.AddRange(new string[] {
+            "-- неизвестно --",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            ">9"});
+            this.inputCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inputCategory.FormattingEnabled = true;
+            this.inputCategory.Items.AddRange(new object[] {
+            "-- неизвестно --",
+            "Квартира",
+            "Комната",
+            "Дом",
+            "Помещение, офис"});
+            this.inputCategory.Location = new System.Drawing.Point(93, 123);
+            this.inputCategory.Name = "inputCategory";
+            this.inputCategory.Size = new System.Drawing.Size(138, 21);
+            this.inputCategory.TabIndex = 46;
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(246, 126);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(26, 13);
+            this.lblType.TabIndex = 47;
+            this.lblType.Text = "Тип";
+            // 
+            // inputType
+            // 
+            this.inputType.AutoCompleteCustomSource.AddRange(new string[] {
+            "-- неизвестно --",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            ">9"});
+            this.inputType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inputType.FormattingEnabled = true;
+            this.inputType.Items.AddRange(new object[] {
+            "-- неизвестно --",
+            "Сдам",
+            "Сниму"});
+            this.inputType.Location = new System.Drawing.Point(278, 123);
+            this.inputType.Name = "inputType";
+            this.inputType.Size = new System.Drawing.Size(138, 21);
+            this.inputType.TabIndex = 48;
             // 
             // frmFlat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(561, 697);
+            this.ClientSize = new System.Drawing.Size(561, 724);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnOk);
@@ -847,5 +945,11 @@
         private System.Windows.Forms.Button btnAddNewImage;
         private System.Windows.Forms.ListView lvImagList;
         private System.Windows.Forms.ColumnHeader columnHeader1;
+        public System.Windows.Forms.Label lblCategory;
+        public System.Windows.Forms.ComboBox inputCategory;
+        public System.Windows.Forms.TextBox inputEmail;
+        public System.Windows.Forms.Label lblEmail;
+        public System.Windows.Forms.Label lblType;
+        public System.Windows.Forms.ComboBox inputType;
     }
 }
