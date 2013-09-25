@@ -14,6 +14,11 @@ namespace DAL
     
     public partial class flat_info
     {
+        public flat_info()
+        {
+            this.images = new HashSet<images>();
+        }
+    
         public int ID { get; set; }
         public Nullable<System.DateTime> DATA { get; set; }
         public Nullable<int> ROOM_COUNT { get; set; }
@@ -42,5 +47,7 @@ namespace DAL
         public string EMAIL { get; set; }
         public string CATEGORY { get; set; }
         public string TYPE { get; set; }
+    
+        public virtual ICollection<images> images { get; set; }
     }
 }

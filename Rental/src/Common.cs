@@ -63,10 +63,8 @@ namespace Rental
             string dir = Path.GetDirectoryName(filePath);
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
-            var ddd = Guid.NewGuid().ToString() + ".jpg";
             newImage.Save(filePath, jpegCodec, encoderParams);
             return filePath;
-
         }
 
         /// <summary> 

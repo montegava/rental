@@ -20,19 +20,15 @@ namespace Rental
         private static ILog errorLog = LogManager.GetLogger("ErrorLogger");
         private EditMode EdtMode;
         public int FlatId = -1;
-      
+
         public frmFlat(Advert advert, EditMode edtype)
         {
             InitializeComponent();
             EdtMode = edtype;
             if (advert != null)
             {
-                if (advert.Content != null)
-                    inputCONTENT.Text = advert.Content;
-
-                if (advert.Link != null)
-                    inputLINK.Text = advert.Link;
-
+                inputCONTENT.Text = advert.Content;
+                inputLINK.Text = advert.Link;
                 if (advert.Phones != null)
                     foreach (string contact in advert.Phones)
                         inputPHONE.Items.Add(String.Format("{0:##-####-####}", contact));
@@ -82,8 +78,6 @@ namespace Rental
             }
         }
 
-
-
         private void frmFlat_Load(object sender, EventArgs e)
         {
             if (EdtMode == EditMode.emAddNew)
@@ -108,12 +102,28 @@ namespace Rental
 
                 inputCategory.SelectedIndex = 0;
 
+                btnOk.Text = "Добавить";
+
+                this.Text = "ДОБАВИТЬ В ИЗБРАННОЕ";
+
+            }
+            else
+            {
+                this.Text = "РЕДАКТИРОВАТЬ";
+                btnOk.Text = "Сохранить";
             }
         }
 
         private void Save()
         {
             flat_info flat = Form2Flat();
+            foreach (ListViewItem item in lvImagList.Items)
+            {
+                var compressedImagePath = (string)item.Tag;
+                var remotePath = NameListCache.proxy.Upload(new FileStream(compressedImagePath, FileMode.CreateNew));
+                flat.images.Add(new images() { ID = -1, FLAT_ID = this.FlatId, IMAGE_PATH = remotePath });
+            }
+
             if (EdtMode == EditMode.emAddNew)
             {
                 NameListCache.proxy.FlatAdd(flat);
@@ -122,28 +132,27 @@ namespace Rental
             else if (EdtMode == EditMode.emEdit)
                 NameListCache.proxy.FlatUpdate(flat);
 
-            foreach (ListViewItem item in lvImagList.Items)
-            {
-                var flatImage = ((DAL.images)item.Tag);
-                var imgPath = flatImage.IMAGE_PATH;
 
-                FlatImageManager.AddFlatImage(flat.ID, imgPath);
-            }
+
+
+
         }
 
         /// <summary>
         /// Convert form to Flat type
         /// </summary>
         /// <returns></returns>
-        private DAL.flat_info Form2Flat()
+        private flat_info Form2Flat()
         {
             var result = new DAL.flat_info();
+
+            result.images = new List<images>();
 
             result.ID = FlatId;
             result.DATA = DateTime.Now;
 
             int roomCount;
-            result.ROOM_COUNT = int.TryParse(intupROOM_COUNT.Text, out roomCount)? (int?)roomCount : null;
+            result.ROOM_COUNT = int.TryParse(intupROOM_COUNT.Text, out roomCount) ? (int?)roomCount : null;
 
             result.ADDRESS = intupADDRESS.Text;
 
@@ -159,7 +168,7 @@ namespace Rental
             result.NAME = inputNAME.Text;
             result.PRICE = intupPRICE.Text;
 
-            result.PHONE = inputPHONE == null || inputPHONE.Items.Count == 0 ? String.Empty : String.Join(";", inputPHONE.Items.Cast<string>().ToArray());
+            result.PHONE = String.Join(";", inputPHONE.Items.Cast<string>().ToArray());
             result.CONTENT = inputCONTENT.Text;
             result.COMMENT = intupCOMMENT.Text;
             result.LINK = inputLINK.Text;
@@ -168,7 +177,6 @@ namespace Rental
             result.RENT_TO = inputRENT_TO.Value.Date;
             result.LESSOR = inputLESSOR.Text;
 
-
             result.FRIDGE = chFridge.Checked;
             result.TV = chTV.Checked;
             result.WASHER = chWasher.Checked;
@@ -176,6 +184,9 @@ namespace Rental
 
             result.REGION = inputREGION.Text;
 
+            result.EMAIL = inputEmail.Text;
+            result.CATEGORY = inputCategory.Text;
+            result.TYPE = inputType.Text;
 
             return result;
         }
@@ -200,7 +211,7 @@ namespace Rental
         private void contextAdd_Click(object sender, EventArgs e)
         {
             string phone = "";
-            if (Extension.InputBox("New phone", "Enter new phone:", ref phone) == DialogResult.OK)
+            if (Extension.InputBox("Новый телефон", "Введите новый телефон:", ref phone) == DialogResult.OK)
                 if (!String.IsNullOrWhiteSpace(phone))
                     inputPHONE.Items.Add(phone);
         }
@@ -253,29 +264,15 @@ namespace Rental
 
         private void btnAddNewImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog dialog = new OpenFileDialog();
+            var dialog = new OpenFileDialog();
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                var compressedImage = Common.SaveJpeg(Image.FromFile(dialog.FileName), 50);
-
-                var proxy = new RentalCore.RentalCoreClient();
-                var imgPath = proxy.Upload(new FileStream(compressedImage, FileMode.Open));
-                proxy.Close();
-
-                var fi = new DAL.images() { ID = -1, FLAT_ID = FlatId, IMAGE_PATH = imgPath };
-
-
-                var item = new ListViewItem();
-                item.Tag = fi;
-                item.Text = Path.GetFileNameWithoutExtension(compressedImage);
-
-                var selItem = lvImagList.Items.Add(item);
-
-                //pbImage.Image = Image.FromFile(compressedImage);
-
-                //if (EdtMode == EditMode.emEdit)
-                //    FlatImageManager.AddFlatImage(FlatId, destImagePath);
-
+                var compressedImagePath = Common.SaveJpeg(Image.FromFile(dialog.FileName), 50);
+                var selItem = lvImagList.Items.Add(new ListViewItem()
+                                                    {
+                                                        Text = string.Format("image №{0}", lvImagList.Items.Count.ToString()),
+                                                        Tag = compressedImagePath
+                                                    });
             }
         }
 

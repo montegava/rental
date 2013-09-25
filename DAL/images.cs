@@ -17,5 +17,7 @@ namespace DAL
         public int ID { get; set; }
         public Nullable<int> FLAT_ID { get; set; }
         public string IMAGE_PATH { get; set; }
+    
+        public virtual flat_info flat_info { get; set; }
     }
 }
