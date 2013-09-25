@@ -54,4 +54,18 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="FlatByUrl">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="url" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FlatByUrlResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="FlatByUrlResult" nillable="true" type="q5:flat_info" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

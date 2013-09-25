@@ -54,7 +54,7 @@ namespace Rental
 
             Worker.DoWork += this.DoWork;
             Worker.RunWorkerCompleted += this.RunWorkerCompleted;
-
+            Worker.WorkerSupportsCancellation = true;
             //Login
             frmLogin frm = new frmLogin(this);
           // frm.ShowDialog();
@@ -185,7 +185,8 @@ namespace Rental
         {
             menuStart.Enabled = true;
             btnStart.Enabled = true;
-            AdvertToListView(AdvertList);
+            Convetor.AdvertToListView(AdvertList, lvAdverts, lvStars);
+
             cbCountAll.Text = lvAdverts.Items.Count.ToString();
             cbFilteredCount.Text = lvStars.Items.Count.ToString();
             ProgressBar.Value = 0;
@@ -208,39 +209,16 @@ namespace Rental
             {
                 case ParcingMode.All:
 
-                    var sw = new System.Diagnostics.Stopwatch();
-                    sw.Start();
                     getMoyaReklama(1);
                     getMoyaReklama(2);
                     getMoyaReklama(3);
-                    sw.Stop();
-                    var MoyaReklamaElapsed = sw.Elapsed;
-
-                    sw.Restart();
                     GetCamelot(true);
                     GetCamelot(false);
-                    sw.Stop();
-                    var CamelotElapsed = sw.Elapsed;
-
-                    sw.Restart();
                     GetIRR();
-                    sw.Stop();
-                    var IRRElapsed = sw.Elapsed;
-
-                    sw.Restart();
                     GetAvito(true);
                     GetAvito(false);
-                    sw.Stop();
-                    var AvitoElapsed = sw.Elapsed;
-
-
-                    sw.Restart();
                     GetSlando(true);
                     GetSlando(false);
-                    sw.Stop();
-                    var SlandoElapsed = sw.Elapsed;
-
-                    //MessageBox.Show(String.Format("Моя реклама: {0}\r\nCamelot: {1}\r\nIRR: {2}\r\nAvito: {3}\r\nSlando: {4}", MoyaReklamaElapsed, CamelotElapsed, IRRElapsed, AvitoElapsed, SlandoElapsed));
                     break;
                 case ParcingMode.CamelotFlat:
                     GetCamelot(true);
@@ -626,96 +604,7 @@ namespace Rental
         #endregion
 
 
-        private void AdvertToListView(List<Advert> advertList)
-        {
-            #region Save current cursor position
-            int cursorPossitionAll = 0;
-            int cursorPossitionFiltered = 0;
-            if (lvAdverts.SelectedItems.Count > 0)
-                cursorPossitionAll = lvAdverts.Items.IndexOf(lvAdverts.SelectedItems[0]);
-            if (lvStars.SelectedItems.Count > 0)
-                cursorPossitionFiltered = lvStars.Items.IndexOf(lvStars.SelectedItems[0]);
-            #endregion
-
-            lvAdverts.BeginUpdate();
-            lvStars.BeginUpdate();
-
-            lvAdverts.Items.Clear();
-            lvStars.Items.Clear();
-
-            try
-            {
-                if (advertList != null)
-                {
-
-
-                    for (int i = 0; i < advertList.Count; i++)
-                    {
-                        ListViewItem item = new ListViewItem((lvAdverts.Items.Count + 1).ToString());
-                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, advertList[i].PhonesAsString()));
-                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, advertList[i].Content));
-                        item.SubItems.Add(new ListViewItem.ListViewSubItem(item, advertList[i].Link));
-                        item.Tag = advertList[i];
-
-
-                        if (advertList[i].IsStar)
-                            item.ImageIndex = (int)ImageMode.imStar;
-                        if (advertList[i].IsBlocked)
-                            item.StateImageIndex = advertList[i].ImageIndex + 1;
-                        else
-                            item.StateImageIndex = advertList[i].ImageIndex;
-
-                        lvAdverts.Items.Add(item);
-
-                        if (!advertList[i].IsBlocked && !advertList[i].IsStar)
-                        {
-                            ListViewItem itemFilter = new ListViewItem((lvStars.Items.Count + 1).ToString());
-                            itemFilter.SubItems.Add(new ListViewItem.ListViewSubItem(itemFilter, advertList[i].HasPhoto ? "+" : ""));
-
-
-                            itemFilter.SubItems.Add(new ListViewItem.ListViewSubItem(itemFilter, advertList[i].PhonesAsString()));
-                            itemFilter.SubItems.Add(new ListViewItem.ListViewSubItem(itemFilter, advertList[i].Content));
-                            itemFilter.SubItems.Add(new ListViewItem.ListViewSubItem(itemFilter, advertList[i].Link));
-                            itemFilter.Tag = advertList[i];
-
-                            if (advertList[i].IsStar)
-                                itemFilter.ImageIndex = (int)ImageMode.imStar;
-                            itemFilter.StateImageIndex = advertList[i].ImageIndex;
-                            lvStars.Items.Add(itemFilter);
-                        }
-
-                    }
-
-                    if (cursorPossitionAll < lvAdverts.Items.Count && cursorPossitionAll >= 0)
-                        lvAdverts.Items[cursorPossitionAll].Selected = true;
-                    else
-                    {
-                        cursorPossitionAll--;
-                        if (cursorPossitionAll < lvAdverts.Items.Count && cursorPossitionAll >= 0)
-                            lvAdverts.Items[cursorPossitionAll].Selected = true;
-                    }
-
-                    if (cursorPossitionFiltered < lvStars.Items.Count && cursorPossitionFiltered >= 0)
-                        lvStars.Items[cursorPossitionFiltered].Selected = true;
-                    else
-                    {
-                        cursorPossitionFiltered--;
-                        if (cursorPossitionFiltered < lvStars.Items.Count && cursorPossitionFiltered >= 0)
-                            lvStars.Items[cursorPossitionFiltered].Selected = true;
-                    }
-
-                }
-            }
-            finally
-            {
-
-                lvAdverts.EndUpdate();
-                lvStars.EndUpdate();
-            }
-
-
-        
-        }
+    
 
 
 

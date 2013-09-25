@@ -4,6 +4,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Linq;
 using DAL;
+using Rental.src;
 
 namespace Rental
 {
@@ -37,7 +38,7 @@ namespace Rental
             if (!String.IsNullOrEmpty(pageListContent))
             {
                 #region 1. Collect all links from page
-                Match m = Regex.Match(pageListContent, @"<div[\s]class=""ads-content-div"">(.*?)</div>", RegexOptions.Singleline);
+                Match m = Regex.Match(pageListContent, @"<div[\s]class=""ans-content-div"">(.*?)</div>", RegexOptions.Singleline);
                 List<string> linklist = new List<string>();
                 while (m.Success)
                 {
@@ -56,8 +57,8 @@ namespace Rental
                     #region 2.1. Check if url already uploaded and added
                     if (onCheckCansel())
                         return result;
-                    DAL.flat_info flat = null;
-                    if (FlatManager.CheckUrlIfExist(url, out flat) && flat != null)
+                    DAL.flat_info flat = NameListCache.proxy.FlatByUrl(url);
+                    if (flat != null)
                     {
                         Advert a = Convetor.Flat2Advert(flat);
                         a.IsStar = true;
@@ -110,8 +111,8 @@ namespace Rental
                     string url = Const.CNT_CAMELOT_DOMAIN + m.Groups[1].ToString().Trim();
 
                     //Check if url already uploaded and added
-                    DAL.flat_info flat = null;
-                    if (FlatManager.CheckUrlIfExist(url, out flat) && flat != null)
+                    DAL.flat_info flat = NameListCache.proxy.FlatByUrl(url);
+                    if (flat != null)
                     {
                         Advert a = Convetor.Flat2Advert(flat);
                         a.IsStar = true;

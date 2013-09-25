@@ -9,202 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace Rental.RentalCore {
-    using System.Runtime.Serialization;
-    using System;
     
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Filter", Namespace="http://schemas.datacontract.org/2004/07/RentalCommon")]
-    [System.SerializableAttribute()]
-    public partial class Filter : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Rental.RentalCore.ComapreType ComparatorField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string EndValueField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private Rental.RentalCore.Fiels FieldField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string StartValueField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Rental.RentalCore.ComapreType Comparator {
-            get {
-                return this.ComparatorField;
-            }
-            set {
-                if ((this.ComparatorField.Equals(value) != true)) {
-                    this.ComparatorField = value;
-                    this.RaisePropertyChanged("Comparator");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string EndValue {
-            get {
-                return this.EndValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.EndValueField, value) != true)) {
-                    this.EndValueField = value;
-                    this.RaisePropertyChanged("EndValue");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public Rental.RentalCore.Fiels Field {
-            get {
-                return this.FieldField;
-            }
-            set {
-                if ((this.FieldField.Equals(value) != true)) {
-                    this.FieldField = value;
-                    this.RaisePropertyChanged("Field");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string StartValue {
-            get {
-                return this.StartValueField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.StartValueField, value) != true)) {
-                    this.StartValueField = value;
-                    this.RaisePropertyChanged("StartValue");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ComapreType", Namespace="http://schemas.datacontract.org/2004/07/RentalCommon")]
-    public enum ComapreType : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NONE = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MORE = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        LESS = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        BETWEEN = 3,
-    }
-    
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Fiels", Namespace="http://schemas.datacontract.org/2004/07/RentalCommon")]
-    public enum Fiels : int {
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NONE = 0,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ID = 1,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        DATA = 2,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ROOM_COUNT = 3,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        ADDRESS = 4,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        FLOOR = 5,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        BATH_UNIT = 6,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        BUILD = 7,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        FURNITURE = 8,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        STATE = 9,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        MECHANIC = 10,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        NAME = 11,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        PRICE = 12,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        PHONE = 13,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        COMMENT = 14,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        CONTENT = 15,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        LINK = 16,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        TERM = 17,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        RENT_FROM = 18,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        RENT_TO = 19,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        LESSOR = 20,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        FRIDGE = 21,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        TV = 22,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        WASHER = 23,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        COOLER = 24,
-        
-        [System.Runtime.Serialization.EnumMemberAttribute()]
-        REGION = 25,
-    }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RentalCore.IRentalCore")]
@@ -217,7 +22,10 @@ namespace Rental.RentalCore {
         System.IO.Stream DownloadFile(string remotePath);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatList", ReplyAction="http://tempuri.org/IRentalCore/FlatListResponse")]
-        void FlatList(Rental.RentalCore.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize);
+        void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatByUrl", ReplyAction="http://tempuri.org/IRentalCore/FlatByUrlResponse")]
+        DAL.flat_info FlatByUrl(string url);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -255,8 +63,12 @@ namespace Rental.RentalCore {
             return base.Channel.DownloadFile(remotePath);
         }
         
-        public void FlatList(Rental.RentalCore.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize) {
+        public void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize) {
             base.Channel.FlatList(filters, startDate, endDate, sortBy, orderBy, ref activePage, out flats, out pageCount, out totalRowsNumber, pageSize);
+        }
+        
+        public DAL.flat_info FlatByUrl(string url) {
+            return base.Channel.FlatByUrl(url);
         }
     }
 }

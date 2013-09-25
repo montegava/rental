@@ -94,13 +94,13 @@
     <Content Include="images\state3.png" />
     <Content Include="Properties\DataSources\DAL.flat_info.datasource" />
     <Content Include="RealPricing.aspx" />
-    <Content Include="Service References\RentalCore\item.disco" />
-    <Content Include="Service References\RentalCore\configuration91.svcinfo" />
-    <Content Include="Service References\RentalCore\configuration.svcinfo" />
-    <Content Include="Service References\RentalCore\Reference.svcmap">
+    <None Include="Service References\RentalCore\item.disco" />
+    <None Include="Service References\RentalCore\configuration91.svcinfo" />
+    <None Include="Service References\RentalCore\configuration.svcinfo" />
+    <None Include="Service References\RentalCore\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="src\captcha.php" />
     <Content Include="src\general.js" />
     <Content Include="src\hostcms.js" />
@@ -208,7 +208,7 @@
     <None Include="Service References\RentalCore\item4.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\RentalCore\RentalCore.wsdl" />
+    <None Include="Service References\RentalCore\RentalCore.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

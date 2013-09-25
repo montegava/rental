@@ -59,3 +59,4 @@ obj
 /Controls/bin/Debug/*.dll
 /rec/bin/Debug/*.exe
 /Rental/bin/Debug/*.exe
+/RentalCommon/bin/Debug/*.dll

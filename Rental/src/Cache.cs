@@ -130,7 +130,7 @@ namespace Rental.src
 
 
                     NameListCache.proxy.FlatList(
-                        new RentalCore.Filter[] { },
+                        new Filter[] { },
                         DateTime.MinValue,
                         DateTime.MinValue,
                         1,

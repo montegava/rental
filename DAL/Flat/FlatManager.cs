@@ -17,6 +17,17 @@ namespace DAL
     {
         public static readonly ILog errorLog = LogManager.GetLogger("TestApplication");
 
+        public static flat_info FlatByUrl(string url)
+        {
+            flat_info result = null;
+            if (!string.IsNullOrEmpty(url))
+            {
+                var context = WcfOperationContext.Current.Context;
+                result = context.flat_info.Where(f => f.LINK.ToUpper() == url.ToUpper()).FirstOrDefault();
+            }
+            return result;
+        }
+
         public static void FlatList(List<Filter> filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
         {
 
@@ -253,72 +264,6 @@ namespace DAL
         {
             var context = WcfOperationContext.Current.Context;
             return context.flat_info.Select(f => f).ToList();
-        }
-
-        /// <summary>
-        /// Check if advert already added
-        /// </summary>
-        /// <param name="url"></param>
-        /// <returns></returns>
-        public static bool CheckUrlIfExist(string url, out flat_info flat)
-        {
-            using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
-            {
-                String query = String.Format(@"select *
-                                from flat_info f
-                                where f.LINK = '{0}'", url);
-                sqlConn.Open();
-                using (MySqlCommand command = new MySqlCommand(query, sqlConn))
-                {
-                    //command.Parameters.Add(new MySqlParameter() { ParameterName = "@url", DbType = DbType.AnsiString, Value = url });
-                    DataSet ds = new DataSet();
-                    MySqlDataAdapter ret = new MySqlDataAdapter();
-                    ret.SelectCommand = command;
-                    ret.Fill(ds);
-
-                    if (ds != null && ds.Tables[0].Rows.Count > 0)
-                    {
-
-                        flat = (from rows in ds.Tables[0].AsEnumerable()
-                                select new flat_info()
-                                {
-                                    ID = (int)rows["id"],
-                                    DATA = rows.Field<DateTime>("data"),
-                                    // ROOM_COUNT = rows["room_count"] == DBNull.Value ? null : (int?)rows["room_count"],
-                                    ROOM_COUNT = (int)rows["room_count"],
-                                    ADDRESS = rows["address"].ToString(),
-                                    // FLOOR = rows["floor"] == DBNull.Value ? null : (int?)rows["floor"],
-                                    FLOOR = (int)rows["floor"],
-                                    BATH_UNIT = rows["bath_unit"].ToString(),
-                                    BUILD = rows["build"].ToString(),
-                                    FURNITURE = rows["furniture"].ToString(),
-                                    STATE = rows["state"].ToString(),
-                                    MECHANIC = rows["mechanic"].ToString(),
-                                    NAME = rows["name"].ToString(),
-                                    PRICE = rows["price"].ToString(),
-                                    PHONE = rows["phone"].ToString(),
-                                    COMMENT = rows["comment"].ToString(),
-                                    CONTENT = rows["content"].ToString(),
-                                    LINK = rows["link"].ToString(),
-                                    RENT_FROM = rows.Field<DateTime>("rent_from"),
-                                    RENT_TO = rows.Field<DateTime>("rent_to"),
-                                    TERM = rows["term"].ToString(),
-                                    LESSOR = rows["lessor"].ToString(),
-
-                                    FRIDGE = rows["fridge"] == DBNull.Value ? false : (bool)rows["fridge"],
-                                    TV = rows["tv"] == DBNull.Value ? false : (bool)rows["tv"],
-                                    WASHER = rows["washer"] == DBNull.Value ? false : (bool)rows["washer"],
-                                    COOLER = rows["cooler"] == DBNull.Value ? false : (bool)rows["cooler"],
-
-                                    REGION = rows["region"].ToString(),
-                                }).FirstOrDefault<flat_info>();
-                        return true;
-                    }
-                }
-                sqlConn.Close();
-            }
-            flat = null;
-            return false;
         }
 
         public static bool AddNewFlat(flat_info flat)

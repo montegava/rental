@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DAL;
 using System.Text.RegularExpressions;
+using Rental.src;
 
 namespace Rental
 {
@@ -55,8 +56,8 @@ namespace Rental
                     #region 2.1. Check if url already uploaded and added
                     if (onCheckCansel())
                         return result;
-                    DAL.flat_info flat = null;
-                    if (FlatManager.CheckUrlIfExist(url, out flat) && flat != null)
+                    DAL.flat_info flat = NameListCache.proxy.FlatByUrl(url);
+                    if (flat != null)
                     {
                         Advert a = Convetor.Flat2Advert(flat);
                         a.IsStar = true;

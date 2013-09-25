@@ -23,6 +23,9 @@ namespace RentalCMS.RentalCore {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatList", ReplyAction="http://tempuri.org/IRentalCore/FlatListResponse")]
         void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatByUrl", ReplyAction="http://tempuri.org/IRentalCore/FlatByUrlResponse")]
+        DAL.flat_info FlatByUrl(string url);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -62,6 +65,10 @@ namespace RentalCMS.RentalCore {
         
         public void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize) {
             base.Channel.FlatList(filters, startDate, endDate, sortBy, orderBy, ref activePage, out flats, out pageCount, out totalRowsNumber, pageSize);
+        }
+        
+        public DAL.flat_info FlatByUrl(string url) {
+            return base.Channel.FlatByUrl(url);
         }
     }
 }

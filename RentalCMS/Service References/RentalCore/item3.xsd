@@ -8,11 +8,22 @@
   <xs:element name="ArrayOfFilter" nillable="true" type="tns:ArrayOfFilter" />
   <xs:complexType name="Filter">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Comparator" type="tns:ComapreType" />
+      <xs:element minOccurs="0" name="EndValue" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Field" type="tns:Fiels" />
-      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StartValue" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Filter" nillable="true" type="tns:Filter" />
+  <xs:simpleType name="ComapreType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="NONE" />
+      <xs:enumeration value="MORE" />
+      <xs:enumeration value="LESS" />
+      <xs:enumeration value="BETWEEN" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="ComapreType" nillable="true" type="tns:ComapreType" />
   <xs:simpleType name="Fiels">
     <xs:restriction base="xs:string">
       <xs:enumeration value="NONE" />
