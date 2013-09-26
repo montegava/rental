@@ -63,6 +63,12 @@
             this.contextAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.contextDel = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.lblType = new System.Windows.Forms.Label();
+            this.inputType = new System.Windows.Forms.ComboBox();
+            this.lblCategory = new System.Windows.Forms.Label();
+            this.inputCategory = new System.Windows.Forms.ComboBox();
+            this.inputEmail = new System.Windows.Forms.TextBox();
+            this.lblEmail = new System.Windows.Forms.Label();
             this.lvImagList = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.pbImage = new System.Windows.Forms.PictureBox();
@@ -81,12 +87,8 @@
             this.inputRENT_FROM = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.inputTERM = new System.Windows.Forms.ComboBox();
-            this.inputEmail = new System.Windows.Forms.TextBox();
-            this.lblEmail = new System.Windows.Forms.Label();
-            this.lblCategory = new System.Windows.Forms.Label();
-            this.inputCategory = new System.Windows.Forms.ComboBox();
-            this.lblType = new System.Windows.Forms.Label();
-            this.inputType = new System.Windows.Forms.ComboBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.context.SuspendLayout();
@@ -503,6 +505,8 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.label13);
+            this.groupBox5.Controls.Add(this.comboBox1);
             this.groupBox5.Controls.Add(this.lblType);
             this.groupBox5.Controls.Add(this.inputType);
             this.groupBox5.Controls.Add(this.lblCategory);
@@ -554,6 +558,92 @@
             this.groupBox5.TabIndex = 25;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Информация";
+            // 
+            // lblType
+            // 
+            this.lblType.AutoSize = true;
+            this.lblType.Location = new System.Drawing.Point(246, 126);
+            this.lblType.Name = "lblType";
+            this.lblType.Size = new System.Drawing.Size(26, 13);
+            this.lblType.TabIndex = 47;
+            this.lblType.Text = "Тип";
+            // 
+            // inputType
+            // 
+            this.inputType.AutoCompleteCustomSource.AddRange(new string[] {
+            "-- неизвестно --",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            ">9"});
+            this.inputType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inputType.FormattingEnabled = true;
+            this.inputType.Items.AddRange(new object[] {
+            "-- неизвестно --",
+            "Сдам",
+            "Сниму"});
+            this.inputType.Location = new System.Drawing.Point(278, 123);
+            this.inputType.Name = "inputType";
+            this.inputType.Size = new System.Drawing.Size(138, 21);
+            this.inputType.TabIndex = 48;
+            // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.Location = new System.Drawing.Point(19, 126);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Size = new System.Drawing.Size(60, 13);
+            this.lblCategory.TabIndex = 45;
+            this.lblCategory.Text = "Категория";
+            // 
+            // inputCategory
+            // 
+            this.inputCategory.AutoCompleteCustomSource.AddRange(new string[] {
+            "-- неизвестно --",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            ">9"});
+            this.inputCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inputCategory.FormattingEnabled = true;
+            this.inputCategory.Items.AddRange(new object[] {
+            "-- неизвестно --",
+            "Квартира",
+            "Комната",
+            "Дом",
+            "Помещение, офис"});
+            this.inputCategory.Location = new System.Drawing.Point(93, 123);
+            this.inputCategory.Name = "inputCategory";
+            this.inputCategory.Size = new System.Drawing.Size(138, 21);
+            this.inputCategory.TabIndex = 46;
+            // 
+            // inputEmail
+            // 
+            this.inputEmail.Location = new System.Drawing.Point(93, 45);
+            this.inputEmail.Name = "inputEmail";
+            this.inputEmail.Size = new System.Drawing.Size(226, 20);
+            this.inputEmail.TabIndex = 44;
+            // 
+            // lblEmail
+            // 
+            this.lblEmail.AutoSize = true;
+            this.lblEmail.Location = new System.Drawing.Point(55, 48);
+            this.lblEmail.Name = "lblEmail";
+            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.TabIndex = 43;
+            this.lblEmail.Text = "Email";
             // 
             // lvImagList
             // 
@@ -778,34 +868,18 @@
             this.inputTERM.Size = new System.Drawing.Size(150, 21);
             this.inputTERM.TabIndex = 23;
             // 
-            // inputEmail
+            // label13
             // 
-            this.inputEmail.Location = new System.Drawing.Point(93, 45);
-            this.inputEmail.Name = "inputEmail";
-            this.inputEmail.Size = new System.Drawing.Size(226, 20);
-            this.inputEmail.TabIndex = 44;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(286, 350);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 13);
+            this.label13.TabIndex = 49;
+            this.label13.Text = "Оплата";
             // 
-            // lblEmail
+            // comboBox1
             // 
-            this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(55, 48);
-            this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(32, 13);
-            this.lblEmail.TabIndex = 43;
-            this.lblEmail.Text = "Email";
-            // 
-            // lblCategory
-            // 
-            this.lblCategory.AutoSize = true;
-            this.lblCategory.Location = new System.Drawing.Point(19, 126);
-            this.lblCategory.Name = "lblCategory";
-            this.lblCategory.Size = new System.Drawing.Size(60, 13);
-            this.lblCategory.TabIndex = 45;
-            this.lblCategory.Text = "Категория";
-            // 
-            // inputCategory
-            // 
-            this.inputCategory.AutoCompleteCustomSource.AddRange(new string[] {
+            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
             "-- неизвестно --",
             "1",
             "2",
@@ -817,31 +891,9 @@
             "8",
             "9",
             ">9"});
-            this.inputCategory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inputCategory.FormattingEnabled = true;
-            this.inputCategory.Items.AddRange(new object[] {
-            "-- неизвестно --",
-            "Квартира",
-            "Комната",
-            "Дом",
-            "Помещение, офис"});
-            this.inputCategory.Location = new System.Drawing.Point(93, 123);
-            this.inputCategory.Name = "inputCategory";
-            this.inputCategory.Size = new System.Drawing.Size(138, 21);
-            this.inputCategory.TabIndex = 46;
-            // 
-            // lblType
-            // 
-            this.lblType.AutoSize = true;
-            this.lblType.Location = new System.Drawing.Point(246, 126);
-            this.lblType.Name = "lblType";
-            this.lblType.Size = new System.Drawing.Size(26, 13);
-            this.lblType.TabIndex = 47;
-            this.lblType.Text = "Тип";
-            // 
-            // inputType
-            // 
-            this.inputType.AutoCompleteCustomSource.AddRange(new string[] {
+            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
             "-- неизвестно --",
             "1",
             "2",
@@ -852,17 +904,26 @@
             "7",
             "8",
             "9",
-            ">9"});
-            this.inputType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inputType.FormattingEnabled = true;
-            this.inputType.Items.AddRange(new object[] {
-            "-- неизвестно --",
-            "Сдам",
-            "Сниму"});
-            this.inputType.Location = new System.Drawing.Point(278, 123);
-            this.inputType.Name = "inputType";
-            this.inputType.Size = new System.Drawing.Size(138, 21);
-            this.inputType.TabIndex = 48;
+            "10",
+            "11",
+            "12",
+            "13",
+            "14",
+            "15",
+            "16",
+            "17",
+            "18",
+            "19",
+            "20",
+            "21",
+            "22",
+            "23",
+            "24",
+            "25"});
+            this.comboBox1.Location = new System.Drawing.Point(336, 347);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(88, 21);
+            this.comboBox1.TabIndex = 50;
             // 
             // frmFlat
             // 
@@ -951,5 +1012,7 @@
         public System.Windows.Forms.Label lblEmail;
         public System.Windows.Forms.Label lblType;
         public System.Windows.Forms.ComboBox inputType;
+        public System.Windows.Forms.Label label13;
+        public System.Windows.Forms.ComboBox comboBox1;
     }
 }
