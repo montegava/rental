@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SmartControls
+namespace PageControls
 {
     [Serializable()]
     public class SmartTooltipItem

@@ -53,4 +53,19 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="image_list" nillable="true" type="tns:image_list" />
+  <xs:complexType name="ArrayOfblack_list">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="black_list" nillable="true" type="tns:black_list" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfblack_list" nillable="true" type="tns:ArrayOfblack_list" />
+  <xs:complexType name="black_list">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COMMENT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="STOP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TYPE_ID" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="black_list" nillable="true" type="tns:black_list" />
 </xs:schema>

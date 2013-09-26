@@ -67,11 +67,11 @@ namespace RentalCMS
             return string.Empty;// WebSettings.GetMediaRoot() + selectedProviderID.ToString() + SEPARATOR + selectedTitle.Id + SEPARATOR;
         }
 
-        public List<SmartControls.ImageInfo> GetItemFromSelectedImages(IEnumerable<image_list> items, string basePath = null)
+        public List<PageControls.ImageInfo> GetItemFromSelectedImages(IEnumerable<image_list> items, string basePath = null)
         {
             // -- prepare url string array from selected item's
-            if (items == null || !items.Any()) return new List<SmartControls.ImageInfo>();
-            return items.Select(e => new SmartControls.ImageInfo
+            if (items == null || !items.Any()) return new List<PageControls.ImageInfo>();
+            return items.Select(e => new PageControls.ImageInfo
                                     {
                                         Name = System.IO.Path.GetFileName(e.IMAGE_PATH),
                                         Path = (basePath ?? string.Empty) + e.IMAGE_PATH

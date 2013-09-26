@@ -95,6 +95,7 @@
     <Content Include="images\state3.png" />
     <Content Include="Properties\DataSources\DAL.flat_info.datasource" />
     <Content Include="RealPricing.aspx" />
+    <None Include="Properties\DataSources\DAL.black_list.datasource" />
     <None Include="Service References\RentalCore\item.disco" />
     <None Include="Service References\RentalCore\configuration91.svcinfo" />
     <None Include="Service References\RentalCore\configuration.svcinfo" />

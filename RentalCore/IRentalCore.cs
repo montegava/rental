@@ -24,7 +24,6 @@ namespace RentalCore
         [OperationContract]
         void FlatList(List<Filter> filters, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber);
 
-
         [OperationContract]
         flat_info FlatByUrl(string url);
 
@@ -39,7 +38,19 @@ namespace RentalCore
 
         [OperationContract]
         void ImageUpdate(image_list[] images, int flatId);
-    
+
+        [OperationContract]
+        black_list[] BlackListAll();
+
+        [OperationContract]
+        black_list BlackListById(int id);
+
+        [OperationContract]
+        void BlackListDelete(int id);
+
+        [OperationContract]
+        int BlackListAdd(black_list blackList);
+
     }
 
 

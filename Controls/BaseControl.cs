@@ -4,7 +4,7 @@ using System.Web.UI;
 using System.Reflection;
 using System.Web.UI.WebControls;
 
-namespace SmartControls
+namespace PageControls
 {
     public class BaseControl : WebControl
     {

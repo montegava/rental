@@ -8,7 +8,7 @@ using System.Web.UI.HtmlControls;
 using System.Collections.Specialized;
 using System.Web.Script.Serialization;
 
-namespace SmartControls
+namespace PageControls
 {
     public class SmartImageBrowser : BaseControl, IPostBackDataHandler
     {

@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Rental.Master" AutoEventWireup="true" CodeBehind="FlatManager.aspx.cs" Inherits="RentalCMS.FlatManager" %>
 
-<%@ Register Assembly="PageControls" Namespace="SmartControls" TagPrefix="Smart" %>
+<%@ Register Assembly="PageControls" Namespace="PageControls" TagPrefix="Smart" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>

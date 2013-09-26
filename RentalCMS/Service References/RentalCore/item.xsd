@@ -11,10 +11,12 @@
       <xs:element minOccurs="0" name="ADDRESS" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BATH_UNIT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="BUILD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CATEGORY" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="COMMENT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="CONTENT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="COOLER" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="DATA" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="EMAIL" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="FLOOR" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="FRIDGE" nillable="true" type="xs:boolean" />
       <xs:element minOccurs="0" name="FURNITURE" nillable="true" type="xs:string" />
@@ -32,8 +34,38 @@
       <xs:element minOccurs="0" name="STATE" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TERM" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="TV" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="TYPE" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="WASHER" nillable="true" type="xs:boolean" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="flat_info" nillable="true" type="tns:flat_info" />
+  <xs:complexType name="ArrayOfimage_list">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="image_list" nillable="true" type="tns:image_list" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfimage_list" nillable="true" type="tns:ArrayOfimage_list" />
+  <xs:complexType name="image_list">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FLAT_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IMAGE_PATH" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="image_list" nillable="true" type="tns:image_list" />
+  <xs:complexType name="ArrayOfblack_list">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="black_list" nillable="true" type="tns:black_list" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfblack_list" nillable="true" type="tns:ArrayOfblack_list" />
+  <xs:complexType name="black_list">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="COMMENT" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="STOP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TYPE_ID" nillable="true" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="black_list" nillable="true" type="tns:black_list" />
 </xs:schema>

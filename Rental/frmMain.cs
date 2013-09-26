@@ -173,7 +173,7 @@ namespace Rental
         /// </summary>
         private void FillBlackList()
         {
-            dataGridViewContactList.DataSource = BlackListManager.GetAllBlackListsAsDataTable();
+            dataGridViewContactList.DataSource = NameListCache.proxy.BlackListAll();
             dataGridViewContactList.Columns["ID"].Visible = dataGridViewContactList.Columns["TYPE_ID"].Visible = false;
             dataGridViewContactList.Columns["STOP"].Width = dataGridViewContactList.Columns["COMMENT"].Width = 200;
         }
@@ -203,7 +203,7 @@ namespace Rental
             BlackList.Clear();
             AdvertList.Clear();
 
-            BlackList.AddRange(BlackListManager.GetAllBlackLists());
+            BlackList.AddRange(NameListCache.proxy.BlackListAll());
 
             switch ((ParcingMode)Properties.Settings.Default.cbSites)
             {
@@ -721,11 +721,8 @@ namespace Rental
             Int32 blackId;
             if (Int32.TryParse(dataGridViewContactList.CurrentRow.Cells[0].Value.ToString(), out blackId))
             {
-                string error = null;
-                if (!BlackListManager.DeleteBlackWord(blackId, out error))
-                    MessageBox.Show(error);
-                else
-                    FillBlackList();
+                NameListCache.proxy.BlackListDelete(blackId);
+                FillBlackList();
             }
 
         }

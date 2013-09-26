@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Rental.Master" MaintainScrollPositionOnPostback="true" AutoEventWireup="true" CodeBehind="Flats.aspx.cs" Inherits="RentalCMS.Flats" %>
 
 <%@ Import Namespace="System.ComponentModel" %>
-<%@ Register Assembly="PageControls" Namespace="SmartControls" TagPrefix="Smart" %>
+<%@ Register Assembly="PageControls" Namespace="PageControls" TagPrefix="Smart" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 

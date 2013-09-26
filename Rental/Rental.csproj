@@ -96,11 +96,11 @@
     <Compile Include="frm\frmFlat.Designer.cs">
       <DependentUpon>frmFlat.cs</DependentUpon>
     </Compile>
-    <Compile Include="frm\frmNewTeplate.cs">
+    <Compile Include="frm\frmBlackList.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frm\frmNewTeplate.designer.cs">
-      <DependentUpon>frmNewTeplate.cs</DependentUpon>
+    <Compile Include="frm\frmBlackList.designer.cs">
+      <DependentUpon>frmBlackList.cs</DependentUpon>
     </Compile>
     <Compile Include="frm\frmProgress.cs">
       <SubType>Form</SubType>
@@ -153,8 +153,8 @@
     <EmbeddedResource Include="frm\frmFlat.resx">
       <DependentUpon>frmFlat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frm\frmNewTeplate.resx">
-      <DependentUpon>frmNewTeplate.cs</DependentUpon>
+    <EmbeddedResource Include="frm\frmBlackList.resx">
+      <DependentUpon>frmBlackList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm\frmProgress.resx">
       <DependentUpon>frmProgress.cs</DependentUpon>
@@ -178,6 +178,7 @@
     <None Include="img\camelot_close.pdn" />
     <None Include="img\mr_close.pdn" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DAL.black_list.datasource" />
     <None Include="Properties\DataSources\DAL.flat_info.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

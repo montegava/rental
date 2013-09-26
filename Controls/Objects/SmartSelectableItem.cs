@@ -1,6 +1,6 @@
 using System;
 
-namespace SmartControls
+namespace PageControls
 {
 
     [Serializable]

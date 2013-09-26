@@ -2,7 +2,7 @@
 using System.Web.UI;
 using System.Collections.Specialized;
 
-namespace SmartControls
+namespace PageControls
 {
     /// <summary>
     /// This class is use to generate a custom paging control

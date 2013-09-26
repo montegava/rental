@@ -135,5 +135,26 @@ namespace RentalCore
         {
             ImageManager.ImageUpdate(images, flatId);
         }
+
+        public black_list[] BlackListAll()
+        {
+            return BlackListManager.BlackListAll();
+        }
+
+        public black_list BlackListById(int id)
+        {
+            return BlackListManager.BlackListById(id);
+        }
+
+        public void BlackListDelete(int id)
+        {
+            BlackListManager.BlackListDelete(id);
+        }
+
+        public int BlackListAdd(black_list blackList)
+        {
+            return BlackListManager.BlackListAdd(blackList);
+        }
+
     }
 }

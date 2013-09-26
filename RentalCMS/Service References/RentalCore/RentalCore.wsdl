@@ -33,6 +33,54 @@
   <wsdl:message name="IRentalCore_FlatByUrl_OutputMessage">
     <wsdl:part name="parameters" element="tns:FlatByUrlResponse" />
   </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatById_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlatById" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlatByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlatAdd" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlatAddResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlatUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlatUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_ImageUpdate_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImageUpdate" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_ImageUpdate_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImageUpdateResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BlackListAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:BlackListAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BlackListAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BlackListAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BlackListById_InputMessage">
+    <wsdl:part name="parameters" element="tns:BlackListById" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BlackListById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BlackListByIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BlackListDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:BlackListDelete" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BlackListDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BlackListDeleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BlackListAdd_InputMessage">
+    <wsdl:part name="parameters" element="tns:BlackListAdd" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BlackListAdd_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BlackListAddResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRentalCore">
     <wsdl:operation name="Upload">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/Upload" message="tns:IRentalCore_Upload_InputMessage" />
@@ -49,6 +97,38 @@
     <wsdl:operation name="FlatByUrl">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatByUrl" message="tns:IRentalCore_FlatByUrl_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatByUrlResponse" message="tns:IRentalCore_FlatByUrl_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlatById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatById" message="tns:IRentalCore_FlatById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatByIdResponse" message="tns:IRentalCore_FlatById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlatAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatAdd" message="tns:IRentalCore_FlatAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatAddResponse" message="tns:IRentalCore_FlatAdd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlatUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatUpdate" message="tns:IRentalCore_FlatUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatUpdateResponse" message="tns:IRentalCore_FlatUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImageUpdate">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/ImageUpdate" message="tns:IRentalCore_ImageUpdate_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/ImageUpdateResponse" message="tns:IRentalCore_ImageUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlackListAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BlackListAll" message="tns:IRentalCore_BlackListAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/BlackListAllResponse" message="tns:IRentalCore_BlackListAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlackListById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BlackListById" message="tns:IRentalCore_BlackListById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/BlackListByIdResponse" message="tns:IRentalCore_BlackListById_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlackListDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BlackListDelete" message="tns:IRentalCore_BlackListDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/BlackListDeleteResponse" message="tns:IRentalCore_BlackListDelete_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BlackListAdd">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BlackListAdd" message="tns:IRentalCore_BlackListAdd_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/BlackListAddResponse" message="tns:IRentalCore_BlackListAdd_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRentalCore" type="tns:IRentalCore">
@@ -82,6 +162,78 @@
     </wsdl:operation>
     <wsdl:operation name="FlatByUrl">
       <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatByUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlatById">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlatAdd">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlatUpdate">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImageUpdate">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/ImageUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlackListAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/BlackListAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlackListById">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/BlackListById" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlackListDelete">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/BlackListDelete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BlackListAdd">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/BlackListAdd" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

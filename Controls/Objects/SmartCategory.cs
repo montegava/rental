@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace SmartControls
+namespace PageControls
 {
     [Serializable]
     public class SmartCategory : SmartSelectableItem
