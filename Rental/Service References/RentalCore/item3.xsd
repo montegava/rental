@@ -10,7 +10,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="Comparator" type="tns:ComapreType" />
       <xs:element minOccurs="0" name="EndValue" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Field" type="tns:Fiels" />
+      <xs:element minOccurs="0" name="Field" type="tns:Fields" />
       <xs:element minOccurs="0" name="StartValue" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
@@ -24,7 +24,7 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="ComapreType" nillable="true" type="tns:ComapreType" />
-  <xs:simpleType name="Fiels">
+  <xs:simpleType name="Fields">
     <xs:restriction base="xs:string">
       <xs:enumeration value="NONE" />
       <xs:enumeration value="ID" />
@@ -52,7 +52,11 @@
       <xs:enumeration value="WASHER" />
       <xs:enumeration value="COOLER" />
       <xs:enumeration value="REGION" />
+      <xs:enumeration value="EMAIL" />
+      <xs:enumeration value="CATEGORY" />
+      <xs:enumeration value="TYPE" />
+      <xs:enumeration value="PAYMENT" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:element name="Fiels" nillable="true" type="tns:Fiels" />
+  <xs:element name="Fields" nillable="true" type="tns:Fields" />
 </xs:schema>

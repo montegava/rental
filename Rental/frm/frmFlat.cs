@@ -73,37 +73,47 @@ namespace Rental
                 this.inputTERM.Text = flat.TERM;
                 this.chTV.Checked = flat.TV ?? false;
                 this.inputEmail.Text = flat.EMAIL;
-                this.inputCategory.Text = flat.CATEGORY;
-                this.inputType.Text = flat.TYPE;
-                this.inputPayment.Text = flat.PAYMENT;
+
+                if (!string.IsNullOrEmpty(flat.CATEGORY))
+                    this.inputCategory.Text = flat.CATEGORY;
+
+                if (!string.IsNullOrEmpty(flat.TYPE))
+                    this.inputType.Text = flat.TYPE;
+
+                if (!string.IsNullOrEmpty(flat.PAYMENT))
+                    this.inputPayment.Text = flat.PAYMENT;
+
+
             }
         }
 
         private void frmFlat_Load(object sender, EventArgs e)
         {
+            intupBUILD.SelectedIndex = 0;
+            intupFLOOR.SelectedIndex = 0;
+
+            intupROOM_COUNT.SelectedIndex = 0;
+
+            intupBATH_UNIT.SelectedIndex = 0;
+
+            intupSTATE.SelectedIndex = 0;
+            intupFURNITURE.SelectedIndex = 0;
+            intupMECHANIC.SelectedIndex = 0;
+
+            inputTERM.SelectedIndex = 0;
+            inputLESSOR.SelectedIndex = 0;
+
+            inputREGION.SelectedIndex = 0;
+
+            inputType.SelectedIndex = 0;
+
+            inputCategory.SelectedIndex = 0;
+
+            inputPayment.SelectedIndex = 0;
+
             if (EdtMode == EditMode.emAddNew)
             {
-                intupBUILD.SelectedIndex = 0;
-                intupFLOOR.SelectedIndex = 0;
 
-                intupROOM_COUNT.SelectedIndex = 0;
-
-                intupBATH_UNIT.SelectedIndex = 0;
-
-                intupSTATE.SelectedIndex = 0;
-                intupFURNITURE.SelectedIndex = 0;
-                intupMECHANIC.SelectedIndex = 0;
-
-                inputTERM.SelectedIndex = 0;
-                inputLESSOR.SelectedIndex = 0;
-
-                inputREGION.SelectedIndex = 0;
-
-                inputType.SelectedIndex = 0;
-
-                inputCategory.SelectedIndex = 0;
-
-                inputPayment.SelectedIndex = 0;
 
                 btnOk.Text = "Добавить";
 
@@ -229,31 +239,29 @@ namespace Rental
 
         private void LoadFlatImages()
         {
-            //if (FlatId > 0)
-            //{
-            //    var images = FlatImageManager.GetFlatImagesByFlatId(FlatId);
-            //    if (images.Count > 0)
-            //    {
-            //        foreach (var flat in images)
-            //        {
-            //            var strings = flat.IMAGE_PATH.Split('\\');
-            //            flat.IMAGE_PATH = strings[strings.Length - 1].Replace("DatabaseImageStore", "");
+            if (FlatId > 0)
+            {
+                var images = NameListCache.proxy.ImagesByFlatId(this.FlatId);
+                if (images.Any())
+                {
+                    foreach (var flat in images)
+                    {
+                     
+                        var item = new ListViewItem()
+                        {
+                            Tag =  flat.IMAGE_PATH,
+                            Text = string.Format("image №{0}", lvImagList.Items.Count.ToString()),
+                        };
+                        lvImagList.Items.Add(item);//.Selected = true;
+                    }
 
-            //            var item = new ListViewItem()
-            //            {
-            //                Tag = flat,
-            //                Text = Path.GetFileNameWithoutExtension(flat.IMAGE_PATH)
-            //            };
-            //            lvImagList.Items.Add(item).Selected = true;
-            //        }
-
-            //        string imageFileName = GetFilePath(((DAL.images)lvImagList.Items[0].Tag).IMAGE_PATH);
-            //        if (File.Exists(imageFileName))
-            //            pbImage.Image = Image.FromFile(imageFileName);
-            //        else
-            //            pbImage.Image = null;
-            //    }
-            //}
+                    //string imageFileName = GetFilePath(((DAL.images)lvImagList.Items[0].Tag).IMAGE_PATH);
+                    //if (File.Exists(imageFileName))
+                    //    pbImage.Image = Image.FromFile(imageFileName);
+                    //else
+                    //    pbImage.Image = null;
+                }
+            }
         }
 
         private string GetFilePath(string path)

@@ -43,6 +43,9 @@ namespace RentalCore
         void ImageUpdate(image_list[] images, int flatId);
 
         [OperationContract]
+        image_list[] ImagesByFlatId(int flatId);
+
+        [OperationContract]
         black_list[] BlackListAll();
 
         [OperationContract]

@@ -42,6 +42,9 @@ namespace Rental.RentalCore {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/ImageUpdate", ReplyAction="http://tempuri.org/IRentalCore/ImageUpdateResponse")]
         void ImageUpdate(DAL.image_list[] images, int flatId);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/ImagesByFlatId", ReplyAction="http://tempuri.org/IRentalCore/ImagesByFlatIdResponse")]
+        DAL.image_list[] ImagesByFlatId(int flatId);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/BlackListAll", ReplyAction="http://tempuri.org/IRentalCore/BlackListAllResponse")]
         DAL.black_list[] BlackListAll();
         
@@ -116,6 +119,10 @@ namespace Rental.RentalCore {
         
         public void ImageUpdate(DAL.image_list[] images, int flatId) {
             base.Channel.ImageUpdate(images, flatId);
+        }
+        
+        public DAL.image_list[] ImagesByFlatId(int flatId) {
+            return base.Channel.ImagesByFlatId(flatId);
         }
         
         public DAL.black_list[] BlackListAll() {

@@ -63,6 +63,12 @@
   <wsdl:message name="IRentalCore_ImageUpdate_OutputMessage">
     <wsdl:part name="parameters" element="tns:ImageUpdateResponse" />
   </wsdl:message>
+  <wsdl:message name="IRentalCore_ImagesByFlatId_InputMessage">
+    <wsdl:part name="parameters" element="tns:ImagesByFlatId" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_ImagesByFlatId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ImagesByFlatIdResponse" />
+  </wsdl:message>
   <wsdl:message name="IRentalCore_BlackListAll_InputMessage">
     <wsdl:part name="parameters" element="tns:BlackListAll" />
   </wsdl:message>
@@ -123,6 +129,10 @@
     <wsdl:operation name="ImageUpdate">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/ImageUpdate" message="tns:IRentalCore_ImageUpdate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/ImageUpdateResponse" message="tns:IRentalCore_ImageUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ImagesByFlatId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/ImagesByFlatId" message="tns:IRentalCore_ImagesByFlatId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/ImagesByFlatIdResponse" message="tns:IRentalCore_ImagesByFlatId_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="BlackListAll">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BlackListAll" message="tns:IRentalCore_BlackListAll_InputMessage" />
@@ -217,6 +227,15 @@
     </wsdl:operation>
     <wsdl:operation name="ImageUpdate">
       <soap:operation soapAction="http://tempuri.org/IRentalCore/ImageUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ImagesByFlatId">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/ImagesByFlatId" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

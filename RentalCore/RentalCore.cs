@@ -31,7 +31,7 @@ namespace RentalCore
                 var RepositoryDirectory = @"d:\hst\amiravrn-ru_bd4c5401\http\Media";
                 string fileName = Guid.NewGuid() + ".jpg";
                 file = "Media\\" + fileName;
-                string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}_{1}\\{2}", DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString(), fileName));
+                string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}", fileName));
                 string dir = Path.GetDirectoryName(filePath);
 
                 result.Append("dir = ");
@@ -135,6 +135,11 @@ namespace RentalCore
         public void ImageUpdate(image_list[] images, int flatId)
         {
             ImageManager.ImageUpdate(images, flatId);
+        }
+
+        public image_list[] ImagesByFlatId(int flatId)
+        {
+            return ImageManager.ImagesByFlatId(flatId).ToArray();
         }
 
         public black_list[] BlackListAll()

@@ -180,6 +180,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\DAL.black_list.datasource" />
     <None Include="Properties\DataSources\DAL.flat_info.datasource" />
+    <None Include="Properties\DataSources\DAL.image_list.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
