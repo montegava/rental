@@ -103,6 +103,8 @@ namespace Rental
 
                 inputCategory.SelectedIndex = 0;
 
+                inputPayment.SelectedIndex = 0;
+
                 btnOk.Text = "Добавить";
 
                 this.Text = "ДОБАВИТЬ В ИЗБРАННОЕ";
