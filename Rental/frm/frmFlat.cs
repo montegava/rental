@@ -128,10 +128,10 @@ namespace Rental
             foreach (ListViewItem item in lvImagList.Items)
             {
                 var compressedImagePath = (string)item.Tag;
-                using (var fs = new FileStream(compressedImagePath, FileMode.Open))
+
+                using (var fs = new FileStream(compressedImagePath, FileMode.Open, System.IO.FileAccess.Read))
                 {
                     var remotePath = NameListCache.proxy.Upload(fs);
-
                     imageList.Add(new image_list() { ID = -1, IMAGE_PATH = remotePath, FLAT_ID = this.FlatId });
                 }
             }
@@ -198,11 +198,6 @@ namespace Rental
         {
             Save();
             DialogResult = DialogResult.OK;
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            DialogResult = DialogResult.Cancel;
         }
 
         private void inputLINK_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -286,8 +281,10 @@ namespace Rental
                 string fileName = (string)lvImagList.SelectedItems[0].Tag;
                 if (File.Exists(fileName))
                 {
-
-                    pbImage.Image = Image.FromFile(fileName);
+                    using (var fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                    {
+                        pbImage.Image = System.Drawing.Image.FromStream(fs);
+                    }
                 }
                 else
                 {
@@ -302,10 +299,7 @@ namespace Rental
 
         private void DownloadFile(string filePath)
         {
-            var proxy = new RentalCore.RentalCoreClient();
-
-
-            var data = proxy.DownloadFile(filePath);
+            var data = NameListCache.proxy.DownloadFile(filePath);
 
             FileStream fs = null;
             try
@@ -334,7 +328,7 @@ namespace Rental
                 }
             }
 
-            proxy.Close();
+
         }
 
         private void pbImage_DoubleClick(object sender, EventArgs e)

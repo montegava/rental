@@ -59,7 +59,7 @@ namespace Rental
 
             var RepositoryDirectory = @"Media";
             string fileName = Guid.NewGuid() + ".jpg";
-            string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}_{1}\\{2}", DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString(), fileName));
+            string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}",fileName));
             string dir = Path.GetDirectoryName(filePath);
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);

@@ -975,21 +975,12 @@ namespace Rental
             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 int fid = frm.FlatId;
-                // FillFlatGridStar();
-                ((CurrencyManager)this.BindingContext[grdFlats.DataSource]).Position = 0;
-
-
             }
         }
 
         private void lvStars_DoubleClick(object sender, EventArgs e)
         {
             AddStar();
-        }
-
-        private void toolStripButton3_Click(object sender, EventArgs e)
-        {
-
         }
 
         /// <summary>
