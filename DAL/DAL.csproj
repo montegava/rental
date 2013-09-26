@@ -83,12 +83,14 @@
     </Compile>
     <Compile Include="Enums.cs" />
     <Compile Include="Extension.cs" />
-    <Compile Include="FlatImages\FlatImageManager.cs" />
+    <Compile Include="FlatImages\ImageManager.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Flat\FlatManager.cs" />
     <Compile Include="flat_info.cs">
       <DependentUpon>rental.tt</DependentUpon>
     </Compile>
-    <Compile Include="images.cs">
+    <Compile Include="image_list.cs">
       <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="Instance.cs" />
@@ -145,6 +147,7 @@
   <ItemGroup>
     <Content Include="sql\26.08.13.sql" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

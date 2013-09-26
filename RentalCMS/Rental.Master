@@ -54,19 +54,19 @@
                         <a href="./Default.aspx" title="Агентство Аренды &quot;АМИРА&quot;">Агентство Аренды "АМИРА"</a>
                     </li>
                     <li>
-                        <a href="http://amiravrn.ru/Default.aspx" title="Сдать помещение в аренду">Сдать квартиру, комнату ,дом</a>
+                        <a href="http://amiravrn.ru/AddFlat.aspx" title="Сдать помещение в аренду">Сдать квартиру, комнату ,дом</a>
                     </li>
 
                     <li>
-                        <a href="http://amiravrn.ru/Default.aspx" title="Сдать помещение в аренду">Снять квартиру, комнату ,дом</a>
+                        <a href="http://amiravrn.ru/AddFlat.aspx" title="Сдать помещение в аренду">Снять квартиру, комнату ,дом</a>
                     </li>
 
                     <li>
-                        <a href="http://amiravrn.ru/Default.aspx" title="Снять помещение в аренду">Сдать помещение, офис</a>
+                        <a href="http://amiravrn.ru/AddFlat.aspx" title="Снять помещение в аренду">Сдать помещение, офис</a>
                     </li>
 
                     <li>
-                        <a href="http://amiravrn.ru/Default.aspx" title="Снять помещение в аренду">Снять помещение, офис</a>
+                        <a href="http://amiravrn.ru/AddFlat.aspx" title="Снять помещение в аренду">Снять помещение, офис</a>
                     </li>
 
                     <li style="background-image: none">
@@ -99,10 +99,10 @@
                             <a href="http://amiravrn.ru/" title="Агентство &quot;АМИРА&quot;">Агентство "АМИРА"</a>
                         </li>
                         <li>
-                            <a href="http://amiravrn.ru/" title="Сдать квартиру, комнату ,дом">Сдать квартиру, комнату ,дом</a>
+                            <a href="http://amiravrn.ru/AddFlat.aspx" title="Сдать квартиру, комнату ,дом">Сдать квартиру, комнату ,дом</a>
                         </li>
                         <li>
-                            <a href="http://amiravrn.ru/" title="Сдать помещение, офис">Сдать помещение, офис</a>
+                            <a href="http://amiravrn.ru/AddFlat.aspx" title="Сдать помещение, офис">Сдать помещение, офис</a>
                         </li>
                         <li>
                             <a href="/Contacts.aspx" >Контакты</a>

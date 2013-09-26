@@ -91,7 +91,9 @@
   </xs:element>
   <xs:element name="FlatAddResponse">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="FlatAddResult" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="FlatUpdate">
@@ -102,6 +104,19 @@
     </xs:complexType>
   </xs:element>
   <xs:element name="FlatUpdateResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImageUpdate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="images" nillable="true" type="q9:ArrayOfimage_list" />
+        <xs:element minOccurs="0" name="flatId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ImageUpdateResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>

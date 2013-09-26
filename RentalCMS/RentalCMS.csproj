@@ -67,6 +67,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AddFlat.aspx" />
     <Content Include="Contacts.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="FlatManager.aspx" />
@@ -137,6 +138,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddFlat.aspx.cs">
+      <DependentUpon>AddFlat.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AddFlat.aspx.designer.cs">
+      <DependentUpon>AddFlat.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Contacts.aspx.cs">
       <DependentUpon>Contacts.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -217,9 +225,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Controls\Controls.csproj">
+    <ProjectReference Include="..\Controls\PageControls.csproj">
       <Project>{63127E03-A44C-45A7-8DB8-F0FC78665D85}</Project>
-      <Name>Controls</Name>
+      <Name>PageControls</Name>
     </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.csproj">
       <Project>{bc3afc4a-aae6-4d92-88ae-1d180529afbf}</Project>

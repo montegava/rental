@@ -121,14 +121,19 @@ namespace RentalCore
             return FlatManager.GetFlatById(id);
         }
 
-        public void FlatAdd(flat_info flat)
+        public int FlatAdd(flat_info flat)
         {
-            FlatManager.FlatAdd(flat);
+            return FlatManager.FlatAdd(flat);
         }
 
         public void FlatUpdate(flat_info flat)
         {
             FlatManager.FlatUpdate(flat);
+        }
+
+        public void ImageUpdate(image_list[] images, int flatId)
+        {
+            ImageManager.ImageUpdate(images, flatId);
         }
     }
 }

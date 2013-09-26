@@ -63,7 +63,8 @@ namespace DAL
             // -- validate active page - must be between 1 - number of pages (nrOfPages)
             if (pageCount < activePage + 1) activePage = pageCount;
             if (activePage <= 0) activePage = 1;
-            return query.Skip((activePage - 1) * pageSize).Take(pageSize);
+            var res =  query.Skip((activePage - 1) * pageSize).Take(pageSize);
+            return res;
         }
 
 

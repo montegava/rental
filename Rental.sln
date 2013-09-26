@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalCore", "RentalCore\Re
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RentalCommon", "RentalCommon\RentalCommon.csproj", "{B7DD43F7-85E7-4434-9742-8B87C451686C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Controls", "Controls\Controls.csproj", "{63127E03-A44C-45A7-8DB8-F0FC78665D85}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PageControls", "Controls\PageControls.csproj", "{63127E03-A44C-45A7-8DB8-F0FC78665D85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

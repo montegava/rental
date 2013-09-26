@@ -881,18 +881,18 @@ namespace Rental
                 {
                     var sb = new StringBuilder();
 
-                    inputNAME.Text = grdFlats.SelectedRows[0].Cells["NAME"].Value.ToString();
-                    inputCONTENT.Text = grdFlats.SelectedRows[0].Cells["CONTENT"].Value.ToString();
-                    inputLINK.Text = grdFlats.SelectedRows[0].Cells["LINK"].Value.ToString();
-                    intupROOM_COUNT.Text = grdFlats.SelectedRows[0].Cells["ROOM_COUNT"].Value.ToString();
-                    intupADDRESS.Text = grdFlats.SelectedRows[0].Cells["ADDRESS"].Value.ToString();
-                    intupFLOOR.Text = grdFlats.SelectedRows[0].Cells["FLOOR"].Value.ToString();
-                    intupBATH_UNIT.Text = grdFlats.SelectedRows[0].Cells["BATH_UNIT"].Value.ToString();
-                    intupBUILD.Text = grdFlats.SelectedRows[0].Cells["BUILD"].Value.ToString();
-                    intupSTATE.Text = grdFlats.SelectedRows[0].Cells["STATE"].Value.ToString();
-                    intupPRICE.Text = grdFlats.SelectedRows[0].Cells["PRICE"].Value.ToString();
-                    inputPHONE.Items.Clear();
-                    inputPHONE.Items.AddRange(grdFlats.SelectedRows[0].Cells["PHONE"].Value.ToString().Split(new Char[] { ';' }));
+                    inputNAME.Text = (string)grdFlats.SelectedRows[0].Cells["NAME"].Value;
+                    //inputCONTENT.Text = (string)grdFlats.SelectedRows[0].Cells["CONTENT"].Value;
+                    //inputLINK.Text = (string)grdFlats.SelectedRows[0].Cells["LINK"].Value;
+                    //intupROOM_COUNT.Text = (string)grdFlats.SelectedRows[0].Cells["ROOM_COUNT"].Value;
+                    //intupADDRESS.Text = (string)grdFlats.SelectedRows[0].Cells["ADDRESS"].Value;
+                    //intupFLOOR.Text = (string)grdFlats.SelectedRows[0].Cells["FLOOR"].Value;
+                    //intupBATH_UNIT.Text = (string)grdFlats.SelectedRows[0].Cells["BATH_UNIT"].Value;
+                    //intupBUILD.Text = (string)grdFlats.SelectedRows[0].Cells["BUILD"].Value;
+                    //intupSTATE.Text = (string)grdFlats.SelectedRows[0].Cells["STATE"].Value;
+                    //intupPRICE.Text = (string)grdFlats.SelectedRows[0].Cells["PRICE"].Value;
+                    //inputPHONE.Items.Clear();
+                    //inputPHONE.Items.AddRange(grdFlats.SelectedRows[0].Cells["PHONE"].Value.ToString().Split(new Char[] { ';' }));
 
                 }
             }

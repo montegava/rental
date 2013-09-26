@@ -117,24 +117,25 @@ namespace Rental
         private void Save()
         {
             flat_info flat = Form2Flat();
-            foreach (ListViewItem item in lvImagList.Items)
-            {
-                var compressedImagePath = (string)item.Tag;
-                var remotePath = NameListCache.proxy.Upload(new FileStream(compressedImagePath, FileMode.CreateNew));
-                flat.images.Add(new images() { ID = -1, FLAT_ID = this.FlatId, IMAGE_PATH = remotePath });
-            }
+            var imageList = new List<image_list>();
 
             if (EdtMode == EditMode.emAddNew)
-            {
-                NameListCache.proxy.FlatAdd(flat);
-                this.FlatId = flat.ID;
-            }
+                this.FlatId = NameListCache.proxy.FlatAdd(flat);
             else if (EdtMode == EditMode.emEdit)
                 NameListCache.proxy.FlatUpdate(flat);
 
+            foreach (ListViewItem item in lvImagList.Items)
+            {
+                var compressedImagePath = (string)item.Tag;
+                using (var fs = new FileStream(compressedImagePath, FileMode.Open))
+                {
+                    var remotePath = NameListCache.proxy.Upload(fs);
 
+                    imageList.Add(new image_list() { ID = -1, IMAGE_PATH = remotePath, FLAT_ID = this.FlatId });
+                }
+            }
 
-
+            NameListCache.proxy.ImageUpdate(imageList.ToArray(), this.FlatId);
 
         }
 
@@ -146,7 +147,6 @@ namespace Rental
         {
             var result = new DAL.flat_info();
 
-            result.images = new List<images>();
 
             result.ID = FlatId;
             result.DATA = DateTime.Now;
@@ -229,31 +229,31 @@ namespace Rental
 
         private void LoadFlatImages()
         {
-            if (FlatId > 0)
-            {
-                var images = FlatImageManager.GetFlatImagesByFlatId(FlatId);
-                if (images.Count > 0)
-                {
-                    foreach (var flat in images)
-                    {
-                        var strings = flat.IMAGE_PATH.Split('\\');
-                        flat.IMAGE_PATH = strings[strings.Length - 1].Replace("DatabaseImageStore", "");
+            //if (FlatId > 0)
+            //{
+            //    var images = FlatImageManager.GetFlatImagesByFlatId(FlatId);
+            //    if (images.Count > 0)
+            //    {
+            //        foreach (var flat in images)
+            //        {
+            //            var strings = flat.IMAGE_PATH.Split('\\');
+            //            flat.IMAGE_PATH = strings[strings.Length - 1].Replace("DatabaseImageStore", "");
 
-                        var item = new ListViewItem()
-                        {
-                            Tag = flat,
-                            Text = Path.GetFileNameWithoutExtension(flat.IMAGE_PATH)
-                        };
-                        lvImagList.Items.Add(item).Selected = true;
-                    }
+            //            var item = new ListViewItem()
+            //            {
+            //                Tag = flat,
+            //                Text = Path.GetFileNameWithoutExtension(flat.IMAGE_PATH)
+            //            };
+            //            lvImagList.Items.Add(item).Selected = true;
+            //        }
 
-                    string imageFileName = GetFilePath(((DAL.images)lvImagList.Items[0].Tag).IMAGE_PATH);
-                    if (File.Exists(imageFileName))
-                        pbImage.Image = Image.FromFile(imageFileName);
-                    else
-                        pbImage.Image = null;
-                }
-            }
+            //        string imageFileName = GetFilePath(((DAL.images)lvImagList.Items[0].Tag).IMAGE_PATH);
+            //        if (File.Exists(imageFileName))
+            //            pbImage.Image = Image.FromFile(imageFileName);
+            //        else
+            //            pbImage.Image = null;
+            //    }
+            //}
         }
 
         private string GetFilePath(string path)
@@ -280,7 +280,7 @@ namespace Rental
         {
             if (lvImagList.SelectedItems.Count > 0)
             {
-                string fileName = ((DAL.images)lvImagList.SelectedItems[0].Tag).IMAGE_PATH;
+                string fileName = (string)lvImagList.SelectedItems[0].Tag;
                 if (File.Exists(fileName))
                 {
 
@@ -338,7 +338,8 @@ namespace Rental
         {
             if (lvImagList.SelectedItems.Count > 0)
             {
-                string fileName = ConfigurationManager.AppSettings["ServerDir"] + "\\" + ((DAL.images)lvImagList.SelectedItems[0].Tag).IMAGE_PATH;
+                //string fileName = ConfigurationManager.AppSettings["ServerDir"] + "\\" + ((DAL.images)lvImagList.SelectedItems[0].Tag).IMAGE_PATH;
+                string fileName = (string)lvImagList.SelectedItems[0].Tag;
                 if (File.Exists(fileName))
                     System.Diagnostics.Process.Start(fileName);
             }

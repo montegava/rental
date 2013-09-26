@@ -27,6 +27,6 @@ namespace DAL
     
         public DbSet<black_list> black_list { get; set; }
         public DbSet<flat_info> flat_info { get; set; }
-        public DbSet<images> images { get; set; }
+        public DbSet<image_list> image_list { get; set; }
     }
 }

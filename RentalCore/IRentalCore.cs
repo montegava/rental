@@ -32,10 +32,14 @@ namespace RentalCore
         flat_info FlatById(int id);
 
         [OperationContract]
-        void FlatAdd(flat_info flat);
+        int FlatAdd(flat_info flat);
 
         [OperationContract]
         void FlatUpdate(flat_info flat);
+
+        [OperationContract]
+        void ImageUpdate(image_list[] images, int flatId);
+    
     }
 
 

@@ -39,4 +39,18 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="flat_info" nillable="true" type="tns:flat_info" />
+  <xs:complexType name="ArrayOfimage_list">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="image_list" nillable="true" type="tns:image_list" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfimage_list" nillable="true" type="tns:ArrayOfimage_list" />
+  <xs:complexType name="image_list">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FLAT_ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="IMAGE_PATH" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="image_list" nillable="true" type="tns:image_list" />
 </xs:schema>

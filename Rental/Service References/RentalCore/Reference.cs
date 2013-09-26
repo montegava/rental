@@ -31,10 +31,13 @@ namespace Rental.RentalCore {
         DAL.flat_info FlatById(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatAdd", ReplyAction="http://tempuri.org/IRentalCore/FlatAddResponse")]
-        void FlatAdd(DAL.flat_info flat);
+        int FlatAdd(DAL.flat_info flat);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatUpdate", ReplyAction="http://tempuri.org/IRentalCore/FlatUpdateResponse")]
         void FlatUpdate(DAL.flat_info flat);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/ImageUpdate", ReplyAction="http://tempuri.org/IRentalCore/ImageUpdateResponse")]
+        void ImageUpdate(DAL.image_list[] images, int flatId);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -84,12 +87,16 @@ namespace Rental.RentalCore {
             return base.Channel.FlatById(id);
         }
         
-        public void FlatAdd(DAL.flat_info flat) {
-            base.Channel.FlatAdd(flat);
+        public int FlatAdd(DAL.flat_info flat) {
+            return base.Channel.FlatAdd(flat);
         }
         
         public void FlatUpdate(DAL.flat_info flat) {
             base.Channel.FlatUpdate(flat);
+        }
+        
+        public void ImageUpdate(DAL.image_list[] images, int flatId) {
+            base.Channel.ImageUpdate(images, flatId);
         }
     }
 }

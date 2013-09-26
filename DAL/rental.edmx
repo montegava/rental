@@ -8,11 +8,7 @@
         <EntityContainer Name="rentalModelStoreContainer">
           <EntitySet Name="black_list" EntityType="rentalModel.Store.black_list" store:Type="Tables" Schema="rental" />
           <EntitySet Name="flat_info" EntityType="rentalModel.Store.flat_info" store:Type="Tables" Schema="rental" />
-          <EntitySet Name="images" EntityType="rentalModel.Store.images" store:Type="Tables" Schema="rental" />
-          <AssociationSet Name="FK_images_flat" Association="rentalModel.Store.FK_images_flat">
-            <End Role="flat_info" EntitySet="flat_info" />
-            <End Role="images" EntitySet="images" />
-          </AssociationSet>
+          <EntitySet Name="image_list" EntityType="rentalModel.Store.image_list" store:Type="Tables" Schema="rental" />
         </EntityContainer>
         <EntityType Name="black_list">
           <Key>
@@ -56,7 +52,7 @@
           <Property Name="CATEGORY" Type="text" />
           <Property Name="TYPE" Type="text" />
         </EntityType>
-        <EntityType Name="images">
+        <EntityType Name="image_list">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
@@ -64,20 +60,6 @@
           <Property Name="FLAT_ID" Type="int" />
           <Property Name="IMAGE_PATH" Type="text" />
         </EntityType>
-        <Association Name="FK_images_flat">
-          <End Role="flat_info" Type="rentalModel.Store.flat_info" Multiplicity="0..1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="images" Type="rentalModel.Store.images" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="flat_info">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="images">
-              <PropertyRef Name="FLAT_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -85,11 +67,7 @@
         <EntityContainer Name="rentalEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="black_list" EntityType="rentalModel.black_list" />
           <EntitySet Name="flat_info" EntityType="rentalModel.flat_info" />
-          <EntitySet Name="images" EntityType="rentalModel.images" />
-          <AssociationSet Name="FK_images_flat" Association="rentalModel.FK_images_flat">
-            <End Role="flat_info" EntitySet="flat_info" />
-            <End Role="images" EntitySet="images" />
-          </AssociationSet>
+          <EntitySet Name="image_list" EntityType="rentalModel.image_list" />
         </EntityContainer>
         <EntityType Name="black_list">
           <Key>
@@ -132,29 +110,15 @@
           <Property Type="String" Name="EMAIL" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="CATEGORY" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="TYPE" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="images" Relationship="rentalModel.FK_images_flat" FromRole="flat_info" ToRole="images" />
         </EntityType>
-        <EntityType Name="images">
+        <EntityType Name="image_list">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="FLAT_ID" />
           <Property Type="String" Name="IMAGE_PATH" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="rentalModel.FK_images_flat" FromRole="images" ToRole="flat_info" />
         </EntityType>
-        <Association Name="FK_images_flat">
-          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="0..1" />
-          <End Type="rentalModel.images" Role="images" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="flat_info">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="images">
-              <PropertyRef Name="FLAT_ID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -205,9 +169,9 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="images">
-            <EntityTypeMapping TypeName="rentalModel.images">
-              <MappingFragment StoreEntitySet="images">
+          <EntitySetMapping Name="image_list">
+            <EntityTypeMapping TypeName="rentalModel.image_list">
+              <MappingFragment StoreEntitySet="image_list">
                 <ScalarProperty Name="IMAGE_PATH" ColumnName="IMAGE_PATH" />
                 <ScalarProperty Name="FLAT_ID" ColumnName="FLAT_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -228,21 +192,17 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
-      <Diagram Name="rental">
-        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="2.75" PointY="0.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="0.75" PointY="1.125" Height="6.5955208333333353" />
-        <EntityTypeShape EntityType="rentalModel.images" Width="1.5" PointX="3" PointY="3.5" Height="1.7879850260416674" />
-        <AssociationConnector Association="rentalModel.FK_images_flat" >
-          <ConnectorPoint PointX="2.25" PointY="4.3939925130208337" />
-          <ConnectorPoint PointX="3" PointY="4.3939925130208337" />
-        </AssociationConnector>
+      <Diagram Name="rental" ZoomLevel="93">
+        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416674" />
+        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="2.75" PointY="0.75" Height="6.4032194010416674" />
+        <EntityTypeShape EntityType="rentalModel.image_list" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937500031" />
       </Diagram>
     </Diagrams>
   </Designer>

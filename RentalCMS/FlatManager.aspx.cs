@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DAL;
-using SmartControls;
+
 
 namespace RentalCMS
 {
@@ -48,13 +48,16 @@ namespace RentalCMS
                 
 
 
-                var img = FlatImageManager.GetFlatImagesByFlatId(SelectedId);
+                //var img = FlatImageManager.GetFlatImagesByFlatId(SelectedId);
 
                 // -- fill smart image control, with all images
                 //_fyImage.VisibleName = GetTextByCulture("TM_Images");
                 _fyImage.PageActive = "0";
                 _fyImage.NoImgUrl = "/images/no_image.png";
-                _fyImage.ImageList = this.GetItemFromSelectedImages(img, GetAssetBasePath());
+
+                var images = ImageManager.ImagesByFlatId(flat.ID);
+
+                _fyImage.ImageList = this.GetItemFromSelectedImages(images, GetAssetBasePath());
             }
 
         }
@@ -64,11 +67,11 @@ namespace RentalCMS
             return string.Empty;// WebSettings.GetMediaRoot() + selectedProviderID.ToString() + SEPARATOR + selectedTitle.Id + SEPARATOR;
         }
 
-        public List<SmartControls.ImageInfo> GetItemFromSelectedImages(IEnumerable<images> items, string basePath = null)
+        public List<SmartControls.ImageInfo> GetItemFromSelectedImages(IEnumerable<image_list> items, string basePath = null)
         {
             // -- prepare url string array from selected item's
-            if (items == null || !items.Any()) return new List<ImageInfo>();
-            return items.Select(e => new ImageInfo
+            if (items == null || !items.Any()) return new List<SmartControls.ImageInfo>();
+            return items.Select(e => new SmartControls.ImageInfo
                                     {
                                         Name = System.IO.Path.GetFileName(e.IMAGE_PATH),
                                         Path = (basePath ?? string.Empty) + e.IMAGE_PATH

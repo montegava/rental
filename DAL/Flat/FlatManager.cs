@@ -252,7 +252,7 @@ namespace DAL
 
                 #endregion
 
-                flats = query.GetPage(pageSize, ref activePage, ref pageCount, ref totalRowsNumber).AsEnumerable().ToList();
+                 flats = query.GetPage(pageSize, ref activePage, ref pageCount, ref totalRowsNumber).AsEnumerable().ToList();
             }
             catch (Exception ex)
             {
@@ -266,11 +266,12 @@ namespace DAL
             return context.flat_info.Select(f => f).ToList();
         }
 
-        public static void FlatAdd(flat_info flat)
+        public static int FlatAdd(flat_info flat)
         {
             var context = WcfOperationContext.Current.Context;
             context.flat_info.Add(flat);
             context.SaveChanges();
+            return flat.ID;
         }
 
         public static flat_info GetFlatById(int flatId)
