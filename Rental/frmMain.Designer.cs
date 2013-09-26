@@ -671,9 +671,10 @@
             this.grdFlats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.grdFlats.Size = new System.Drawing.Size(745, 176);
             this.grdFlats.TabIndex = 2;
-            this.grdFlats.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
+            this.grdFlats.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
             this.grdFlats.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
             this.grdFlats.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
+            this.grdFlats.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdFlats_KeyDown);
             // 
             // panel4
             // 
@@ -774,7 +775,7 @@
             this.btnStarEdit.Name = "btnStarEdit";
             this.btnStarEdit.Size = new System.Drawing.Size(107, 22);
             this.btnStarEdit.Text = "Редактировать";
-            this.btnStarEdit.Click += new System.EventHandler(this.btnStarEdit_Click);
+            this.btnStarEdit.Click += new System.EventHandler(this.btnEditFlat_Click);
             // 
             // btnStarDel
             // 
@@ -1306,7 +1307,7 @@
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(156, 40);
             this.btnStop.Text = "Прекратить загрузку";
-            this.btnStop.Click += new System.EventHandler(this.tspStop_Click);
+            this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // toolStripSeparator13
             // 

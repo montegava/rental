@@ -325,7 +325,10 @@ namespace DAL
             var context = WcfOperationContext.Current.Context;
             var flat = context.flat_info.Where(f => f.ID == flatId).FirstOrDefault();
             if (flat != null)
+            {
                 context.flat_info.Remove(flat);
+                context.SaveChanges();
+            }
         }
 
     }

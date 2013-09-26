@@ -190,15 +190,17 @@ namespace Rental.src
             }
         }
 
+        public int Count { get { return FlatRows.Count; } }
 
-
-        public int Count
+        public void Remove(int index)
         {
+            if (FlatRows.ContainsKey(index))
+                FlatRows.Remove(index);
+        }
 
-            get
-            {
-                return FlatRows.Count;
-            }
+        public void RemoveAll()
+        {
+            FlatRows.Clear();
         }
 
     }

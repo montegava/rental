@@ -102,10 +102,11 @@ namespace Rental
             Common.SetColumlOption(grdFlats, Fields.PAYMENT, 80, ref displayIndex);
 
             grdFlats.CellValueNeeded += new DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
+            grdFlats.RowCount = Cache.TotalRowsNumber;
 
             grdFlats.VirtualMode = true;
 
-            grdFlats.RowCount = (int)Cache.TotalRowsNumber;
+            
 
             //cbSites.ComboBox.Selectedva = Properties.Settings.Default.cbSites != null ? Properties.Settings.Default.cbSites : -1;
 
@@ -633,6 +634,43 @@ namespace Rental
             }
         }
 
+        /// <summary>
+        /// Delete flat
+        /// </summary>
+        private void DeleteFlat()
+        {
+            if (MessageBox.Show("Объявление будет удалено из базы. Продолжить", "Удаление...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                int flatId;
+                if (Int32.TryParse(grdFlats.CurrentRow.Cells[0].Value.ToString(), out flatId))
+                {
+                    NameListCache.proxy.FlatDelete(flatId);
+                    this.RefreshFlats();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Edit
+        /// </summary>
+        private void EditFlat()
+        {
+            Int32 flatId;
+            try
+            {
+                flatId = Convert.ToInt32(grdFlats.CurrentRow.Cells[0].Value);
+                var flat = new frmFlat(EditMode.emEdit, flatId);
+                flat.ShowDialog();
+                if (flat.DialogResult == DialogResult.OK)
+                {
+                    RefreshFlats();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при чтении: " + ex.Message);
+            }
+        }
 
         /////////////////
 
@@ -673,7 +711,7 @@ namespace Rental
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void tspStop_Click(object sender, EventArgs e)
+        private void btnStop_Click(object sender, EventArgs e)
         {
             Stop();
         }
@@ -733,16 +771,10 @@ namespace Rental
         /// <param name="e"></param>
         private void btnStarDel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Объявление будет удалено из базы. Продолжить", "Удаление...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
-            {
-                int flatId;
-                if (Int32.TryParse(grdFlats.CurrentRow.Cells[0].Value.ToString(), out flatId))
-                {
-                    NameListCache.proxy.FlatDelete(flatId);
-                    grdFlats.Rows.Remove(grdFlats.CurrentRow);
-                }
-            }
+            DeleteFlat();
         }
+
+      
 
         /// <summary>
         /// Редактировать
@@ -895,21 +927,24 @@ namespace Rental
             }
         }
 
-        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        /// <summary>
+        /// Edit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            Int32 flatId;
-            try
-            {
-                flatId = Convert.ToInt32(grdFlats.CurrentRow.Cells[0].Value);
-                var flat = new frmFlat(EditMode.emEdit, flatId);
-                flat.ShowDialog();
-                //if (flat.DialogResult == DialogResult.OK)
-                //    FillFlatGridStar();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка при чтении: " + ex.Message);
-            }
+            EditFlat();
+        }
+
+        /// <summary>
+        /// Edit
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnEditFlat_Click(object sender, EventArgs e)
+        {
+            EditFlat();
         }
 
 
@@ -920,14 +955,17 @@ namespace Rental
         }
 
 
-        private void btnStarEdit_Click(object sender, EventArgs e)
-        {
-            dataGridView1_CellDoubleClick(null, null);
-        }
+     
 
         private void btnStarReload_Click(object sender, EventArgs e)
         {
-            //FillFlatGridStar();
+            RefreshFlats();
+        }
+
+        private void RefreshFlats()
+        {
+            this.Cache.CachedData.RemoveAll();
+            grdFlats.Refresh();
         }
 
         /// <summary>
@@ -1001,6 +1039,12 @@ namespace Rental
             Properties.Settings.Default.Top = this.Top;
             Properties.Settings.Default.Left = this.Left;
             Properties.Settings.Default.Save();
+        }
+
+        private void grdFlats_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+                DeleteFlat();
         }
 
     }
