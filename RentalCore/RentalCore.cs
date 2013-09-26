@@ -18,10 +18,9 @@ namespace RentalCore
     {
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(RentalCore));
 
-        public string Upload(Stream data)
+        public void Upload(Stream data, string fileName)
         {
 
-            var file = string.Empty;
             var result = new StringBuilder();
             result.Append("Upload");
             result.AppendLine();
@@ -29,8 +28,6 @@ namespace RentalCore
             {
 
                 var RepositoryDirectory = @"d:\hst\amiravrn-ru_bd4c5401\http\Media";
-                string fileName = Guid.NewGuid() + ".jpg";
-                file = "Media\\" + fileName;
                 string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}", fileName));
                 string dir = Path.GetDirectoryName(filePath);
 
@@ -89,7 +86,6 @@ namespace RentalCore
                 result.AppendLine();
                 errorLog.Error(ex);
             }
-            return file;
         }
 
         public Stream DownloadFile(string remotePath)
