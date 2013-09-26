@@ -47,12 +47,12 @@ namespace DAL
                     {
                         switch (f.Field)
                         {
-                            case Fiels.ID:
+                            case Fields.ID:
                                 int id = int.Parse(f.StartValue);
                                 filter = filter.And(t => t.ID == id);
                                 break;
 
-                            case Fiels.ROOM_COUNT:
+                            case Fields.ROOM_COUNT:
                                 int roomCount = int.Parse(f.StartValue);
                                 if (f.Comparator == ComapreType.NONE)
                                     filter = filter.And(t => t.ROOM_COUNT == roomCount);
@@ -67,11 +67,11 @@ namespace DAL
                                 }
                                 break;
 
-                            case Fiels.ADDRESS:
+                            case Fields.ADDRESS:
                                 filter = filter.And(t => t.ADDRESS.Contains(f.StartValue.ToLower()));
                                 break;
 
-                            case Fiels.FLOOR:
+                            case Fields.FLOOR:
 
                                 int floor = int.Parse(f.StartValue);
                                 if (f.Comparator == ComapreType.NONE)
@@ -87,62 +87,62 @@ namespace DAL
                                 }
                                 break;
 
-                            case Fiels.BATH_UNIT:
+                            case Fields.BATH_UNIT:
                                 filter = filter.And(t => t.BATH_UNIT.Contains(f.StartValue.ToLower()));
                                 break;
 
-                            case Fiels.BUILD:
+                            case Fields.BUILD:
                                 filter = filter.And(t => t.BUILD.Contains(f.StartValue.ToLower()));
                                 break;
 
-                            case Fiels.FURNITURE:
+                            case Fields.FURNITURE:
                                 filter = filter.And(t => t.FURNITURE.Contains(f.StartValue));
                                 break;
 
-                            case Fiels.STATE:
+                            case Fields.STATE:
                                 filter = filter.And(t => t.STATE.Contains(f.StartValue.ToLower()));
                                 break;
 
-                            case Fiels.MECHANIC:
+                            case Fields.MECHANIC:
                                 filter = filter.And(t => t.MECHANIC.Contains(f.StartValue.ToLower()));
                                 break;
 
-                            case Fiels.NAME:
+                            case Fields.NAME:
                                 filter = filter.And(t => t.NAME.Contains(f.StartValue.ToLower()));
                                 break;
 
-                            case Fiels.PRICE:
+                            case Fields.PRICE:
                                 filter = filter.And(t => t.PRICE.Contains(f.StartValue.ToLower()));
 
                                 break;
 
-                            case Fiels.PHONE:
+                            case Fields.PHONE:
                                 filter = filter.And(t => t.PHONE.Contains(f.StartValue.ToLower()));
                                 break;
 
-                            case Fiels.COMMENT:
+                            case Fields.COMMENT:
                                 filter = filter.And(t => t.COMMENT.Contains(f.StartValue.ToLower()));
 
                                 break;
-                            case Fiels.CONTENT:
+                            case Fields.CONTENT:
                                 filter = filter.And(t => t.CONTENT.Contains(f.StartValue.ToLower()));
 
                                 break;
-                            case Fiels.LINK:
+                            case Fields.LINK:
                                 filter = filter.And(t => t.LINK.Contains(f.StartValue.ToLower()));
 
                                 break;
 
-                            case Fiels.TERM:
+                            case Fields.TERM:
                                 filter = filter.And(t => t.TERM.Contains(f.StartValue.ToLower()));
 
                                 break;
-                            case Fiels.LESSOR:
+                            case Fields.LESSOR:
                                 filter = filter.And(t => t.LESSOR.Contains(f.StartValue.ToLower()));
 
                                 break;
 
-                            case Fiels.REGION:
+                            case Fields.REGION:
                                 filter = filter.And(t => t.REGION.Contains(f.StartValue));
 
                                 break;
@@ -170,78 +170,78 @@ namespace DAL
 
                 #region sortby
 
-                switch ((Fiels)sortBy)
+                switch ((Fields)sortBy)
                 {
-                    case Fiels.DATA:
+                    case Fields.DATA:
                         query = query.SetOrder(t => t.DATA, orderBy);
                         break;
-                    case Fiels.ROOM_COUNT:
+                    case Fields.ROOM_COUNT:
                         query = query.SetOrder(t => t.ROOM_COUNT, orderBy);
                         break;
-                    case Fiels.ADDRESS:
+                    case Fields.ADDRESS:
                         query = query.SetOrder(t => t.ADDRESS, orderBy);
                         break;
-                    case Fiels.FLOOR:
+                    case Fields.FLOOR:
                         query = query.SetOrder(t => t.FLOOR, orderBy);
                         break;
-                    case Fiels.BATH_UNIT:
+                    case Fields.BATH_UNIT:
                         query = query.SetOrder(t => t.BATH_UNIT, orderBy);
                         break;
-                    case Fiels.BUILD:
+                    case Fields.BUILD:
                         query = query.SetOrder(t => t.BUILD, orderBy);
                         break;
-                    case Fiels.FURNITURE:
+                    case Fields.FURNITURE:
                         query = query.SetOrder(t => t.FURNITURE, orderBy);
                         break;
-                    case Fiels.STATE:
+                    case Fields.STATE:
                         query = query.SetOrder(t => t.STATE, orderBy);
                         break;
-                    case Fiels.MECHANIC:
+                    case Fields.MECHANIC:
                         query = query.SetOrder(t => t.MECHANIC, orderBy);
                         break;
-                    case Fiels.NAME:
+                    case Fields.NAME:
                         query = query.SetOrder(t => t.NAME, orderBy);
                         break;
-                    case Fiels.PRICE:
+                    case Fields.PRICE:
                         query = query.SetOrder(t => t.PRICE, orderBy);
                         break;
-                    case Fiels.PHONE:
+                    case Fields.PHONE:
                         query = query.SetOrder(t => t.PHONE, orderBy);
                         break;
-                    case Fiels.COMMENT:
+                    case Fields.COMMENT:
                         query = query.SetOrder(t => t.COMMENT, orderBy);
                         break;
-                    case Fiels.CONTENT:
+                    case Fields.CONTENT:
                         query = query.SetOrder(t => t.CONTENT, orderBy);
                         break;
-                    case Fiels.LINK:
+                    case Fields.LINK:
                         query = query.SetOrder(t => t.LINK, orderBy);
                         break;
-                    case Fiels.TERM:
+                    case Fields.TERM:
                         query = query.SetOrder(t => t.TERM, orderBy);
                         break;
-                    case Fiels.RENT_FROM:
+                    case Fields.RENT_FROM:
                         query = query.SetOrder(t => t.RENT_FROM, orderBy);
                         break;
-                    case Fiels.RENT_TO:
+                    case Fields.RENT_TO:
                         query = query.SetOrder(t => t.RENT_TO, orderBy);
                         break;
-                    case Fiels.LESSOR:
+                    case Fields.LESSOR:
                         query = query.SetOrder(t => t.LESSOR, orderBy);
                         break;
-                    case Fiels.FRIDGE:
+                    case Fields.FRIDGE:
                         query = query.SetOrder(t => t.FRIDGE, orderBy);
                         break;
-                    case Fiels.TV:
+                    case Fields.TV:
                         query = query.SetOrder(t => t.TV, orderBy);
                         break;
-                    case Fiels.WASHER:
+                    case Fields.WASHER:
                         query = query.SetOrder(t => t.WASHER, orderBy);
                         break;
-                    case Fiels.COOLER:
+                    case Fields.COOLER:
                         query = query.SetOrder(t => t.COOLER, orderBy);
                         break;
-                    case Fiels.REGION:
+                    case Fields.REGION:
                         query = query.SetOrder(t => t.REGION, orderBy);
                         break;
                     default:

@@ -20,87 +20,111 @@ namespace Rental.src
             Flat = flat;
         }
 
+        public object this[string fieldName]
+        {
+            get
+            {
+                Fields field;
+                if (Enum.TryParse<Fields>(fieldName, out field))
+                    return this[(int)field];
+                return string.Empty;
+            }
+        }
+
+
         public object this[int i]
         {
             get
             {
-                var field = (Fiels)i;
+                var field = (Fields)i;
 
                 switch (field)
                 {
-                    case Fiels.ID:
+                    case Fields.ID:
                         return Flat.ID;
-                    case Fiels.DATA:
+                    case Fields.DATA:
                         return Flat.DATA;
 
-                    case Fiels.ROOM_COUNT:
+                    case Fields.ROOM_COUNT:
                         return Flat.ROOM_COUNT;
 
-                    case Fiels.ADDRESS:
+                    case Fields.ADDRESS:
                         return Flat.ADDRESS;
 
-                    case Fiels.FLOOR:
+                    case Fields.FLOOR:
                         return Flat.FLOOR;
 
-                    case Fiels.BATH_UNIT:
+                    case Fields.BATH_UNIT:
                         return Flat.BATH_UNIT;
 
-                    case Fiels.BUILD:
+                    case Fields.BUILD:
                         return Flat.BUILD;
 
-                    case Fiels.FURNITURE:
+                    case Fields.FURNITURE:
                         return Flat.FURNITURE;
 
-                    case Fiels.STATE:
+                    case Fields.STATE:
                         return Flat.STATE;
 
-                    case Fiels.MECHANIC:
+                    case Fields.MECHANIC:
                         return Flat.MECHANIC;
 
-                    case Fiels.NAME:
+                    case Fields.NAME:
                         return Flat.NAME;
 
-                    case Fiels.PRICE:
+                    case Fields.PRICE:
                         return Flat.PRICE;
 
-                    case Fiels.PHONE:
+                    case Fields.PHONE:
                         return Flat.PHONE;
 
-                    case Fiels.COMMENT:
+                    case Fields.COMMENT:
                         return Flat.COMMENT;
 
-                    case Fiels.CONTENT:
+                    case Fields.CONTENT:
                         return Flat.CONTENT;
 
-                    case Fiels.LINK:
+                    case Fields.LINK:
                         return Flat.LINK;
 
-                    case Fiels.TERM:
+                    case Fields.TERM:
                         return Flat.TERM;
 
-                    case Fiels.RENT_FROM:
+                    case Fields.RENT_FROM:
                         return Flat.RENT_FROM;
 
-                    case Fiels.RENT_TO:
+                    case Fields.RENT_TO:
                         return Flat.RENT_TO;
 
-                    case Fiels.LESSOR:
+                    case Fields.LESSOR:
                         return Flat.LESSOR;
 
-                    case Fiels.FRIDGE:
+                    case Fields.FRIDGE:
                         return Flat.FRIDGE;
 
-                    case Fiels.TV:
+                    case Fields.TV:
                         return Flat.TV;
 
-                    case Fiels.WASHER:
+                    case Fields.WASHER:
                         return Flat.WASHER;
 
-                    case Fiels.COOLER:
+                    case Fields.COOLER:
                         return Flat.COOLER;
 
-                    case Fiels.REGION:
+                    case Fields.REGION:
                         return Flat.REGION;
+
+                    case Fields.EMAIL:
+                        return Flat.EMAIL;
+
+                    case Fields.CATEGORY:
+                        return Flat.CATEGORY;
+
+                    case Fields.TYPE:
+                        return Flat.TYPE;
+
+                    case Fields.PAYMENT:
+                        return Flat.PAYMENT;
 
                     default:
                         return string.Empty;
@@ -209,7 +233,7 @@ namespace Rental.src
 
             TotalRowsNumber = CachedData.TotalRowsNumber;
 
-       
+
         }
     }
 

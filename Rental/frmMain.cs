@@ -14,6 +14,7 @@ using System.Linq;
 using log4net;
 using log4net.Config;
 using Rental.src;
+using RentalCommon;
 
 namespace Rental
 {
@@ -73,34 +74,32 @@ namespace Rental
 
             this.Cache = new NameListCache(PAGE_SIZE);
 
+
             int displayIndex = 0;
-            Common.SetColumlOption(grdFlats, "ID", "№", 45, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "DATA", "ДАТА ДОБВЛЕНИЯ", 102, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "ROOM_COUNT", "КОЛИЧЕСТВО КОМНАТ", 107, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "ADDRESS", "АДРЕС", 200, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "PHONE", "ТЕЛЕФОН", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "FURNITURE", "МЕБЕЛЬ", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "PRICE", "ЦЕНА", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "LESSOR", "КТО СДАЛ", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "FLOOR", "ЭТАЖ", 45, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "BATH_UNIT", "САНУЗЕЛ", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "BUILD", "ВИД ДОМА", 85, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "STATE", "СОСТОЯНИЕ", 85, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "MECHANIC", "МЕБЕЛЬ", 85, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "NAME", "ФИО", 100, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "TERM", "СРОК СДАЧИ", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "RENT_FROM", "СДАЕТСЯ С", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "RENT_TO", "СДАЕТСЯ ПО", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "REGION", "РАЙОН", 80, ref displayIndex);
-
-            Common.SetColumlOption(grdFlats, "CONTENT", "CONTENT", 80, ref displayIndex);
-            Common.SetColumlOption(grdFlats, "LINK", "LINK", 80, ref displayIndex);
-
-
-
-
-
-
+            Common.SetColumlOption(grdFlats, Fields.ID, 45, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.DATA, 102, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.ROOM_COUNT, 107, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.ADDRESS, 200, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.PHONE, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.FURNITURE, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.PRICE, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.LESSOR, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.FLOOR, 45, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.BATH_UNIT, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.BUILD, 85, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.STATE, 85, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.MECHANIC, 85, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.NAME, 100, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.TERM, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.RENT_FROM, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.RENT_TO, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.REGION, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.CONTENT, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.LINK, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.EMAIL, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.TYPE, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.CATEGORY, 80, ref displayIndex);
+            Common.SetColumlOption(grdFlats, Fields.PAYMENT, 80, ref displayIndex);
 
             grdFlats.CellValueNeeded += new DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
 
@@ -117,7 +116,7 @@ namespace Rental
         {
             Cache.LoadPage(e.RowIndex);
             int rowIndex = e.RowIndex % Cache.PageSize;
-            e.Value = Cache.CachedData[rowIndex][e.ColumnIndex];
+            e.Value = Cache.CachedData[rowIndex][grdFlats.Columns[e.ColumnIndex].Name];
         }
 
         private void FillTree()
@@ -144,7 +143,7 @@ namespace Rental
                 switch (node.Name)
                 {
                     case "tabBlackList":
-                        FillBlackList();
+                        LoadBlackList();
                         return;
                     case "tabStar":
                         //FillFlatGridStar();
@@ -171,7 +170,7 @@ namespace Rental
         /// <summary>
         /// Get black list from db and fill table
         /// </summary>
-        private void FillBlackList()
+        private void LoadBlackList()
         {
             dataGridViewContactList.DataSource = NameListCache.proxy.BlackListAll();
             dataGridViewContactList.Columns["ID"].Visible = dataGridViewContactList.Columns["TYPE_ID"].Visible = false;
@@ -722,7 +721,7 @@ namespace Rental
             if (Int32.TryParse(dataGridViewContactList.CurrentRow.Cells[0].Value.ToString(), out blackId))
             {
                 NameListCache.proxy.BlackListDelete(blackId);
-                FillBlackList();
+                LoadBlackList();
             }
 
         }
@@ -738,7 +737,10 @@ namespace Rental
             {
                 int flatId;
                 if (Int32.TryParse(grdFlats.CurrentRow.Cells[0].Value.ToString(), out flatId))
+                {
                     NameListCache.proxy.FlatDelete(flatId);
+                    grdFlats.Rows.Remove(grdFlats.CurrentRow);
+                }
             }
         }
 
@@ -757,7 +759,7 @@ namespace Rental
                 frm.ShowDialog();
                 if (frm.DialogResult == DialogResult.OK)
                 {
-                    FillBlackList();
+                    LoadBlackList();
                     dataGridViewContactList.Rows[ri].Selected = true;
                 }
             }
@@ -771,7 +773,7 @@ namespace Rental
 
         private void btnReloadBlackList_Click(object sender, EventArgs e)
         {
-            FillBlackList();
+            LoadBlackList();
         }
 
 
@@ -855,7 +857,7 @@ namespace Rental
             frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
-                FillBlackList();
+                LoadBlackList();
                 dataGridViewContactList.Rows[dataGridViewContactList.Rows.Count - 2].Selected = true;
             }
         }
@@ -871,20 +873,23 @@ namespace Rental
                 }
                 else
                 {
-                    var sb = new StringBuilder();
+                    //var sb = new StringBuilder();
+                    var row = grdFlats.SelectedRows[0];
+                    inputNAME.Text = row.Cells[Fields.NAME.ToString()].Value.ToString();
+                    inputCONTENT.Text = row.Cells[Fields.CONTENT.ToString()].Value.ToString();
+                    inputLINK.Text = row.Cells[Fields.LINK.ToString()].Value.ToString();
 
-                    inputNAME.Text = (string)grdFlats.SelectedRows[0].Cells["NAME"].Value;
-                    //inputCONTENT.Text = (string)grdFlats.SelectedRows[0].Cells["CONTENT"].Value;
-                    //inputLINK.Text = (string)grdFlats.SelectedRows[0].Cells["LINK"].Value;
-                    //intupROOM_COUNT.Text = (string)grdFlats.SelectedRows[0].Cells["ROOM_COUNT"].Value;
-                    //intupADDRESS.Text = (string)grdFlats.SelectedRows[0].Cells["ADDRESS"].Value;
-                    //intupFLOOR.Text = (string)grdFlats.SelectedRows[0].Cells["FLOOR"].Value;
-                    //intupBATH_UNIT.Text = (string)grdFlats.SelectedRows[0].Cells["BATH_UNIT"].Value;
-                    //intupBUILD.Text = (string)grdFlats.SelectedRows[0].Cells["BUILD"].Value;
-                    //intupSTATE.Text = (string)grdFlats.SelectedRows[0].Cells["STATE"].Value;
-                    //intupPRICE.Text = (string)grdFlats.SelectedRows[0].Cells["PRICE"].Value;
-                    //inputPHONE.Items.Clear();
-                    //inputPHONE.Items.AddRange(grdFlats.SelectedRows[0].Cells["PHONE"].Value.ToString().Split(new Char[] { ';' }));
+                    intupROOM_COUNT.Text = row.Cells[Fields.ROOM_COUNT.ToString()].Value == null ? string.Empty : row.Cells[Fields.ROOM_COUNT.ToString()].Value.ToString();
+                    intupFLOOR.Text = row.Cells[Fields.FLOOR.ToString()].Value == null ? string.Empty :row.Cells[Fields.FLOOR.ToString()].Value.ToString();
+
+                    intupADDRESS.Text = row.Cells[Fields.ADDRESS.ToString()].Value.ToString();
+                    
+                    intupBATH_UNIT.Text = row.Cells[Fields.BATH_UNIT.ToString()].Value.ToString();
+                    intupBUILD.Text = row.Cells[Fields.BUILD.ToString()].Value.ToString();
+                    intupSTATE.Text = row.Cells[Fields.STATE.ToString()].Value.ToString();
+                    intupPRICE.Text = row.Cells[Fields.PRICE.ToString()].Value.ToString();
+                    inputPHONE.Items.Clear();
+                    inputPHONE.Items.AddRange(row.Cells[Fields.PHONE.ToString()].Value.ToString().Split(new Char[] { ';' }));
 
                 }
             }

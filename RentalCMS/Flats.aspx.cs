@@ -42,42 +42,42 @@ namespace RentalCMS
             //Кол-во комнат
             if ((ddlRoomCount.SelectedIndex) > 0)
             {
-                var field = this.CreateFilter(ddlRoomCount.SelectedItem.Text, Fiels.ROOM_COUNT);
+                var field = this.CreateFilter(ddlRoomCount.SelectedItem.Text, Fields.ROOM_COUNT);
                 result.Add(field);
             }
 
             //Адрес
             if (!string.IsNullOrEmpty(tbAddress.Text))
             {
-                var field = this.CreateFilter(tbAddress.Text, Fiels.ADDRESS);
+                var field = this.CreateFilter(tbAddress.Text, Fields.ADDRESS);
                 result.Add(field);
             }
 
             //Район 
             if ( (ddlRegion.SelectedIndex) > 0)
             {
-                var field = this.CreateFilter(ddlRegion.SelectedItem.Text, Fiels.REGION);
+                var field = this.CreateFilter(ddlRegion.SelectedItem.Text, Fields.REGION);
                 result.Add(field);
             }
 
             //Этаж
             if (ddlFloor.SelectedIndex > 0)
             {
-                var field = this.CreateFilter(ddlFloor.SelectedItem.Text, Fiels.FLOOR);
+                var field = this.CreateFilter(ddlFloor.SelectedItem.Text, Fields.FLOOR);
                 result.Add(field);
             }
 
             //Мебель
             if ( ddlFurniture.SelectedIndex > 0)
             {
-                var field = this.CreateFilter(ddlFurniture.SelectedItem.Text, Fiels.FURNITURE);
+                var field = this.CreateFilter(ddlFurniture.SelectedItem.Text, Fields.FURNITURE);
                 result.Add(field);
             }
 
             //Цена
             if (!string.IsNullOrEmpty(tbPrice.Text))
             {
-                var field = this.CreateFilter(tbPrice.Text, Fiels.PRICE);
+                var field = this.CreateFilter(tbPrice.Text, Fields.PRICE);
                 result.Add(field);
             }
 
@@ -234,7 +234,7 @@ namespace RentalCMS
         }
 
 
-        private Filter CreateFilter(string value, Fiels field)
+        private Filter CreateFilter(string value, Fields field)
         {
 
             var result = new Filter();

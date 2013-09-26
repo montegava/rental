@@ -18,7 +18,7 @@ namespace RentalCommon
         }
 
         [DataMember]
-        public Fiels Field { get; set; }
+        public Fields Field { get; set; }
 
         [DataMember]
         public string StartValue { get; set; }
@@ -26,7 +26,7 @@ namespace RentalCommon
 
         [DataMember]
         public string EndValue { get; set; }
-     
+
         [DataMember]
         public ComapreType Comparator { get; set; }
     }
@@ -48,7 +48,7 @@ namespace RentalCommon
     }
 
     [DataContract]
-    public enum Fiels : int
+    public enum Fields : int
     {
         [EnumMember]
         NONE = 0,
@@ -103,5 +103,14 @@ namespace RentalCommon
         COOLER = 24,
         [EnumMember]
         REGION = 25,
+
+        [EnumMember]
+        EMAIL = 26,
+        [EnumMember]
+        CATEGORY = 27,
+        [EnumMember]
+        TYPE = 28,
+        [EnumMember]
+        PAYMENT = 29,
     }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using DAL;
 using  System.Windows.Forms;
+using RentalCommon;
 
 namespace Rental
 {
@@ -16,6 +17,74 @@ namespace Rental
 
     public static class Convetor
     {
+        public static string FieldToString(Fields field)
+        {
+            switch (field)
+            {
+                case Fields.ID:
+                    return "№";
+                case Fields.DATA:
+                    return  "ДАТА ДОБВЛЕНИЯ";
+                case Fields.ROOM_COUNT:
+                    return "КОЛИЧЕСТВО КОМНАТ";
+                case Fields.ADDRESS:
+                    return "АДРЕС";
+                case Fields.FLOOR:
+                    return "ЭТАЖ";
+                case Fields.BATH_UNIT:
+                    return "САНУЗЕЛ";
+                case Fields.BUILD:
+                    return "ВИД ДОМА";
+                case Fields.FURNITURE:
+                    return "МЕБЕЛЬ";
+                case Fields.STATE:
+                    return "СОСТОЯНИЕ";
+                case Fields.MECHANIC:
+                    return "МЕБЕЛЬ";
+                case Fields.NAME:
+                    return "ФИО";
+                case Fields.PRICE:
+                    return "ЦЕНА";
+                case Fields.PHONE:
+                    return "ТЕЛЕФОН";
+                case Fields.COMMENT:
+                    return "КОММЕНТАРИЙ";
+                case Fields.CONTENT:
+                    return "СОДЕРЖАНИЕ";
+                case Fields.LINK:
+                    return "ССЫЛКА";
+                case Fields.TERM:
+                    return "СРОК СДАЧИ";
+                case Fields.RENT_FROM:
+                    return "СДАЕТСЯ С";
+                case Fields.RENT_TO:
+                    return "СДАЕТСЯ ПО";
+                case Fields.LESSOR:
+                    return "КТО СДАЛ";
+                case Fields.FRIDGE:
+                    return "ХОЛОДИЛЬНИК";
+                case Fields.TV:
+                    return "ТЕЛЕВИЗОР";
+                case Fields.WASHER:
+                    return "СТИРАЛЬНАЯ МАШИНА";
+                case Fields.COOLER:
+                    return "КОНДИЦИОНЕР";
+                case Fields.REGION:
+                    return "РЕГИОН";
+                case Fields.EMAIL:
+                    return "EMAIL";
+                case Fields.CATEGORY:
+                    return "КАТЕГОРИЯ";
+                case Fields.TYPE:
+                    return "ТИП";
+                case Fields.PAYMENT:
+                    return "ОПЛАТА";
+                default:
+                    return string.Empty;
+            }
+        }
+
+
         public static void AdvertToListView(List<Advert> advertList, ListView allAdvertsControl, ListView starredAdvertsControl)
         {
             if (allAdvertsControl != null)

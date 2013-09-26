@@ -10,6 +10,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.IO;
+using RentalCommon;
 
 namespace Rental
 {
@@ -195,15 +196,17 @@ namespace Rental
             }
         }
 
+      
+
+        public static void SetColumlOption(DataGridView grid, Fields field, int width, ref int displayIndex, bool visible = true)
+        {
+            SetColumlOption(grid, field.ToString(), Convetor.FieldToString(field), width, ref displayIndex, visible);
+        }
+
         public static void SetColumlOption(DataGridView grid, string columnName, string headerText, int width, ref int displayIndex, bool visible = true)
         {
             if (grid.Columns[columnName] == null)
                 grid.Columns.Add(columnName, columnName);
-
-
-
-
-
                 grid.Columns[columnName].Visible = visible;
                 grid.Columns[columnName].DisplayIndex = displayIndex;
                 grid.Columns[columnName].Width = width;
