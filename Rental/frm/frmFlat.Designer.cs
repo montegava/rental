@@ -63,6 +63,8 @@
             this.contextAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.contextDel = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.inputPayment = new System.Windows.Forms.ComboBox();
             this.lblType = new System.Windows.Forms.Label();
             this.inputType = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
@@ -87,8 +89,6 @@
             this.inputRENT_FROM = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.inputTERM = new System.Windows.Forms.ComboBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.context.SuspendLayout();
@@ -506,7 +506,7 @@
             // groupBox5
             // 
             this.groupBox5.Controls.Add(this.label13);
-            this.groupBox5.Controls.Add(this.comboBox1);
+            this.groupBox5.Controls.Add(this.inputPayment);
             this.groupBox5.Controls.Add(this.lblType);
             this.groupBox5.Controls.Add(this.inputType);
             this.groupBox5.Controls.Add(this.lblCategory);
@@ -558,6 +558,39 @@
             this.groupBox5.TabIndex = 25;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Информация";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(286, 350);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(44, 13);
+            this.label13.TabIndex = 49;
+            this.label13.Text = "Оплата";
+            // 
+            // inputPayment
+            // 
+            this.inputPayment.AutoCompleteCustomSource.AddRange(new string[] {
+            "-- неизвестно --",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            ">9"});
+            this.inputPayment.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inputPayment.FormattingEnabled = true;
+            this.inputPayment.Items.AddRange(new object[] {
+            "помесячно",
+            "поквартально"});
+            this.inputPayment.Location = new System.Drawing.Point(336, 347);
+            this.inputPayment.Name = "inputPayment";
+            this.inputPayment.Size = new System.Drawing.Size(88, 21);
+            this.inputPayment.TabIndex = 50;
             // 
             // lblType
             // 
@@ -633,7 +666,7 @@
             // 
             this.inputEmail.Location = new System.Drawing.Point(93, 45);
             this.inputEmail.Name = "inputEmail";
-            this.inputEmail.Size = new System.Drawing.Size(226, 20);
+            this.inputEmail.Size = new System.Drawing.Size(304, 20);
             this.inputEmail.TabIndex = 44;
             // 
             // lblEmail
@@ -868,63 +901,6 @@
             this.inputTERM.Size = new System.Drawing.Size(150, 21);
             this.inputTERM.TabIndex = 23;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(286, 350);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(44, 13);
-            this.label13.TabIndex = 49;
-            this.label13.Text = "Оплата";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.AutoCompleteCustomSource.AddRange(new string[] {
-            "-- неизвестно --",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            ">9"});
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "-- неизвестно --",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12",
-            "13",
-            "14",
-            "15",
-            "16",
-            "17",
-            "18",
-            "19",
-            "20",
-            "21",
-            "22",
-            "23",
-            "24",
-            "25"});
-            this.comboBox1.Location = new System.Drawing.Point(336, 347);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(88, 21);
-            this.comboBox1.TabIndex = 50;
-            // 
             // frmFlat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1013,6 +989,6 @@
         public System.Windows.Forms.Label lblType;
         public System.Windows.Forms.ComboBox inputType;
         public System.Windows.Forms.Label label13;
-        public System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.ComboBox inputPayment;
     }
 }

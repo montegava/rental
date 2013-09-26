@@ -13,13 +13,10 @@ using RentalCommon;
 
 namespace RentalCore
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Service1" in both code and config file together.
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
     public class RentalCore : IRentalCore
     {
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(RentalCore));
-
-
 
         public string Upload(Stream data)
         {
@@ -95,7 +92,6 @@ namespace RentalCore
             return file;
         }
 
-
         public Stream DownloadFile(string remotePath)
         {
             Stream result = null;
@@ -118,7 +114,7 @@ namespace RentalCore
 
         public flat_info FlatById(int id)
         {
-            return FlatManager.GetFlatById(id);
+            return FlatManager.FlatById(id);
         }
 
         public int FlatAdd(flat_info flat)
@@ -129,6 +125,11 @@ namespace RentalCore
         public void FlatUpdate(flat_info flat)
         {
             FlatManager.FlatUpdate(flat);
+        }
+
+        public void FlatDelete(int id)
+        {
+            FlatManager.FlatDelete(id);
         }
 
         public void ImageUpdate(image_list[] images, int flatId)

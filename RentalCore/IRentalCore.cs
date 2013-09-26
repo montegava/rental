@@ -37,6 +37,9 @@ namespace RentalCore
         void FlatUpdate(flat_info flat);
 
         [OperationContract]
+        void FlatDelete(int id);
+
+        [OperationContract]
         void ImageUpdate(image_list[] images, int flatId);
 
         [OperationContract]

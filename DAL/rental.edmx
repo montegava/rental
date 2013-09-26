@@ -51,6 +51,7 @@
           <Property Name="EMAIL" Type="text" />
           <Property Name="CATEGORY" Type="text" />
           <Property Name="TYPE" Type="text" />
+          <Property Name="PAYMENT" Type="text" />
         </EntityType>
         <EntityType Name="image_list">
           <Key>
@@ -110,6 +111,7 @@
           <Property Type="String" Name="EMAIL" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="CATEGORY" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="TYPE" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PAYMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="image_list">
           <Key>
@@ -138,6 +140,7 @@
           <EntitySetMapping Name="flat_info">
             <EntityTypeMapping TypeName="rentalModel.flat_info">
               <MappingFragment StoreEntitySet="flat_info">
+                <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
                 <ScalarProperty Name="TYPE" ColumnName="TYPE" />
                 <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
@@ -200,9 +203,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="rental" ZoomLevel="93">
-        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416674" />
-        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="2.75" PointY="0.75" Height="6.4032194010416674" />
-        <EntityTypeShape EntityType="rentalModel.image_list" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937500031" />
+        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416657" />
+        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="2.75" PointY="0.75" Height="6.5955208333333317" />
+        <EntityTypeShape EntityType="rentalModel.image_list" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937499996" />
       </Diagram>
     </Diagrams>
   </Designer>

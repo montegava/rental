@@ -42,5 +42,6 @@ namespace DAL
         public string EMAIL { get; set; }
         public string CATEGORY { get; set; }
         public string TYPE { get; set; }
+        public string PAYMENT { get; set; }
     }
 }

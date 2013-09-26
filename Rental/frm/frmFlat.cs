@@ -75,6 +75,7 @@ namespace Rental
                 this.inputEmail.Text = flat.EMAIL;
                 this.inputCategory.Text = flat.CATEGORY;
                 this.inputType.Text = flat.TYPE;
+                this.inputPayment.Text = flat.PAYMENT;
             }
         }
 
@@ -187,6 +188,8 @@ namespace Rental
             result.EMAIL = inputEmail.Text;
             result.CATEGORY = inputCategory.Text;
             result.TYPE = inputType.Text;
+            result.PAYMENT = inputPayment.Text;
+
 
             return result;
         }

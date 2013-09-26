@@ -260,7 +260,7 @@ namespace DAL
             }
         }
 
-        public static List<flat_info> GetAllFlats()
+        public static List<flat_info> FlatListAll()
         {
             var context = WcfOperationContext.Current.Context;
             return context.flat_info.Select(f => f).ToList();
@@ -274,7 +274,7 @@ namespace DAL
             return flat.ID;
         }
 
-        public static flat_info GetFlatById(int flatId)
+        public static flat_info FlatById(int flatId)
         {
             return WcfOperationContext.Current.Context.flat_info.Where(f => f.ID == flatId).FirstOrDefault();
         }
@@ -320,90 +320,13 @@ namespace DAL
 
         }
 
-        public static bool DeleteFlat(int flatId, out string error)
+        public static void FlatDelete(int flatId)
         {
-            error = String.Empty;
-            try
-            {
-                using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
-                {
-                    string query = @"delete from FLAT_INFO where Id=@flatId";
-                    sqlConn.Open();
-                    using (MySqlCommand command = new MySqlCommand(query, sqlConn))
-                    {
-                        command.Parameters.Add(new MySqlParameter() { ParameterName = "@flatId", DbType = DbType.Int32, Value = flatId });
-                        command.ExecuteNonQuery();
-                    }
-                    sqlConn.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                error = ex.Message;
-                return false;
-            }
-            return true;
+            var context = WcfOperationContext.Current.Context;
+            var flat = context.flat_info.Where(f => f.ID == flatId).FirstOrDefault();
+            if (flat != null)
+                context.flat_info.Remove(flat);
         }
 
-        public static DataTable GetAllFlatsAsDataTable()
-        {
-            errorLog.Error("GetAllFlatsAsDataTable");
-
-            DataTable dt = null;
-            using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
-            {
-                string query = "select * from flat_info order by id desc";
-                sqlConn.Open();
-                using (MySqlCommand command = new MySqlCommand(query, sqlConn))
-                {
-                    command.CommandTimeout = 30000;
-                    IDataReader rdr = command.ExecuteReader();
-                    dt = GetDataTableFromDataReader(rdr);
-
-                    //DataSet ds = new DataSet();
-                    //MySqlDataAdapter ret = new MySqlDataAdapter();
-                    //ret.SelectCommand = command;
-                    //ret.Fill(ds);
-
-                    //if (ds != null && ds.Tables.Count > 0)
-                    //    dt = ds.Tables[0];
-                }
-                sqlConn.Close();
-            }
-            return dt;
-        }
-
-
-        public static DataTable GetDataTableFromDataReader(IDataReader dataReader)
-        {
-            errorLog.Error("GetDataTableFromDataReader");
-
-            DataTable schemaTable = dataReader.GetSchemaTable();
-            DataTable resultTable = new DataTable();
-
-            foreach (DataRow dataRow in schemaTable.Rows)
-            {
-                DataColumn dataColumn = new DataColumn();
-                dataColumn.ColumnName = dataRow["ColumnName"].ToString();
-                dataColumn.DataType = Type.GetType(dataRow["DataType"].ToString());
-                dataColumn.ReadOnly = (bool)dataRow["IsReadOnly"];
-                dataColumn.AutoIncrement = (bool)dataRow["IsAutoIncrement"];
-                dataColumn.Unique = (bool)dataRow["IsUnique"];
-
-                resultTable.Columns.Add(dataColumn);
-            }
-
-            while (dataReader.Read())
-            {
-                DataRow dataRow = resultTable.NewRow();
-                for (int i = 0; i < resultTable.Columns.Count; i++)
-                {
-                    dataRow[i] = dataReader[i];
-                }
-                resultTable.Rows.Add(dataRow);
-            }
-
-            return resultTable;
-        }
     }
 }

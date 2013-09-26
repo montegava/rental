@@ -25,6 +25,7 @@
       <xs:element minOccurs="0" name="LINK" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="MECHANIC" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NAME" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PAYMENT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PHONE" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PRICE" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="REGION" nillable="true" type="xs:string" />

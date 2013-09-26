@@ -32,12 +32,12 @@ namespace Rental
         private Dictionary<string, TabPage> pages = new Dictionary<string, TabPage>();
         private volatile int page_count_for_load = 0;
         private volatile int page_count_loaded = 0;
-        
-        
+
+
         private List<Advert> AdvertList = new List<Advert>();
-        
+
         private List<black_list> BlackList = new List<black_list>();
-        
+
         NameListCache Cache = null;
         const int PAGE_SIZE = 5000;
 
@@ -57,7 +57,7 @@ namespace Rental
             Worker.WorkerSupportsCancellation = true;
             //Login
             frmLogin frm = new frmLogin(this);
-          // frm.ShowDialog();
+            // frm.ShowDialog();
 
 
             LoadFormSize();
@@ -95,14 +95,14 @@ namespace Rental
 
             Common.SetColumlOption(grdFlats, "CONTENT", "CONTENT", 80, ref displayIndex);
             Common.SetColumlOption(grdFlats, "LINK", "LINK", 80, ref displayIndex);
-         
-
-
-             
 
 
 
-            grdFlats.CellValueNeeded +=   new DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
+
+
+
+
+            grdFlats.CellValueNeeded += new DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
 
             grdFlats.VirtualMode = true;
 
@@ -164,7 +164,7 @@ namespace Rental
             this.Height = Properties.Settings.Default.Length;
         }
 
-      
+
 
         #endregion
 
@@ -178,7 +178,7 @@ namespace Rental
             dataGridViewContactList.Columns["STOP"].Width = dataGridViewContactList.Columns["COMMENT"].Width = 200;
         }
 
-      
+
         #region Worker
 
         private void RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -604,7 +604,7 @@ namespace Rental
         #endregion
 
 
-    
+
 
 
 
@@ -637,7 +637,7 @@ namespace Rental
 
         /////////////////
 
-        
+
 
         /// <summary>
         /// Начать загрузку
@@ -734,16 +734,11 @@ namespace Rental
         /// <param name="e"></param>
         private void btnStarDel_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Объявление будет удалено из базы. Продолжить", "Удаление...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-                return;
-            Int32 flatId;
-            if (Int32.TryParse(grdFlats.CurrentRow.Cells[0].Value.ToString(), out flatId))
+            if (MessageBox.Show("Объявление будет удалено из базы. Продолжить", "Удаление...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                string error = null;
-                if (!FlatManager.DeleteFlat(flatId, out error))
-                    MessageBox.Show(error);
-                //else
-                //    FillFlatGridStar();
+                int flatId;
+                if (Int32.TryParse(grdFlats.CurrentRow.Cells[0].Value.ToString(), out flatId))
+                    NameListCache.proxy.FlatDelete(flatId);
             }
         }
 
@@ -794,7 +789,7 @@ namespace Rental
                 onAddContacts2BlackList(lvAdverts.SelectedItems[0].Tag as Advert);
         }
 
-    
+
 
         private void cbSites_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -980,7 +975,7 @@ namespace Rental
             if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
             {
                 int fid = frm.FlatId;
-               // FillFlatGridStar();
+                // FillFlatGridStar();
                 ((CurrencyManager)this.BindingContext[grdFlats.DataSource]).Position = 0;
 
 
@@ -1011,7 +1006,7 @@ namespace Rental
             Properties.Settings.Default.Left = this.Left;
             Properties.Settings.Default.Save();
         }
-     
+
     }
 
 }

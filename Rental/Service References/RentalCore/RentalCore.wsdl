@@ -51,6 +51,12 @@
   <wsdl:message name="IRentalCore_FlatUpdate_OutputMessage">
     <wsdl:part name="parameters" element="tns:FlatUpdateResponse" />
   </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatDelete_InputMessage">
+    <wsdl:part name="parameters" element="tns:FlatDelete" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_FlatDelete_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FlatDeleteResponse" />
+  </wsdl:message>
   <wsdl:message name="IRentalCore_ImageUpdate_InputMessage">
     <wsdl:part name="parameters" element="tns:ImageUpdate" />
   </wsdl:message>
@@ -109,6 +115,10 @@
     <wsdl:operation name="FlatUpdate">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatUpdate" message="tns:IRentalCore_FlatUpdate_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatUpdateResponse" message="tns:IRentalCore_FlatUpdate_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FlatDelete">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatDelete" message="tns:IRentalCore_FlatDelete_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatDeleteResponse" message="tns:IRentalCore_FlatDelete_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="ImageUpdate">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/ImageUpdate" message="tns:IRentalCore_ImageUpdate_InputMessage" />
@@ -189,6 +199,15 @@
     </wsdl:operation>
     <wsdl:operation name="FlatUpdate">
       <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatUpdate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FlatDelete">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatDelete" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
