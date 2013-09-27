@@ -30,15 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.программаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStart = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStop = new System.Windows.Forms.ToolStripMenuItem();
+            this.добавитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.настройкиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -68,9 +69,9 @@
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.btnAddStar = new System.Windows.Forms.ToolStripButton();
+            this.btnStarAdd = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnAddBlackPhone = new System.Windows.Forms.ToolStripButton();
+            this.btnBlackListAdd = new System.Windows.Forms.ToolStripButton();
             this.cbFilteredCount = new System.Windows.Forms.ToolStripComboBox();
             this.toolStripLabel3 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
@@ -92,15 +93,16 @@
             this.findPhoneInput = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip4 = new System.Windows.Forms.ToolStrip();
-            this.btnStarAdd = new System.Windows.Forms.ToolStripButton();
-            this.btnStarEdit = new System.Windows.Forms.ToolStripButton();
-            this.btnStarDel = new System.Windows.Forms.ToolStripButton();
+            this.btnFlatAdd = new System.Windows.Forms.ToolStripButton();
+            this.btnFlatEdit = new System.Windows.Forms.ToolStripButton();
+            this.btnFlatDel = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnStarReload = new System.Windows.Forms.ToolStripButton();
+            this.btnFlatRefresh = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.pbIcon = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.intupPRICE = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -128,9 +130,9 @@
             this.btnAddBadPhone = new System.Windows.Forms.ToolStrip();
             this.btnAdd2BlackList = new System.Windows.Forms.ToolStripButton();
             this.btnEditBlackList = new System.Windows.Forms.ToolStripButton();
-            this.btnDeleteBlackList = new System.Windows.Forms.ToolStripButton();
+            this.btnBlackListDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.btnReloadBlackList = new System.Windows.Forms.ToolStripButton();
+            this.btnBlackListRefresh = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblCounter = new System.Windows.Forms.ToolStripStatusLabel();
             this.ProgressBar = new System.Windows.Forms.ToolStripProgressBar();
@@ -167,6 +169,7 @@
             this.tsSearch.SuspendLayout();
             this.toolStrip4.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.groupBox6.SuspendLayout();
             this.groupBox8.SuspendLayout();
@@ -200,7 +203,8 @@
             // 
             this.программаToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuStart,
-            this.menuStop});
+            this.menuStop,
+            this.добавитьToolStripMenuItem});
             this.программаToolStripMenuItem.Name = "программаToolStripMenuItem";
             this.программаToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
             this.программаToolStripMenuItem.Text = "Программа";
@@ -218,6 +222,12 @@
             this.menuStop.Size = new System.Drawing.Size(184, 22);
             this.menuStop.Text = "Завершить загрузку";
             this.menuStop.Click += new System.EventHandler(this.menuStop_Click);
+            // 
+            // добавитьToolStripMenuItem
+            // 
+            this.добавитьToolStripMenuItem.Name = "добавитьToolStripMenuItem";
+            this.добавитьToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.добавитьToolStripMenuItem.Text = "Добавить";
             // 
             // настройкиToolStripMenuItem
             // 
@@ -359,13 +369,13 @@
             this.lvAdverts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvAdverts.FullRowSelect = true;
             this.lvAdverts.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
-            listViewGroup2.Header = "sdfasd";
-            listViewGroup2.Name = "sdf";
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "listViewGroup1";
+            listViewGroup4.Header = "sdfasd";
+            listViewGroup4.Name = "sdf";
             this.lvAdverts.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup3,
+            listViewGroup4});
             this.lvAdverts.Location = new System.Drawing.Point(3, 28);
             this.lvAdverts.Name = "lvAdverts";
             this.lvAdverts.Size = new System.Drawing.Size(731, 247);
@@ -411,6 +421,7 @@
             this.imglistSites.Images.SetKeyName(8, "avitodeleteимени.png");
             this.imglistSites.Images.SetKeyName(9, "faviconslando.ico");
             this.imglistSites.Images.SetKeyName(10, "slandodelete.ico");
+            this.imglistSites.Images.SetKeyName(11, "hand.ico");
             // 
             // toolStrip1
             // 
@@ -463,13 +474,13 @@
             this.lvStars.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvStars.FullRowSelect = true;
             this.lvStars.GridLines = true;
-            listViewGroup3.Header = "ListViewGroup";
-            listViewGroup3.Name = "listViewGroup1";
-            listViewGroup4.Header = "sdfasd";
-            listViewGroup4.Name = "sdf";
+            listViewGroup5.Header = "ListViewGroup";
+            listViewGroup5.Name = "listViewGroup1";
+            listViewGroup6.Header = "sdfasd";
+            listViewGroup6.Name = "sdf";
             this.lvStars.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup3,
-            listViewGroup4});
+            listViewGroup5,
+            listViewGroup6});
             this.lvStars.Location = new System.Drawing.Point(3, 28);
             this.lvStars.Name = "lvStars";
             this.lvStars.Size = new System.Drawing.Size(731, 247);
@@ -510,9 +521,9 @@
             // 
             this.toolStrip2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toolStrip2.BackgroundImage")));
             this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAddStar,
+            this.btnStarAdd,
             this.toolStripSeparator7,
-            this.btnAddBlackPhone,
+            this.btnBlackListAdd,
             this.cbFilteredCount,
             this.toolStripLabel3,
             this.toolStripSeparator9});
@@ -522,28 +533,28 @@
             this.toolStrip2.TabIndex = 3;
             this.toolStrip2.Text = "toolStrip2";
             // 
-            // btnAddStar
+            // btnStarAdd
             // 
-            this.btnAddStar.Image = ((System.Drawing.Image)(resources.GetObject("btnAddStar.Image")));
-            this.btnAddStar.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddStar.Name = "btnAddStar";
-            this.btnAddStar.Size = new System.Drawing.Size(150, 22);
-            this.btnAddStar.Text = "Добавить в избранное";
-            this.btnAddStar.Click += new System.EventHandler(this.StarAddClick);
+            this.btnStarAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnStarAdd.Image")));
+            this.btnStarAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnStarAdd.Name = "btnStarAdd";
+            this.btnStarAdd.Size = new System.Drawing.Size(150, 22);
+            this.btnStarAdd.Text = "Добавить в избранное";
+            this.btnStarAdd.Click += new System.EventHandler(this.StarAddClick);
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnAddBlackPhone
+            // btnBlackListAdd
             // 
-            this.btnAddBlackPhone.Image = ((System.Drawing.Image)(resources.GetObject("btnAddBlackPhone.Image")));
-            this.btnAddBlackPhone.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnAddBlackPhone.Name = "btnAddBlackPhone";
-            this.btnAddBlackPhone.Size = new System.Drawing.Size(235, 22);
-            this.btnAddBlackPhone.Text = "Добавить телефоны в черный список";
-            this.btnAddBlackPhone.Click += new System.EventHandler(this.BlackListAddPhoneClick);
+            this.btnBlackListAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnBlackListAdd.Image")));
+            this.btnBlackListAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBlackListAdd.Name = "btnBlackListAdd";
+            this.btnBlackListAdd.Size = new System.Drawing.Size(235, 22);
+            this.btnBlackListAdd.Text = "Добавить телефоны в черный список";
+            this.btnBlackListAdd.Click += new System.EventHandler(this.BlackListAddPhoneClick);
             // 
             // cbFilteredCount
             // 
@@ -745,11 +756,11 @@
             // 
             this.toolStrip4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toolStrip4.BackgroundImage")));
             this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnStarAdd,
-            this.btnStarEdit,
-            this.btnStarDel,
+            this.btnFlatAdd,
+            this.btnFlatEdit,
+            this.btnFlatDel,
             this.toolStripSeparator2,
-            this.btnStarReload,
+            this.btnFlatRefresh,
             this.toolStripSeparator3,
             this.toolStripButton3,
             this.toolStripSeparator4});
@@ -759,46 +770,46 @@
             this.toolStrip4.TabIndex = 3;
             this.toolStrip4.Text = "toolStrip1";
             // 
-            // btnStarAdd
+            // btnFlatAdd
             // 
-            this.btnStarAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnStarAdd.Image")));
-            this.btnStarAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStarAdd.Name = "btnStarAdd";
-            this.btnStarAdd.Size = new System.Drawing.Size(79, 22);
-            this.btnStarAdd.Text = "Добавить";
-            this.btnStarAdd.Click += new System.EventHandler(this.FlatAddClick);
+            this.btnFlatAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnFlatAdd.Image")));
+            this.btnFlatAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFlatAdd.Name = "btnFlatAdd";
+            this.btnFlatAdd.Size = new System.Drawing.Size(79, 22);
+            this.btnFlatAdd.Text = "Добавить";
+            this.btnFlatAdd.Click += new System.EventHandler(this.FlatAddClick);
             // 
-            // btnStarEdit
+            // btnFlatEdit
             // 
-            this.btnStarEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnStarEdit.Image")));
-            this.btnStarEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStarEdit.Name = "btnStarEdit";
-            this.btnStarEdit.Size = new System.Drawing.Size(107, 22);
-            this.btnStarEdit.Text = "Редактировать";
-            this.btnStarEdit.Click += new System.EventHandler(this.btnEditFlat_Click);
+            this.btnFlatEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnFlatEdit.Image")));
+            this.btnFlatEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFlatEdit.Name = "btnFlatEdit";
+            this.btnFlatEdit.Size = new System.Drawing.Size(107, 22);
+            this.btnFlatEdit.Text = "Редактировать";
+            this.btnFlatEdit.Click += new System.EventHandler(this.btnEditFlat_Click);
             // 
-            // btnStarDel
+            // btnFlatDel
             // 
-            this.btnStarDel.Image = ((System.Drawing.Image)(resources.GetObject("btnStarDel.Image")));
-            this.btnStarDel.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStarDel.Name = "btnStarDel";
-            this.btnStarDel.Size = new System.Drawing.Size(71, 22);
-            this.btnStarDel.Text = "Удалить";
-            this.btnStarDel.Click += new System.EventHandler(this.FlatDeleteClick);
+            this.btnFlatDel.Image = ((System.Drawing.Image)(resources.GetObject("btnFlatDel.Image")));
+            this.btnFlatDel.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFlatDel.Name = "btnFlatDel";
+            this.btnFlatDel.Size = new System.Drawing.Size(71, 22);
+            this.btnFlatDel.Text = "Удалить";
+            this.btnFlatDel.Click += new System.EventHandler(this.FlatDeleteClick);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnStarReload
+            // btnFlatRefresh
             // 
-            this.btnStarReload.Image = ((System.Drawing.Image)(resources.GetObject("btnStarReload.Image")));
-            this.btnStarReload.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnStarReload.Name = "btnStarReload";
-            this.btnStarReload.Size = new System.Drawing.Size(129, 22);
-            this.btnStarReload.Text = "Обновить таблицу";
-            this.btnStarReload.Click += new System.EventHandler(this.FlatRefreshClick);
+            this.btnFlatRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnFlatRefresh.Image")));
+            this.btnFlatRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnFlatRefresh.Name = "btnFlatRefresh";
+            this.btnFlatRefresh.Size = new System.Drawing.Size(129, 22);
+            this.btnFlatRefresh.Text = "Обновить таблицу";
+            this.btnFlatRefresh.Click += new System.EventHandler(this.FlatRefreshClick);
             // 
             // toolStripSeparator3
             // 
@@ -820,6 +831,7 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.pbIcon);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.intupPRICE);
             this.panel2.Controls.Add(this.label1);
@@ -843,6 +855,15 @@
             this.panel2.Size = new System.Drawing.Size(745, 216);
             this.panel2.TabIndex = 0;
             // 
+            // pbIcon
+            // 
+            this.pbIcon.Location = new System.Drawing.Point(16, 151);
+            this.pbIcon.Name = "pbIcon";
+            this.pbIcon.Size = new System.Drawing.Size(24, 24);
+            this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbIcon.TabIndex = 42;
+            this.pbIcon.TabStop = false;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -856,7 +877,7 @@
             // 
             this.intupPRICE.Location = new System.Drawing.Point(397, 188);
             this.intupPRICE.Name = "intupPRICE";
-            this.intupPRICE.Size = new System.Drawing.Size(156, 20);
+            this.intupPRICE.Size = new System.Drawing.Size(173, 20);
             this.intupPRICE.TabIndex = 40;
             // 
             // label1
@@ -897,7 +918,7 @@
             "9"});
             this.intupROOM_COUNT.Location = new System.Drawing.Point(465, 159);
             this.intupROOM_COUNT.Name = "intupROOM_COUNT";
-            this.intupROOM_COUNT.Size = new System.Drawing.Size(88, 21);
+            this.intupROOM_COUNT.Size = new System.Drawing.Size(105, 21);
             this.intupROOM_COUNT.TabIndex = 31;
             // 
             // label3
@@ -1175,9 +1196,9 @@
             this.btnAddBadPhone.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnAdd2BlackList,
             this.btnEditBlackList,
-            this.btnDeleteBlackList,
+            this.btnBlackListDelete,
             this.toolStripSeparator1,
-            this.btnReloadBlackList});
+            this.btnBlackListRefresh});
             this.btnAddBadPhone.Location = new System.Drawing.Point(3, 3);
             this.btnAddBadPhone.Name = "btnAddBadPhone";
             this.btnAddBadPhone.Size = new System.Drawing.Size(745, 25);
@@ -1191,7 +1212,7 @@
             this.btnAdd2BlackList.Name = "btnAdd2BlackList";
             this.btnAdd2BlackList.Size = new System.Drawing.Size(79, 22);
             this.btnAdd2BlackList.Text = "Добавить";
-            this.btnAdd2BlackList.Click += new System.EventHandler(this.btnAddBlackPhoneGrid_Click);
+            this.btnAdd2BlackList.Click += new System.EventHandler(this.BlackListAddClick);
             // 
             // btnEditBlackList
             // 
@@ -1202,28 +1223,28 @@
             this.btnEditBlackList.Text = "Редактировать";
             this.btnEditBlackList.Click += new System.EventHandler(this.BlackListEditClick);
             // 
-            // btnDeleteBlackList
+            // btnBlackListDelete
             // 
-            this.btnDeleteBlackList.Image = ((System.Drawing.Image)(resources.GetObject("btnDeleteBlackList.Image")));
-            this.btnDeleteBlackList.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDeleteBlackList.Name = "btnDeleteBlackList";
-            this.btnDeleteBlackList.Size = new System.Drawing.Size(71, 22);
-            this.btnDeleteBlackList.Text = "Удалить";
-            this.btnDeleteBlackList.Click += new System.EventHandler(this.DeleteBlackListClick);
+            this.btnBlackListDelete.Image = ((System.Drawing.Image)(resources.GetObject("btnBlackListDelete.Image")));
+            this.btnBlackListDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBlackListDelete.Name = "btnBlackListDelete";
+            this.btnBlackListDelete.Size = new System.Drawing.Size(71, 22);
+            this.btnBlackListDelete.Text = "Удалить";
+            this.btnBlackListDelete.Click += new System.EventHandler(this.DeleteBlackListClick);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
-            // btnReloadBlackList
+            // btnBlackListRefresh
             // 
-            this.btnReloadBlackList.Image = ((System.Drawing.Image)(resources.GetObject("btnReloadBlackList.Image")));
-            this.btnReloadBlackList.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnReloadBlackList.Name = "btnReloadBlackList";
-            this.btnReloadBlackList.Size = new System.Drawing.Size(129, 22);
-            this.btnReloadBlackList.Text = "Обновить таблицу";
-            this.btnReloadBlackList.Click += new System.EventHandler(this.btnReloadBlackList_Click);
+            this.btnBlackListRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnBlackListRefresh.Image")));
+            this.btnBlackListRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBlackListRefresh.Name = "btnBlackListRefresh";
+            this.btnBlackListRefresh.Size = new System.Drawing.Size(129, 22);
+            this.btnBlackListRefresh.Text = "Обновить таблицу";
+            this.btnBlackListRefresh.Click += new System.EventHandler(this.btnReloadBlackList_Click);
             // 
             // statusStrip1
             // 
@@ -1394,6 +1415,7 @@
             this.toolStrip4.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIcon)).EndInit();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox6.ResumeLayout(false);
@@ -1456,11 +1478,11 @@
         private System.Windows.Forms.ToolStrip btnAddBadPhone;
         private System.Windows.Forms.ToolStripButton btnAdd2BlackList;
         private System.Windows.Forms.ToolStripButton btnEditBlackList;
-        private System.Windows.Forms.ToolStripButton btnDeleteBlackList;
+        private System.Windows.Forms.ToolStripButton btnBlackListDelete;
         private System.Windows.Forms.DataGridView dataGridViewContactList;
         private System.Windows.Forms.ToolStripProgressBar ProgressBar;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripButton btnReloadBlackList;
+        private System.Windows.Forms.ToolStripButton btnBlackListRefresh;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ListView lvStars;
         private System.Windows.Forms.ColumnHeader columnHeader2;
@@ -1472,8 +1494,8 @@
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.Splitter splitter1;
         private System.Windows.Forms.ToolStrip toolStrip2;
-        private System.Windows.Forms.ToolStripButton btnAddStar;
-        private System.Windows.Forms.ToolStripButton btnAddBlackPhone;
+        private System.Windows.Forms.ToolStripButton btnStarAdd;
+        private System.Windows.Forms.ToolStripButton btnBlackListAdd;
         private System.Windows.Forms.ToolStripComboBox cbFilteredCount;
         private System.Windows.Forms.ToolStripLabel toolStripLabel3;
         private System.Windows.Forms.Panel panel3;
@@ -1502,11 +1524,11 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox intupPRICE;
         private System.Windows.Forms.ToolStrip toolStrip4;
-        private System.Windows.Forms.ToolStripButton btnStarAdd;
-        private System.Windows.Forms.ToolStripButton btnStarEdit;
-        private System.Windows.Forms.ToolStripButton btnStarDel;
+        private System.Windows.Forms.ToolStripButton btnFlatAdd;
+        private System.Windows.Forms.ToolStripButton btnFlatEdit;
+        private System.Windows.Forms.ToolStripButton btnFlatDel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton btnStarReload;
+        private System.Windows.Forms.ToolStripButton btnFlatRefresh;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton toolStripButton3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
@@ -1523,6 +1545,8 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ToolStripMenuItem menuStop;
+        private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
+        private System.Windows.Forms.PictureBox pbIcon;
     }
 }
 

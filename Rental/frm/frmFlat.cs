@@ -246,20 +246,12 @@ namespace Rental
                 {
                     foreach (var flat in images)
                     {
-                     
-                        var item = new ListViewItem()
-                        {
-                            Tag =  flat.IMAGE_PATH,
-                            Text = string.Format("image №{0}", lvImagList.Items.Count.ToString()),
-                        };
-                        lvImagList.Items.Add(item);//.Selected = true;
+                        lvImagList.Items.Add(new ListViewItem()
+                                                {
+                                                    Tag = flat.IMAGE_PATH,
+                                                    Text = string.Format("image №{0}", lvImagList.Items.Count.ToString()),
+                                                });
                     }
-
-                    //string imageFileName = GetFilePath(((DAL.images)lvImagList.Items[0].Tag).IMAGE_PATH);
-                    //if (File.Exists(imageFileName))
-                    //    pbImage.Image = Image.FromFile(imageFileName);
-                    //else
-                    //    pbImage.Image = null;
                 }
             }
         }

@@ -144,7 +144,7 @@ namespace Rental
                 switch (node.Name)
                 {
                     case "tabBlackList":
-                        LoadBlackList();
+                        BlackListRefresh();
                         return;
                     case "tabStar":
                         //FillFlatGridStar();
@@ -700,7 +700,7 @@ namespace Rental
             frm.ShowDialog();
             if (frm.DialogResult == DialogResult.OK)
             {
-                LoadBlackList();
+                BlackListRefresh();
                 dataGridViewContactList.Rows[dataGridViewContactList.Rows.Count - 2].Selected = true;
             }
         }
@@ -718,7 +718,7 @@ namespace Rental
                 frm.ShowDialog();
                 if (frm.DialogResult == DialogResult.OK)
                 {
-                    LoadBlackList();
+                    BlackListRefresh();
                     dataGridViewContactList.Rows[ri].Selected = true;
                 }
             }
@@ -727,7 +727,7 @@ namespace Rental
         /// <summary>
         /// Get black list from db and fill table
         /// </summary>
-        private void LoadBlackList()
+        private void BlackListRefresh()
         {
             dataGridViewContactList.DataSource = NameListCache.proxy.BlackListAll();
             dataGridViewContactList.Columns["ID"].Visible = dataGridViewContactList.Columns["TYPE_ID"].Visible = false;
@@ -799,7 +799,7 @@ namespace Rental
             OnVisible(tree.SelectedNode);
         }
 
-        private void btnAddBlackPhoneGrid_Click(object sender, EventArgs e)
+        private void BlackListAddClick(object sender, EventArgs e)
         {
             BlackListAdd();
         }
@@ -817,7 +817,7 @@ namespace Rental
             if (Int32.TryParse(dataGridViewContactList.CurrentRow.Cells[0].Value.ToString(), out blackId))
             {
                 NameListCache.proxy.BlackListDelete(blackId);
-                LoadBlackList();
+                BlackListRefresh();
             }
 
         }
@@ -854,7 +854,7 @@ namespace Rental
 
         private void btnReloadBlackList_Click(object sender, EventArgs e)
         {
-            LoadBlackList();
+            BlackListRefresh();
         }
 
         private void onAddContacts2BlackList(Advert advert)
@@ -891,35 +891,41 @@ namespace Rental
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
         {
-            Int32 selectedCellCount = grdFlats.GetCellCount(DataGridViewElementStates.Selected);
-            if (selectedCellCount > 0)
+            if (grdFlats.CurrentRow != null)
             {
-                if (grdFlats.AreAllCellsSelected(true))
-                {
-                    MessageBox.Show("All cells are selected", "Selected Cells");
-                }
-                else
-                {
-                    //var sb = new StringBuilder();
-                    var row = grdFlats.SelectedRows[0];
-                    inputNAME.Text = row.Cells[Fields.NAME.ToString()].Value.ToString();
-                    inputCONTENT.Text = row.Cells[Fields.CONTENT.ToString()].Value.ToString();
-                    inputLINK.Text = row.Cells[Fields.LINK.ToString()].Value.ToString();
+                var row = grdFlats.CurrentRow;
+                inputNAME.Text = row.Cells[Fields.NAME.ToString()].Value.ToString();
+                inputCONTENT.Text = row.Cells[Fields.CONTENT.ToString()].Value.ToString();
+                var link = row.Cells[Fields.LINK.ToString()].Value.ToString();
+                inputLINK.Text = link;
+                intupROOM_COUNT.Text = row.Cells[Fields.ROOM_COUNT.ToString()].Value == null ? string.Empty : row.Cells[Fields.ROOM_COUNT.ToString()].Value.ToString();
+                intupFLOOR.Text = row.Cells[Fields.FLOOR.ToString()].Value == null ? string.Empty : row.Cells[Fields.FLOOR.ToString()].Value.ToString();
+                intupADDRESS.Text = row.Cells[Fields.ADDRESS.ToString()].Value.ToString();
+                intupBATH_UNIT.Text = row.Cells[Fields.BATH_UNIT.ToString()].Value.ToString();
+                intupBUILD.Text = row.Cells[Fields.BUILD.ToString()].Value.ToString();
+                intupSTATE.Text = row.Cells[Fields.STATE.ToString()].Value.ToString();
+                intupPRICE.Text = row.Cells[Fields.PRICE.ToString()].Value.ToString();
+                inputPHONE.Items.Clear();
+                inputPHONE.Items.AddRange(row.Cells[Fields.PHONE.ToString()].Value.ToString().Split(new Char[] { ';' }));
 
-                    intupROOM_COUNT.Text = row.Cells[Fields.ROOM_COUNT.ToString()].Value == null ? string.Empty : row.Cells[Fields.ROOM_COUNT.ToString()].Value.ToString();
-                    intupFLOOR.Text = row.Cells[Fields.FLOOR.ToString()].Value == null ? string.Empty : row.Cells[Fields.FLOOR.ToString()].Value.ToString();
+                if (string.IsNullOrEmpty(link))
+                    pbIcon.Image = imglistSites.Images[11];
+                else if (link.Contains("slando"))
+                    pbIcon.Image = imglistSites.Images[9];
 
-                    intupADDRESS.Text = row.Cells[Fields.ADDRESS.ToString()].Value.ToString();
+                else if (link.Contains("avito"))
+                    pbIcon.Image = imglistSites.Images[7];
 
-                    intupBATH_UNIT.Text = row.Cells[Fields.BATH_UNIT.ToString()].Value.ToString();
-                    intupBUILD.Text = row.Cells[Fields.BUILD.ToString()].Value.ToString();
-                    intupSTATE.Text = row.Cells[Fields.STATE.ToString()].Value.ToString();
-                    intupPRICE.Text = row.Cells[Fields.PRICE.ToString()].Value.ToString();
-                    inputPHONE.Items.Clear();
-                    inputPHONE.Items.AddRange(row.Cells[Fields.PHONE.ToString()].Value.ToString().Split(new Char[] { ';' }));
+                else if (link.Contains("irr"))
+                    pbIcon.Image = imglistSites.Images[5];
 
-                }
+                else if (link.Contains("reklama"))
+                    pbIcon.Image = imglistSites.Images[3];
+
+                else if (link.Contains("cmlt"))
+                    pbIcon.Image = imglistSites.Images[1];
             }
+
         }
 
         /// <summary>
