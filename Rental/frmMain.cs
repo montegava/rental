@@ -106,7 +106,7 @@ namespace Rental
 
             grdFlats.VirtualMode = true;
 
-            
+
 
             //cbSites.ComboBox.Selectedva = Properties.Settings.Default.cbSites != null ? Properties.Settings.Default.cbSites : -1;
 
@@ -167,17 +167,6 @@ namespace Rental
 
 
         #endregion
-
-        /// <summary>
-        /// Get black list from db and fill table
-        /// </summary>
-        private void LoadBlackList()
-        {
-            dataGridViewContactList.DataSource = NameListCache.proxy.BlackListAll();
-            dataGridViewContactList.Columns["ID"].Visible = dataGridViewContactList.Columns["TYPE_ID"].Visible = false;
-            dataGridViewContactList.Columns["STOP"].Width = dataGridViewContactList.Columns["COMMENT"].Width = 200;
-        }
-
 
         #region Worker
 
@@ -603,13 +592,6 @@ namespace Rental
         }
         #endregion
 
-
-
-
-
-
-
-
         /// <summary>
         /// Начать загрузку
         /// </summary>
@@ -637,44 +619,120 @@ namespace Rental
         /// <summary>
         /// Delete flat
         /// </summary>
-        private void DeleteFlat()
+        private void FlatDelete()
         {
             if (MessageBox.Show("Объявление будет удалено из базы. Продолжить", "Удаление...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
-                int flatId;
-                if (Int32.TryParse(grdFlats.CurrentRow.Cells[0].Value.ToString(), out flatId))
+                NameListCache.proxy.FlatDelete(Convert.ToInt32(grdFlats.CurrentRow.Cells[0].Value));
+                this.FlatRefresh();
+            }
+        }
+
+        /// <summary>
+        /// Edit flat
+        /// </summary>
+        private void FlatEdit()
+        {
+            if (new frmFlat(EditMode.emEdit, Convert.ToInt32(grdFlats.CurrentRow.Cells[0].Value)).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                FlatRefresh();
+        }
+
+        /// <summary>
+        /// Refresh
+        /// </summary>
+        private void FlatRefresh()
+        {
+            this.Cache.CachedData.RemoveAll();
+            grdFlats.Refresh();
+        }
+
+        /// <summary>
+        /// Flat add
+        /// </summary>
+        private void FlatAdd()
+        {
+            if (new frmFlat(null, EditMode.emAddNew).ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                this.FlatRefresh();
+        }
+
+        /// <summary>
+        /// Помеcтить в избранное 
+        /// </summary>
+        private void StarAdd()
+        {
+            if (lvStars.SelectedItems.Count > 0)
+            {
+                Advert advert = lvStars.SelectedItems[0].Tag as Advert;
+                if (advert != null)
                 {
-                    NameListCache.proxy.FlatDelete(flatId);
-                    this.RefreshFlats();
+                    frmFlat frm = new frmFlat(advert, EditMode.emAddNew);
+                    frm.ShowDialog();
+                    advert.IsStar = (frm.DialogResult == DialogResult.OK);
+                    if (advert.IsStar)
+                        lvStars.SelectedItems[0].ImageIndex = (int)ImageMode.imStar;
                 }
             }
         }
 
         /// <summary>
-        /// Edit
+        /// Добавить контакты в блэк лист
         /// </summary>
-        private void EditFlat()
+        private void BlackListAddPhone()
         {
-            Int32 flatId;
-            try
+            if (lvStars.SelectedItems.Count > 0)
             {
-                flatId = Convert.ToInt32(grdFlats.CurrentRow.Cells[0].Value);
-                var flat = new frmFlat(EditMode.emEdit, flatId);
-                flat.ShowDialog();
-                if (flat.DialogResult == DialogResult.OK)
+                Advert adv = lvStars.SelectedItems[0].Tag as Advert;
+                if (adv != null)
                 {
-                    RefreshFlats();
+                    onAddContacts2BlackList(lvStars.SelectedItems[0].Tag as Advert);
+                    if (adv.IsBlocked)
+                        lvStars.SelectedItems[0].StateImageIndex = adv.ImageIndex + 1;
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Ошибка при чтении: " + ex.Message);
             }
         }
 
-        /////////////////
+        /// <summary>
+        /// Добавить слово-телефон в черный список
+        /// </summary>
+        private void BlackListAdd()
+        {
+            frmBlackItem frm = new frmBlackItem();
+            frm.ShowDialog();
+            if (frm.DialogResult == DialogResult.OK)
+            {
+                LoadBlackList();
+                dataGridViewContactList.Rows[dataGridViewContactList.Rows.Count - 2].Selected = true;
+            }
+        }
 
+        /// <summary>
+        /// Редактировать блэк-лист
+        /// </summary>
+        private void BlackListEdit()
+        {
+            Int32 blackId;
+            if (Int32.TryParse(dataGridViewContactList.CurrentRow.Cells[0].Value.ToString(), out blackId))
+            {
+                int ri = dataGridViewContactList.SelectedRows[0].Index;
+                frmBlackItem frm = new frmBlackItem(blackId);
+                frm.ShowDialog();
+                if (frm.DialogResult == DialogResult.OK)
+                {
+                    LoadBlackList();
+                    dataGridViewContactList.Rows[ri].Selected = true;
+                }
+            }
+        }
 
+        /// <summary>
+        /// Get black list from db and fill table
+        /// </summary>
+        private void LoadBlackList()
+        {
+            dataGridViewContactList.DataSource = NameListCache.proxy.BlackListAll();
+            dataGridViewContactList.Columns["ID"].Visible = dataGridViewContactList.Columns["TYPE_ID"].Visible = false;
+            dataGridViewContactList.Columns["STOP"].Width = dataGridViewContactList.Columns["COMMENT"].Width = 200;
+        }
 
         /// <summary>
         /// Начать загрузку
@@ -743,7 +801,7 @@ namespace Rental
 
         private void btnAddBlackPhoneGrid_Click(object sender, EventArgs e)
         {
-            Add2BlackList();
+            BlackListAdd();
         }
 
         /// <summary>
@@ -751,7 +809,7 @@ namespace Rental
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnDeleteBlackWord_Click(object sender, EventArgs e)
+        private void DeleteBlackListClick(object sender, EventArgs e)
         {
             if (MessageBox.Show("Выражение будет удалено из базы. Продолжить", "Удаление...", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
                 return;
@@ -769,46 +827,35 @@ namespace Rental
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void btnStarDel_Click(object sender, EventArgs e)
+        private void FlatDeleteClick(object sender, EventArgs e)
         {
-            DeleteFlat();
+            FlatDelete();
         }
 
-      
-
         /// <summary>
-        /// Редактировать
+        /// Delete flat
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void toolStripButton2_Click(object sender, EventArgs e)
+        private void FlatAddClick(object sender, EventArgs e)
         {
-            Int32 blackId;
-            if (Int32.TryParse(dataGridViewContactList.CurrentRow.Cells[0].Value.ToString(), out blackId))
-            {
-                int ri = dataGridViewContactList.SelectedRows[0].Index;
-                frmBlackItem frm = new frmBlackItem(blackId);
-                frm.ShowDialog();
-                if (frm.DialogResult == DialogResult.OK)
-                {
-                    LoadBlackList();
-                    dataGridViewContactList.Rows[ri].Selected = true;
-                }
-            }
-
+            FlatAdd();
         }
 
-        private void dataGridViewContactList_DoubleClick(object sender, EventArgs e)
+        /// <summary>
+        /// Редактировать блэк лист
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BlackListEditClick(object sender, EventArgs e)
         {
-            toolStripButton2_Click(null, null);
+            BlackListEdit();
         }
 
         private void btnReloadBlackList_Click(object sender, EventArgs e)
         {
             LoadBlackList();
         }
-
-
 
         private void onAddContacts2BlackList(Advert advert)
         {
@@ -823,8 +870,6 @@ namespace Rental
                 onAddContacts2BlackList(lvAdverts.SelectedItems[0].Tag as Advert);
         }
 
-
-
         private void cbSites_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cbSites.ComboBox.SelectedValue is int)
@@ -834,64 +879,14 @@ namespace Rental
             }
         }
 
-        private void btnAddBlackPhone_Click(object sender, EventArgs e)
+        private void BlackListAddPhoneClick(object sender, EventArgs e)
         {
-            AddBlackPhone();
+            BlackListAddPhone();
         }
 
-        private void btnAddStar_Click(object sender, EventArgs e)
+        private void StarAddClick(object sender, EventArgs e)
         {
-            AddStar();
-        }
-
-        /// <summary>
-        /// Пометить избранное 
-        /// </summary>
-        private void AddStar()
-        {
-            if (lvStars.SelectedItems.Count > 0)
-            {
-                Advert advert = lvStars.SelectedItems[0].Tag as Advert;
-                if (advert != null)
-                {
-                    frmFlat frm = new frmFlat(advert, EditMode.emAddNew);
-                    frm.ShowDialog();
-                    advert.IsStar = (frm.DialogResult == DialogResult.OK);
-                    if (advert.IsStar)
-                        lvStars.SelectedItems[0].ImageIndex = (int)ImageMode.imStar;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Добавить контакты в блэк лист
-        /// </summary>
-        private void AddBlackPhone()
-        {
-            if (lvStars.SelectedItems.Count > 0)
-            {
-                Advert adv = lvStars.SelectedItems[0].Tag as Advert;
-                if (adv != null)
-                {
-                    onAddContacts2BlackList(lvStars.SelectedItems[0].Tag as Advert);
-                    if (adv.IsBlocked)
-                        lvStars.SelectedItems[0].StateImageIndex = adv.ImageIndex + 1;
-                }
-            }
-        }
-
-        /// <summary>
-        /// Добавить слово-телефон в черный список
-        /// </summary>
-        private void Add2BlackList()
-        {
-            frmBlackItem frm = new frmBlackItem();
-            frm.ShowDialog();
-            if (frm.DialogResult == DialogResult.OK)
-            {
-                LoadBlackList();
-                dataGridViewContactList.Rows[dataGridViewContactList.Rows.Count - 2].Selected = true;
-            }
+            StarAdd();
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -912,10 +907,10 @@ namespace Rental
                     inputLINK.Text = row.Cells[Fields.LINK.ToString()].Value.ToString();
 
                     intupROOM_COUNT.Text = row.Cells[Fields.ROOM_COUNT.ToString()].Value == null ? string.Empty : row.Cells[Fields.ROOM_COUNT.ToString()].Value.ToString();
-                    intupFLOOR.Text = row.Cells[Fields.FLOOR.ToString()].Value == null ? string.Empty :row.Cells[Fields.FLOOR.ToString()].Value.ToString();
+                    intupFLOOR.Text = row.Cells[Fields.FLOOR.ToString()].Value == null ? string.Empty : row.Cells[Fields.FLOOR.ToString()].Value.ToString();
 
                     intupADDRESS.Text = row.Cells[Fields.ADDRESS.ToString()].Value.ToString();
-                    
+
                     intupBATH_UNIT.Text = row.Cells[Fields.BATH_UNIT.ToString()].Value.ToString();
                     intupBUILD.Text = row.Cells[Fields.BUILD.ToString()].Value.ToString();
                     intupSTATE.Text = row.Cells[Fields.STATE.ToString()].Value.ToString();
@@ -934,7 +929,7 @@ namespace Rental
         /// <param name="e"></param>
         private void CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            EditFlat();
+            FlatEdit();
         }
 
         /// <summary>
@@ -944,7 +939,7 @@ namespace Rental
         /// <param name="e"></param>
         private void btnEditFlat_Click(object sender, EventArgs e)
         {
-            EditFlat();
+            FlatEdit();
         }
 
 
@@ -954,18 +949,9 @@ namespace Rental
                 System.Diagnostics.Process.Start(inputLINK.Text);
         }
 
-
-     
-
-        private void btnStarReload_Click(object sender, EventArgs e)
+        private void FlatRefreshClick(object sender, EventArgs e)
         {
-            RefreshFlats();
-        }
-
-        private void RefreshFlats()
-        {
-            this.Cache.CachedData.RemoveAll();
-            grdFlats.Refresh();
+            FlatRefresh();
         }
 
         /// <summary>
@@ -1012,20 +998,6 @@ namespace Rental
             }
         }
 
-        private void btnStarAdd_Click(object sender, EventArgs e)
-        {
-            frmFlat frm = new frmFlat(null, EditMode.emAddNew);
-            if (frm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                int fid = frm.FlatId;
-            }
-        }
-
-        private void lvStars_DoubleClick(object sender, EventArgs e)
-        {
-            AddStar();
-        }
-
         /// <summary>
         /// Сохранить размеры экрана перед закрытием
         /// </summary>
@@ -1044,7 +1016,7 @@ namespace Rental
         private void grdFlats_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
-                DeleteFlat();
+                FlatDelete();
         }
 
     }

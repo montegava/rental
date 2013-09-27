@@ -479,7 +479,7 @@
             this.lvStars.UseCompatibleStateImageBehavior = false;
             this.lvStars.View = System.Windows.Forms.View.Details;
             this.lvStars.SelectedIndexChanged += new System.EventHandler(this.lvAdverts_SelectedIndexChanged);
-            this.lvStars.DoubleClick += new System.EventHandler(this.lvStars_DoubleClick);
+            this.lvStars.DoubleClick += new System.EventHandler(this.StarAddClick);
             // 
             // columnHeader2
             // 
@@ -529,7 +529,7 @@
             this.btnAddStar.Name = "btnAddStar";
             this.btnAddStar.Size = new System.Drawing.Size(150, 22);
             this.btnAddStar.Text = "Добавить в избранное";
-            this.btnAddStar.Click += new System.EventHandler(this.btnAddStar_Click);
+            this.btnAddStar.Click += new System.EventHandler(this.StarAddClick);
             // 
             // toolStripSeparator7
             // 
@@ -543,7 +543,7 @@
             this.btnAddBlackPhone.Name = "btnAddBlackPhone";
             this.btnAddBlackPhone.Size = new System.Drawing.Size(235, 22);
             this.btnAddBlackPhone.Text = "Добавить телефоны в черный список";
-            this.btnAddBlackPhone.Click += new System.EventHandler(this.btnAddBlackPhone_Click);
+            this.btnAddBlackPhone.Click += new System.EventHandler(this.BlackListAddPhoneClick);
             // 
             // cbFilteredCount
             // 
@@ -766,7 +766,7 @@
             this.btnStarAdd.Name = "btnStarAdd";
             this.btnStarAdd.Size = new System.Drawing.Size(79, 22);
             this.btnStarAdd.Text = "Добавить";
-            this.btnStarAdd.Click += new System.EventHandler(this.btnStarAdd_Click);
+            this.btnStarAdd.Click += new System.EventHandler(this.FlatAddClick);
             // 
             // btnStarEdit
             // 
@@ -784,7 +784,7 @@
             this.btnStarDel.Name = "btnStarDel";
             this.btnStarDel.Size = new System.Drawing.Size(71, 22);
             this.btnStarDel.Text = "Удалить";
-            this.btnStarDel.Click += new System.EventHandler(this.btnStarDel_Click);
+            this.btnStarDel.Click += new System.EventHandler(this.FlatDeleteClick);
             // 
             // toolStripSeparator2
             // 
@@ -798,7 +798,7 @@
             this.btnStarReload.Name = "btnStarReload";
             this.btnStarReload.Size = new System.Drawing.Size(129, 22);
             this.btnStarReload.Text = "Обновить таблицу";
-            this.btnStarReload.Click += new System.EventHandler(this.btnStarReload_Click);
+            this.btnStarReload.Click += new System.EventHandler(this.FlatRefreshClick);
             // 
             // toolStripSeparator3
             // 
@@ -1167,7 +1167,7 @@
             this.dataGridViewContactList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewContactList.Size = new System.Drawing.Size(745, 423);
             this.dataGridViewContactList.TabIndex = 1;
-            this.dataGridViewContactList.DoubleClick += new System.EventHandler(this.dataGridViewContactList_DoubleClick);
+            this.dataGridViewContactList.DoubleClick += new System.EventHandler(this.BlackListEditClick);
             // 
             // btnAddBadPhone
             // 
@@ -1200,7 +1200,7 @@
             this.btnEditBlackList.Name = "btnEditBlackList";
             this.btnEditBlackList.Size = new System.Drawing.Size(107, 22);
             this.btnEditBlackList.Text = "Редактировать";
-            this.btnEditBlackList.Click += new System.EventHandler(this.toolStripButton2_Click);
+            this.btnEditBlackList.Click += new System.EventHandler(this.BlackListEditClick);
             // 
             // btnDeleteBlackList
             // 
@@ -1209,7 +1209,7 @@
             this.btnDeleteBlackList.Name = "btnDeleteBlackList";
             this.btnDeleteBlackList.Size = new System.Drawing.Size(71, 22);
             this.btnDeleteBlackList.Text = "Удалить";
-            this.btnDeleteBlackList.Click += new System.EventHandler(this.btnDeleteBlackWord_Click);
+            this.btnDeleteBlackList.Click += new System.EventHandler(this.DeleteBlackListClick);
             // 
             // toolStripSeparator1
             // 
