@@ -1875,3 +1875,12 @@ width: 255px !important;
 .span1 {
   width: 55px;
 }
+
+.span-row {
+  width: 190px;
+  float: left;
+}
+
+.form-input-text {
+width: 215px;
+}

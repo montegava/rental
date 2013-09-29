@@ -302,7 +302,7 @@
             "частично"});
             this.intupFURNITURE.Location = new System.Drawing.Point(93, 280);
             this.intupFURNITURE.Name = "intupFURNITURE";
-            this.intupFURNITURE.Size = new System.Drawing.Size(150, 21);
+            this.intupFURNITURE.Size = new System.Drawing.Size(88, 21);
             this.intupFURNITURE.TabIndex = 11;
             // 
             // intupSTATE

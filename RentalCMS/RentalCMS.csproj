@@ -106,7 +106,6 @@
     </None>
     <Content Include="src\captcha.php" />
     <Content Include="src\general.js" />
-    <Content Include="src\hostcms.js" />
     <Content Include="src\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="src\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
     <Content Include="src\images\ui-bg_flat_10_000000_40x100.png" />
@@ -127,6 +126,7 @@
     <Content Include="src\jquery.js" />
     <Content Include="src\jquery.lightbox.css" />
     <Content Include="src\jquery.lightbox.js" />
+    <Content Include="src\jquery.MultiFile.js" />
     <Content Include="src\jquery.ui.core.js" />
     <Content Include="src\jquery.ui.stars.js" />
     <Content Include="src\jquery.ui.widget.js" />
@@ -154,6 +154,9 @@
     <Compile Include="Contacts.aspx.designer.cs">
       <DependentUpon>Contacts.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\EnumDropDownList.cs" />
+    <Compile Include="Controls\RangeDropDownList.cs" />
+    <Compile Include="Controls\Uploader.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

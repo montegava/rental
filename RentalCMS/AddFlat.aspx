@@ -1,113 +1,118 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Rental.Master" AutoEventWireup="true"
     CodeBehind="AddFlat.aspx.cs" Inherits="RentalCMS.AddFlat" %>
 
+    <%@ Register Namespace="RentalCMS.Controls" TagPrefix="Rental" Assembly="RentalCMS"%>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="mainAreaOfPage" runat="server">
+    
     <div class="row">
-        <asp:Literal runat="server" Text="Ваше имя"></asp:Literal>
-        <asp:TextBox ID="tbName" runat="server"></asp:TextBox>
+        <div class="span-row">Ваше имя</div>
+        <asp:TextBox ID="tbName" CssClass="form-input-text" runat="server"></asp:TextBox> 
     </div>
+    
     <div class="row">
-        <asp:Literal ID="Literal1" runat="server" Text="Электронная почта"></asp:Literal>
-        <asp:TextBox ID="tbEmail" runat="server"></asp:TextBox>
+       <div class="span-row">Электронная почта</div>
+        <asp:TextBox ID="tbEmail"  CssClass="form-input-text" runat="server"></asp:TextBox>
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal2" runat="server" Text="Номер телефона"></asp:Literal>
-        <asp:TextBox ID="tbPhone" runat="server"></asp:TextBox>
+        <div class="span-row">Номер телефона</div>
+        <asp:TextBox ID="tbPhone" CssClass="form-input-text" runat="server"></asp:TextBox>
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal3" runat="server" Text="Район"></asp:Literal>
-        <asp:DropDownList ID="ddlRegion" runat="server">
-            <asp:ListItem>-- неизвестно -- </asp:ListItem>
-            <asp:ListItem>Коминтерновский </asp:ListItem>
-            <asp:ListItem>Центральный </asp:ListItem>
-            <asp:ListItem>Ж/Д </asp:ListItem>
-            <asp:ListItem>Левобережный </asp:ListItem>
-            <asp:ListItem>Советский </asp:ListItem>
-            <asp:ListItem>Ленинский </asp:ListItem>
-        </asp:DropDownList>
+        <div class="span-row">Район</div>
+        <Rental:EnumDropDownList ID="ddlRegion" runat="server" Type="DAL.Region, DAL" />
     </div>
+    
     <div class="row">
-        <asp:Literal ID="Literal5" runat="server" Text="Категория"></asp:Literal>
-        <asp:DropDownList ID="DropDownList1" runat="server">
-            <asp:ListItem>-- неизвестно -- </asp:ListItem>
-            <asp:ListItem>Квартира</asp:ListItem>
-            <asp:ListItem>Комната</asp:ListItem>
-            <asp:ListItem>Дом</asp:ListItem>
-            <asp:ListItem>Помещение, офис</asp:ListItem>
-        </asp:DropDownList>
+       <div class="span-row">Категория</div>
+       <Rental:EnumDropDownList ID="ddlCategory" runat="server" Type="DAL.Category, DAL" />
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal4" runat="server" Text="Тип"></asp:Literal>
-        <asp:DropDownList ID="ddlType" runat="server">
-            <asp:ListItem>-- неизвестно -- </asp:ListItem>
-            <asp:ListItem>Сдам </asp:ListItem>
-            <asp:ListItem>Сниму </asp:ListItem>
-        </asp:DropDownList>
+        <div class="span-row">Тип</div>
+         <Rental:EnumDropDownList ID="ddlType" runat="server" Type="DAL.Type, DAL" />
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal6" runat="server" Text="Кол-во комнат"></asp:Literal>
-        <asp:DropDownList ID="DropDownList2" runat="server">
-            <asp:ListItem>-- неизвестно --</asp:ListItem>
-            <asp:ListItem>1</asp:ListItem>
-            <asp:ListItem>2</asp:ListItem>
-            <asp:ListItem>3</asp:ListItem>
-            <asp:ListItem>4</asp:ListItem>
-            <asp:ListItem>5</asp:ListItem>
-            <asp:ListItem>6</asp:ListItem>
-            <asp:ListItem>7</asp:ListItem>
-            <asp:ListItem>8</asp:ListItem>
-            <asp:ListItem>9</asp:ListItem>
-        </asp:DropDownList>
+        <div class="span-row">Кол-во комнат</div>
+        <Rental:RangeDropDownList ID="ddlRoomCount" runat="server" From="1" To="9"></Rental:RangeDropDownList>
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal7" runat="server" Text="Этаж"></asp:Literal>
-        <asp:DropDownList ID="DropDownList3" runat="server">
-            <asp:ListItem>-- неизвестно --</asp:ListItem>
-            <asp:ListItem>1</asp:ListItem>
-            <asp:ListItem>2</asp:ListItem>
-            <asp:ListItem>3</asp:ListItem>
-            <asp:ListItem>4</asp:ListItem>
-            <asp:ListItem>5</asp:ListItem>
-            <asp:ListItem>6</asp:ListItem>
-            <asp:ListItem>7</asp:ListItem>
-            <asp:ListItem>8</asp:ListItem>
-            <asp:ListItem>9</asp:ListItem>
-            <asp:ListItem>10</asp:ListItem>
-            <asp:ListItem>11</asp:ListItem>
-            <asp:ListItem>12</asp:ListItem>
-            <asp:ListItem>13</asp:ListItem>
-        </asp:DropDownList>
+         <div class="span-row">Этаж</div>
+         <Rental:RangeDropDownList ID="ddlFloor" runat="server" From="1" To="13"></Rental:RangeDropDownList>
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal8" runat="server" Text="Вид дома"></asp:Literal>
-        <asp:DropDownList ID="DropDownList4" runat="server">
-            <asp:ListItem>-- неизвестно --</asp:ListItem>
-            <asp:ListItem>кирпичный</asp:ListItem>
-            <asp:ListItem>панельный</asp:ListItem>
-            <asp:ListItem>коттедж</asp:ListItem>
-            <asp:ListItem>часть дома</asp:ListItem>
-        </asp:DropDownList>
+        <div class="span-row">Вид дома</div>
+        <Rental:EnumDropDownList ID="ddlHouseType" runat="server" Type="DAL.HouseType, DAL" />
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal9" runat="server" Text="Срок аренды"></asp:Literal>
-        <asp:DropDownList ID="DropDownList5" runat="server">
-            <asp:ListItem>на длительный срок</asp:ListItem>
-            <asp:ListItem>на сутки</asp:ListItem>
-        </asp:DropDownList>
+        <div class="span-row">Срок аренды</div>
+        <Rental:EnumDropDownList ID="ddlRentType" runat="server" Type="DAL.RentType, DAL" />
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal10" runat="server" Text="Площадь"></asp:Literal>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <div class="span-row">Площадь</div>
+        <asp:TextBox ID="tbSquare" runat="server"></asp:TextBox>
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal11" runat="server" Text="Адрес  "></asp:Literal>
-        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <div class="span-row">Адрес</div>
+        <asp:TextBox ID="tbAdres" runat="server"></asp:TextBox>
     </div>
+
     <div class="row">
-        <asp:Literal ID="Literal12" runat="server" Text="Описание  "></asp:Literal>
-        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+        <div class="span-row">Описание</div>
+        <asp:TextBox ID="tbDescription" runat="server"></asp:TextBox>
     </div>
-    <asp:FileUpload runat="server" />
+
+    
+    <div class="row">
+        <div class="span-row">Арендная плата</div>
+        <asp:TextBox ID="tbPrice" runat="server"></asp:TextBox>
+    </div>
+
+    <div class="row">
+        <div class="span-row">Оплата</div>
+        <Rental:EnumDropDownList ID="EnumDropDownList1" runat="server" Type="DAL.PriceType, DAL" />
+    </div>
+
+   
+        
+     
+
+   <div class="row">
+
+        <asp:FileUpload ID="fuPhoto" runat="server" class="multi" accept="gif|jpg|jpeg" maxlength="5" />
+        <asp:Label ID="myLabel" runat="server" ForeColor="#CC0000" />
+        <asp:Label ID="lblMsg" runat="server" ForeColor="#CC0000" /> 
+        <div class="MultiFile-list" id="MultiFile1_wrap_list"></div>
+   </div>
+
+   <input type="file" class="multi" style="font-family: Arial, Helvetica, sans-serif; margin: 0px; padding: 0px; outline: none; font-style: normal; font-variant: normal; font-weight: normal; orphans: auto; white-space: normal; widows: auto; -webkit-text-stroke-width: 0px;">
+
+
+    
+    <div class="row">
+        <div class="panel">
+            <asp:LinkButton ID="btnClose" runat="server" CssClass="button" OnClick="CancelClick" CausesValidation="false">
+                    Закрыть
+            </asp:LinkButton>
+
+
+            <%--<asp:Button ID="btnZipFile" Text="ZipFile" runat="server" OnClick="btnZipFile_Click" />--%>
+        
+            <asp:LinkButton ID="Upload"  Text="" runat="server" CssClass="button" onclick="Upload_Click">     Сохранить
+            </asp:LinkButton>
+
+        </div>
+    </div>
+
+
 </asp:Content>
