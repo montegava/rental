@@ -10,23 +10,15 @@
     <link rel="stylesheet" type="text/css" href="./src/style.css">
 
     <!-- jQuery -->
+    <script type="text/javascript" src="./src/jquery-1.9.1.js"></script>
     <script type="text/javascript" src="./src/jquery.MultiFile.js" ></script>
-    <script type="text/javascript" src="./src/jquery.js"></script>
+  
     <!-- validate -->
-    <script type="text/javascript" src="./src/jquery.validate.js"></script>
-    <!-- LightBox -->
-    <script type="text/javascript" src="./src/jquery.lightbox.js"></script>
+<%--    <script type="text/javascript" src="./src/jquery.validate.js"></script>--%>
 
     <script type="text/javascript" src="./src/general.js"></script>
-
     <link rel="stylesheet" type="text/css" href="./src/jquery.lightbox.css" media="screen">
-
-
-    <script type="text/javascript" src="./src/main.js"></script>
-
-    <!-- BBcode -->
-    <script type="text/javascript" src="./src/jquery.bbedit.js"></script>
-
+  
     <!-- Stars -->
     <script type="text/javascript" src="./src/jquery.ui.core.js"></script>
     <script type="text/javascript" src="./src/jquery.ui.widget.js"></script>
@@ -55,19 +47,19 @@
                         <a href="./Default.aspx" title="Агентство Аренды &quot;АМИРА&quot;">Агентство Аренды "АМИРА"</a>
                     </li>
                     <li>
-                        <a href="http://amiravrn.ru/AddFlat.aspx" title="Сдать помещение в аренду">Сдать квартиру, комнату ,дом</a>
+                        <a href="/AddFlat.aspx" title="Сдать помещение в аренду">Сдать квартиру, комнату ,дом</a>
                     </li>
 
                     <li>
-                        <a href="http://amiravrn.ru/AddFlat.aspx" title="Сдать помещение в аренду">Снять квартиру, комнату ,дом</a>
+                        <a href="/AddFlat.aspx" title="Сдать помещение в аренду">Снять квартиру, комнату ,дом</a>
                     </li>
 
                     <li>
-                        <a href="http://amiravrn.ru/AddFlat.aspx" title="Снять помещение в аренду">Сдать помещение, офис</a>
+                        <a href="/AddFlat.aspx" title="Снять помещение в аренду">Сдать помещение, офис</a>
                     </li>
 
                     <li>
-                        <a href="http://amiravrn.ru/AddFlat.aspx" title="Снять помещение в аренду">Снять помещение, офис</a>
+                        <a href="/AddFlat.aspx" title="Снять помещение в аренду">Снять помещение, офис</a>
                     </li>
 
                     <li style="background-image: none">
@@ -100,10 +92,10 @@
                             <a href="http://amiravrn.ru/" title="Агентство &quot;АМИРА&quot;">Агентство "АМИРА"</a>
                         </li>
                         <li>
-                            <a href="http://amiravrn.ru/AddFlat.aspx" title="Сдать квартиру, комнату ,дом">Сдать квартиру, комнату ,дом</a>
+                            <a href="/AddFlat.aspx" title="Сдать квартиру, комнату ,дом">Сдать квартиру, комнату ,дом</a>
                         </li>
                         <li>
-                            <a href="http://amiravrn.ru/AddFlat.aspx" title="Сдать помещение, офис">Сдать помещение, офис</a>
+                            <a href="/AddFlat.aspx" title="Сдать помещение, офис">Сдать помещение, офис</a>
                         </li>
                         <li>
                             <a href="/Contacts.aspx" >Контакты</a>

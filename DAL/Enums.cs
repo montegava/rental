@@ -77,12 +77,12 @@ namespace DAL
         byday,
     }
 
-    public enum PriceType
+    public enum Payment
     {
         //помесячно
         bymonth,
         //поквартально
-        инquarter,
+        byquarter,
     }
 
     public static class EnumConvertor
@@ -103,13 +103,13 @@ namespace DAL
         }
 
 
-        public static string Convert(PriceType t)
+        public static string Convert(Payment t)
         {
             switch (t)
             {
-                case PriceType.bymonth:
+                case Payment.bymonth:
                     return "помесячно";
-                case PriceType.инquarter:
+                case Payment.byquarter:
                     return "поквартально";
             }
             return string.Empty;

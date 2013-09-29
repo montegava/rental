@@ -13,7 +13,7 @@
                 div = $('<div id="tooltip">').toggle(false).appendTo(document.body);
             }
 
-            var text = $(this).text().replace(/^[\s\*]+|[\s*]+$/g, "");;
+            var text = $(this).text().replace(/^[\s\*]+|[\s*]+$/g, ""); ;
             var hint = SpiderLanguage["HINT_" + text] || SpiderLanguage["HINT_" + filename + "_" + text] || "Tooltip for text <b>" + filename + "_" + text + "</b>";
 
             //DEBUG
@@ -326,107 +326,6 @@
 	    );
     } //end leftMenuAction
 
-    //working with all checkboxes from one table (no matter which table)
-    $.fn.workingWithTableCheckboxes = function () {
-
-        //storing all selected checkboxes from a table (if we have a table with this situation)
-        $.fn.listTableCheckBoxes = []; //item format = {id: '0', name: 'name 0'}
-        //handling each single checkbox item selection form web browser page
-        $('TABLE * input[type=checkbox]:not([name*=All])').filter(function (index, obj) {
-            return $(this).parents(".template").length == 0 && ($(this).closest("SECTION").hasClass("custom") ? false : true);
-        }).ezMark().click(function (event) {
-            if ($(this).attr("checked") != undefined) {//checked
-                //if we have a table with check-all input some checking operation will be done
-                fillCheckAll(this, "table");
-            }
-            else {//unchecked 
-                //if we have a table with check-all input some checking operation will be done
-                unfillCheckAll(this, "table");
-            }
-
-            function fillCheckAll(context, parent) {
-                var table = $(context).closest(parent);
-                if (table.length > 0) {
-
-                    //if some checking number status exist I will count it. Ex: GROUPS AND PROVIDERS MANAGEMENT
-                    var countNr = 0;
-                    $(context).closest("TR").find("TD.nrCount").each(function () { countNr += parseInt($(this).text(), 10) });
-
-                    var statusItem = $(context).closest("TR").find("td.statusCheck input[type=hidden][name*=Status]").val();
-                    if (statusItem == undefined) {
-                        statusItem = "false";
-                    }
-                    //composing the list with selected checkboxes from list
-                    $.fn.listTableCheckBoxes.push({ id: $(context).closest("TD").find("input[type=hidden][name*=hfID]").val(), name: $(context).closest("TD").find("input[type=hidden][name*=hfName]").val(), nr: countNr, status: statusItem, platformId: $(context).closest("TD").find("input[type=hidden][name*=hfPlatform]").val() });
-                    var currentSelected = $('input[type=checkbox]:not([name*=All]):checked', table).length;
-                    var totalElements = $('input[type=checkbox]:not([name*=All])', table).length;
-                    var checkAllElem = $('input[type=checkbox][name*=All]', table);
-                    if (currentSelected == totalElements) {
-                        checkAllElem.attr("checked", "checked");
-                        checkAllElem.trigger('change');
-                    }
-                }
-            }
-
-            function unfillCheckAll(context, parent) {
-                var table = $(context).closest(parent);
-                if (table.length > 0) {
-
-                    //cleaning the list with selected checkboxes from list
-                    if ($.fn.listTableCheckBoxes.length > 0) {
-                        var temp_array = [];
-                        for (var i = 0; i < $.fn.listTableCheckBoxes.length; i++) {
-                            if ($(context).closest("TD").find("input[type=hidden][name*=hfID]").val() != $.fn.listTableCheckBoxes[i]['id']) {
-                                temp_array.push($.fn.listTableCheckBoxes[i]);
-                            }
-                        }
-                        $.fn.listTableCheckBoxes = []; $.fn.listTableCheckBoxes = temp_array; temp_array = null;
-                    } //end if
-                    var currentSelected = $('input[type=checkbox]:not([name*=All]):checked', table).length;
-                    var totalElements = $('input[type=checkbox]:not([name*=All])', table).length;
-                    var checkAllElem = $('input[type=checkbox][name*=All]', table);
-                    if (currentSelected != totalElements) {
-                        checkAllElem.removeAttr('checked');
-                        checkAllElem.trigger('change');
-                    }
-                }
-            }
-        });
-
-        //handling the check box element which check and uncheck all the children checkboxes
-        $('TABLE * input[type=checkbox][name*=All]').filter(function (index, obj) { return $(this).closest("SECTION").hasClass("custom") ? false : true; }).ezMark().click(function () {
-            var table = $(this).closest("TABLE");
-            if ($(this).attr('checked') != undefined) {//check all
-                $('input[type=checkbox]:not([name*=All])', table).each(function () {
-                    $.fn.listTableCheckBoxes = [];
-                    var input_name = $('input[type=hidden][name*=hfName]', $(table));
-                    var input_id = $('input[type=hidden][name*=hfID]', $(table));
-                    var count_nr = $('td.nrCount', $(table));
-                    var platform_id = $('input[type=hidden][name*=hfPlatform]', $(table));
-
-                    var statusItem = $('td.statusCheck input:hidden[id*=Status]', $(table));
-                    if (input_id.length > 0) {
-                        for (var i = 0; i < input_id.length; i++) {
-                            var statusItemCheck = '';
-                            if ($(statusItem[i]).length > 0) {
-                                statusItemCheck = $(statusItem[i]).val();
-                            }
-                            $.fn.listTableCheckBoxes.push({ id: $(input_id[i]).val(), name: $(input_name[i]).val(), nr: parseInt($(count_nr[i]).text(), 10), status: statusItemCheck, platformId: $(platform_id[i]).val() });
-                        }
-                    }
-                    $(this).attr("checked", "checked");
-                    $(this).trigger('change');
-                });
-            }
-            else {//uncheck all
-                $('input[type=checkbox]:not([name*=All])', table).each(function () {
-                    $(this).removeAttr('checked');
-                    $(this).trigger('change');
-                });
-                $.fn.listTableCheckBoxes = [];
-            }
-        });
-    } //end workingWithTableCheckboxes
 
 
 
@@ -536,102 +435,6 @@
         $('.chkAvailableForType' + value).show();
     }
 
-    //working with all checkboxes from one table (no matter which table)
-    $.fn.groupUsersRightsCheckboxes = function () {
-        //handling each single checkbox item selection form web browser page
-        $('TABLE.rights * input[type=checkbox]:not([name*=All])').ezMark().click(function (event) {
-            var entity = /Entity/.test($(this).attr("id"));
-            var view = /View/.test($(this).attr("id"));
-            var edit = /Edit/.test($(this).attr("id"));
-            var tempName = $(this).attr("id");
-            if ($(this).attr("checked") != undefined) {//checked
-                if (entity) {
-                    tempName = tempName.replace(/Entity/, "View")
-                    $("#" + tempName).attr("checked", "checked").trigger('change');
-                }
-                else if (view) {
-                    tempName = tempName.replace(/View/, "Entity")
-                    $("#" + tempName).attr("checked", "checked").trigger('change');
-                }
-                else if (edit) {
-                    tempName = tempName.replace(/Edit/, "View")
-                    $("#" + tempName).attr("checked", "checked").trigger('change');
-                    tempName = tempName.replace(/View/, "Entity")
-                    $("#" + tempName).attr("checked", "checked").trigger('change');
-                }
-                //if we have a table with check-all input some checking operation will be done
-                fillCheckAll(this, "table");
-            }
-            else {//unchecked
-                if (entity) {
-                    tempName = tempName.replace(/Entity/, "View")
-                    $("#" + tempName).removeAttr("checked").trigger('change');
-                    tempName = tempName.replace(/View/, "Edit")
-                    $("#" + tempName).removeAttr("checked").trigger('change');
-                }
-                else if (view) {
-                    tempName = tempName.replace(/View/, "Entity")
-                    $("#" + tempName).removeAttr("checked").trigger('change');
-                    tempName = tempName.replace(/Entity/, "Edit")
-                    $("#" + tempName).removeAttr("checked").trigger('change');
-                }
-                else if (edit) {
-                }
-
-                //if we have a table with check-all input some checking operation will be done
-                unfillCheckAll(this, "table");
-            }
-
-            function fillCheckAll(context, parent) {
-                var table = $(context).closest(parent);
-                if (table.length > 0) {
-                    //composing the list with selected checkboxes from list
-                    var currentSelected = $('input[type=checkbox]:not([name*=All]):checked', table).length;
-                    var totalElements = $('input[type=checkbox]:not([name*=All])', table).length;
-                    var checkAllElem = $('input[type=checkbox][name*=All]', table);
-                    if (currentSelected == totalElements) {
-                        checkAllElem.attr("checked", "checked");
-                        checkAllElem.trigger('change');
-                    }
-                }
-            } //end fillCheckAll
-
-            function unfillCheckAll(context, parent) {
-                var table = $(context).closest(parent);
-                if (table.length > 0) {
-                    var currentSelected = $('input[type=checkbox]:not([name*=All]):checked', table).length;
-                    var totalElements = $('input[type=checkbox]:not([name*=All])', table).length;
-                    var checkAllElem = $('input[type=checkbox][name*=All]', table);
-                    if (currentSelected != totalElements) {
-                        checkAllElem.removeAttr('checked');
-                        checkAllElem.trigger('change');
-                    }
-                }
-            } //end unfillCheckAll
-        });
-
-
-        //handling the check box element which check and uncheck all the children checkboxes
-        $('TABLE.rights * input[type=checkbox][name*=All]').ezMark().click(function () {
-            var table = $(this).closest("TABLE");
-            if ($(this).attr('checked') != undefined) {//check all
-                $('input[type=checkbox]:not([name*=All])', table).each(function () {
-                    $(this).filter(function (index, obj) {
-                        return /Edit/.test($(obj).attr("id")) ? false : true;
-                    }).attr("checked", "checked");
-                    $(this).trigger('change');
-                });
-            }
-            else {//uncheck all
-                $('input[type=checkbox]:not([name*=All])', table).each(function () {
-                    $(this).removeAttr('checked');
-                    $(this).trigger('change');
-                });
-                $.fn.listTableCheckBoxes = [];
-            }
-        });
-    };
-
     $.fn.actionLinksFromTable = function () {
         $("TABLE.grid TD A[id*=Delete]").click(function (event) {
             //prevent any action on click event if the "noaction" class was setup on it
@@ -655,7 +458,7 @@
                 status = 'false';
             }
             if (count_nr > 0) {
-                DEF_ALERTRESTRICTELEMENT.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
+                DEF_ALERTRESTRICTELEMENT.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
                 DEF_ALERTRESTRICTELEMENT.data.targetID = $(this).attr('id');
                 $.fn.composeDialog(DEF_ALERTRESTRICTELEMENT);
             }
@@ -665,7 +468,7 @@
                 $.fn.composeDialog(DEF_ALERTDELETEONEITEMSTATUS);
             }
             else {
-                DEF_ALERTDELETEONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
+                DEF_ALERTDELETEONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
                 DEF_ALERTDELETEONEITEM.data.targetID = $(this).attr('id');
                 $.fn.composeDialog(DEF_ALERTDELETEONEITEM);
             }
@@ -678,7 +481,7 @@
             var deactivate = $(this).find("img").attr('src').indexOf("ok.png") != -1;
 
             var firstCol = $(this).closest("TR").find("TD:lt(1)");
-            var elements = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
+            var elements = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
             if (deactivate) {
                 DEF_ALERTDEACTIVATEONEITEM.data.elementsName = elements;
                 DEF_ALERTDEACTIVATEONEITEM.data.targetID = id;
@@ -697,7 +500,7 @@
             if ($(this).hasClass("noaction")) { event.preventDefault(); return; }
             DEF_ALERTPASSWORDONEITEM.data.targetID = $(this).attr('id');
             var firstCol = $(this).closest("TR").find("TD:lt(1)");
-            DEF_ALERTPASSWORDONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
+            DEF_ALERTPASSWORDONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
             $.fn.composeDialog(DEF_ALERTPASSWORDONEITEM);
             return false;
         });
@@ -707,7 +510,7 @@
             var firstCol = $(this).closest("TR").find("TD:lt(1)");
             if ($(this).hasClass("noaction")) { event.preventDefault(); return; }
             DEF_ALERTEXPORTONEITEM.data.targetID = $(this).attr('id');
-            DEF_ALERTEXPORTONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val() }];
+            DEF_ALERTEXPORTONEITEM.data.elementsName = [{ id: firstCol.find("input[type=hidden][name*=hfID]").val(), name: firstCol.find("input[type=hidden][name*=hfName]").val()}];
             $.fn.composeDialog(DEF_ALERTEXPORTONEITEM);
             return false;
         });
@@ -738,7 +541,7 @@
 
                     if (error == 0) {
 
-                        DEF_ASSETIMPORTSTATUSHISTORY.data.elementsName = [{ name: statusRow }];
+                        DEF_ASSETIMPORTSTATUSHISTORY.data.elementsName = [{ name: statusRow}];
 
                         $.fn.composeDialog(DEF_ASSETIMPORTSTATUSHISTORY);
 
@@ -774,7 +577,7 @@
 
                     if (error == 0) {
 
-                        DEF_ASSETIMPORTSTATUSHISTORY.data.elementsName = [{ name: statusRow }];
+                        DEF_ASSETIMPORTSTATUSHISTORY.data.elementsName = [{ name: statusRow}];
 
                         $.fn.composeDialog(DEF_ASSETIMPORTSTATUSHISTORY);
 
@@ -891,7 +694,7 @@
         });
     },
 
-   
+
 
 
 
@@ -938,7 +741,7 @@ jQuery(function ($) {
     $.fn.fixTabMenu();
     //resetting the checked value fro some special checkboxes
     $('TABLE.gridList input[type=checkbox]').each(function (index) { $(this).removeAttr("checked"); $(this).trigger('change'); });
-    $.fn.workingWithTableCheckboxes();
+    //$.fn.workingWithTableCheckboxes();
     $.fn.workingWithPanelButtons();
     $.fn.actionLinksFromTable();
     $('TEXTAREA:not(.charCounter)').each(function (index) { $(this).cs(); });
@@ -952,7 +755,7 @@ jQuery(function ($) {
     //        })
     //    });
 
-    $(".groupUsers").jScrollPane({ showArrows: false, maintainPosition: false, AutoScroll: false, verticalDragMinHeight: 36, verticalDragMaxHeight: 36, dragMinHeight: 20 });
+    // $(".groupUsers").jScrollPane({ showArrows: false, maintainPosition: false, AutoScroll: false, verticalDragMinHeight: 36, verticalDragMaxHeight: 36, dragMinHeight: 20 });
 
     $(".datePicker").each(function (index) {
         var settings = { appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' };
@@ -964,16 +767,9 @@ jQuery(function ($) {
 
 
 
-    //styling all checkboxes: except those from table
-    $("input[type=checkbox]").filter(function (index, object) {
-        return $(this).parents(".template").length == 0 && ($(this).parent().hasClass("ez-checkbox") || $(this).closest("SECTION").hasClass("custom") || (/\{IDX\}/).test($(this).parent().attr("id")) ? false : true);
-    }).ezMark().click(function (event) {
-        if ($(this).attr("checked") != undefined) { }
-        else { }
-    });
-    $('input[type=radio]').ezMark().click(function () { });
-    $.fn.groupUsersRightsCheckboxes();
+   
 
+   
     /*
     * if we have one page with restricted access regarding some links, buttons click 
     * (ussualy pages wher some information must be added and saved or canceled)
@@ -1009,7 +805,7 @@ jQuery(function ($) {
         $.fn.pageReadOnly();
     }
     else {
-      
+
     }
 
     $.fn.advanceCustomFilterSettings();

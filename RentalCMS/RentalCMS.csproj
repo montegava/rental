@@ -104,7 +104,6 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <Content Include="src\captcha.php" />
     <Content Include="src\general.js" />
     <Content Include="src\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="src\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -120,20 +119,17 @@
     <Content Include="src\images\ui-icons_ef8c08_256x240.png" />
     <Content Include="src\images\ui-icons_ffd27a_256x240.png" />
     <Content Include="src\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="src\jquery-1.9.1.js" />
+    <Content Include="src\jquery-1.9.1.min.js" />
     <Content Include="src\jquery-ui.datepicker.css" />
     <Content Include="src\jquery-ui.datepicker.min.js" />
-    <Content Include="src\jquery.bbedit.js" />
-    <Content Include="src\jquery.js" />
     <Content Include="src\jquery.lightbox.css" />
-    <Content Include="src\jquery.lightbox.js" />
     <Content Include="src\jquery.MultiFile.js" />
     <Content Include="src\jquery.ui.core.js" />
     <Content Include="src\jquery.ui.stars.js" />
     <Content Include="src\jquery.ui.widget.js" />
     <Content Include="src\jquery.validate.js" />
-    <Content Include="src\main.js" />
     <Content Include="src\refresh.png" />
-    <Content Include="src\send.png" />
     <Content Include="src\style.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -156,7 +152,6 @@
     </Compile>
     <Compile Include="Controls\EnumDropDownList.cs" />
     <Compile Include="Controls\RangeDropDownList.cs" />
-    <Compile Include="Controls\Uploader.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -202,7 +197,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Rental.Master" />
-    <Content Include="src\hit" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\aaaaaaaaaaaaaa.pubxml" />
     <None Include="Properties\PublishProfiles\amiravrn.pubxml" />

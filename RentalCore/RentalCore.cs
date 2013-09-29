@@ -18,8 +18,9 @@ namespace RentalCore
     {
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(RentalCore));
 
-        public void Upload(Stream data, string fileName)
+        public void Upload(System.IO.Stream data)
         {
+            string fileName = Guid.NewGuid().ToString() + ".jpg";
 
             var result = new StringBuilder();
             result.Append("Upload");

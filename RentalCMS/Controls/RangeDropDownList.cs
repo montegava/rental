@@ -51,7 +51,7 @@ namespace RentalCMS.Controls
         /// <summary>
         /// Gets or sets the year currently selected in this control
         /// </summary>
-        public int SelectedYear
+        public int SelectedIntValue
         {
             get
             {

@@ -16,7 +16,7 @@ namespace RentalCore
     {
 
         [OperationContract(IsOneWay = false)]
-        void Upload(Stream data, string fileName);
+        void Upload(System.IO.Stream data);
 
         [OperationContract(IsOneWay = false)]
         Stream DownloadFile(string remotePath);

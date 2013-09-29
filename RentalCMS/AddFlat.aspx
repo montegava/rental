@@ -80,11 +80,8 @@
 
     <div class="row">
         <div class="span-row">Оплата</div>
-        <Rental:EnumDropDownList ID="EnumDropDownList1" runat="server" Type="DAL.PriceType, DAL" />
+        <Rental:EnumDropDownList ID="ddlPayment" runat="server" Type="DAL.Payment, DAL" />
     </div>
-
-   
-        
      
 
    <div class="row">
@@ -95,9 +92,6 @@
         <div class="MultiFile-list" id="MultiFile1_wrap_list"></div>
    </div>
 
-   <input type="file" class="multi" style="font-family: Arial, Helvetica, sans-serif; margin: 0px; padding: 0px; outline: none; font-style: normal; font-variant: normal; font-weight: normal; orphans: auto; white-space: normal; widows: auto; -webkit-text-stroke-width: 0px;">
-
-
     
     <div class="row">
         <div class="panel">
@@ -105,9 +99,6 @@
                     Закрыть
             </asp:LinkButton>
 
-
-            <%--<asp:Button ID="btnZipFile" Text="ZipFile" runat="server" OnClick="btnZipFile_Click" />--%>
-        
             <asp:LinkButton ID="Upload"  Text="" runat="server" CssClass="button" onclick="Upload_Click">     Сохранить
             </asp:LinkButton>
 

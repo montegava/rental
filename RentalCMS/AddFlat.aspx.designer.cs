@@ -139,13 +139,13 @@ namespace RentalCMS {
         protected global::System.Web.UI.WebControls.TextBox tbPrice;
         
         /// <summary>
-        /// EnumDropDownList1 control.
+        /// ddlPayment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RentalCMS.Controls.EnumDropDownList EnumDropDownList1;
+        protected global::RentalCMS.Controls.EnumDropDownList ddlPayment;
         
         /// <summary>
         /// fuPhoto control.
