@@ -99,7 +99,10 @@ namespace DAL
                 return Convert((HouseType)e);
             else if (e is RentType)
                 return Convert((RentType)e);
-            return string.Empty;
+            else if (e is Payment)
+                return Convert((Payment)e);
+            else
+                return e.ToString();
         }
 
 

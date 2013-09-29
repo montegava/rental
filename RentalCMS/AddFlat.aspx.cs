@@ -32,6 +32,7 @@ namespace RentalCMS
             var flat = new flat_info()
             {
                 ID = -1,
+                DATA = DateTime.Now,
                 NAME = tbName.Text,
                 EMAIL = tbEmail.Text,
                 PHONE = tbPhone.Text,
