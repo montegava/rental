@@ -60,3 +60,5 @@ obj
 /rec/bin/Debug/*.exe
 /Rental/bin/Debug/*.exe
 /RentalCommon/bin/Debug/*.dll
+
+/Rental/bin/Debug/*.manifest
