@@ -10,6 +10,7 @@
     <div class="row">
         <div class="span-row">Ваше имя</div>
         <asp:TextBox ID="tbName" CssClass="form-input-text" runat="server"></asp:TextBox> 
+
     </div>
     
     <div class="row">
@@ -69,7 +70,7 @@
 
     <div class="row">
         <div class="span-row">Описание</div>
-        <asp:TextBox ID="tbDescription" runat="server"></asp:TextBox>
+        <asp:TextBox ID="tbDescription" runat="server"  Rows="4"></asp:TextBox>
     </div>
 
     
