@@ -16,13 +16,16 @@ namespace Rental.RentalCore {
     public interface IRentalCore {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/Upload", ReplyAction="http://tempuri.org/IRentalCore/UploadResponse")]
-        string Upload(System.IO.Stream data);
+        void Upload(System.IO.Stream data);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/DownloadFile", ReplyAction="http://tempuri.org/IRentalCore/DownloadFileResponse")]
         System.IO.Stream DownloadFile(string remotePath);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatList", ReplyAction="http://tempuri.org/IRentalCore/FlatListResponse")]
         void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatSearch", ReplyAction="http://tempuri.org/IRentalCore/FlatSearchResponse")]
+        RentalCommon.SearchResult<DAL.flat_info> FlatSearch(RentalCommon.SearchQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatByUrl", ReplyAction="http://tempuri.org/IRentalCore/FlatByUrlResponse")]
         DAL.flat_info FlatByUrl(string url);
@@ -85,8 +88,8 @@ namespace Rental.RentalCore {
                 base(binding, remoteAddress) {
         }
         
-        public string Upload(System.IO.Stream data) {
-            return base.Channel.Upload(data);
+        public void Upload(System.IO.Stream data) {
+            base.Channel.Upload(data);
         }
         
         public System.IO.Stream DownloadFile(string remotePath) {
@@ -95,6 +98,10 @@ namespace Rental.RentalCore {
         
         public void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize) {
             base.Channel.FlatList(filters, startDate, endDate, sortBy, orderBy, ref activePage, out flats, out pageCount, out totalRowsNumber, pageSize);
+        }
+        
+        public RentalCommon.SearchResult<DAL.flat_info> FlatSearch(RentalCommon.SearchQuery query) {
+            return base.Channel.FlatSearch(query);
         }
         
         public DAL.flat_info FlatByUrl(string url) {

@@ -28,8 +28,6 @@ namespace Rental
     {
         public static readonly ILog Log = LogManager.GetLogger("TestApplication");
         private BackgroundWorker Worker = new BackgroundWorker();
-
-        // List of tab 
         private Dictionary<string, TabPage> pages = new Dictionary<string, TabPage>();
         private volatile int page_count_for_load = 0;
         private volatile int page_count_loaded = 0;
@@ -724,9 +722,6 @@ namespace Rental
             }
         }
 
-        /// <summary>
-        /// Get black list from db and fill table
-        /// </summary>
         private void BlackListRefresh()
         {
             dataGridViewContactList.DataSource = NameListCache.proxy.BlackListAll();
@@ -734,11 +729,6 @@ namespace Rental
             dataGridViewContactList.Columns["STOP"].Width = dataGridViewContactList.Columns["COMMENT"].Width = 200;
         }
 
-        /// <summary>
-        /// Начать загрузку
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void btnStart_Click(object sender, EventArgs e)
         {
             Start();
@@ -893,10 +883,11 @@ namespace Rental
         {
             if (grdFlats.CurrentRow != null)
             {
+                return;
                 var row = grdFlats.CurrentRow;
                 inputNAME.Text = row.Cells[Fields.NAME.ToString()].Value.ToString();
                 inputCONTENT.Text = row.Cells[Fields.CONTENT.ToString()].Value.ToString();
-                var link = row.Cells[Fields.LINK.ToString()].Value.ToString();
+                var link = row.Cells[Fields.LINK.ToString()].Value as string??string.Empty;
                 inputLINK.Text = link;
                 intupROOM_COUNT.Text = row.Cells[Fields.ROOM_COUNT.ToString()].Value == null ? string.Empty : row.Cells[Fields.ROOM_COUNT.ToString()].Value.ToString();
                 intupFLOOR.Text = row.Cells[Fields.FLOOR.ToString()].Value == null ? string.Empty : row.Cells[Fields.FLOOR.ToString()].Value.ToString();

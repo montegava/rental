@@ -25,6 +25,10 @@ namespace RentalCore
         void FlatList(List<Filter> filters, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber);
 
         [OperationContract]
+        SearchResult<flat_info> FlatSearch(SearchQuery query);
+
+
+        [OperationContract]
         flat_info FlatByUrl(string url);
 
         [OperationContract]

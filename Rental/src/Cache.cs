@@ -147,29 +147,29 @@ namespace Rental.src
 
                 if (!FlatRows.ContainsKey(i))
                 {
+
+                    //int pageActive = this.listModel.Query.Page;
+                    //int pageCount = this.listModel.Result.TotallCount / this.listModel.Query.PageSize;
+                    //if ((this.listModel.Result.TotallCount % this.listModel.Query.PageSize) > 0)
+                    //{
+                    //    pageCount++;
+                    //}
+
+
                     int activePage = (int)((i + FlatRows.Count) / 50);
                     flat_info[] flats;
                     int pageCount;
                     int totalRowsNumber;
 
 
-                    NameListCache.proxy.FlatList(
-                        new Filter[] { },
-                        DateTime.MinValue,
-                        DateTime.MinValue,
-                        1,
-                        false,
-                        ref activePage,
-                        out flats,
-                        out pageCount,
-                        out totalRowsNumber,
-                        50);
+                   var result = NameListCache.proxy.FlatSearch(new SearchQuery() { SortField = Fields.ID, Ascending = false, Page = activePage, PageSize =50 });
 
-                    TotalRowsNumber = totalRowsNumber;
+
+                  TotalRowsNumber = result.TotallCount;
 
                     var curRow = i;
 
-                    foreach (var item in flats)
+                    foreach (var item in result.Items)
                     {
 
                         if (!FlatRows.ContainsKey(curRow))
@@ -208,34 +208,22 @@ namespace Rental.src
 
     public class NameListCache
     {
-        public int PageSize = 5000;
+        public int PageSize = 50;
         public int TotalRowsNumber;
-        public Cache CachedData = new Cache();
-
+        public Cache CachedData;
         public static RentalCore.RentalCoreClient proxy = new RentalCore.RentalCoreClient();
-
-
-        int _lastRowIndex = -1;
 
         public NameListCache(int pageSize)
         {
+            CachedData = new Cache();
             PageSize = pageSize;
             LoadPage(0);
         }
 
         public void LoadPage(int rowIndex)
         {
-            int lastRowIndex = rowIndex - (rowIndex % PageSize);
-            if (lastRowIndex == _lastRowIndex) return;
-            _lastRowIndex = lastRowIndex;
-
-            long? totalCount = 0;
-
-            var d = CachedData[rowIndex];
-
+            var result = CachedData[rowIndex];
             TotalRowsNumber = CachedData.TotalRowsNumber;
-
-
         }
     }
 

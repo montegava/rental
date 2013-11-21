@@ -28,6 +28,15 @@ namespace DAL
             return result;
         }
 
+        public static SearchResult<flat_info> FlatSearch(SearchQuery query)
+        {
+            var context = WcfOperationContext.Current.Context;
+            return context.flat_info.Select(c => c)
+                .ToSearchResult(query, e => e.InjectIntoNew<flat_info>());
+
+        }
+
+
         public static void FlatList(List<Filter> filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
         {
 

@@ -222,15 +222,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\RentalCore\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-    <None Include="Service References\RentalCore\configuration.svcinfo" />
-    <None Include="Service References\RentalCore\configuration91.svcinfo" />
-    <None Include="Service References\RentalCore\item.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
@@ -254,9 +245,6 @@
       <ProductName>Windows Installer 4.5</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadataStorage Include="Service References\RentalCore\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="img\1323510897_apply.png" />
@@ -286,6 +274,16 @@
     <Content Include="img\Star-Full-icon.png" />
     <Content Include="img\_active__settings.png" />
     <Content Include="img\_active__settings_2.png" />
+    <None Include="Service References\RentalCore\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <None Include="Service References\RentalCore\configuration.svcinfo" />
+    <None Include="Service References\RentalCore\configuration91.svcinfo" />
+    <None Include="Service References\RentalCore\item.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\RentalCore\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

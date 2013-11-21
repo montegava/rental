@@ -143,8 +143,8 @@ namespace Rental
 
                 using (var fs = new FileStream(compressedImagePath, FileMode.Open, System.IO.FileAccess.Read))
                 {
-                    var remotePath = NameListCache.proxy.Upload(fs);
-                    imageList.Add(new image_list() { ID = -1, IMAGE_PATH = remotePath, FLAT_ID = this.FlatId });
+                    NameListCache.proxy.Upload(fs);
+                    //imageList.Add(new image_list() { ID = -1, IMAGE_PATH = remotePath, FLAT_ID = this.FlatId });
                 }
             }
 

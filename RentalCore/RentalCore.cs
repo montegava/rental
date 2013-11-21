@@ -104,6 +104,11 @@ namespace RentalCore
             FlatManager.FlatList(filterBy, startDate, endDate, sortBy, orderBy, ref activePage, pageSize, out flats, out pageCount, out totalRowsNumber);
         }
 
+        public SearchResult<flat_info> FlatSearch(SearchQuery query)
+        {
+            return FlatManager.FlatSearch(query);
+        }
+
         public flat_info FlatByUrl(string url)
         {
             return FlatManager.FlatByUrl(url);

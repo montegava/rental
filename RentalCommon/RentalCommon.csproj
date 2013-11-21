@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Omu.ValueInjecter">
+      <HintPath>..\packages\ValueInjecter.2.3.3\lib\net35\Omu.ValueInjecter.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
@@ -41,8 +44,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Filters.cs" />
+    <Compile Include="EnumerableExtension.cs" />
+    <Compile Include="Fields.cs" />
+    <Compile Include="FilterConditions.cs" />
+    <Compile Include="Filter.cs" />
+    <Compile Include="ISearchResult.cs" />
+    <Compile Include="NameConventionInjector.cs" />
+    <Compile Include="OrderExtension.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchQuery.cs" />
+    <Compile Include="SearchResult.cs" />
+    <Compile Include="ValueInjecterExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
