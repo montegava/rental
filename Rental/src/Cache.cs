@@ -147,46 +147,24 @@ namespace Rental.src
 
                 if (!FlatRows.ContainsKey(i))
                 {
-
-                    //int pageActive = this.listModel.Query.Page;
-                    //int pageCount = this.listModel.Result.TotallCount / this.listModel.Query.PageSize;
-                    //if ((this.listModel.Result.TotallCount % this.listModel.Query.PageSize) > 0)
-                    //{
-                    //    pageCount++;
-                    //}
-
-
-                    int activePage = (int)((i + FlatRows.Count) / 50);
-                    flat_info[] flats;
-                    int pageCount;
-                    int totalRowsNumber;
-
-
-                   var result = NameListCache.proxy.FlatSearch(new SearchQuery() { SortField = Fields.ID, Ascending = false, Page = activePage, PageSize =50 });
-
-
-                  TotalRowsNumber = result.TotallCount;
-
+                    NameListCache.Query.Page =  (int)(i/ 50);
+                    var result = NameListCache.proxy.FlatSearch(NameListCache.Query);
+                    if (!result.Items.Any())
+                    {
+                        TotalRowsNumber = 0;
+                        return null;
+                    }
+                    TotalRowsNumber = result.TotallCount;
                     var curRow = i;
-
                     foreach (var item in result.Items)
                     {
-
                         if (!FlatRows.ContainsKey(curRow))
-                        {
                             FlatRows.Add(curRow, new FlatRow(item));
-
-                        }
                         curRow++;
                     }
-
+                  
                 }
-
                 return FlatRows[i];
-
-
-
-
             }
         }
 
@@ -209,9 +187,12 @@ namespace Rental.src
     public class NameListCache
     {
         public int PageSize = 50;
-        public int TotalRowsNumber;
+        public int TotalRowsNumber { get { return CachedData.TotalRowsNumber; } }
         public Cache CachedData;
         public static RentalCore.RentalCoreClient proxy = new RentalCore.RentalCoreClient();
+
+        public static SearchQuery Query = new SearchQuery() { SortField = Fields.ID, Ascending = false, Page = 0, PageSize = 50 };
+
 
         public NameListCache(int pageSize)
         {
@@ -223,7 +204,6 @@ namespace Rental.src
         public void LoadPage(int rowIndex)
         {
             var result = CachedData[rowIndex];
-            TotalRowsNumber = CachedData.TotalRowsNumber;
         }
     }
 

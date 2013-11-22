@@ -61,7 +61,7 @@ namespace Rental
             var RepositoryDirectory = @"Media";
             string fileName = Guid.NewGuid() + ".jpg";
             //String.Format("{0}_{1}\\{2}", DateTime.Now.Year.ToString(), DateTime.Now.Month.ToString(), fileName)
-            string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}",fileName));
+            string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}", fileName));
             string dir = Path.GetDirectoryName(filePath);
             if (!Directory.Exists(dir))
                 Directory.CreateDirectory(dir);
@@ -197,7 +197,7 @@ namespace Rental
             }
         }
 
-      
+
 
         public static void SetColumlOption(DataGridView grid, Fields field, int width, ref int displayIndex, bool visible = true)
         {
@@ -208,11 +208,13 @@ namespace Rental
         {
             if (grid.Columns[columnName] == null)
                 grid.Columns.Add(columnName, columnName);
-                grid.Columns[columnName].Visible = visible;
-                grid.Columns[columnName].DisplayIndex = displayIndex;
-                grid.Columns[columnName].Width = width;
-                grid.Columns[columnName].HeaderText = headerText;
-                displayIndex++;
+            grid.Columns[columnName].Visible = visible;
+            grid.Columns[columnName].DisplayIndex = displayIndex;
+            grid.Columns[columnName].Width = width;
+            grid.Columns[columnName].HeaderText = headerText;
+            displayIndex++;
+            grid.Columns[columnName].SortMode = DataGridViewColumnSortMode.Programmatic;
+           
         }
     }
 }

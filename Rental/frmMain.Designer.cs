@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.программаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,9 +85,12 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.grdFlats = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.btnClearAllFilters = new System.Windows.Forms.Button();
+            this.btnApplyFilters = new System.Windows.Forms.Button();
+            this.btnAddFilter = new System.Windows.Forms.Button();
+            this.cbCondition = new System.Windows.Forms.ComboBox();
+            this.tbSearchText = new System.Windows.Forms.TextBox();
+            this.cbFields = new System.Windows.Forms.ComboBox();
             this.tsSearch = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
             this.findPhoneInput = new System.Windows.Forms.ToolStripTextBox();
@@ -369,13 +372,13 @@
             this.lvAdverts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvAdverts.FullRowSelect = true;
             this.lvAdverts.GridLines = true;
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "listViewGroup1";
-            listViewGroup6.Header = "sdfasd";
-            listViewGroup6.Name = "sdf";
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "sdfasd";
+            listViewGroup2.Name = "sdf";
             this.lvAdverts.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup1,
+            listViewGroup2});
             this.lvAdverts.Location = new System.Drawing.Point(3, 28);
             this.lvAdverts.Name = "lvAdverts";
             this.lvAdverts.Size = new System.Drawing.Size(731, 247);
@@ -474,13 +477,13 @@
             this.lvStars.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvStars.FullRowSelect = true;
             this.lvStars.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
-            listViewGroup2.Header = "sdfasd";
-            listViewGroup2.Name = "sdf";
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "listViewGroup1";
+            listViewGroup4.Header = "sdfasd";
+            listViewGroup4.Name = "sdf";
             this.lvStars.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup3,
+            listViewGroup4});
             this.lvStars.Location = new System.Drawing.Point(3, 28);
             this.lvStars.Name = "lvStars";
             this.lvStars.Size = new System.Drawing.Size(731, 247);
@@ -689,38 +692,70 @@
             // 
             // panel4
             // 
-            this.panel4.Controls.Add(this.button1);
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Controls.Add(this.comboBox1);
+            this.panel4.Controls.Add(this.btnClearAllFilters);
+            this.panel4.Controls.Add(this.btnApplyFilters);
+            this.panel4.Controls.Add(this.btnAddFilter);
+            this.panel4.Controls.Add(this.cbCondition);
+            this.panel4.Controls.Add(this.tbSearchText);
+            this.panel4.Controls.Add(this.cbFields);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 25);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(745, 31);
             this.panel4.TabIndex = 5;
             // 
-            // button1
+            // btnClearAllFilters
             // 
-            this.button1.Location = new System.Drawing.Point(415, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 20);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnClearAllFilters.Location = new System.Drawing.Point(535, 3);
+            this.btnClearAllFilters.Name = "btnClearAllFilters";
+            this.btnClearAllFilters.Size = new System.Drawing.Size(125, 21);
+            this.btnClearAllFilters.TabIndex = 5;
+            this.btnClearAllFilters.Text = "Убрать все фильтры";
+            this.btnClearAllFilters.UseVisualStyleBackColor = true;
+            this.btnClearAllFilters.Click += new System.EventHandler(this.brtClearAllFilters_Click);
             // 
-            // textBox1
+            // btnApplyFilters
             // 
-            this.textBox1.Location = new System.Drawing.Point(133, 3);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(276, 20);
-            this.textBox1.TabIndex = 1;
+            this.btnApplyFilters.Location = new System.Drawing.Point(664, 3);
+            this.btnApplyFilters.Name = "btnApplyFilters";
+            this.btnApplyFilters.Size = new System.Drawing.Size(75, 21);
+            this.btnApplyFilters.TabIndex = 4;
+            this.btnApplyFilters.Text = "Применить";
+            this.btnApplyFilters.UseVisualStyleBackColor = true;
+            this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
-            // comboBox1
+            // btnAddFilter
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 3);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.btnAddFilter.Location = new System.Drawing.Point(458, 3);
+            this.btnAddFilter.Name = "btnAddFilter";
+            this.btnAddFilter.Size = new System.Drawing.Size(75, 21);
+            this.btnAddFilter.TabIndex = 3;
+            this.btnAddFilter.Text = "Добавить";
+            this.btnAddFilter.UseVisualStyleBackColor = true;
+            this.btnAddFilter.Click += new System.EventHandler(this.btnAddFilter_Click);
+            // 
+            // cbCondition
+            // 
+            this.cbCondition.FormattingEnabled = true;
+            this.cbCondition.Location = new System.Drawing.Point(133, 2);
+            this.cbCondition.Name = "cbCondition";
+            this.cbCondition.Size = new System.Drawing.Size(121, 21);
+            this.cbCondition.TabIndex = 2;
+            // 
+            // tbSearchText
+            // 
+            this.tbSearchText.Location = new System.Drawing.Point(260, 2);
+            this.tbSearchText.Name = "tbSearchText";
+            this.tbSearchText.Size = new System.Drawing.Size(192, 20);
+            this.tbSearchText.TabIndex = 1;
+            // 
+            // cbFields
+            // 
+            this.cbFields.FormattingEnabled = true;
+            this.cbFields.Location = new System.Drawing.Point(6, 3);
+            this.cbFields.Name = "cbFields";
+            this.cbFields.Size = new System.Drawing.Size(121, 21);
+            this.cbFields.TabIndex = 0;
             // 
             // tsSearch
             // 
@@ -1541,12 +1576,15 @@
         private System.Windows.Forms.ToolStripButton btnSettings;
         private System.Windows.Forms.ColumnHeader columnHeader9;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox tbSearchText;
+        private System.Windows.Forms.ComboBox cbFields;
         private System.Windows.Forms.ToolStripMenuItem menuStop;
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbIcon;
+        private System.Windows.Forms.Button btnClearAllFilters;
+        private System.Windows.Forms.Button btnApplyFilters;
+        private System.Windows.Forms.Button btnAddFilter;
+        private System.Windows.Forms.ComboBox cbCondition;
     }
 }
 

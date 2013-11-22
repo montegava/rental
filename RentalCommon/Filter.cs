@@ -9,11 +9,15 @@ namespace RentalCommon
     [DataContract]
     public class Filter1
     {
-        public Filter1(Fields field,  FilterConditions condition)
+        public Filter1(Fields field,  FilterConditions condition, object value)
         {
             FilterCondition = condition;
             Field = field;
+            Value = value;
         }
+
+        [DataMember]
+        public object Value { get; set; }
 
         [DataMember]
         public Fields Field { get; set; }

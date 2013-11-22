@@ -31,9 +31,532 @@ namespace DAL
         public static SearchResult<flat_info> FlatSearch(SearchQuery query)
         {
             var context = WcfOperationContext.Current.Context;
-            return context.flat_info.Select(c => c)
-                .ToSearchResult(query, e => e.InjectIntoNew<flat_info>());
+            IQueryable<flat_info> result = context.flat_info;
+            if (query.Filters != null)
+            {
+                Expression<Func<flat_info, bool>> expr = u => true;
+                foreach (var filter in query.Filters)
+                {
+                    #region set
 
+                    switch (filter.Field)
+                    {
+                        case Fields.ID:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    expr = expr.And(c => c.ID > (int)filter.Value);
+                                    break;
+                                case FilterConditions.LESS:
+                                    expr = expr.And(c => c.ID < (int)filter.Value);
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.ID == (int)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for ID");
+                                    break;
+                            }
+
+                            break;
+                        case Fields.DATA:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    expr = expr.And(c => c.DATA > (DateTime)filter.Value);
+                                    break;
+                                case FilterConditions.LESS:
+                                    expr = expr.And(c => c.DATA < (DateTime)filter.Value);
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.DATA == (DateTime)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for DATA");
+                                    break;
+                            }
+
+                            break;
+                        case Fields.ROOM_COUNT:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    expr = expr.And(c => c.ROOM_COUNT > (int)filter.Value);
+                                    break;
+                                case FilterConditions.LESS:
+                                    expr = expr.And(c => c.ROOM_COUNT < (int)filter.Value);
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.ROOM_COUNT == (int)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for ROOM_COUNT");
+                                    break;
+                            }
+
+                            break;
+                        case Fields.ADDRESS:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for ADDRESS");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for ADDRESS");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.ADDRESS.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.ADDRESS.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+
+                            break;
+                        case Fields.FLOOR:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    expr = expr.And(c => c.FLOOR > (int)filter.Value);
+                                    break;
+                                case FilterConditions.LESS:
+                                    expr = expr.And(c => c.FLOOR < (int)filter.Value);
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.FLOOR == (int)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for the  FLOOR");
+                                    break;
+                            }
+                            
+
+                            break;
+                        case Fields.BATH_UNIT:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for BATH_UNIT");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for BATH_UNIT");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.BATH_UNIT.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.BATH_UNIT.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            
+                            break;
+                        case Fields.BUILD:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for BUILD");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for BUILD");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.BUILD.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.BUILD.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.FURNITURE:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for FURNITURE");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for FURNITURE");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.FURNITURE.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.FURNITURE.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.STATE:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for STATE");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for STATE");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.STATE.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.STATE.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.MECHANIC:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for MECHANIC");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for MECHANIC");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.MECHANIC.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.MECHANIC.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                           
+                            break;
+                        case Fields.NAME:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for NAME");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for NAME");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.NAME.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.NAME.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                          
+                            break;
+                        case Fields.PRICE:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for PRICE");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for PRICE");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.PRICE.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.PRICE.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            
+                            break;
+                        case Fields.PHONE:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for PHONE");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for PHONE");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.PHONE.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.PHONE.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                  
+                            break;
+                        case Fields.COMMENT:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for COMMENT");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for COMMENT");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.COMMENT.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.COMMENT.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                         
+                            break;
+                        case Fields.CONTENT:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for CONTENT");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for CONTENT");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.CONTENT.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.CONTENT.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                        
+
+                            break;
+                        case Fields.LINK:
+
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for LINK");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for LINK");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.LINK.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.LINK.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.TERM:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for TERM");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for TERM");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.TERM.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.TERM.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.RENT_FROM:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    expr = expr.And(c => c.RENT_FROM > (DateTime)filter.Value);
+                                    break;
+                                case FilterConditions.LESS:
+                                    expr = expr.And(c => c.RENT_FROM < (DateTime)filter.Value);
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.RENT_FROM == (DateTime)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for RENT_FROM");
+                                    break;
+                            }
+                            break;
+                        case Fields.RENT_TO:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    expr = expr.And(c => c.RENT_TO > (DateTime)filter.Value);
+                                    break;
+                                case FilterConditions.LESS:
+                                    expr = expr.And(c => c.RENT_TO < (DateTime)filter.Value);
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.RENT_TO == (DateTime)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for RENT_TO");
+                                    break;
+                            }
+                            break;
+                        case Fields.LESSOR:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for LESSOR");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for LESSOR");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.LESSOR.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.LESSOR.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.FRIDGE:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for FRIDGE");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for FRIDGE");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.FRIDGE  ==   (bool)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for FRIDGE");
+                                    break;
+                            }
+                            break;
+                        case Fields.TV:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for TV");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for TV");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.TV == (bool)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for TV");
+                                    break;
+                            }
+                            break;
+                        case Fields.WASHER:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for WASHER");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for WASHER");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.WASHER == (bool)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for WASHER");
+                                    break;
+                            }
+                            break;
+                        case Fields.COOLER:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for COOLER");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for COOLER");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.COOLER == (bool)filter.Value);
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    throw new Exception("CONTAIN not applicable for COOLER");
+                                    break;
+                            }
+                            break;
+                        case Fields.REGION:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for REGION");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for REGION");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.REGION.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.REGION.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.EMAIL:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for EMAIL");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for EMAIL");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.EMAIL.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.EMAIL.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.CATEGORY:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for CATEGORY");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for CATEGORY");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.CATEGORY.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.CATEGORY.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.TYPE:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for TYPE");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for TYPE");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.TYPE.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.TYPE.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+                        case Fields.PAYMENT:
+                            switch (filter.FilterCondition)
+                            {
+                                case FilterConditions.MORE:
+                                    throw new Exception("MORE not applicable for PAYMENT");
+                                    break;
+                                case FilterConditions.LESS:
+                                    throw new Exception("LESS not applicable for PAYMENT");
+                                    break;
+                                case FilterConditions.EQUAL:
+                                    expr = expr.And(c => c.PAYMENT.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    break;
+                                case FilterConditions.CONTAIN:
+                                    expr = expr.And(c => c.PAYMENT.ToUpper().Contains(((string)filter.Value).ToUpper()));
+                                    break;
+                            }
+                            break;
+
+                    }
+                    #endregion
+                }
+                result = result.Where(expr.Expand());
+            }
+            return result.Select(c => c)
+                .ToSearchResult(query, e => e.InjectIntoNew<flat_info>());
         }
 
 
@@ -261,7 +784,7 @@ namespace DAL
 
                 #endregion
 
-                 flats = query.GetPage(pageSize, ref activePage, ref pageCount, ref totalRowsNumber).AsEnumerable().ToList();
+                flats = query.GetPage(pageSize, ref activePage, ref pageCount, ref totalRowsNumber).AsEnumerable().ToList();
             }
             catch (Exception ex)
             {

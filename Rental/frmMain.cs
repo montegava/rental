@@ -99,23 +99,78 @@ namespace Rental
             Common.SetColumlOption(grdFlats, Fields.CATEGORY, 80, ref displayIndex);
             Common.SetColumlOption(grdFlats, Fields.PAYMENT, 80, ref displayIndex);
 
+
+            grdFlats.Columns[Fields.ID.ToString()].HeaderCell.SortGlyphDirection = SortOrder.Descending;
+
             grdFlats.CellValueNeeded += new DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
             grdFlats.RowCount = Cache.TotalRowsNumber;
+            grdFlats.ColumnHeaderMouseClick += grid_ColumnHeaderMouseClick;
 
             grdFlats.VirtualMode = true;
+            grdFlats.AllowUserToAddRows = false;
+
+
+            cbFields.ValueMember = "Key";
+            cbFields.DisplayMember = "Value";
+            cbFields.DataSource = Enum.GetValues(typeof(Fields))
+            .Cast<Fields>()
+            .Select(p => new KeyValuePair<Fields, string>(p, p.ToString()))
+            .ToList();
 
 
 
-            //cbSites.ComboBox.Selectedva = Properties.Settings.Default.cbSites != null ? Properties.Settings.Default.cbSites : -1;
+            cbCondition.ValueMember = "Key";
+            cbCondition.DisplayMember = "Value";
+            cbCondition.DataSource = Enum.GetValues(typeof(FilterConditions))
+            .Cast<FilterConditions>()
+            .Select(p => new KeyValuePair<FilterConditions, string>(p, p.ToString()))
+            .ToList();
+          
+        }
 
+        private void grid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (e.ColumnIndex < 0)
+                return;
+
+            for (int i = 0; i < grdFlats.Columns.Count; i++)
+            {
+                if (i == e.ColumnIndex)
+                    continue;
+                grdFlats.Columns[i].HeaderCell.SortGlyphDirection = SortOrder.None;
+            }
+
+            var column = grdFlats.Columns[e.ColumnIndex];
+
+            NameListCache.Query.SortField = (Fields)Enum.Parse(typeof(Fields), column.Name, true);
+
+            var sortGlyphDirection = column.HeaderCell.SortGlyphDirection;
+
+            switch (sortGlyphDirection)
+            {
+                case SortOrder.None:
+                case SortOrder.Ascending:
+                    column.HeaderCell.SortGlyphDirection = SortOrder.Descending;
+                    break;
+                case SortOrder.Descending:
+                    column.HeaderCell.SortGlyphDirection = SortOrder.Ascending;
+                    break;
+            }
+
+            NameListCache.Query.Ascending = column.HeaderCell.SortGlyphDirection == SortOrder.Ascending;
+            this.Cache.CachedData.RemoveAll();
+            var count = grdFlats.RowCount;
+            grdFlats.Rows.Clear();
+            grdFlats.RowCount = count;
+            grdFlats.FirstDisplayedScrollingRowIndex = 0;
         }
 
 
         private void dataGridView1_CellValueNeeded(object sender, DataGridViewCellValueEventArgs e)
         {
-            Cache.LoadPage(e.RowIndex);
-            int rowIndex = e.RowIndex % Cache.PageSize;
-            e.Value = Cache.CachedData[rowIndex][grdFlats.Columns[e.ColumnIndex].Name];
+            // Cache.LoadPage(e.RowIndex);
+            // int rowIndex = e.RowIndex % Cache.PageSize;
+            e.Value = Cache.CachedData[e.RowIndex][grdFlats.Columns[e.ColumnIndex].Name];
         }
 
         private void FillTree()
@@ -887,7 +942,7 @@ namespace Rental
                 var row = grdFlats.CurrentRow;
                 inputNAME.Text = row.Cells[Fields.NAME.ToString()].Value.ToString();
                 inputCONTENT.Text = row.Cells[Fields.CONTENT.ToString()].Value.ToString();
-                var link = row.Cells[Fields.LINK.ToString()].Value as string??string.Empty;
+                var link = row.Cells[Fields.LINK.ToString()].Value as string ?? string.Empty;
                 inputLINK.Text = link;
                 intupROOM_COUNT.Text = row.Cells[Fields.ROOM_COUNT.ToString()].Value == null ? string.Empty : row.Cells[Fields.ROOM_COUNT.ToString()].Value.ToString();
                 intupFLOOR.Text = row.Cells[Fields.FLOOR.ToString()].Value == null ? string.Empty : row.Cells[Fields.FLOOR.ToString()].Value.ToString();
@@ -1014,6 +1069,40 @@ namespace Rental
         {
             if (e.KeyCode == Keys.Delete)
                 FlatDelete();
+        }
+
+     
+
+        private void brtClearAllFilters_Click(object sender, EventArgs e)
+        {
+            this.Filters.Clear();
+            this.Cache.CachedData.RemoveAll();
+            //grdFlats.Rows.Clear();
+            Cache.LoadPage(0);
+            grdFlats.RowCount = Cache.TotalRowsNumber ;
+            grdFlats.FirstDisplayedScrollingRowIndex = 0;
+        }
+
+        private void btnApplyFilters_Click(object sender, EventArgs e)
+        {
+            NameListCache.Query.Filters = this.Filters.ToArray();
+            this.Cache.CachedData.RemoveAll();
+            Cache.LoadPage(0);
+
+            //grdFlats.Rows.Clear();
+            grdFlats.RowCount = Cache.TotalRowsNumber  ;
+
+            grdFlats.FirstDisplayedScrollingRowIndex = 0;
+        }
+
+        public List<Filter1> Filters = new List<Filter1>();
+
+        private void btnAddFilter_Click(object sender, EventArgs e)
+        {
+            if (tbSearchText.Text.Length > 0)
+            {
+                Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, tbSearchText.Text));
+            }
         }
 
     }

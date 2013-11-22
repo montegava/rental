@@ -135,6 +135,7 @@
     <Compile Include="src\Common.cs" />
     <Compile Include="src\Const.cs" />
     <Compile Include="common\convertor\Convetor.cs" />
+    <Compile Include="src\EnumList.cs" />
     <Compile Include="src\Enums.cs" />
     <Compile Include="src\Extension.cs" />
     <Compile Include="src\IAdvertService.cs" />
