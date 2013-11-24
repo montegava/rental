@@ -9,9 +9,7 @@ namespace RentalCommon
     [DataContract]
     public enum Fields : int
     {
-        [EnumMember]
-        NONE = 0,
-        [EnumMember]
+         [EnumMember]
         ID = 1,
 
         //Дата создания записи

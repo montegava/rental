@@ -64,7 +64,7 @@ namespace RentalCMS
 
         public string GetAssetBasePath()
         {
-            return string.Empty;// WebSettings.GetMediaRoot() + selectedProviderID.ToString() + SEPARATOR + selectedTitle.Id + SEPARATOR;
+            return "Media/";
         }
 
         public List<PageControls.ImageInfo> GetItemFromSelectedImages(IEnumerable<image_list> items, string basePath = null)

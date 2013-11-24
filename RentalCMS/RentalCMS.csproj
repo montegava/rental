@@ -198,7 +198,6 @@
   <ItemGroup>
     <Content Include="Rental.Master" />
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\aaaaaaaaaaaaaa.pubxml" />
     <None Include="Properties\PublishProfiles\amiravrn.pubxml" />
     <None Include="Service References\RentalCore\item.xsd">
       <SubType>Designer</SubType>

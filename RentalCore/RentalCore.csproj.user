@@ -5,7 +5,7 @@
       <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
         <WcfProjectProperties>
           <PublishCopyOption>RunFiles</PublishCopyOption>
-          <PublishTargetLocation>E:\_proj\wcf\</PublishTargetLocation>
+          <PublishTargetLocation>ftp://ftp.amiravrn-ru.1gb.ru/http/</PublishTargetLocation>
           <PublishDeleteAllFiles>False</PublishDeleteAllFiles>
         </WcfProjectProperties>
       </FlavorProperties>

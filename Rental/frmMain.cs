@@ -31,8 +31,7 @@ namespace Rental
         private Dictionary<string, TabPage> pages = new Dictionary<string, TabPage>();
         private volatile int page_count_for_load = 0;
         private volatile int page_count_loaded = 0;
-
-
+        public List<Filter1> Filters = new List<Filter1>();
         private List<Advert> AdvertList = new List<Advert>();
 
         private List<black_list> BlackList = new List<black_list>();
@@ -68,7 +67,8 @@ namespace Rental
             cbSites.ComboBox.DataSource = Convetor.GetParcingModeDataSource();
             cbSites.ComboBox.DisplayMember = "Value";
             cbSites.ComboBox.ValueMember = "Key";
-
+            pnlSearch.Visible = false;
+            SearchDate.Visible = false;
 
             this.Cache = new NameListCache(PAGE_SIZE);
 
@@ -104,7 +104,12 @@ namespace Rental
 
             grdFlats.CellValueNeeded += new DataGridViewCellValueEventHandler(dataGridView1_CellValueNeeded);
             grdFlats.RowCount = Cache.TotalRowsNumber;
+
             grdFlats.ColumnHeaderMouseClick += grid_ColumnHeaderMouseClick;
+            grdFlats.CellDoubleClick += grdFlats_CellDoubleClick;
+            grdFlats.RowPrePaint += grdFlats_RowPrePaint;
+            grdFlats.SelectionChanged += grdFlats_SelectionChanged;
+            grdFlats.KeyDown += grdFlats_KeyDown;
 
             grdFlats.VirtualMode = true;
             grdFlats.AllowUserToAddRows = false;
@@ -114,19 +119,45 @@ namespace Rental
             cbFields.DisplayMember = "Value";
             cbFields.DataSource = Enum.GetValues(typeof(Fields))
             .Cast<Fields>()
-            .Select(p => new KeyValuePair<Fields, string>(p, p.ToString()))
+            .Select(p => new KeyValuePair<Fields, string>(p, Convetor.FieldToString(p)))
             .ToList();
 
+            cbFields.AutoCompleteMode = AutoCompleteMode.Append;
+            cbFields.AutoCompleteSource = AutoCompleteSource.ListItems;
+
+            cbFields.SelectedIndexChanged += cbFields_SelectedIndexChanged;
 
 
+
+
+
+        }
+
+        private void cbFields_SelectedIndexChanged(object sender, EventArgs e)
+        {
             cbCondition.ValueMember = "Key";
             cbCondition.DisplayMember = "Value";
-            cbCondition.DataSource = Enum.GetValues(typeof(FilterConditions))
-            .Cast<FilterConditions>()
-            .Select(p => new KeyValuePair<FilterConditions, string>(p, p.ToString()))
+
+            switch ((Fields)cbFields.SelectedValue)
+            {
+                case Fields.DATA:
+                case Fields.RENT_FROM:
+                case Fields.RENT_TO:
+                    SearchDate.Visible = true;
+                    break;
+                default:
+                    SearchDate.Visible = false;
+                    break;
+            }
+            SearchText.Visible = !SearchDate.Visible;
+
+
+            cbCondition.DataSource = Convetor.GetConditions((Fields)cbFields.SelectedValue)
+            .Select(p => new KeyValuePair<FilterConditions, string>(p, Convetor.ConditionToString(p)))
             .ToList();
-          
         }
+
+
 
         private void grid_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
@@ -170,6 +201,8 @@ namespace Rental
         {
             // Cache.LoadPage(e.RowIndex);
             // int rowIndex = e.RowIndex % Cache.PageSize;
+            if (Cache.TotalRowsNumber == 0)
+                return;
             e.Value = Cache.CachedData[e.RowIndex][grdFlats.Columns[e.ColumnIndex].Name];
         }
 
@@ -200,7 +233,7 @@ namespace Rental
                         BlackListRefresh();
                         return;
                     case "tabStar":
-                        //FillFlatGridStar();
+                        FlatRefresh();
                         return;
                 }
             }
@@ -696,6 +729,8 @@ namespace Rental
         private void FlatRefresh()
         {
             this.Cache.CachedData.RemoveAll();
+            Cache.LoadPage(0);
+            grdFlats.RowCount = Cache.TotalRowsNumber;
             grdFlats.Refresh();
         }
 
@@ -934,26 +969,38 @@ namespace Rental
             StarAdd();
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private string GetCurrentRowValue(Fields field)
         {
-            if (grdFlats.CurrentRow != null)
+            var result = string.Empty;
+            var row = grdFlats.CurrentRow;
+            if (row != null)
             {
-                return;
-                var row = grdFlats.CurrentRow;
-                inputNAME.Text = row.Cells[Fields.NAME.ToString()].Value.ToString();
-                inputCONTENT.Text = row.Cells[Fields.CONTENT.ToString()].Value.ToString();
-                var link = row.Cells[Fields.LINK.ToString()].Value as string ?? string.Empty;
-                inputLINK.Text = link;
-                intupROOM_COUNT.Text = row.Cells[Fields.ROOM_COUNT.ToString()].Value == null ? string.Empty : row.Cells[Fields.ROOM_COUNT.ToString()].Value.ToString();
-                intupFLOOR.Text = row.Cells[Fields.FLOOR.ToString()].Value == null ? string.Empty : row.Cells[Fields.FLOOR.ToString()].Value.ToString();
-                intupADDRESS.Text = row.Cells[Fields.ADDRESS.ToString()].Value.ToString();
-                intupBATH_UNIT.Text = row.Cells[Fields.BATH_UNIT.ToString()].Value.ToString();
-                intupBUILD.Text = row.Cells[Fields.BUILD.ToString()].Value.ToString();
-                intupSTATE.Text = row.Cells[Fields.STATE.ToString()].Value.ToString();
-                intupPRICE.Text = row.Cells[Fields.PRICE.ToString()].Value.ToString();
-                inputPHONE.Items.Clear();
-                inputPHONE.Items.AddRange(row.Cells[Fields.PHONE.ToString()].Value.ToString().Split(new Char[] { ';' }));
+                var cell = row.Cells[field.ToString()].Value;
+                if (cell != null)
+                result = cell.ToString();
+            }
+            return result;
+        }
 
+        private void grdFlats_SelectionChanged(object sender, EventArgs e)
+        {
+            if (grdFlats.CurrentRow != null && Cache.TotalRowsNumber > 0)
+            {
+                inputNAME.Text = GetCurrentRowValue(Fields.NAME);
+                inputCONTENT.Text = GetCurrentRowValue(Fields.CONTENT);
+                intupROOM_COUNT.Text = GetCurrentRowValue(Fields.ROOM_COUNT);
+                intupFLOOR.Text =GetCurrentRowValue(Fields.FLOOR);
+                intupADDRESS.Text = GetCurrentRowValue(Fields.ADDRESS);
+                intupBATH_UNIT.Text = GetCurrentRowValue(Fields.BATH_UNIT);
+                intupBUILD.Text = GetCurrentRowValue(Fields.BUILD);
+                intupSTATE.Text = GetCurrentRowValue(Fields.STATE);
+                intupPRICE.Text = GetCurrentRowValue(Fields.PRICE);
+                
+                inputPHONE.Items.Clear();
+                inputPHONE.Items.AddRange(GetCurrentRowValue(Fields.PHONE).Split(';'));
+
+                var link = GetCurrentRowValue(Fields.LINK);
+                inputLINK.Text = link;
                 if (string.IsNullOrEmpty(link))
                     pbIcon.Image = imglistSites.Images[11];
                 else if (link.Contains("slando"))
@@ -974,12 +1021,7 @@ namespace Rental
 
         }
 
-        /// <summary>
-        /// Edit
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        private void CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        private void grdFlats_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             FlatEdit();
         }
@@ -1011,7 +1053,7 @@ namespace Rental
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void dataGridView1_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
+        private void grdFlats_RowPrePaint(object sender, DataGridViewRowPrePaintEventArgs e)
         {
             try
             {
@@ -1071,38 +1113,72 @@ namespace Rental
                 FlatDelete();
         }
 
-     
+
 
         private void brtClearAllFilters_Click(object sender, EventArgs e)
         {
             this.Filters.Clear();
-            this.Cache.CachedData.RemoveAll();
-            //grdFlats.Rows.Clear();
-            Cache.LoadPage(0);
-            grdFlats.RowCount = Cache.TotalRowsNumber ;
-            grdFlats.FirstDisplayedScrollingRowIndex = 0;
+
+            pnlSearch.Height = 31;
+
+            foreach (Control item in pnlSearch.Controls)
+            {
+                if (item is Label)
+                    pnlSearch.Controls.Remove(item);
+            }
+
+            FlatRefresh();
         }
 
-        private void btnApplyFilters_Click(object sender, EventArgs e)
-        {
-            NameListCache.Query.Filters = this.Filters.ToArray();
-            this.Cache.CachedData.RemoveAll();
-            Cache.LoadPage(0);
 
-            //grdFlats.Rows.Clear();
-            grdFlats.RowCount = Cache.TotalRowsNumber  ;
-
-            grdFlats.FirstDisplayedScrollingRowIndex = 0;
-        }
-
-        public List<Filter1> Filters = new List<Filter1>();
 
         private void btnAddFilter_Click(object sender, EventArgs e)
         {
-            if (tbSearchText.Text.Length > 0)
+            if (cbFields.SelectedValue != null && cbCondition.SelectedValue != null && cbCondition.SelectedIndex > -1 &&  !string.IsNullOrEmpty(cbCondition.Text))
             {
-                Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, tbSearchText.Text));
+                if (SearchText.Visible)
+                {
+                    Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, SearchText.Text));
+                }
+                else
+                {
+                    Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, SearchDate.Value));
+                }
+
+             
+
+
+
+                pnlSearch.Height = 31 * (Filters.Count() + 1);
+                var lbl = new Label()
+                 {
+                     Text = String.Format("[{0}]   {1}   [{2}] ",
+                     Convetor.FieldToString((Fields)cbFields.SelectedValue),
+                     Convetor.ConditionToString((FilterConditions)cbCondition.SelectedValue),
+                     SearchDate.Visible ? SearchDate.Value.ToString() : SearchText.Text),
+                     Top = 31 * Filters.Count() + 2,
+                     Left = 10,
+                     AutoSize = true,
+                 };
+
+                pnlSearch.Controls.Add(lbl);
+                pnlSearch.Refresh();
+
+                SearchText.Text = "";
+                cbCondition.SelectedItem = -1;
+           
+                
+                NameListCache.Query.Filters = this.Filters.ToArray();
+                FlatRefresh();
+
             }
+            else
+                MessageBox.Show("Не выбрано поле либо условие", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            pnlSearch.Visible = !pnlSearch.Visible;
         }
 
     }

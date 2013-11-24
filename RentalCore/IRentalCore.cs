@@ -16,10 +16,10 @@ namespace RentalCore
     {
 
         [OperationContract(IsOneWay = false)]
-        void Upload(System.IO.Stream data);
+        void FileUpload(string fileName, byte[] data);
 
         [OperationContract(IsOneWay = false)]
-        Stream DownloadFile(string remotePath);
+        byte[] FileDownload(string remotePath);
 
         [OperationContract]
         void FlatList(List<Filter> filters, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber);

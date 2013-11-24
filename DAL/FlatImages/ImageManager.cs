@@ -22,27 +22,18 @@ namespace DAL
 
         public static void ImageUpdate(image_list[] images, int flatId)
         {
-            if (images != null && images.Any())
-            {
-
-                var context = WcfOperationContext.Current.Context;
-
-               var pathes = images.Select(i => i.IMAGE_PATH).ToList();
-
-                var oldImages = context.image_list.Where(i => i.FLAT_ID == flatId && !pathes.Contains(i.IMAGE_PATH));
-                foreach (var item in oldImages)
+            var context = WcfOperationContext.Current.Context;
+            var imgIds = images.Select(i => i.ID).ToArray();
+            var toDelete = context.image_list.Where(i => i.FLAT_ID == flatId && !imgIds.Contains(i.ID)).ToArray();
+            foreach (image_list img in toDelete)
+                context.image_list.Remove(img);
+            foreach (var img in images)
+                if (context.image_list.FirstOrDefault(i => i.ID == img.ID) == null)
                 {
-                    context.image_list.Remove(item);
-
-                    //var im = pathes.Where(i => i == item.IMAGE_PATH).FirstOrDefault();
-                    //if (im != null)
-                    pathes.Remove(item.IMAGE_PATH);
+                    img.FLAT_ID = flatId;
+                    context.image_list.Add(img);
                 }
-                foreach (var item in images.Where(i => pathes.Contains(i.IMAGE_PATH)))
-                    context.image_list.Add(item);
-                context.SaveChanges();
-            }
-
+            context.SaveChanges();
         }
     }
 }

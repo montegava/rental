@@ -89,6 +89,7 @@
             this.inputRENT_FROM = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.inputTERM = new System.Windows.Forms.ComboBox();
+            this.btnDeleteImg = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.context.SuspendLayout();
@@ -505,6 +506,7 @@
             // 
             // groupBox5
             // 
+            this.groupBox5.Controls.Add(this.btnDeleteImg);
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.inputPayment);
             this.groupBox5.Controls.Add(this.lblType);
@@ -664,6 +666,7 @@
             // 
             // inputEmail
             // 
+            this.inputEmail.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.inputEmail.Location = new System.Drawing.Point(93, 45);
             this.inputEmail.Name = "inputEmail";
             this.inputEmail.Size = new System.Drawing.Size(304, 20);
@@ -901,6 +904,17 @@
             this.inputTERM.Size = new System.Drawing.Size(150, 21);
             this.inputTERM.TabIndex = 23;
             // 
+            // btnDeleteImg
+            // 
+            this.btnDeleteImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteImg.Location = new System.Drawing.Point(289, 427);
+            this.btnDeleteImg.Name = "btnDeleteImg";
+            this.btnDeleteImg.Size = new System.Drawing.Size(96, 23);
+            this.btnDeleteImg.TabIndex = 51;
+            this.btnDeleteImg.Text = "Удалить Х";
+            this.btnDeleteImg.UseVisualStyleBackColor = true;
+            this.btnDeleteImg.Click += new System.EventHandler(this.btnDeleteImg_Click);
+            // 
             // frmFlat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -915,7 +929,6 @@
             this.Name = "frmFlat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Добавить в избранное";
-            this.Load += new System.EventHandler(this.frmFlat_Load);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmFlat_KeyUp);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -990,5 +1003,6 @@
         public System.Windows.Forms.ComboBox inputType;
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.ComboBox inputPayment;
+        private System.Windows.Forms.Button btnDeleteImg;
     }
 }

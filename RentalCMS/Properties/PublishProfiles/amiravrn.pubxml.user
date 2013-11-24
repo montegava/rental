@@ -10,8 +10,11 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <_PublishTargetUrl>ftp://ftp.amiravrn-ru.1gb.ru/http</_PublishTargetUrl>
   </PropertyGroup>
   <ItemGroup>
+    <File Include="AddFlat.aspx">
+      <publishTime>09/30/2013 13:28:25</publishTime>
+    </File>
     <File Include="bin/DAL.dll">
-      <publishTime>09/10/2013 07:15:18</publishTime>
+      <publishTime>11/24/2013 23:43:29</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/26/2013 04:00:52</publishTime>
@@ -20,7 +23,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/09/2012 22:12:14</publishTime>
     </File>
     <File Include="bin/log4net.dll">
-      <publishTime>06/11/2012 12:09:02</publishTime>
+      <publishTime>11/06/2012 12:09:02</publishTime>
     </File>
     <File Include="bin/MySql.Data.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
@@ -31,11 +34,17 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="bin/MySql.Web.dll">
       <publishTime>01/01/0001 00:00:00</publishTime>
     </File>
+    <File Include="bin/Omu.ValueInjecter.dll">
+      <publishTime>11/21/2013 22:01:47</publishTime>
+    </File>
+    <File Include="bin/PageControls.dll">
+      <publishTime>11/24/2013 17:33:57</publishTime>
+    </File>
     <File Include="bin/RentalCMS.dll">
-      <publishTime>09/10/2013 07:15:19</publishTime>
+      <publishTime>11/24/2013 23:46:28</publishTime>
     </File>
     <File Include="bin/RentalCommon.dll">
-      <publishTime>09/10/2013 07:15:18</publishTime>
+      <publishTime>11/24/2013 17:33:57</publishTime>
     </File>
     <File Include="bin/SmartControls.dll">
       <publishTime>08/16/2013 16:47:05</publishTime>
@@ -59,10 +68,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 07:08:15</publishTime>
     </File>
     <File Include="FlatManager.aspx">
-      <publishTime>08/01/2013 20:08:59</publishTime>
+      <publishTime>09/26/2013 09:52:41</publishTime>
     </File>
     <File Include="Flats.aspx">
-      <publishTime>09/10/2013 07:10:58</publishTime>
+      <publishTime>09/26/2013 09:51:52</publishTime>
     </File>
     <File Include="images/bg.jpg">
       <publishTime>07/26/2013 02:31:44</publishTime>
@@ -137,7 +146,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 07:08:54</publishTime>
     </File>
     <File Include="Rental.Master">
-      <publishTime>09/10/2013 07:13:56</publishTime>
+      <publishTime>09/30/2013 00:23:56</publishTime>
     </File>
     <File Include="Service References/RentalCore/configuration.svcinfo">
       <publishTime>08/13/2013 00:44:08</publishTime>
@@ -161,7 +170,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/general.js">
-      <publishTime>08/12/2013 23:39:37</publishTime>
+      <publishTime>09/29/2013 23:25:25</publishTime>
     </File>
     <File Include="src/hit">
       <publishTime>07/26/2013 02:32:20</publishTime>
@@ -211,6 +220,12 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="src/images/ui-icons_ffffff_256x240.png">
       <publishTime>07/26/2013 07:01:59</publishTime>
     </File>
+    <File Include="src/jquery-1.9.1.js">
+      <publishTime>09/29/2013 23:11:54</publishTime>
+    </File>
+    <File Include="src/jquery-1.9.1.min.js">
+      <publishTime>09/29/2013 23:12:05</publishTime>
+    </File>
     <File Include="src/jquery-ui.datepicker.css">
       <publishTime>07/26/2013 07:05:30</publishTime>
     </File>
@@ -229,6 +244,9 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="src/jquery.lightbox.js">
       <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
+    <File Include="src/jquery.MultiFile.js">
+      <publishTime>09/29/2013 23:53:28</publishTime>
+    </File>
     <File Include="src/jquery.ui.core.js">
       <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
@@ -239,7 +257,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/jquery.validate.js">
-      <publishTime>07/26/2013 02:32:20</publishTime>
+      <publishTime>09/29/2013 23:57:21</publishTime>
     </File>
     <File Include="src/main.js">
       <publishTime>07/26/2013 02:32:20</publishTime>
@@ -251,10 +269,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/style.css">
-      <publishTime>08/26/2013 15:34:05</publishTime>
+      <publishTime>09/29/2013 22:53:27</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>09/10/2013 07:15:25</publishTime>
+      <publishTime>11/24/2013 17:34:01</publishTime>
     </File>
   </ItemGroup>
 </Project>

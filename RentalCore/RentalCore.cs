@@ -18,85 +18,23 @@ namespace RentalCore
     {
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(RentalCore));
 
-        public void Upload(System.IO.Stream data)
+        public static string RepositoryDirectory = @"d:\hst\amiravrn-ru_bd4c5401\http\Media";
+
+        public void FileUpload(string fileName, byte[] data)
         {
-            string fileName = Guid.NewGuid().ToString() + ".jpg";
-
-            var result = new StringBuilder();
-            result.Append("Upload");
-            result.AppendLine();
-            try
-            {
-
-                var RepositoryDirectory = @"d:\hst\amiravrn-ru_bd4c5401\http\Media";
-                string filePath = Path.Combine(RepositoryDirectory, String.Format("{0}", fileName));
+                string filePath = Path.Combine(RepositoryDirectory, fileName);
                 string dir = Path.GetDirectoryName(filePath);
-
-                result.Append("dir = ");
-                result.Append(dir);
-                result.AppendLine();
-
                 if (!Directory.Exists(dir))
-                {
-                    result.Append("Dir not exist!");
-                    result.AppendLine();
                     Directory.CreateDirectory(dir);
-                }
-
-
-
-                FileStream fs = null;
-                try
-                {
-                    fs = File.Create(filePath);
-                    byte[] buffer = new byte[1024];
-                    int read = 0;
-                    while ((read = data.Read(buffer, 0, buffer.Length)) != 0)
-                    {
-                        fs.Write(buffer, 0, read);
-                    }
-                    result.Append("sucsessfully");
-                    result.AppendLine();
-
-                    errorLog.Error("Uploaded sucsessfully!!!");
-                }
-                catch (Exception ex)
-                {
-                    result.Append(ex.Message);
-                    result.AppendLine();
-                    errorLog.Error(ex);
-                }
-                finally
-                {
-                    if (fs != null)
-                    {
-                        fs.Close();
-                        fs.Dispose();
-                    }
-
-                    if (data != null)
-                    {
-                        data.Close();
-                        data.Dispose();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                result.Append(ex.Message);
-                result.AppendLine();
-                errorLog.Error(ex);
-            }
+                File.WriteAllBytes(filePath, data);
         }
 
-        public Stream DownloadFile(string remotePath)
+        public byte[] FileDownload(string remotePath)
         {
-            Stream result = null;
-            var RepositoryDirectory = @"d:\hst\amiravrn-ru_bd4c5401\http\";
             string filePath = Path.Combine(RepositoryDirectory, remotePath);
             if (File.Exists(filePath))
-                result = new FileStream(filePath, FileMode.Open);
-            return result;
+                return File.ReadAllBytes(filePath);
+            return new byte[]{};
         }
 
         public void FlatList(List<Filter> filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)

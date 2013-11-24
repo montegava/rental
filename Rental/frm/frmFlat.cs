@@ -20,11 +20,13 @@ namespace Rental
         private static ILog errorLog = LogManager.GetLogger("ErrorLogger");
         private EditMode EdtMode;
         public int FlatId = -1;
+        public string RepositoryDirectory = @"Media";
 
         public frmFlat(Advert advert, EditMode edtype)
         {
             InitializeComponent();
             EdtMode = edtype;
+            frmFlat_Load();
             if (advert != null)
             {
                 inputCONTENT.Text = advert.Content;
@@ -40,6 +42,7 @@ namespace Rental
             InitializeComponent();
             EdtMode = edtype;
             this.FlatId = flatId;
+            frmFlat_Load();
             LoadFlatImages();
             LoadFlatInfo();
         }
@@ -87,7 +90,7 @@ namespace Rental
             }
         }
 
-        private void frmFlat_Load(object sender, EventArgs e)
+        private void frmFlat_Load()
         {
             intupBUILD.SelectedIndex = 0;
             intupFLOOR.SelectedIndex = 0;
@@ -130,27 +133,25 @@ namespace Rental
         private void Save()
         {
             flat_info flat = Form2Flat();
-            var imageList = new List<image_list>();
 
             if (EdtMode == EditMode.emAddNew)
                 this.FlatId = NameListCache.proxy.FlatAdd(flat);
             else if (EdtMode == EditMode.emEdit)
                 NameListCache.proxy.FlatUpdate(flat);
 
+            var imageList = new List<image_list>();
             foreach (ListViewItem item in lvImagList.Items)
             {
-                var compressedImagePath = (string)item.Tag;
-
-                using (var fs = new FileStream(compressedImagePath, FileMode.Open, System.IO.FileAccess.Read))
-                {
-                    NameListCache.proxy.Upload(fs);
-                    //imageList.Add(new image_list() { ID = -1, IMAGE_PATH = remotePath, FLAT_ID = this.FlatId });
-                }
+                var image = (image_list)item.Tag;
+                if (image.ID <=0)
+                    NameListCache.proxy.FileUpload(image.IMAGE_PATH, System.IO.File.ReadAllBytes(RepositoryDirectory + "//" + image.IMAGE_PATH));
+                image.FLAT_ID = this.FlatId;
+                imageList.Add(image);
             }
-
             NameListCache.proxy.ImageUpdate(imageList.ToArray(), this.FlatId);
-
         }
+
+
 
         /// <summary>
         /// Convert form to Flat type
@@ -244,14 +245,12 @@ namespace Rental
                 var images = NameListCache.proxy.ImagesByFlatId(this.FlatId);
                 if (images.Any())
                 {
-                    foreach (var flat in images)
-                    {
+                    foreach (image_list image in images)
                         lvImagList.Items.Add(new ListViewItem()
                                                 {
-                                                    Tag = flat.IMAGE_PATH,
+                                                    Tag =   image,
                                                     Text = string.Format("image №{0}", lvImagList.Items.Count.ToString()),
                                                 });
-                    }
                 }
             }
         }
@@ -271,7 +270,11 @@ namespace Rental
                 var selItem = lvImagList.Items.Add(new ListViewItem()
                                                     {
                                                         Text = string.Format("image №{0}", lvImagList.Items.Count.ToString()),
-                                                        Tag = compressedImagePath
+                                                        Tag =   new image_list() { 
+                                                            ID = -1,
+                                                            IMAGE_PATH = compressedImagePath,
+                                                            FLAT_ID = this.FlatId
+                                                        }
                                                     });
             }
         }
@@ -280,67 +283,35 @@ namespace Rental
         {
             if (lvImagList.SelectedItems.Count > 0)
             {
-                string fileName = (string)lvImagList.SelectedItems[0].Tag;
-                if (File.Exists(fileName))
+                var fileName = ((image_list)lvImagList.SelectedItems[0].Tag).IMAGE_PATH;
+
+                var filePath = RepositoryDirectory + "//" + fileName;
+                if (File.Exists(filePath))
                 {
-                    using (var fs = new System.IO.FileStream(fileName, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                    using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
                     {
                         pbImage.Image = System.Drawing.Image.FromStream(fs);
                     }
                 }
                 else
                 {
-                    DownloadFile(fileName);
-                    if (File.Exists(fileName))
-                        pbImage.Image = Image.FromFile(fileName);
-                    else
-                        pbImage.Image = null;
+                    File.WriteAllBytes(filePath, NameListCache.proxy.FileDownload(((image_list)lvImagList.SelectedItems[0].Tag).IMAGE_PATH));
+
+                    using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                    {
+                        pbImage.Image = System.Drawing.Image.FromStream(fs);
+                    }
                 }
             }
-        }
-
-        private void DownloadFile(string filePath)
-        {
-            var data = NameListCache.proxy.DownloadFile(filePath);
-
-            FileStream fs = null;
-            try
-            {
-                fs = File.Create(filePath);
-                byte[] buffer = new byte[1024];
-                int read = 0;
-                while ((read = data.Read(buffer, 0, buffer.Length)) != 0)
-                {
-                    fs.Write(buffer, 0, read);
-                }
-            }
-            catch { }
-            finally
-            {
-                if (fs != null)
-                {
-                    fs.Close();
-                    fs.Dispose();
-                }
-
-                if (data != null)
-                {
-                    data.Close();
-                    data.Dispose();
-                }
-            }
-
-
         }
 
         private void pbImage_DoubleClick(object sender, EventArgs e)
         {
             if (lvImagList.SelectedItems.Count > 0)
             {
-                //string fileName = ConfigurationManager.AppSettings["ServerDir"] + "\\" + ((DAL.images)lvImagList.SelectedItems[0].Tag).IMAGE_PATH;
-                string fileName = (string)lvImagList.SelectedItems[0].Tag;
-                if (File.Exists(fileName))
-                    System.Diagnostics.Process.Start(fileName);
+                string filePath = Path.GetFullPath(RepositoryDirectory + "//" + ((image_list)lvImagList.SelectedItems[0].Tag).IMAGE_PATH);
+                if (File.Exists( filePath))
+                    System.Diagnostics.Process.Start(filePath);
             }
 
         }
@@ -349,6 +320,15 @@ namespace Rental
         {
             if (e.KeyCode == Keys.Escape)
                 DialogResult = System.Windows.Forms.DialogResult.Cancel;
+        }
+
+        private void btnDeleteImg_Click(object sender, EventArgs e)
+        {
+            if (lvImagList.SelectedItems.Count > 0)
+            {
+                lvImagList.Items.Remove(lvImagList.SelectedItems[0]);
+                lvImagList.Refresh();
+            }
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using DAL;
-using  System.Windows.Forms;
+using System.Windows.Forms;
 using RentalCommon;
 
 namespace Rental
@@ -24,7 +24,7 @@ namespace Rental
                 case Fields.ID:
                     return "№";
                 case Fields.DATA:
-                    return  "ДАТА ДОБВЛЕНИЯ";
+                    return "ДАТА ДОБВЛЕНИЯ";
                 case Fields.ROOM_COUNT:
                     return "КОЛИЧЕСТВО КОМНАТ";
                 case Fields.ADDRESS:
@@ -80,8 +80,76 @@ namespace Rental
                 case Fields.PAYMENT:
                     return "ОПЛАТА";
                 default:
-                    return string.Empty;
+                    throw new Exception("Unknown condition " + field.ToString());
             }
+        }
+
+        public static string ConditionToString(FilterConditions condition)
+        {
+            switch (condition)
+            {
+                case FilterConditions.MORE:
+                    return "больше";
+                case FilterConditions.LESS:
+                    return "меньше";
+                case FilterConditions.EQUAL:
+                    return "равно";
+                case FilterConditions.CONTAIN:
+                    return "содержит";
+                default:
+                    throw new Exception("Unknown condition " + condition.ToString());
+            }
+        }
+
+        public static FilterConditions[] GetConditions(Fields field)
+        {
+
+            var result = new List<FilterConditions>();
+
+            switch (field)
+            {
+                case Fields.ID:
+                case Fields.ROOM_COUNT:
+                case Fields.FLOOR:
+                case Fields.DATA:
+                case Fields.RENT_FROM:
+                case Fields.RENT_TO:
+                    return new FilterConditions[] { FilterConditions.MORE, FilterConditions.LESS, FilterConditions.EQUAL };
+
+                case Fields.FRIDGE:
+                case Fields.TV:
+                case Fields.WASHER:
+                case Fields.COOLER:
+                    return new FilterConditions[] { FilterConditions.EQUAL };
+
+
+                case Fields.ADDRESS:
+                case Fields.BATH_UNIT:
+                case Fields.BUILD:
+                case Fields.FURNITURE:
+                case Fields.STATE:
+                case Fields.MECHANIC:
+                case Fields.NAME:
+                case Fields.PRICE:
+                case Fields.PHONE:
+                case Fields.COMMENT:
+                case Fields.CONTENT:
+                case Fields.LINK:
+                case Fields.TERM:
+                case Fields.LESSOR:
+                case Fields.REGION:
+                case Fields.EMAIL:
+                case Fields.CATEGORY:
+                case Fields.TYPE:
+                case Fields.PAYMENT:
+                    return new FilterConditions[] { FilterConditions.CONTAIN, FilterConditions.EQUAL };
+
+                default:
+                    throw new Exception("Unknown condition " + field.ToString());
+            }
+
+
+            return result.ToArray();
         }
 
 

@@ -42,16 +42,18 @@ namespace DAL
                     switch (filter.Field)
                     {
                         case Fields.ID:
+                            int value = Convert.ToInt32(filter.Value);
+
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
-                                    expr = expr.And(c => c.ID > (int)filter.Value);
+                                    expr = expr.And(c => c.ID > value);
                                     break;
                                 case FilterConditions.LESS:
-                                    expr = expr.And(c => c.ID < (int)filter.Value);
+                                    expr = expr.And(c => c.ID < value);
                                     break;
                                 case FilterConditions.EQUAL:
-                                    expr = expr.And(c => c.ID == (int)filter.Value);
+                                    expr = expr.And(c => c.ID == value);
                                     break;
                                 case FilterConditions.CONTAIN:
                                     throw new Exception("CONTAIN not applicable for ID");
@@ -60,16 +62,19 @@ namespace DAL
 
                             break;
                         case Fields.DATA:
+
+                           var dvalue = Convert.ToDateTime(filter.Value);
+
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
-                                    expr = expr.And(c => c.DATA > (DateTime)filter.Value);
+                                    expr = expr.And(c => c.DATA > dvalue);
                                     break;
                                 case FilterConditions.LESS:
-                                    expr = expr.And(c => c.DATA < (DateTime)filter.Value);
+                                    expr = expr.And(c => c.DATA < dvalue);
                                     break;
                                 case FilterConditions.EQUAL:
-                                    expr = expr.And(c => c.DATA == (DateTime)filter.Value);
+                                    expr = expr.And(c => c.DATA == dvalue);
                                     break;
                                 case FilterConditions.CONTAIN:
                                     throw new Exception("CONTAIN not applicable for DATA");
@@ -78,16 +83,17 @@ namespace DAL
 
                             break;
                         case Fields.ROOM_COUNT:
+                            value = Convert.ToInt32(filter.Value);
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
-                                    expr = expr.And(c => c.ROOM_COUNT > (int)filter.Value);
+                                    expr = expr.And(c => c.ROOM_COUNT > value);
                                     break;
                                 case FilterConditions.LESS:
-                                    expr = expr.And(c => c.ROOM_COUNT < (int)filter.Value);
+                                    expr = expr.And(c => c.ROOM_COUNT < value);
                                     break;
                                 case FilterConditions.EQUAL:
-                                    expr = expr.And(c => c.ROOM_COUNT == (int)filter.Value);
+                                    expr = expr.And(c => c.ROOM_COUNT == value);
                                     break;
                                 case FilterConditions.CONTAIN:
                                     throw new Exception("CONTAIN not applicable for ROOM_COUNT");
@@ -96,6 +102,7 @@ namespace DAL
 
                             break;
                         case Fields.ADDRESS:
+
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
@@ -114,16 +121,17 @@ namespace DAL
 
                             break;
                         case Fields.FLOOR:
+                            value = Convert.ToInt32(filter.Value);
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
-                                    expr = expr.And(c => c.FLOOR > (int)filter.Value);
+                                    expr = expr.And(c => c.FLOOR > value);
                                     break;
                                 case FilterConditions.LESS:
-                                    expr = expr.And(c => c.FLOOR < (int)filter.Value);
+                                    expr = expr.And(c => c.FLOOR < value);
                                     break;
                                 case FilterConditions.EQUAL:
-                                    expr = expr.And(c => c.FLOOR == (int)filter.Value);
+                                    expr = expr.And(c => c.FLOOR == value);
                                     break;
                                 case FilterConditions.CONTAIN:
                                     throw new Exception("CONTAIN not applicable for the  FLOOR");
@@ -346,16 +354,17 @@ namespace DAL
                             }
                             break;
                         case Fields.RENT_FROM:
+                            dvalue = Convert.ToDateTime(filter.Value);
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
-                                    expr = expr.And(c => c.RENT_FROM > (DateTime)filter.Value);
+                                    expr = expr.And(c => c.RENT_FROM > dvalue);
                                     break;
                                 case FilterConditions.LESS:
-                                    expr = expr.And(c => c.RENT_FROM < (DateTime)filter.Value);
+                                    expr = expr.And(c => c.RENT_FROM < dvalue);
                                     break;
                                 case FilterConditions.EQUAL:
-                                    expr = expr.And(c => c.RENT_FROM == (DateTime)filter.Value);
+                                    expr = expr.And(c => c.RENT_FROM == dvalue);
                                     break;
                                 case FilterConditions.CONTAIN:
                                     throw new Exception("CONTAIN not applicable for RENT_FROM");
@@ -363,16 +372,17 @@ namespace DAL
                             }
                             break;
                         case Fields.RENT_TO:
+                            dvalue = Convert.ToDateTime(filter.Value);
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
-                                    expr = expr.And(c => c.RENT_TO > (DateTime)filter.Value);
+                                    expr = expr.And(c => c.RENT_TO > dvalue);
                                     break;
                                 case FilterConditions.LESS:
-                                    expr = expr.And(c => c.RENT_TO < (DateTime)filter.Value);
+                                    expr = expr.And(c => c.RENT_TO < dvalue);
                                     break;
                                 case FilterConditions.EQUAL:
-                                    expr = expr.And(c => c.RENT_TO == (DateTime)filter.Value);
+                                    expr = expr.And(c => c.RENT_TO == dvalue);
                                     break;
                                 case FilterConditions.CONTAIN:
                                     throw new Exception("CONTAIN not applicable for RENT_TO");

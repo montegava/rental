@@ -84,12 +84,12 @@
             this.tabStar = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
             this.grdFlats = new System.Windows.Forms.DataGridView();
-            this.panel4 = new System.Windows.Forms.Panel();
+            this.pnlSearch = new System.Windows.Forms.Panel();
+            this.SearchDate = new System.Windows.Forms.DateTimePicker();
             this.btnClearAllFilters = new System.Windows.Forms.Button();
-            this.btnApplyFilters = new System.Windows.Forms.Button();
             this.btnAddFilter = new System.Windows.Forms.Button();
             this.cbCondition = new System.Windows.Forms.ComboBox();
-            this.tbSearchText = new System.Windows.Forms.TextBox();
+            this.SearchText = new System.Windows.Forms.TextBox();
             this.cbFields = new System.Windows.Forms.ComboBox();
             this.tsSearch = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel4 = new System.Windows.Forms.ToolStripLabel();
@@ -105,18 +105,18 @@
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.intupSTATE = new System.Windows.Forms.TextBox();
+            this.intupBATH_UNIT = new System.Windows.Forms.TextBox();
+            this.intupBUILD = new System.Windows.Forms.TextBox();
+            this.intupFLOOR = new System.Windows.Forms.TextBox();
+            this.intupROOM_COUNT = new System.Windows.Forms.TextBox();
             this.pbIcon = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.intupPRICE = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.intupROOM_COUNT = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.intupFLOOR = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.intupBATH_UNIT = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.intupBUILD = new System.Windows.Forms.ComboBox();
-            this.intupSTATE = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.inputNAME = new System.Windows.Forms.TextBox();
             this.intupADDRESS = new System.Windows.Forms.TextBox();
@@ -168,7 +168,7 @@
             this.tabStar.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdFlats)).BeginInit();
-            this.panel4.SuspendLayout();
+            this.pnlSearch.SuspendLayout();
             this.tsSearch.SuspendLayout();
             this.toolStrip4.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -662,13 +662,13 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.grdFlats);
-            this.panel3.Controls.Add(this.panel4);
+            this.panel3.Controls.Add(this.pnlSearch);
             this.panel3.Controls.Add(this.tsSearch);
             this.panel3.Controls.Add(this.toolStrip4);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel3.Location = new System.Drawing.Point(3, 219);
+            this.panel3.Location = new System.Drawing.Point(3, 196);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(745, 232);
+            this.panel3.Size = new System.Drawing.Size(745, 255);
             this.panel3.TabIndex = 0;
             // 
             // grdFlats
@@ -677,52 +677,45 @@
             this.grdFlats.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdFlats.Cursor = System.Windows.Forms.Cursors.Default;
             this.grdFlats.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grdFlats.Location = new System.Drawing.Point(0, 56);
+            this.grdFlats.Location = new System.Drawing.Point(0, 58);
             this.grdFlats.MultiSelect = false;
             this.grdFlats.Name = "grdFlats";
             this.grdFlats.ReadOnly = true;
             this.grdFlats.RowHeadersVisible = false;
             this.grdFlats.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.grdFlats.Size = new System.Drawing.Size(745, 176);
+            this.grdFlats.Size = new System.Drawing.Size(745, 197);
             this.grdFlats.TabIndex = 2;
-            this.grdFlats.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellDoubleClick);
-            this.grdFlats.RowPrePaint += new System.Windows.Forms.DataGridViewRowPrePaintEventHandler(this.dataGridView1_RowPrePaint);
-            this.grdFlats.SelectionChanged += new System.EventHandler(this.dataGridView1_SelectionChanged);
-            this.grdFlats.KeyDown += new System.Windows.Forms.KeyEventHandler(this.grdFlats_KeyDown);
             // 
-            // panel4
+            // pnlSearch
             // 
-            this.panel4.Controls.Add(this.btnClearAllFilters);
-            this.panel4.Controls.Add(this.btnApplyFilters);
-            this.panel4.Controls.Add(this.btnAddFilter);
-            this.panel4.Controls.Add(this.cbCondition);
-            this.panel4.Controls.Add(this.tbSearchText);
-            this.panel4.Controls.Add(this.cbFields);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel4.Location = new System.Drawing.Point(0, 25);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(745, 31);
-            this.panel4.TabIndex = 5;
+            this.pnlSearch.Controls.Add(this.SearchDate);
+            this.pnlSearch.Controls.Add(this.btnClearAllFilters);
+            this.pnlSearch.Controls.Add(this.btnAddFilter);
+            this.pnlSearch.Controls.Add(this.cbCondition);
+            this.pnlSearch.Controls.Add(this.SearchText);
+            this.pnlSearch.Controls.Add(this.cbFields);
+            this.pnlSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSearch.Location = new System.Drawing.Point(0, 27);
+            this.pnlSearch.Name = "pnlSearch";
+            this.pnlSearch.Size = new System.Drawing.Size(745, 31);
+            this.pnlSearch.TabIndex = 5;
+            // 
+            // SearchDate
+            // 
+            this.SearchDate.Location = new System.Drawing.Point(260, 3);
+            this.SearchDate.Name = "SearchDate";
+            this.SearchDate.Size = new System.Drawing.Size(192, 20);
+            this.SearchDate.TabIndex = 25;
             // 
             // btnClearAllFilters
             // 
-            this.btnClearAllFilters.Location = new System.Drawing.Point(535, 3);
+            this.btnClearAllFilters.Location = new System.Drawing.Point(553, 3);
             this.btnClearAllFilters.Name = "btnClearAllFilters";
             this.btnClearAllFilters.Size = new System.Drawing.Size(125, 21);
             this.btnClearAllFilters.TabIndex = 5;
             this.btnClearAllFilters.Text = "Убрать все фильтры";
             this.btnClearAllFilters.UseVisualStyleBackColor = true;
             this.btnClearAllFilters.Click += new System.EventHandler(this.brtClearAllFilters_Click);
-            // 
-            // btnApplyFilters
-            // 
-            this.btnApplyFilters.Location = new System.Drawing.Point(664, 3);
-            this.btnApplyFilters.Name = "btnApplyFilters";
-            this.btnApplyFilters.Size = new System.Drawing.Size(75, 21);
-            this.btnApplyFilters.TabIndex = 4;
-            this.btnApplyFilters.Text = "Применить";
-            this.btnApplyFilters.UseVisualStyleBackColor = true;
-            this.btnApplyFilters.Click += new System.EventHandler(this.btnApplyFilters_Click);
             // 
             // btnAddFilter
             // 
@@ -737,24 +730,24 @@
             // cbCondition
             // 
             this.cbCondition.FormattingEnabled = true;
-            this.cbCondition.Location = new System.Drawing.Point(133, 2);
+            this.cbCondition.Location = new System.Drawing.Point(156, 2);
             this.cbCondition.Name = "cbCondition";
-            this.cbCondition.Size = new System.Drawing.Size(121, 21);
+            this.cbCondition.Size = new System.Drawing.Size(98, 21);
             this.cbCondition.TabIndex = 2;
             // 
-            // tbSearchText
+            // SearchText
             // 
-            this.tbSearchText.Location = new System.Drawing.Point(260, 2);
-            this.tbSearchText.Name = "tbSearchText";
-            this.tbSearchText.Size = new System.Drawing.Size(192, 20);
-            this.tbSearchText.TabIndex = 1;
+            this.SearchText.Location = new System.Drawing.Point(260, 2);
+            this.SearchText.Name = "SearchText";
+            this.SearchText.Size = new System.Drawing.Size(192, 20);
+            this.SearchText.TabIndex = 1;
             // 
             // cbFields
             // 
             this.cbFields.FormattingEnabled = true;
             this.cbFields.Location = new System.Drawing.Point(6, 3);
             this.cbFields.Name = "cbFields";
-            this.cbFields.Size = new System.Drawing.Size(121, 21);
+            this.cbFields.Size = new System.Drawing.Size(144, 21);
             this.cbFields.TabIndex = 0;
             // 
             // tsSearch
@@ -790,6 +783,8 @@
             // toolStrip4
             // 
             this.toolStrip4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("toolStrip4.BackgroundImage")));
+            this.toolStrip4.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip4.ImeMode = System.Windows.Forms.ImeMode.Alpha;
             this.toolStrip4.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnFlatAdd,
             this.btnFlatEdit,
@@ -799,9 +794,12 @@
             this.toolStripSeparator3,
             this.toolStripButton3,
             this.toolStripSeparator4});
+            this.toolStrip4.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.Flow;
             this.toolStrip4.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip4.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.toolStrip4.Name = "toolStrip4";
-            this.toolStrip4.Size = new System.Drawing.Size(745, 25);
+            this.toolStrip4.Padding = new System.Windows.Forms.Padding(0, 2, 1, 2);
+            this.toolStrip4.Size = new System.Drawing.Size(745, 27);
             this.toolStrip4.TabIndex = 3;
             this.toolStrip4.Text = "toolStrip1";
             // 
@@ -810,7 +808,7 @@
             this.btnFlatAdd.Image = ((System.Drawing.Image)(resources.GetObject("btnFlatAdd.Image")));
             this.btnFlatAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFlatAdd.Name = "btnFlatAdd";
-            this.btnFlatAdd.Size = new System.Drawing.Size(79, 22);
+            this.btnFlatAdd.Size = new System.Drawing.Size(79, 20);
             this.btnFlatAdd.Text = "Добавить";
             this.btnFlatAdd.Click += new System.EventHandler(this.FlatAddClick);
             // 
@@ -819,7 +817,7 @@
             this.btnFlatEdit.Image = ((System.Drawing.Image)(resources.GetObject("btnFlatEdit.Image")));
             this.btnFlatEdit.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFlatEdit.Name = "btnFlatEdit";
-            this.btnFlatEdit.Size = new System.Drawing.Size(107, 22);
+            this.btnFlatEdit.Size = new System.Drawing.Size(107, 20);
             this.btnFlatEdit.Text = "Редактировать";
             this.btnFlatEdit.Click += new System.EventHandler(this.btnEditFlat_Click);
             // 
@@ -828,56 +826,58 @@
             this.btnFlatDel.Image = ((System.Drawing.Image)(resources.GetObject("btnFlatDel.Image")));
             this.btnFlatDel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFlatDel.Name = "btnFlatDel";
-            this.btnFlatDel.Size = new System.Drawing.Size(71, 22);
+            this.btnFlatDel.Size = new System.Drawing.Size(71, 20);
             this.btnFlatDel.Text = "Удалить";
             this.btnFlatDel.Click += new System.EventHandler(this.FlatDeleteClick);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 23);
             // 
             // btnFlatRefresh
             // 
             this.btnFlatRefresh.Image = ((System.Drawing.Image)(resources.GetObject("btnFlatRefresh.Image")));
             this.btnFlatRefresh.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.btnFlatRefresh.Name = "btnFlatRefresh";
-            this.btnFlatRefresh.Size = new System.Drawing.Size(129, 22);
+            this.btnFlatRefresh.Size = new System.Drawing.Size(129, 20);
             this.btnFlatRefresh.Text = "Обновить таблицу";
             this.btnFlatRefresh.Click += new System.EventHandler(this.FlatRefreshClick);
             // 
             // toolStripSeparator3
             // 
             this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 23);
             // 
             // toolStripButton3
             // 
             this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
             this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(62, 22);
+            this.toolStripButton3.Size = new System.Drawing.Size(62, 20);
             this.toolStripButton3.Text = "Поиск";
+            this.toolStripButton3.Click += new System.EventHandler(this.toolStripButton3_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 23);
             // 
             // panel2
             // 
+            this.panel2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel2.Controls.Add(this.intupSTATE);
+            this.panel2.Controls.Add(this.intupBATH_UNIT);
+            this.panel2.Controls.Add(this.intupBUILD);
+            this.panel2.Controls.Add(this.intupFLOOR);
+            this.panel2.Controls.Add(this.intupROOM_COUNT);
             this.panel2.Controls.Add(this.pbIcon);
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.intupPRICE);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Controls.Add(this.intupROOM_COUNT);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.intupFLOOR);
             this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.intupBATH_UNIT);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.intupBUILD);
-            this.panel2.Controls.Add(this.intupSTATE);
             this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.inputNAME);
             this.panel2.Controls.Add(this.intupADDRESS);
@@ -887,12 +887,57 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(745, 216);
+            this.panel2.Size = new System.Drawing.Size(745, 193);
             this.panel2.TabIndex = 0;
+            // 
+            // intupSTATE
+            // 
+            this.intupSTATE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.intupSTATE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.intupSTATE.Location = new System.Drawing.Point(594, 160);
+            this.intupSTATE.Name = "intupSTATE";
+            this.intupSTATE.Size = new System.Drawing.Size(83, 20);
+            this.intupSTATE.TabIndex = 47;
+            // 
+            // intupBATH_UNIT
+            // 
+            this.intupBATH_UNIT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.intupBATH_UNIT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.intupBATH_UNIT.Location = new System.Drawing.Point(436, 160);
+            this.intupBATH_UNIT.Name = "intupBATH_UNIT";
+            this.intupBATH_UNIT.Size = new System.Drawing.Size(83, 20);
+            this.intupBATH_UNIT.TabIndex = 46;
+            // 
+            // intupBUILD
+            // 
+            this.intupBUILD.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.intupBUILD.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.intupBUILD.Location = new System.Drawing.Point(97, 159);
+            this.intupBUILD.Name = "intupBUILD";
+            this.intupBUILD.Size = new System.Drawing.Size(83, 20);
+            this.intupBUILD.TabIndex = 45;
+            // 
+            // intupFLOOR
+            // 
+            this.intupFLOOR.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.intupFLOOR.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.intupFLOOR.Location = new System.Drawing.Point(227, 159);
+            this.intupFLOOR.Name = "intupFLOOR";
+            this.intupFLOOR.Size = new System.Drawing.Size(40, 20);
+            this.intupFLOOR.TabIndex = 44;
+            // 
+            // intupROOM_COUNT
+            // 
+            this.intupROOM_COUNT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.intupROOM_COUNT.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.intupROOM_COUNT.Location = new System.Drawing.Point(331, 159);
+            this.intupROOM_COUNT.Name = "intupROOM_COUNT";
+            this.intupROOM_COUNT.Size = new System.Drawing.Size(46, 20);
+            this.intupROOM_COUNT.TabIndex = 43;
             // 
             // pbIcon
             // 
-            this.pbIcon.Location = new System.Drawing.Point(16, 151);
+            this.pbIcon.Location = new System.Drawing.Point(16, 132);
             this.pbIcon.Name = "pbIcon";
             this.pbIcon.Size = new System.Drawing.Size(24, 24);
             this.pbIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -902,7 +947,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(358, 191);
+            this.label10.Location = new System.Drawing.Point(525, 139);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 41;
@@ -910,7 +955,12 @@
             // 
             // intupPRICE
             // 
-            this.intupPRICE.Location = new System.Drawing.Point(397, 188);
+            this.intupPRICE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.intupPRICE.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.intupPRICE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.intupPRICE.ForeColor = System.Drawing.Color.Red;
+            this.intupPRICE.Location = new System.Drawing.Point(564, 136);
             this.intupPRICE.Name = "intupPRICE";
             this.intupPRICE.Size = new System.Drawing.Size(173, 20);
             this.intupPRICE.TabIndex = 40;
@@ -918,118 +968,29 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(353, 162);
+            this.label1.Location = new System.Drawing.Point(280, 162);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(106, 13);
+            this.label1.Size = new System.Drawing.Size(45, 13);
             this.label1.TabIndex = 30;
-            this.label1.Text = "Количество комнат";
-            // 
-            // intupROOM_COUNT
-            // 
-            this.intupROOM_COUNT.AutoCompleteCustomSource.AddRange(new string[] {
-            "-- неизвестно --",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            ">9"});
-            this.intupROOM_COUNT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.intupROOM_COUNT.FormattingEnabled = true;
-            this.intupROOM_COUNT.Items.AddRange(new object[] {
-            "-- неизвестно --",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
-            this.intupROOM_COUNT.Location = new System.Drawing.Point(465, 159);
-            this.intupROOM_COUNT.Name = "intupROOM_COUNT";
-            this.intupROOM_COUNT.Size = new System.Drawing.Size(105, 21);
-            this.intupROOM_COUNT.TabIndex = 31;
+            this.label1.Text = "Комнат";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(214, 162);
+            this.label3.Location = new System.Drawing.Point(188, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(33, 13);
             this.label3.TabIndex = 32;
             this.label3.Text = "Этаж";
             // 
-            // intupFLOOR
-            // 
-            this.intupFLOOR.AutoCompleteCustomSource.AddRange(new string[] {
-            "-- неизвестно --",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            ">9"});
-            this.intupFLOOR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.intupFLOOR.FormattingEnabled = true;
-            this.intupFLOOR.Items.AddRange(new object[] {
-            "-- неизвестно --",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9"});
-            this.intupFLOOR.Location = new System.Drawing.Point(253, 159);
-            this.intupFLOOR.Name = "intupFLOOR";
-            this.intupFLOOR.Size = new System.Drawing.Size(88, 21);
-            this.intupFLOOR.TabIndex = 33;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(42, 190);
+            this.label4.Location = new System.Drawing.Point(381, 162);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(49, 13);
             this.label4.TabIndex = 34;
             this.label4.Text = "Санузел";
-            // 
-            // intupBATH_UNIT
-            // 
-            this.intupBATH_UNIT.AutoCompleteCustomSource.AddRange(new string[] {
-            "-- неизвестно --",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            ">9"});
-            this.intupBATH_UNIT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.intupBATH_UNIT.FormattingEnabled = true;
-            this.intupBATH_UNIT.Items.AddRange(new object[] {
-            "-- неизвестно --",
-            "совместно",
-            "раздельно"});
-            this.intupBATH_UNIT.Location = new System.Drawing.Point(97, 187);
-            this.intupBATH_UNIT.Name = "intupBATH_UNIT";
-            this.intupBATH_UNIT.Size = new System.Drawing.Size(88, 21);
-            this.intupBATH_UNIT.TabIndex = 35;
             // 
             // label5
             // 
@@ -1040,61 +1001,10 @@
             this.label5.TabIndex = 36;
             this.label5.Text = "Дом";
             // 
-            // intupBUILD
-            // 
-            this.intupBUILD.AutoCompleteCustomSource.AddRange(new string[] {
-            "-- неизвестно --",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            ">9"});
-            this.intupBUILD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.intupBUILD.FormattingEnabled = true;
-            this.intupBUILD.Items.AddRange(new object[] {
-            "-- неизвестно --",
-            "кирпичный",
-            "блочный"});
-            this.intupBUILD.Location = new System.Drawing.Point(97, 159);
-            this.intupBUILD.Name = "intupBUILD";
-            this.intupBUILD.Size = new System.Drawing.Size(88, 21);
-            this.intupBUILD.TabIndex = 37;
-            // 
-            // intupSTATE
-            // 
-            this.intupSTATE.AutoCompleteCustomSource.AddRange(new string[] {
-            "-- неизвестно --",
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            ">9"});
-            this.intupSTATE.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.intupSTATE.FormattingEnabled = true;
-            this.intupSTATE.Items.AddRange(new object[] {
-            "-- неизвестно --",
-            "новая",
-            "хорошее",
-            "плохое"});
-            this.intupSTATE.Location = new System.Drawing.Point(253, 190);
-            this.intupSTATE.Name = "intupSTATE";
-            this.intupSTATE.Size = new System.Drawing.Size(88, 21);
-            this.intupSTATE.TabIndex = 39;
-            // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(191, 190);
+            this.label7.Location = new System.Drawing.Point(527, 162);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(61, 13);
             this.label7.TabIndex = 38;
@@ -1102,17 +1012,21 @@
             // 
             // inputNAME
             // 
+            this.inputNAME.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inputNAME.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.inputNAME.Location = new System.Drawing.Point(97, 110);
             this.inputNAME.Name = "inputNAME";
-            this.inputNAME.Size = new System.Drawing.Size(419, 20);
+            this.inputNAME.Size = new System.Drawing.Size(640, 20);
             this.inputNAME.TabIndex = 28;
             // 
             // intupADDRESS
             // 
-            this.intupADDRESS.Location = new System.Drawing.Point(97, 134);
+            this.intupADDRESS.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.intupADDRESS.Location = new System.Drawing.Point(97, 135);
             this.intupADDRESS.Multiline = true;
             this.intupADDRESS.Name = "intupADDRESS";
-            this.intupADDRESS.Size = new System.Drawing.Size(419, 20);
+            this.intupADDRESS.Size = new System.Drawing.Size(422, 20);
             this.intupADDRESS.TabIndex = 26;
             // 
             // label2
@@ -1139,9 +1053,10 @@
             this.groupBox5.Controls.Add(this.inputLINK);
             this.groupBox5.Controls.Add(this.groupBox8);
             this.groupBox5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.groupBox5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox5.Location = new System.Drawing.Point(0, 0);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(745, 107);
+            this.groupBox5.Size = new System.Drawing.Size(743, 107);
             this.groupBox5.TabIndex = 25;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Подробно";
@@ -1150,9 +1065,10 @@
             // 
             this.groupBox6.Controls.Add(this.inputCONTENT);
             this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.groupBox6.Location = new System.Drawing.Point(3, 29);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(577, 75);
+            this.groupBox6.Size = new System.Drawing.Size(575, 75);
             this.groupBox6.TabIndex = 6;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Содержание:";
@@ -1165,7 +1081,7 @@
             this.inputCONTENT.Multiline = true;
             this.inputCONTENT.Name = "inputCONTENT";
             this.inputCONTENT.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.inputCONTENT.Size = new System.Drawing.Size(571, 56);
+            this.inputCONTENT.Size = new System.Drawing.Size(569, 56);
             this.inputCONTENT.TabIndex = 0;
             // 
             // inputLINK
@@ -1182,7 +1098,7 @@
             // 
             this.groupBox8.Controls.Add(this.inputPHONE);
             this.groupBox8.Dock = System.Windows.Forms.DockStyle.Right;
-            this.groupBox8.Location = new System.Drawing.Point(580, 16);
+            this.groupBox8.Location = new System.Drawing.Point(578, 16);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Size = new System.Drawing.Size(162, 88);
             this.groupBox8.TabIndex = 4;
@@ -1442,8 +1358,8 @@
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdFlats)).EndInit();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
+            this.pnlSearch.ResumeLayout(false);
+            this.pnlSearch.PerformLayout();
             this.tsSearch.ResumeLayout(false);
             this.tsSearch.PerformLayout();
             this.toolStrip4.ResumeLayout(false);
@@ -1547,14 +1463,9 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox intupROOM_COUNT;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox intupFLOOR;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox intupBATH_UNIT;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox intupBUILD;
-        private System.Windows.Forms.ComboBox intupSTATE;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox intupPRICE;
@@ -1575,16 +1486,21 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
         private System.Windows.Forms.ToolStripButton btnSettings;
         private System.Windows.Forms.ColumnHeader columnHeader9;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox tbSearchText;
+        private System.Windows.Forms.Panel pnlSearch;
+        private System.Windows.Forms.TextBox SearchText;
         private System.Windows.Forms.ComboBox cbFields;
         private System.Windows.Forms.ToolStripMenuItem menuStop;
         private System.Windows.Forms.ToolStripMenuItem добавитьToolStripMenuItem;
         private System.Windows.Forms.PictureBox pbIcon;
         private System.Windows.Forms.Button btnClearAllFilters;
-        private System.Windows.Forms.Button btnApplyFilters;
         private System.Windows.Forms.Button btnAddFilter;
         private System.Windows.Forms.ComboBox cbCondition;
+        private System.Windows.Forms.TextBox intupROOM_COUNT;
+        private System.Windows.Forms.TextBox intupBATH_UNIT;
+        private System.Windows.Forms.TextBox intupBUILD;
+        private System.Windows.Forms.TextBox intupFLOOR;
+        private System.Windows.Forms.TextBox intupSTATE;
+        public System.Windows.Forms.DateTimePicker SearchDate;
     }
 }
 

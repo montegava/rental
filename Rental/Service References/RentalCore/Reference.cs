@@ -15,11 +15,11 @@ namespace Rental.RentalCore {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RentalCore.IRentalCore")]
     public interface IRentalCore {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/Upload", ReplyAction="http://tempuri.org/IRentalCore/UploadResponse")]
-        void Upload(System.IO.Stream data);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FileUpload", ReplyAction="http://tempuri.org/IRentalCore/FileUploadResponse")]
+        void FileUpload(string fileName, byte[] data);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/DownloadFile", ReplyAction="http://tempuri.org/IRentalCore/DownloadFileResponse")]
-        System.IO.Stream DownloadFile(string remotePath);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FileDownload", ReplyAction="http://tempuri.org/IRentalCore/FileDownloadResponse")]
+        byte[] FileDownload(string remotePath);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatList", ReplyAction="http://tempuri.org/IRentalCore/FlatListResponse")]
         void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize);
@@ -88,12 +88,12 @@ namespace Rental.RentalCore {
                 base(binding, remoteAddress) {
         }
         
-        public void Upload(System.IO.Stream data) {
-            base.Channel.Upload(data);
+        public void FileUpload(string fileName, byte[] data) {
+            base.Channel.FileUpload(fileName, data);
         }
         
-        public System.IO.Stream DownloadFile(string remotePath) {
-            return base.Channel.DownloadFile(remotePath);
+        public byte[] FileDownload(string remotePath) {
+            return base.Channel.FileDownload(remotePath);
         }
         
         public void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize) {
