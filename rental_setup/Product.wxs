@@ -1,0 +1,568 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+  <?define ProductName="rental_setup" ?>
+  <?define ProductVersion="2.0.1.0" ?>
+  <?define ProductCode="b7bc7c6f-9a4e-4973-be84-eca8e3427c97"?>
+  <?define UpgradeCode="06a81104-1e30-463d-87e1-e8a79b4c682a"?>
+  <?define Manufacturer="Rental"?>
+  
+	<Product Id="$(var.ProductCode)" Name="$(var.ProductName)" Version="$(var.ProductVersion)"  Language="1033"  Manufacturer="$(var.Manufacturer)" UpgradeCode="$(var.UpgradeCode)">
+
+    <Package InstallerVersion="200" Compressed="yes" />
+
+    <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLLOCATION" Name="$(var.ProductName)">
+          <Component Id="ProductComponent" Guid="b11556a2-e066-4393-af5c-9c9210187eb2">
+            <File Id='Calc' DiskId='1' Source='C:\WINDOWS\system32\calc.exe'/>
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="$(var.ProductName)">
+          <Component Id="ApplicationShortcutCalc" Guid="4CEBD68F-E933-47f9-B02C-A4FC69FDB551">
+            <Shortcut Id="ShortcutCalc"
+                 Name="Calc"
+                 Description="$(var.ProductName)"
+                 Target="[INSTALLLOCATION]Calc.exe"
+                 WorkingDirectory="INSTALLLOCATION"/>
+            <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+            <RegistryValue Root="HKCU" Key="Software\$(var.Manufacturer)\$(var.ProductName)" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="ProductFeature" Title="SetupProject1" Level="1">
+      <ComponentRef Id="ProductComponent" />
+      <ComponentRef Id="ApplicationShortcutCalc" />
+    </Feature>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" ></Property>
+    <WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="License.rtf"/>
+    <UIRef Id="WixUI_InstallDir"/>
+
+  </Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="rental_setup" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+  <!--d:\Dropbox\rental\Rental\bin\Debug\-->
+
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Directory Id="dir39B22699688E51DCD8DCBB99A47E835B" Name="Debug" />
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Component Id="cmp00D3A0E0ABD073EBA6891985D38DF1FC"  >
+        <File Id="fil40C19343A93321685B1BA6C89A3D2FFB" KeyPath="yes" Source="SourceDir\tessdata\eng.traineddata" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Component Id="cmp029736E349BBF3592C731BEBA318FE32">
+        <File Id="fil00955D3B0AEF112A19C89F9F35163861" KeyPath="yes" Source="SourceDir\tessdata\eng.cube.lm" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp03CF3C47F2F7CA4574D52F26BFBEF49D">
+        <File Id="fil61335C782FDE8836C5E937E1398934DF" KeyPath="yes" Source="SourceDir\LinqKit.dll" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp048DF748937DAB39B9113AF5A50C25B9">
+        <File Id="fil9D7709926163843E52A1685D2A071686" KeyPath="yes" Source="SourceDir\tessdata\configs\logfile" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir88CBFAAB4AA4A8B835890C3C65A02F78">
+      <Component Id="cmp05029A469FE077E7F70F1D80C5B20580">
+        <File Id="fil084D977E2273A1DD565FC489D4449130" KeyPath="yes" Source="SourceDir\tessdata\tessconfigs\msdemo" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp05D5D50CB914EEB069D98ABB175EE638">
+        <File Id="fil2967A7406B9EC1D15A4DDAF9E991945D" KeyPath="yes" Source="SourceDir\Rental.application" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp08AF532466E338F0332B66DCE0750345">
+        <File Id="filF8EA8B224DE41042FC816422267E2CBC" KeyPath="yes" Source="SourceDir\Debug.log" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp0DFB0C29611699C939E2B3D1C9D541F7">
+        <File Id="fil7887CF6F3F8538E8783D81B37A15873A" KeyPath="yes" Source="SourceDir\tessdata\configs\rebox" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp1045723A35E898B7613863558A362ED5">
+        <File Id="fil146B6298C244E9B645415DE8D69F3220" KeyPath="yes" Source="SourceDir\EntityFramework.dll" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp23AF919ECF73E38276328A4B71E6644F">
+        <File Id="filC2BFA1A4ECF8FC2722786A6E3C9DBA82" KeyPath="yes" Source="SourceDir\Ninject.xml" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp253E9D06C6D297C7E09DC69309A9D48E">
+        <File Id="fil5CF288A01E7A43E46B142274DFEABD07" KeyPath="yes" Source="SourceDir\tessdata\configs\box.train.stderr" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Component Id="cmp26BD8BA5446D30F56388EB93259F146A">
+        <File Id="filF9917BD13D9B1747E1FD6EDE903DB338" KeyPath="yes" Source="SourceDir\tessdata\eng.tesseract_cube.nn" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp2A9C185DCBAC94B37503DF9428BBEE8E">
+        <File Id="filE5299381CE0BB080C257B4C173B594BD" KeyPath="yes" Source="SourceDir\Rental.pdb" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Component Id="cmp2D275DD9DDA8ABEE4773C77AAFC983F1">
+        <File Id="fil3E06DECEE70E4A4C36159C02F963228F" KeyPath="yes" Source="SourceDir\tessdata\eng.cube.size" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp2EC9B47078F301B5C76F43AAD12189E2">
+        <File Id="fil3AA7473A27D8C1D31A166AFB1F468D23" KeyPath="yes" Source="SourceDir\tessdata\configs\api_config" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir88CBFAAB4AA4A8B835890C3C65A02F78">
+      <Component Id="cmp30BFCF2172E334601A6675B4ED8A4280">
+        <File Id="fil6E523717C3191FB12CE227E39E3C8FE6" KeyPath="yes" Source="SourceDir\tessdata\tessconfigs\batch.nochop" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Component Id="cmp3269F554DC35ADF90276BECAF3FA5D17">
+        <File Id="filC2F2276CCED2D255DA1F232E8803C040" KeyPath="yes" Source="SourceDir\tessdata\eng.cube.bigrams" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp368D4B528CFE38CD6D0E88904575DAC4">
+        <File Id="filAF161A9314D6AA2687836A2894FCDEF7" KeyPath="yes" Source="SourceDir\tessdata\configs\Makefile.am" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp383342B82E837A0D45547DEAC99A3A92">
+        <File Id="fil7072C29045B8B9BA4A6A43CF5EDF1A5A" KeyPath="yes" Source="SourceDir\tessdata\configs\unlv" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp38FC028C54F74FF7898EA8A97FB9FAEC">
+        <File Id="fil618A0108F218C9D3536CEC79AFC9CC5A" KeyPath="yes" Source="SourceDir\Ninject.pdb" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp3934E233A6A2F39B11058BE254522A8F">
+        <File Id="fil8623C035C50FD886A8C1B025430CA228" KeyPath="yes" Source="SourceDir\Omu.ValueInjecter.dll" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp3D236F9A0F5FE204BDE8A1F8B7901AFB">
+        <File Id="fil3A12C1A4EAECA9C9048F491F310E314E" KeyPath="yes" Source="SourceDir\tessdata\configs\ambigs.train" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp452431790238FA220F4BFFE90E9EBD98">
+        <File Id="fil86D0557EE6D52377F36A0E9534C77196" KeyPath="yes" Source="SourceDir\tessdata\configs\kannada" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Component Id="cmp461AE932D8B2FB05780A4D3DBDBD914F">
+        <File Id="filEFEA706EE688A1400F9D0FBAB818092E" KeyPath="yes" Source="SourceDir\tessdata\eng.cube.params" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir88CBFAAB4AA4A8B835890C3C65A02F78">
+      <Component Id="cmp4D0328D6AE9AFCF4D8BB7AC9CE3D88F9">
+        <File Id="fil74DE01085DF4534DB5F198D83D041768" KeyPath="yes" Source="SourceDir\tessdata\tessconfigs\matdemo" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Component Id="cmp4F288BD8A315334F7F97CF3FD613D4FF">
+        <File Id="fil98DB94034EB24AD5964E5F4101A43E14" KeyPath="yes" Source="SourceDir\tessdata\eng.cube.word-freq" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp50362DB59AFA0B1E2353930597C6559E">
+        <File Id="fil826EFC804F3C771BEB5E44A2A2A55336" KeyPath="yes" Source="SourceDir\Omu.ValueInjecter.xml" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp53D4CD3F23AF21C44B01A03920F9B64C">
+        <File Id="filE84BD4E05CFD2D225B50E1E5FC51A3C5" KeyPath="yes" Source="SourceDir\Rental.exe.manifest" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir88CBFAAB4AA4A8B835890C3C65A02F78">
+      <Component Id="cmp596D54C4B3855078E1F16AD122CE96A6">
+        <File Id="filB61ED42AECC8F195DFB82453A15A0206" KeyPath="yes" Source="SourceDir\tessdata\tessconfigs\batch" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp5A53AFDEE2AC8109C6B0BA4F06239E05">
+        <File Id="fil31535B42902162ECF5D0689218FD93C3" KeyPath="yes" Source="SourceDir\Ninject.dll" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp5E2DD10908418413792ADC08E47F7F2B">
+        <File Id="fil4C712BCD9D39B6B8CF14EB9A545007BC" KeyPath="yes" Source="SourceDir\tessdata\configs\makebox" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp690DA391615FD4C6F8ED156484EFC7A6">
+        <File Id="fil1BCC4DF431DEABAEB3421BA5FD4A265B" KeyPath="yes" Source="SourceDir\tessdata\configs\bigram" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Component Id="cmp6CDFADD34674E7B960E2675D6AC7A36A">
+        <File Id="filB6669C9A62C89BA9C87B982E464E7AE1" KeyPath="yes" Source="SourceDir\tessdata\eng.cube.nn" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp82F62F9BBC19A58D15F409A3D0F79E09">
+        <File Id="fil5A43B6D9759FB1A852E3947846320886" KeyPath="yes" Source="SourceDir\tessdata\configs\digits" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp83BA98FFF62D1F62C50BFDCABB75E8B3">
+        <File Id="filE8FC501018AED5EAA0D49E457064E9A3" KeyPath="yes" Source="SourceDir\tessdata\configs\quiet" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp876271A527EB5444CAA9B25E28102C20">
+        <File Id="fil0DCAF938FE3D25D52A1A005FCC0887AB" KeyPath="yes" Source="SourceDir\ImageProcessing.pdb" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp885F112E4D0905F25972933352E4437E">
+        <File Id="fil2C1DA12139AF04ACEAB4582EF6E72729" KeyPath="yes" Source="SourceDir\Rental.vshost.exe" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmp895A225CAE6FAE61A1AA9638060DCEE1">
+        <File Id="fil1F2F0D37F569F4E229EA0CE6989A85F7" KeyPath="yes" Source="SourceDir\tessdata\configs\box.train" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmp904DAC1A702D011545A279404B7699E2">
+        <File Id="fil84A4013148CC9CA7678860C1DD6190C7" KeyPath="yes" Source="SourceDir\log4net.dll" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpA80DC4B8FE04817D3D1E7AA67C6BC87E">
+        <Class Id="{AFEF65AD-4577-447A-A148-83ACADD3D4B9}" Context="InprocServer32" Description="System.Data.SqlClient.SQLDebugging" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="System.Data.SqlClient.SQLDebugging" Description="System.Data.SqlClient.SQLDebugging" />
+        </Class>
+        <File Id="fil888005D5DDD167C482417B8508664937" KeyPath="yes" Source="SourceDir\System.Data.dll" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AFEF65AD-4577-447A-A148-83ACADD3D4B9}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AFEF65AD-4577-447A-A148-83ACADD3D4B9}\InprocServer32\4.0.0.0" Name="Class" Value="System.Data.SqlClient.SQLDebugging" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AFEF65AD-4577-447A-A148-83ACADD3D4B9}\InprocServer32\4.0.0.0" Name="Assembly" Value="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AFEF65AD-4577-447A-A148-83ACADD3D4B9}\InprocServer32\4.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AFEF65AD-4577-447A-A148-83ACADD3D4B9}\InprocServer32\4.0.0.0" Name="CodeBase" Value="file:///C:/Windows/Microsoft.Net/assembly/GAC_32/System.Data/v4.0_4.0.0.0__b77a5c561934e089/System.Data.dll" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AFEF65AD-4577-447A-A148-83ACADD3D4B9}\InprocServer32" Name="Class" Value="System.Data.SqlClient.SQLDebugging" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AFEF65AD-4577-447A-A148-83ACADD3D4B9}\InprocServer32" Name="Assembly" Value="System.Data, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AFEF65AD-4577-447A-A148-83ACADD3D4B9}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{AFEF65AD-4577-447A-A148-83ACADD3D4B9}\InprocServer32" Name="CodeBase" Value="file:///C:/Windows/Microsoft.Net/assembly/GAC_32/System.Data/v4.0_4.0.0.0__b77a5c561934e089/System.Data.dll" Type="string" Action="write" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmpAB3C6CDC20E6A9547A21213989062304">
+        <File Id="fil8225A18D8C297D01FE3C7D3381367A2C" KeyPath="yes" Source="SourceDir\tessdata\configs\linebox" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmpAC94BBF7C3E7D044853AF4EE041187D3">
+        <File Id="fil2A543398F28DA5FDE2833AAFA0D0CAD3" KeyPath="yes" Source="SourceDir\tessdata\configs\strokewidth" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpAEA4A03A6BF5387698B2D095554021C5">
+        <File Id="fil32F1BBFC4D9B8E986CA688247CEBEA1E" KeyPath="yes" Source="SourceDir\System.Data.Entity.dll" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpB5040E524A129A39FEBC79EF9533E651">
+        <File Id="fil91A174A7CE9DAA4AD7555E41634AD16B" KeyPath="yes" Source="SourceDir\ImageProcessing.dll" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpBA9EDD06995A3231C64B2E6970DEABF3">
+        <File Id="filAAD66415BED4F7BF37D56BDC8A94A85D" KeyPath="yes" Source="SourceDir\RentalCommon.dll" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpBD0123384F878E0C9DCBE2F4CFDB048F">
+        <File Id="filDACF6C4D53E7E57A6916592EB9AA610C" KeyPath="yes" Source="SourceDir\Rental.exe" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpC0B7A47021C47B2C0930B0B9ECFD5902">
+        <File Id="fil2F76EB2E44DFB04FF3FB177BDB875DC2" KeyPath="yes" Source="SourceDir\RentalCommon.pdb" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir88CBFAAB4AA4A8B835890C3C65A02F78">
+      <Component Id="cmpC446F3CA14615536C0AFDD31F2F7503B">
+        <File Id="fil31C2AE879D39EB0A5C0058161A9C2957" KeyPath="yes" Source="SourceDir\tessdata\tessconfigs\Makefile.am" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir88CBFAAB4AA4A8B835890C3C65A02F78">
+      <Component Id="cmpC9B9D03254A0134B81BE5FDCDF037A91">
+        <File Id="fil952EFD6220E9B5E900B49B4425935EA3" KeyPath="yes" Source="SourceDir\tessdata\tessconfigs\segdemo" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Component Id="cmpCCDF98D2DD61FBBAD150715BD779C3FA">
+        <File Id="fil02ED40257AC8F65247514916E209763E" KeyPath="yes" Source="SourceDir\tessdata\eng.cube.fold" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpD4710955C62EA09C7DF1697A03755CE4">
+        <File Id="fil008CF9CF36D786CDEA7700FDE9194F69" KeyPath="yes" Source="SourceDir\DAL.pdb" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmpD9EA6A93C0A2DF5F75EC3DD22EA2939A">
+        <File Id="fil6CB68B94C15387A96BCC92B5080EB808" KeyPath="yes" Source="SourceDir\tessdata\configs\inter" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpDAB0E59E66C7FD2AE62015727C3CA4F3">
+        <Class Id="{A2454F3F-178E-363F-931C-A2659600E4C4}" Context="InprocServer32" Description="tesseract.SimpleRecoginitionItem" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="tesseract.SimpleRecoginitionItem" Description="tesseract.SimpleRecoginitionItem" />
+        </Class>
+        <Class Id="{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}" Context="InprocServer32" Description="tesseract.Word" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="tesseract.Word" Description="tesseract.Word" />
+        </Class>
+        <Class Id="{C3E35B79-9A02-3577-AC38-146C3025C6F8}" Context="InprocServer32" Description="tesseract.BlockList" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="tesseract.BlockList" Description="tesseract.BlockList" />
+        </Class>
+        <Class Id="{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}" Context="InprocServer32" Description="tesseract.RectBound" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="tesseract.RectBound" Description="tesseract.RectBound" />
+        </Class>
+        <Class Id="{D97F2F42-3E2E-387C-9D22-79E771A68B21}" Context="InprocServer32" Description="tesseract.TesseractProcessor" ThreadingModel="both" ForeignServer="mscoree.dll">
+          <ProgId Id="tesseract.TesseractProcessor" Description="tesseract.TesseractProcessor" />
+        </Class>
+        <File Id="filB91CB58F73A51753E244B43AB582A331" KeyPath="yes" Source="SourceDir\tesseractengine3.dll" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A2454F3F-178E-363F-931C-A2659600E4C4}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A2454F3F-178E-363F-931C-A2659600E4C4}\InprocServer32\0.0.0.0" Name="Class" Value="tesseract.SimpleRecoginitionItem" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A2454F3F-178E-363F-931C-A2659600E4C4}\InprocServer32\0.0.0.0" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A2454F3F-178E-363F-931C-A2659600E4C4}\InprocServer32\0.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A2454F3F-178E-363F-931C-A2659600E4C4}\InprocServer32\0.0.0.0" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A2454F3F-178E-363F-931C-A2659600E4C4}\InprocServer32" Name="Class" Value="tesseract.SimpleRecoginitionItem" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A2454F3F-178E-363F-931C-A2659600E4C4}\InprocServer32" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A2454F3F-178E-363F-931C-A2659600E4C4}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A2454F3F-178E-363F-931C-A2659600E4C4}\InprocServer32" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}\InprocServer32\0.0.0.0" Name="Class" Value="tesseract.Word" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}\InprocServer32\0.0.0.0" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}\InprocServer32\0.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}\InprocServer32\0.0.0.0" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}\InprocServer32" Name="Class" Value="tesseract.Word" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}\InprocServer32" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{A3E9B4C5-DFF3-3ABF-8172-1CE275CFC509}\InprocServer32" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C3E35B79-9A02-3577-AC38-146C3025C6F8}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C3E35B79-9A02-3577-AC38-146C3025C6F8}\InprocServer32\0.0.0.0" Name="Class" Value="tesseract.BlockList" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C3E35B79-9A02-3577-AC38-146C3025C6F8}\InprocServer32\0.0.0.0" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C3E35B79-9A02-3577-AC38-146C3025C6F8}\InprocServer32\0.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C3E35B79-9A02-3577-AC38-146C3025C6F8}\InprocServer32\0.0.0.0" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C3E35B79-9A02-3577-AC38-146C3025C6F8}\InprocServer32" Name="Class" Value="tesseract.BlockList" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C3E35B79-9A02-3577-AC38-146C3025C6F8}\InprocServer32" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C3E35B79-9A02-3577-AC38-146C3025C6F8}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{C3E35B79-9A02-3577-AC38-146C3025C6F8}\InprocServer32" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}\InprocServer32\0.0.0.0" Name="Class" Value="tesseract.RectBound" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}\InprocServer32\0.0.0.0" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}\InprocServer32\0.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}\InprocServer32\0.0.0.0" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}\InprocServer32" Name="Class" Value="tesseract.RectBound" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}\InprocServer32" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D7F5E1BE-F1E3-39F6-9848-BBD37846BDA9}\InprocServer32" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D97F2F42-3E2E-387C-9D22-79E771A68B21}\Implemented Categories\{62C8FE65-4EBB-45e7-B440-6E39B2CDBF29}" Value="" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D97F2F42-3E2E-387C-9D22-79E771A68B21}\InprocServer32\0.0.0.0" Name="Class" Value="tesseract.TesseractProcessor" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D97F2F42-3E2E-387C-9D22-79E771A68B21}\InprocServer32\0.0.0.0" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D97F2F42-3E2E-387C-9D22-79E771A68B21}\InprocServer32\0.0.0.0" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D97F2F42-3E2E-387C-9D22-79E771A68B21}\InprocServer32\0.0.0.0" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D97F2F42-3E2E-387C-9D22-79E771A68B21}\InprocServer32" Name="Class" Value="tesseract.TesseractProcessor" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D97F2F42-3E2E-387C-9D22-79E771A68B21}\InprocServer32" Name="Assembly" Value="tesseractengine3, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D97F2F42-3E2E-387C-9D22-79E771A68B21}\InprocServer32" Name="RuntimeVersion" Value="v4.0.30319" Type="string" Action="write" />
+        <RegistryValue Root="HKCR" Key="CLSID\{D97F2F42-3E2E-387C-9D22-79E771A68B21}\InprocServer32" Name="CodeBase" Value="file:///[#filB91CB58F73A51753E244B43AB582A331]" Type="string" Action="write" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dirDCA2D6903A159305D8997B4190D68C97">
+      <Component Id="cmpDC1328FCFAEDB93E4CCB4180FEDCF926">
+        <File Id="fil941627983A35F8F0B764977F2C5EF20C" KeyPath="yes" Source="SourceDir\tessdata\configs\hocr" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpE054BBB781455E8057C1E05FB1D20F82">
+        <File Id="fil0E961C20B942E591EE41F1ED631820A9" KeyPath="yes" Source="SourceDir\EntityFramework.xml" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir88CBFAAB4AA4A8B835890C3C65A02F78">
+      <Component Id="cmpE539BA12AFB9DEE9A7C9BDB8303BDBEF">
+        <File Id="filE0CB3BE05F14C29FD97D3A3E86F65D5E" KeyPath="yes" Source="SourceDir\tessdata\tessconfigs\nobatch" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpEF7FCADBFCABDE0EDADACB6C8D9EAEFF">
+        <File Id="fil590CCD9F97635BBD3E5C631D88D9B3BC" KeyPath="yes" Source="SourceDir\DAL.dll" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Component Id="cmpFAB33EA05F10282210F9A0CEFE3BB58F">
+        <File Id="fil19A774CB1BFE01AF7B5B7C885DF2FF07" KeyPath="yes" Source="SourceDir\Rental.exe.config" />
+      </Component>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir39B22699688E51DCD8DCBB99A47E835B">
+      <Directory Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8" Name="tessdata" />
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Directory Id="dir88CBFAAB4AA4A8B835890C3C65A02F78" Name="tessconfigs" />
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <DirectoryRef Id="dir3B4EFD0BAAF04C7C2A179ADCCE0C9CC8">
+      <Directory Id="dirDCA2D6903A159305D8997B4190D68C97" Name="configs" />
+    </DirectoryRef>
+  </Fragment>
+  
+  
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
+			<!-- <Component Id="ProductComponent"> -->
+				<!-- TODO: Insert files, registry keys, and other resources here. -->
+			<!-- </Component> -->
+		</ComponentGroup>
+	</Fragment>
+</Wix>
