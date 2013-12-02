@@ -143,13 +143,63 @@ namespace Rental
                 case Fields.RENT_FROM:
                 case Fields.RENT_TO:
                     SearchDate.Visible = true;
+                    cbSearch.Visible = SearchText.Visible = false;
                     break;
+
+                case Fields.BATH_UNIT:
+                      cbSearch.Visible = true;
+                    Common.FillComboBox(cbSearch, NameListCache.BathunitTypeAll, "name", "id");
+                    SearchDate.Visible = SearchText.Visible = false;
+                    break;
+                case Fields.STATE:
+                      cbSearch.Visible = true;
+                    Common.FillComboBox(cbSearch, NameListCache.StateTypeAll, "name", "id");
+                    SearchDate.Visible = SearchText.Visible = false;
+                    break;
+                case Fields.TYPE:
+                      cbSearch.Visible = true;
+                    Common.FillComboBox(cbSearch, NameListCache.RentTypeAll, "name", "id");
+                    SearchDate.Visible = SearchText.Visible = false;
+                    break;
+
+                case Fields.TERM:
+                      cbSearch.Visible = true;
+                    Common.FillComboBox(cbSearch, NameListCache.TermTypeAll, "name", "id");
+                    SearchDate.Visible = SearchText.Visible = false;
+                    break;
+                case Fields.BUILD:
+                      cbSearch.Visible = true;
+                    Common.FillComboBox(cbSearch, NameListCache.BuldTypeAll, "name", "id");
+                    SearchDate.Visible = SearchText.Visible = false;
+                    break;
+
+                case Fields.CATEGORY:
+                      cbSearch.Visible = true;
+                    Common.FillComboBox(cbSearch, NameListCache.CategoryTypeAll, "name", "id");
+                    SearchDate.Visible = SearchText.Visible = false;
+                    break;
+                case Fields.LESSOR:
+                      cbSearch.Visible = true;
+                    Common.FillComboBox(cbSearch, NameListCache.LessorTypeAll, "name", "id");
+                    SearchDate.Visible = SearchText.Visible = false;
+                    break;
+                case Fields.PAYMENT:
+                      cbSearch.Visible = true;
+                    Common.FillComboBox(cbSearch, NameListCache.PaymentTypeAll, "name", "id");
+                    SearchDate.Visible = SearchText.Visible = false;
+                    break;
+                case Fields.REGION:
+                    cbSearch.Visible = true;
+                    Common.FillComboBox(cbSearch, NameListCache.RegionTypeAll, "name", "id");
+                    SearchDate.Visible = SearchText.Visible = false;
+                    break;
+
                 default:
-                    SearchDate.Visible = false;
+                    cbSearch.Visible = SearchDate.Visible = false;
+                    SearchText.Visible = true;
                     break;
             }
-            SearchText.Visible = !SearchDate.Visible;
-
+      
 
             cbCondition.DataSource = Convetor.GetConditions((Fields)cbFields.SelectedValue)
             .Select(p => new KeyValuePair<FilterConditions, string>(p, Convetor.ConditionToString(p)))
@@ -1139,9 +1189,13 @@ namespace Rental
                 {
                     Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, SearchText.Text));
                 }
-                else
+                else if (SearchDate.Visible)
                 {
                     Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, SearchDate.Value));
+                }
+                else if (cbSearch.Visible)
+                {
+                    Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, cbSearch.SelectedValue));
                 }
 
              

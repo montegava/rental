@@ -449,7 +449,6 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_bathunit_type" FromRole="bath_unit" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="black_list">
           <Key>
@@ -466,7 +465,6 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_build_type" FromRole="build_type" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="category_type">
           <Key>
@@ -474,7 +472,6 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_category_type" FromRole="category_type" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="flat_info">
           <Key>
@@ -516,7 +513,6 @@
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="FLAT_ID" />
           <Property Type="String" Name="IMAGE_PATH" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_images_flat" FromRole="image_list" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="lessor_type">
           <Key>
@@ -524,7 +520,6 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_lessor_type" FromRole="lessor_type" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="payment_type">
           <Key>
@@ -532,7 +527,6 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_payment_type" FromRole="payment_type" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="region_type">
           <Key>
@@ -540,7 +534,6 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_region_type" FromRole="region_type" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="rent_type">
           <Key>
@@ -548,7 +541,6 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_rent_type" FromRole="rent_type" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="state_type">
           <Key>
@@ -556,7 +548,6 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_state_type" FromRole="state_type" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="term_type">
           <Key>
@@ -564,7 +555,6 @@
           </Key>
           <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_term_type" FromRole="term_type" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="view_flat_info">
           <Key>

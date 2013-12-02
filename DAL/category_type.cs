@@ -14,14 +14,7 @@ namespace DAL
     
     public partial class category_type
     {
-        public category_type()
-        {
-            this.flat_info = new HashSet<flat_info>();
-        }
-    
         public int id { get; set; }
         public string name { get; set; }
-    
-        public virtual ICollection<flat_info> flat_info { get; set; }
     }
 }

@@ -45,7 +45,7 @@ namespace Rental
             frmFlat_Load();
             LoadFlatInfo();
             LoadFlatImages();
-           
+
         }
 
         private void LoadFlatInfo()
@@ -54,8 +54,7 @@ namespace Rental
             if (flat != null)
             {
                 this.intupADDRESS.Text = flat.ADDRESS;
-                this.intupBATH_UNIT.SelectedValue = flat.bathunit_type_id;
-                this.intupBUILD.SelectedValue = flat.buld_type_id;
+
                 this.intupCOMMENT.Text = flat.COMMENT;
                 this.inputCONTENT.Text = flat.CONTENT;
                 this.chCooler.Checked = flat.COOLER;
@@ -63,25 +62,28 @@ namespace Rental
                 this.intupFLOOR.Text = flat.FLOOR.ToString();
                 this.chFridge.Checked = flat.FRIDGE;
                 this.intupFURNITURE.Text = flat.FURNITURE;
-                this.inputLESSOR.SelectedValue = flat.lessor_type_id;
+
+
+
                 this.inputLINK.Text = flat.LINK;
                 this.inputNAME.Text = flat.NAME;
                 this.inputPHONE.Items.AddRange(flat.PHONE.Split(new Char[] { ';' }));
                 this.intupPRICE.Text = flat.PRICE;
-                this.inputREGION.SelectedValue = flat.region_type_id;
                 this.inputRENT_FROM.Text = flat.RENT_FROM.ToString();
                 this.inputRENT_TO.Text = flat.RENT_TO.ToString();
                 this.intupROOM_COUNT.Text = flat.ROOM_COUNT.ToString();
-                this.intupSTATE.SelectedValue = flat.state_type_id;
-                this.inputTERM.SelectedValue = flat.term_type_id;
                 this.chTV.Checked = flat.TV;
                 this.inputEmail.Text = flat.EMAIL;
 
-                this.inputCategory.SelectedValue = flat.category_type_id;
-
-                this.inputType.SelectedValue = flat.rent_type_id;
-
-                this.inputPayment.SelectedValue = flat.payment_type_id;
+                this.inputCategory.SelectedValue = flat.category_type_id ?? -1;
+                this.inputRentType.SelectedValue = flat.rent_type_id ?? -1;
+                this.inputPayment.SelectedValue = flat.payment_type_id ?? -1;
+                this.inputLESSOR.SelectedValue = flat.lessor_type_id ?? -1;
+                this.intupBATH_UNIT.SelectedValue = flat.bathunit_type_id ?? -1;
+                this.intupBUILD.SelectedValue = flat.buld_type_id ?? -1;
+                this.intupSTATE.SelectedValue = flat.state_type_id ?? -1;
+                this.inputTERM.SelectedValue = flat.term_type_id ?? -1;
+                this.inputREGION.SelectedValue = flat.region_type_id ?? -1;
 
 
             }
@@ -89,6 +91,8 @@ namespace Rental
 
         private void frmFlat_Load()
         {
+            FillComboBoxes();
+
             intupBUILD.SelectedIndex = 0;
             intupFLOOR.SelectedIndex = 0;
 
@@ -98,14 +102,14 @@ namespace Rental
 
             intupSTATE.SelectedIndex = 0;
             intupFURNITURE.SelectedIndex = 0;
-            intupMECHANIC.SelectedIndex = 0;
+            
 
             inputTERM.SelectedIndex = 0;
             inputLESSOR.SelectedIndex = 0;
 
             inputREGION.SelectedIndex = 0;
 
-            inputType.SelectedIndex = 0;
+            inputRentType.SelectedIndex = 0;
 
             inputCategory.SelectedIndex = 0;
 
@@ -170,11 +174,9 @@ namespace Rental
             int floor;
             result.FLOOR = int.TryParse(intupFLOOR.Text, out floor) ? (int?)floor : null;
 
-            result.bathunit_type_id = (int?)intupBATH_UNIT.SelectedValue;
-            result.buld_type_id = (int?)intupBUILD.SelectedValue;
+      
 
             result.FURNITURE = intupFURNITURE.Text;
-            result.state_type_id = (int?)intupSTATE.SelectedValue;
             result.NAME = inputNAME.Text;
             result.PRICE = intupPRICE.Text;
 
@@ -182,25 +184,34 @@ namespace Rental
             result.CONTENT = inputCONTENT.Text;
             result.COMMENT = intupCOMMENT.Text;
             result.LINK = inputLINK.Text;
-            result.term_type_id = (int?)inputTERM.SelectedValue;
             result.RENT_FROM = inputRENT_FROM.Value.Date;
             result.RENT_TO = inputRENT_TO.Value.Date;
-            result.lessor_type_id = (int?)inputLESSOR.SelectedValue;
-
+       
             result.FRIDGE = chFridge.Checked;
             result.TV = chTV.Checked;
             result.WASHER = chWasher.Checked;
             result.COOLER = chCooler.Checked;
 
-            result.region_type_id = (int?)inputREGION.SelectedValue;
-
+          
             result.EMAIL = inputEmail.Text;
-            result.category_type_id = (int?)inputCategory.SelectedValue;
-            result.rent_type_id = (int?)inputType.SelectedValue;
-            result.payment_type_id = (int?)inputPayment.SelectedValue;
 
+            result.term_type_id = GetSelected(inputTERM);
+            result.lessor_type_id = GetSelected(inputLESSOR);
+            result.region_type_id = GetSelected(inputREGION);
+            result.bathunit_type_id = GetSelected(intupBATH_UNIT) ;
+            result.buld_type_id = GetSelected(intupBUILD) ;
+            result.category_type_id = GetSelected(inputCategory) ;
+            result.rent_type_id = GetSelected(inputRentType) ;
+            result.payment_type_id = GetSelected(inputPayment) ;
+            result.state_type_id = GetSelected(intupSTATE) ;
+        
 
             return result;
+        }
+
+        private int? GetSelected(ComboBox cb)
+        {
+           return (int)cb.SelectedValue > 0 ? (int?)cb.SelectedValue : null;
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -227,11 +238,6 @@ namespace Rental
         {
             if (inputPHONE.SelectedItem != null)
                 inputPHONE.Items.Remove(inputPHONE.SelectedItem);
-        }
-
-        private void intupMECHANIC_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            chFridge.Enabled = chTV.Enabled = chWasher.Enabled = chCooler.Enabled = intupMECHANIC.SelectedIndex == 2;
         }
 
         private void LoadFlatImages()
@@ -292,11 +298,15 @@ namespace Rental
                 }
                 else
                 {
-                    File.WriteAllBytes(filePath, NameListCache.proxy.FileDownload(((image_list)lvImagList.SelectedItems[0].Tag).IMAGE_PATH));
-
-                    using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                    byte[] img = NameListCache.proxy.FileDownload(((image_list)lvImagList.SelectedItems[0].Tag).IMAGE_PATH);
+                    if (img != null && img.Length > 0)
                     {
-                        pbImage.Image = System.Drawing.Image.FromStream(fs);
+                        File.WriteAllBytes(filePath, img);
+
+                        using (var fs = new System.IO.FileStream(filePath, System.IO.FileMode.Open, System.IO.FileAccess.Read))
+                        {
+                            pbImage.Image = System.Drawing.Image.FromStream(fs);
+                        }
                     }
                 }
             }
@@ -326,6 +336,67 @@ namespace Rental
                 lvImagList.Items.Remove(lvImagList.SelectedItems[0]);
                 lvImagList.Refresh();
             }
+        }
+
+        private void FillComboBoxes()
+        {
+            BuldTypeAll();
+
+            BathunitTypeAll();
+
+            StateTypeAll();
+
+            TermTypeAll();
+
+            LessorTypeAll();
+
+            RegionTypeAll();
+
+            CategoryTypeAll();
+
+            RentTypeAll();
+
+            PaymentTypeAll();
+
+        }
+
+        public void BuldTypeAll()
+        {
+            Common.FillComboBox(this.intupBUILD, NameListCache.BuldTypeAll.ToList(), "name", "id", true);
+        }
+
+        public void BathunitTypeAll()
+        {
+            Common.FillComboBox(this.intupBATH_UNIT, NameListCache.BathunitTypeAll.ToList(), "name", "id", true);
+        }
+
+        public void StateTypeAll()
+        {
+            Common.FillComboBox(this.intupSTATE, NameListCache.StateTypeAll.ToList(), "name", "id", true);
+        }
+        public void TermTypeAll()
+        {
+            Common.FillComboBox(this.inputTERM, NameListCache.TermTypeAll.ToList(), "name", "id", true);
+        }
+        public void LessorTypeAll()
+        {
+            Common.FillComboBox(this.inputLESSOR, NameListCache.LessorTypeAll.ToList(), "name", "id", true);
+        }
+        public void RegionTypeAll()
+        {
+            Common.FillComboBox(this.inputREGION, NameListCache.RegionTypeAll.ToList(), "name", "id", true);
+        }
+        public void CategoryTypeAll()
+        {
+            Common.FillComboBox(this.inputCategory, NameListCache.CategoryTypeAll.ToList(), "name", "id", true);
+        }
+        public void RentTypeAll()
+        {
+            Common.FillComboBox(this.inputRentType, NameListCache.RentTypeAll.ToList(), "name", "id", true);
+        }
+        public void PaymentTypeAll()
+        {
+            Common.FillComboBox(this.inputPayment, NameListCache.PaymentTypeAll.ToList(), "name", "id", true);
         }
     }
 }

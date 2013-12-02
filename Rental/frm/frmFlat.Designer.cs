@@ -44,8 +44,6 @@
             this.intupFURNITURE = new System.Windows.Forms.ComboBox();
             this.intupSTATE = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.intupMECHANIC = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.inputNAME = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -63,10 +61,11 @@
             this.contextAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.contextDel = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteImg = new System.Windows.Forms.Button();
             this.label13 = new System.Windows.Forms.Label();
             this.inputPayment = new System.Windows.Forms.ComboBox();
             this.lblType = new System.Windows.Forms.Label();
-            this.inputType = new System.Windows.Forms.ComboBox();
+            this.inputRentType = new System.Windows.Forms.ComboBox();
             this.lblCategory = new System.Windows.Forms.Label();
             this.inputCategory = new System.Windows.Forms.ComboBox();
             this.inputEmail = new System.Windows.Forms.TextBox();
@@ -89,7 +88,6 @@
             this.inputRENT_FROM = new System.Windows.Forms.DateTimePicker();
             this.label12 = new System.Windows.Forms.Label();
             this.inputTERM = new System.Windows.Forms.ComboBox();
-            this.btnDeleteImg = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.context.SuspendLayout();
@@ -330,29 +328,6 @@
             this.label7.TabIndex = 12;
             this.label7.Text = "Состояние";
             // 
-            // intupMECHANIC
-            // 
-            this.intupMECHANIC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.intupMECHANIC.FormattingEnabled = true;
-            this.intupMECHANIC.Items.AddRange(new object[] {
-            "-- неизвестно --",
-            "отсутствует",
-            "присутствует"});
-            this.intupMECHANIC.Location = new System.Drawing.Point(93, 310);
-            this.intupMECHANIC.Name = "intupMECHANIC";
-            this.intupMECHANIC.Size = new System.Drawing.Size(88, 21);
-            this.intupMECHANIC.TabIndex = 15;
-            this.intupMECHANIC.SelectedIndexChanged += new System.EventHandler(this.intupMECHANIC_SelectedIndexChanged);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 313);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(73, 13);
-            this.label8.TabIndex = 14;
-            this.label8.Text = "Быт. техника";
-            // 
             // inputNAME
             // 
             this.inputNAME.Location = new System.Drawing.Point(93, 19);
@@ -372,7 +347,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(44, 350);
+            this.label10.Location = new System.Drawing.Point(44, 329);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(33, 13);
             this.label10.TabIndex = 19;
@@ -380,7 +355,7 @@
             // 
             // intupPRICE
             // 
-            this.intupPRICE.Location = new System.Drawing.Point(93, 347);
+            this.intupPRICE.Location = new System.Drawing.Point(93, 326);
             this.intupPRICE.Name = "intupPRICE";
             this.intupPRICE.Size = new System.Drawing.Size(171, 20);
             this.intupPRICE.TabIndex = 18;
@@ -510,7 +485,7 @@
             this.groupBox5.Controls.Add(this.label13);
             this.groupBox5.Controls.Add(this.inputPayment);
             this.groupBox5.Controls.Add(this.lblType);
-            this.groupBox5.Controls.Add(this.inputType);
+            this.groupBox5.Controls.Add(this.inputRentType);
             this.groupBox5.Controls.Add(this.lblCategory);
             this.groupBox5.Controls.Add(this.inputCategory);
             this.groupBox5.Controls.Add(this.inputEmail);
@@ -546,9 +521,7 @@
             this.groupBox5.Controls.Add(this.label9);
             this.groupBox5.Controls.Add(this.intupBATH_UNIT);
             this.groupBox5.Controls.Add(this.label5);
-            this.groupBox5.Controls.Add(this.intupMECHANIC);
             this.groupBox5.Controls.Add(this.intupBUILD);
-            this.groupBox5.Controls.Add(this.label8);
             this.groupBox5.Controls.Add(this.label6);
             this.groupBox5.Controls.Add(this.intupSTATE);
             this.groupBox5.Controls.Add(this.intupFURNITURE);
@@ -561,10 +534,21 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Информация";
             // 
+            // btnDeleteImg
+            // 
+            this.btnDeleteImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteImg.Location = new System.Drawing.Point(289, 427);
+            this.btnDeleteImg.Name = "btnDeleteImg";
+            this.btnDeleteImg.Size = new System.Drawing.Size(96, 23);
+            this.btnDeleteImg.TabIndex = 51;
+            this.btnDeleteImg.Text = "Удалить Х";
+            this.btnDeleteImg.UseVisualStyleBackColor = true;
+            this.btnDeleteImg.Click += new System.EventHandler(this.btnDeleteImg_Click);
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(286, 350);
+            this.label13.Location = new System.Drawing.Point(286, 329);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(44, 13);
             this.label13.TabIndex = 49;
@@ -589,7 +573,7 @@
             this.inputPayment.Items.AddRange(new object[] {
             "помесячно",
             "поквартально"});
-            this.inputPayment.Location = new System.Drawing.Point(336, 347);
+            this.inputPayment.Location = new System.Drawing.Point(336, 326);
             this.inputPayment.Name = "inputPayment";
             this.inputPayment.Size = new System.Drawing.Size(88, 21);
             this.inputPayment.TabIndex = 50;
@@ -603,9 +587,9 @@
             this.lblType.TabIndex = 47;
             this.lblType.Text = "Тип";
             // 
-            // inputType
+            // inputRentType
             // 
-            this.inputType.AutoCompleteCustomSource.AddRange(new string[] {
+            this.inputRentType.AutoCompleteCustomSource.AddRange(new string[] {
             "-- неизвестно --",
             "1",
             "2",
@@ -617,16 +601,16 @@
             "8",
             "9",
             ">9"});
-            this.inputType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.inputType.FormattingEnabled = true;
-            this.inputType.Items.AddRange(new object[] {
+            this.inputRentType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.inputRentType.FormattingEnabled = true;
+            this.inputRentType.Items.AddRange(new object[] {
             "-- неизвестно --",
             "Сдам",
             "Сниму"});
-            this.inputType.Location = new System.Drawing.Point(278, 123);
-            this.inputType.Name = "inputType";
-            this.inputType.Size = new System.Drawing.Size(138, 21);
-            this.inputType.TabIndex = 48;
+            this.inputRentType.Location = new System.Drawing.Point(278, 123);
+            this.inputRentType.Name = "inputRentType";
+            this.inputRentType.Size = new System.Drawing.Size(138, 21);
+            this.inputRentType.TabIndex = 48;
             // 
             // lblCategory
             // 
@@ -764,7 +748,7 @@
             // 
             this.chCooler.AutoSize = true;
             this.chCooler.Enabled = false;
-            this.chCooler.Location = new System.Drawing.Point(458, 312);
+            this.chCooler.Location = new System.Drawing.Point(458, 280);
             this.chCooler.Name = "chCooler";
             this.chCooler.Size = new System.Drawing.Size(96, 17);
             this.chCooler.TabIndex = 34;
@@ -775,7 +759,7 @@
             // 
             this.chWasher.AutoSize = true;
             this.chWasher.Enabled = false;
-            this.chWasher.Location = new System.Drawing.Point(325, 312);
+            this.chWasher.Location = new System.Drawing.Point(325, 280);
             this.chWasher.Name = "chWasher";
             this.chWasher.Size = new System.Drawing.Size(129, 17);
             this.chWasher.TabIndex = 33;
@@ -786,7 +770,7 @@
             // 
             this.chTV.AutoSize = true;
             this.chTV.Enabled = false;
-            this.chTV.Location = new System.Drawing.Point(282, 312);
+            this.chTV.Location = new System.Drawing.Point(282, 280);
             this.chTV.Name = "chTV";
             this.chTV.Size = new System.Drawing.Size(40, 17);
             this.chTV.TabIndex = 32;
@@ -797,7 +781,7 @@
             // 
             this.chFridge.AutoSize = true;
             this.chFridge.Enabled = false;
-            this.chFridge.Location = new System.Drawing.Point(191, 312);
+            this.chFridge.Location = new System.Drawing.Point(191, 280);
             this.chFridge.Name = "chFridge";
             this.chFridge.Size = new System.Drawing.Size(93, 17);
             this.chFridge.TabIndex = 31;
@@ -904,17 +888,6 @@
             this.inputTERM.Size = new System.Drawing.Size(150, 21);
             this.inputTERM.TabIndex = 23;
             // 
-            // btnDeleteImg
-            // 
-            this.btnDeleteImg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteImg.Location = new System.Drawing.Point(289, 427);
-            this.btnDeleteImg.Name = "btnDeleteImg";
-            this.btnDeleteImg.Size = new System.Drawing.Size(96, 23);
-            this.btnDeleteImg.TabIndex = 51;
-            this.btnDeleteImg.Text = "Удалить Х";
-            this.btnDeleteImg.UseVisualStyleBackColor = true;
-            this.btnDeleteImg.Click += new System.EventHandler(this.btnDeleteImg_Click);
-            // 
             // frmFlat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -948,7 +921,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
@@ -966,7 +938,6 @@
         public System.Windows.Forms.ComboBox intupFURNITURE;
         public System.Windows.Forms.ComboBox intupSTATE;
         public System.Windows.Forms.Label label7;
-        public System.Windows.Forms.ComboBox intupMECHANIC;
         public System.Windows.Forms.TextBox inputNAME;
         public System.Windows.Forms.TextBox intupPRICE;
         public System.Windows.Forms.TextBox intupCOMMENT;
@@ -1000,7 +971,7 @@
         public System.Windows.Forms.TextBox inputEmail;
         public System.Windows.Forms.Label lblEmail;
         public System.Windows.Forms.Label lblType;
-        public System.Windows.Forms.ComboBox inputType;
+        public System.Windows.Forms.ComboBox inputRentType;
         public System.Windows.Forms.Label label13;
         public System.Windows.Forms.ComboBox inputPayment;
         private System.Windows.Forms.Button btnDeleteImg;

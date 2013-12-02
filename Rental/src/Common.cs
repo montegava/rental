@@ -11,6 +11,7 @@ using System.Drawing.Imaging;
 using System.Drawing.Drawing2D;
 using System.IO;
 using RentalCommon;
+using System.Reflection;
 
 namespace Rental
 {
@@ -162,16 +163,23 @@ namespace Rental
         {
             if (combo != null)
             {
+                combo.DropDownStyle = ComboBoxStyle.DropDownList;
+
                 if (dataSource != null && dataSource.Count > 0)
                 {
 
 
                     if (addEmty)
                     {
+
                         Type t = dataSource[0].GetType();
                         var obj = Activator.CreateInstance(t);
-                        dataSource.Insert(0, obj);
 
+                        t.GetProperty("name").SetValue(obj, "-неизевестно-", null);
+                        t.GetProperty("id").SetValue(obj, -1, null);
+
+
+                        dataSource.Insert(0, obj);
                     }
                     combo.DataSource = dataSource;
                     combo.DisplayMember = displayMember;

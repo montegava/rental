@@ -144,7 +144,7 @@ namespace Rental.src
 
                 if (!FlatRows.ContainsKey(i))
                 {
-                    NameListCache.Query.Page =  (int)(i/ 50);
+                    NameListCache.Query.Page = (int)(i / 50);
                     var result = NameListCache.proxy.FlatSearch(NameListCache.Query);
                     if (!result.Items.Any())
                     {
@@ -159,7 +159,7 @@ namespace Rental.src
                             FlatRows.Add(curRow, new FlatRow(item));
                         curRow++;
                     }
-                  
+
                 }
                 return FlatRows[i];
             }
@@ -186,6 +186,31 @@ namespace Rental.src
         public int PageSize = 50;
         public int TotalRowsNumber { get { return CachedData.TotalRowsNumber; } }
         public Cache CachedData;
+
+        public static build_type[] BuldTypeAll { get; set; }
+
+        public static bath_unit[] BathunitTypeAll { get; set; }
+
+
+        public static state_type[] StateTypeAll { get; set; }
+
+
+        public static term_type[] TermTypeAll { get; set; }
+
+
+        public static lessor_type[] LessorTypeAll { get; set; }
+
+
+        public static region_type[] RegionTypeAll { get; set; }
+
+        public static category_type[] CategoryTypeAll { get; set; }
+
+
+        public static rent_type[] RentTypeAll { get; set; }
+
+
+        public static payment_type[] PaymentTypeAll { get; set; }
+
         public static RentalCore.RentalCoreClient proxy = new RentalCore.RentalCoreClient();
 
         public static SearchQuery Query = new SearchQuery() { SortField = Fields.ID, Ascending = false, Page = 0, PageSize = 50 };
@@ -195,6 +220,19 @@ namespace Rental.src
         {
             CachedData = new Cache();
             PageSize = pageSize;
+
+
+            BuldTypeAll = NameListCache.proxy.BuldTypeAll();
+
+            BathunitTypeAll  = NameListCache.proxy.BathunitTypeAll();
+            StateTypeAll = NameListCache.proxy.StateTypeAll();
+            TermTypeAll = NameListCache.proxy.TermTypeAll();
+            LessorTypeAll = NameListCache.proxy.LessorTypeAll();
+            RegionTypeAll = NameListCache.proxy.RegionTypeAll();
+            CategoryTypeAll = NameListCache.proxy.CategoryTypeAll();
+            RentTypeAll = NameListCache.proxy.RentTypeAll();
+            PaymentTypeAll = NameListCache.proxy.PaymentTypeAll();
+
             LoadPage(0);
         }
 

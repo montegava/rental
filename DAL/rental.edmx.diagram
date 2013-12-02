@@ -11,12 +11,12 @@
         <EntityTypeShape EntityType="gb_x_amiravrnModel.category_type" Width="1.5" PointX="4.7285031996334448" PointY="31.781324103372789" />
         <EntityTypeShape EntityType="gb_x_amiravrnModel.flat_info" Width="1.5" PointX="3.25" PointY="64.375" />
         <EntityTypeShape EntityType="gb_x_amiravrnModel.image_list" Width="1.5" PointX="6.6187044021760606" PointY="31.258314504874086" />
-        <EntityTypeShape EntityType="gb_x_amiravrnModel.lessor_type" Width="1.5" PointX="9.2296750700239443" PointY="31.520975023285008" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.lessor_type" Width="1.5" PointX="13" PointY="31.625" />
         <EntityTypeShape EntityType="gb_x_amiravrnModel.payment_type" Width="1.5" PointX="2.1728058132216361" PointY="14.953139446188295" />
         <EntityTypeShape EntityType="gb_x_amiravrnModel.region_type" Width="1.5" PointX="2.0431511709667514" PointY="26.6060776238358" />
-        <EntityTypeShape EntityType="gb_x_amiravrnModel.rent_type" Width="1.5" PointX="2.0463675642601995" PointY="15.336387641418906" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.rent_type" Width="1.5" PointX="4.5" PointY="14.625" />
         <EntityTypeShape EntityType="gb_x_amiravrnModel.state_type" Width="1.5" PointX="11.795099828296852" PointY="2.4398921143449339" />
-        <EntityTypeShape EntityType="gb_x_amiravrnModel.term_type" Width="1.5" PointX="10.036647452989895" PointY="26.80748033281764" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.term_type" Width="1.5" PointX="10.375" PointY="27.125" />
         <EntityTypeShape EntityType="gb_x_amiravrnModel.view_flat_info" Width="1.5" PointX="8.4646113703328236" PointY="27.982938496388" />
         <AssociationConnector Association="gb_x_amiravrnModel.FK_bathunit_type" />
         <AssociationConnector Association="gb_x_amiravrnModel.FK_build_type" />

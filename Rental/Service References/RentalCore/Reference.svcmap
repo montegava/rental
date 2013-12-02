@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e8c1bdad-7fab-42aa-811b-110f66e499f5" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="1fbcbefb-8596-480a-b41b-8010cc939fc0" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <EnableDataBinding>true</EnableDataBinding>
@@ -21,12 +21,12 @@
     <MetadataSource Address="http://localhost:8732/RentalCore/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="RentalCore.wsdl" MetadataType="Wsdl" ID="695c05b7-32d1-470d-ba76-bc75be7842b3" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?wsdl" />
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="4bb8ee86-a6c2-43c0-a858-6ec78224fad4" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?disco" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="73f20d44-e2ef-438c-94b4-31daf6edc124" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd1" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="fd3fdb7d-cb8d-47e7-9d6b-beb7c92c0443" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd0" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="060bb0c5-5b42-4944-a068-c7955038bdbb" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd3" />
-    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="81856cd0-76a6-4df6-9ebd-8d4e1554c1ff" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd2" />
+    <MetadataFile FileName="RentalCore.wsdl" MetadataType="Wsdl" ID="dee0368c-9174-45d0-8559-6eb68485c80f" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?wsdl" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="b5be9072-26b8-4392-857f-ab75b36d194e" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?disco" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="2e3c3458-0955-4dd6-8a77-c13ece4d8066" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd1" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="33bd0d26-b296-4395-a118-80182189ee38" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd0" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="1867b4f1-f3bc-4c84-bd37-5002d51d70d6" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd3" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="f65ec862-c7cf-46bb-9210-99aeab1e6245" SourceId="1" SourceUrl="http://localhost:8732/RentalCore/?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

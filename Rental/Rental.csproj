@@ -192,9 +192,18 @@
     <None Include="img\camelot_close.pdn" />
     <None Include="img\mr_close.pdn" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\DAL.bath_unit.datasource" />
     <None Include="Properties\DataSources\DAL.black_list.datasource" />
+    <None Include="Properties\DataSources\DAL.build_type.datasource" />
+    <None Include="Properties\DataSources\DAL.category_type.datasource" />
     <None Include="Properties\DataSources\DAL.flat_info.datasource" />
     <None Include="Properties\DataSources\DAL.image_list.datasource" />
+    <None Include="Properties\DataSources\DAL.lessor_type.datasource" />
+    <None Include="Properties\DataSources\DAL.payment_type.datasource" />
+    <None Include="Properties\DataSources\DAL.region_type.datasource" />
+    <None Include="Properties\DataSources\DAL.rent_type.datasource" />
+    <None Include="Properties\DataSources\DAL.state_type.datasource" />
+    <None Include="Properties\DataSources\DAL.term_type.datasource" />
     <None Include="Properties\DataSources\DAL.view_flat_info.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

@@ -147,6 +147,7 @@
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cbSites = new System.Windows.Forms.ToolStripComboBox();
+            this.cbSearch = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -688,6 +689,7 @@
             // 
             // pnlSearch
             // 
+            this.pnlSearch.Controls.Add(this.cbSearch);
             this.pnlSearch.Controls.Add(this.SearchDate);
             this.pnlSearch.Controls.Add(this.btnClearAllFilters);
             this.pnlSearch.Controls.Add(this.btnAddFilter);
@@ -1314,6 +1316,14 @@
             this.cbSites.Size = new System.Drawing.Size(200, 23);
             this.cbSites.SelectedIndexChanged += new System.EventHandler(this.cbSites_SelectedIndexChanged);
             // 
+            // cbSearch
+            // 
+            this.cbSearch.FormattingEnabled = true;
+            this.cbSearch.Location = new System.Drawing.Point(261, 3);
+            this.cbSearch.Name = "cbSearch";
+            this.cbSearch.Size = new System.Drawing.Size(191, 21);
+            this.cbSearch.TabIndex = 26;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1501,6 +1511,7 @@
         private System.Windows.Forms.TextBox intupFLOOR;
         private System.Windows.Forms.TextBox intupSTATE;
         public System.Windows.Forms.DateTimePicker SearchDate;
+        private System.Windows.Forms.ComboBox cbSearch;
     }
 }
 
