@@ -4,10 +4,30 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3ce032570665493581d817542c540a8b" Name="Diagram1" ZoomLevel="94">
-        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="1.275994644163174" PointY="7.8023612237546409" />
-        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="8.7138747483090846" PointY="3.7169721739911346" />
-        <EntityTypeShape EntityType="rentalModel.images" Width="1.5" PointX="5.8541579162022837" PointY="31.761683538445123" />
+      <Diagram DiagramId="3a960c67b8974486be69f2a3676d657c" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.bath_unit" Width="1.5" PointX="5.0066000116088425" PointY="6.6618984372643277" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.black_list" Width="1.5" PointX="0.85992191026914955" PointY="4.5210696032834568" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.build_type" Width="1.5" PointX="0.96034529663638457" PointY="10.399231274798154" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.category_type" Width="1.5" PointX="4.7285031996334448" PointY="31.781324103372789" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.flat_info" Width="1.5" PointX="3.25" PointY="64.375" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.image_list" Width="1.5" PointX="6.6187044021760606" PointY="31.258314504874086" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.lessor_type" Width="1.5" PointX="9.2296750700239443" PointY="31.520975023285008" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.payment_type" Width="1.5" PointX="2.1728058132216361" PointY="14.953139446188295" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.region_type" Width="1.5" PointX="2.0431511709667514" PointY="26.6060776238358" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.rent_type" Width="1.5" PointX="2.0463675642601995" PointY="15.336387641418906" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.state_type" Width="1.5" PointX="11.795099828296852" PointY="2.4398921143449339" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.term_type" Width="1.5" PointX="10.036647452989895" PointY="26.80748033281764" />
+        <EntityTypeShape EntityType="gb_x_amiravrnModel.view_flat_info" Width="1.5" PointX="8.4646113703328236" PointY="27.982938496388" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_bathunit_type" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_build_type" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_category_type" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_images_flat" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_lessor_type" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_payment_type" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_region_type" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_rent_type" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_state_type" />
+        <AssociationConnector Association="gb_x_amiravrnModel.FK_term_type" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

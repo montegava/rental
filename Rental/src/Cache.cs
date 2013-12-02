@@ -13,9 +13,9 @@ namespace Rental.src
 
 
 
-        public flat_info Flat;
+        public view_flat_info Flat;
 
-        public FlatRow(flat_info flat)
+        public FlatRow(view_flat_info flat)
         {
             Flat = flat;
         }
@@ -65,9 +65,6 @@ namespace Rental.src
 
                     case Fields.STATE:
                         return Flat.STATE;
-
-                    case Fields.MECHANIC:
-                        return Flat.MECHANIC;
 
                     case Fields.NAME:
                         return Flat.NAME;

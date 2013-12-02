@@ -43,8 +43,9 @@ namespace Rental
             EdtMode = edtype;
             this.FlatId = flatId;
             frmFlat_Load();
-            LoadFlatImages();
             LoadFlatInfo();
+            LoadFlatImages();
+           
         }
 
         private void LoadFlatInfo()
@@ -53,38 +54,34 @@ namespace Rental
             if (flat != null)
             {
                 this.intupADDRESS.Text = flat.ADDRESS;
-                this.intupBATH_UNIT.Text = flat.BATH_UNIT;
-                this.intupBUILD.Text = flat.BUILD;
+                this.intupBATH_UNIT.SelectedValue = flat.bathunit_type_id;
+                this.intupBUILD.SelectedValue = flat.buld_type_id;
                 this.intupCOMMENT.Text = flat.COMMENT;
                 this.inputCONTENT.Text = flat.CONTENT;
-                this.chCooler.Checked = flat.COOLER ?? false;
+                this.chCooler.Checked = flat.COOLER;
                 this.Text = "Информация о квартите № " + flat.ID + " от " + flat.DATA.ToString();
                 this.intupFLOOR.Text = flat.FLOOR.ToString();
-                this.chFridge.Checked = flat.FRIDGE ?? false;
+                this.chFridge.Checked = flat.FRIDGE;
                 this.intupFURNITURE.Text = flat.FURNITURE;
-                this.inputLESSOR.Text = flat.LESSOR;
+                this.inputLESSOR.SelectedValue = flat.lessor_type_id;
                 this.inputLINK.Text = flat.LINK;
-                this.intupMECHANIC.Text = flat.MECHANIC;
                 this.inputNAME.Text = flat.NAME;
                 this.inputPHONE.Items.AddRange(flat.PHONE.Split(new Char[] { ';' }));
                 this.intupPRICE.Text = flat.PRICE;
-                this.inputREGION.Text = flat.REGION;
+                this.inputREGION.SelectedValue = flat.region_type_id;
                 this.inputRENT_FROM.Text = flat.RENT_FROM.ToString();
                 this.inputRENT_TO.Text = flat.RENT_TO.ToString();
                 this.intupROOM_COUNT.Text = flat.ROOM_COUNT.ToString();
-                this.intupSTATE.Text = flat.STATE;
-                this.inputTERM.Text = flat.TERM;
-                this.chTV.Checked = flat.TV ?? false;
+                this.intupSTATE.SelectedValue = flat.state_type_id;
+                this.inputTERM.SelectedValue = flat.term_type_id;
+                this.chTV.Checked = flat.TV;
                 this.inputEmail.Text = flat.EMAIL;
 
-                if (!string.IsNullOrEmpty(flat.CATEGORY))
-                    this.inputCategory.Text = flat.CATEGORY;
+                this.inputCategory.SelectedValue = flat.category_type_id;
 
-                if (!string.IsNullOrEmpty(flat.TYPE))
-                    this.inputType.Text = flat.TYPE;
+                this.inputType.SelectedValue = flat.rent_type_id;
 
-                if (!string.IsNullOrEmpty(flat.PAYMENT))
-                    this.inputPayment.Text = flat.PAYMENT;
+                this.inputPayment.SelectedValue = flat.payment_type_id;
 
 
             }
@@ -143,7 +140,7 @@ namespace Rental
             foreach (ListViewItem item in lvImagList.Items)
             {
                 var image = (image_list)item.Tag;
-                if (image.ID <=0)
+                if (image.ID <= 0)
                     NameListCache.proxy.FileUpload(image.IMAGE_PATH, System.IO.File.ReadAllBytes(RepositoryDirectory + "//" + image.IMAGE_PATH));
                 image.FLAT_ID = this.FlatId;
                 imageList.Add(image);
@@ -173,12 +170,11 @@ namespace Rental
             int floor;
             result.FLOOR = int.TryParse(intupFLOOR.Text, out floor) ? (int?)floor : null;
 
-            result.BATH_UNIT = intupBATH_UNIT.Text;
-            result.BUILD = intupBUILD.Text;
+            result.bathunit_type_id = (int?)intupBATH_UNIT.SelectedValue;
+            result.buld_type_id = (int?)intupBUILD.SelectedValue;
 
             result.FURNITURE = intupFURNITURE.Text;
-            result.STATE = intupSTATE.Text;
-            result.MECHANIC = intupMECHANIC.Text;
+            result.state_type_id = (int?)intupSTATE.SelectedValue;
             result.NAME = inputNAME.Text;
             result.PRICE = intupPRICE.Text;
 
@@ -186,22 +182,22 @@ namespace Rental
             result.CONTENT = inputCONTENT.Text;
             result.COMMENT = intupCOMMENT.Text;
             result.LINK = inputLINK.Text;
-            result.TERM = inputTERM.Text;
+            result.term_type_id = (int?)inputTERM.SelectedValue;
             result.RENT_FROM = inputRENT_FROM.Value.Date;
             result.RENT_TO = inputRENT_TO.Value.Date;
-            result.LESSOR = inputLESSOR.Text;
+            result.lessor_type_id = (int?)inputLESSOR.SelectedValue;
 
             result.FRIDGE = chFridge.Checked;
             result.TV = chTV.Checked;
             result.WASHER = chWasher.Checked;
             result.COOLER = chCooler.Checked;
 
-            result.REGION = inputREGION.Text;
+            result.region_type_id = (int?)inputREGION.SelectedValue;
 
             result.EMAIL = inputEmail.Text;
-            result.CATEGORY = inputCategory.Text;
-            result.TYPE = inputType.Text;
-            result.PAYMENT = inputPayment.Text;
+            result.category_type_id = (int?)inputCategory.SelectedValue;
+            result.rent_type_id = (int?)inputType.SelectedValue;
+            result.payment_type_id = (int?)inputPayment.SelectedValue;
 
 
             return result;
@@ -248,7 +244,7 @@ namespace Rental
                     foreach (image_list image in images)
                         lvImagList.Items.Add(new ListViewItem()
                                                 {
-                                                    Tag =   image,
+                                                    Tag = image,
                                                     Text = string.Format("image №{0}", lvImagList.Items.Count.ToString()),
                                                 });
                 }
@@ -270,7 +266,8 @@ namespace Rental
                 var selItem = lvImagList.Items.Add(new ListViewItem()
                                                     {
                                                         Text = string.Format("image №{0}", lvImagList.Items.Count.ToString()),
-                                                        Tag =   new image_list() { 
+                                                        Tag = new image_list()
+                                                        {
                                                             ID = -1,
                                                             IMAGE_PATH = compressedImagePath,
                                                             FLAT_ID = this.FlatId
@@ -310,7 +307,7 @@ namespace Rental
             if (lvImagList.SelectedItems.Count > 0)
             {
                 string filePath = Path.GetFullPath(RepositoryDirectory + "//" + ((image_list)lvImagList.SelectedItems[0].Tag).IMAGE_PATH);
-                if (File.Exists( filePath))
+                if (File.Exists(filePath))
                     System.Diagnostics.Process.Start(filePath);
             }
 

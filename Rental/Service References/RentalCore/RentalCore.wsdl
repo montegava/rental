@@ -20,12 +20,6 @@
   <wsdl:message name="IRentalCore_FileDownload_OutputMessage">
     <wsdl:part name="parameters" element="tns:FileDownloadResponse" />
   </wsdl:message>
-  <wsdl:message name="IRentalCore_FlatList_InputMessage">
-    <wsdl:part name="parameters" element="tns:FlatList" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_FlatList_OutputMessage">
-    <wsdl:part name="parameters" element="tns:FlatListResponse" />
-  </wsdl:message>
   <wsdl:message name="IRentalCore_FlatSearch_InputMessage">
     <wsdl:part name="parameters" element="tns:FlatSearch" />
   </wsdl:message>
@@ -107,10 +101,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FileDownload" message="tns:IRentalCore_FileDownload_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FileDownloadResponse" message="tns:IRentalCore_FileDownload_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="FlatList">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatList" message="tns:IRentalCore_FlatList_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatListResponse" message="tns:IRentalCore_FlatList_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="FlatSearch">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FlatSearch" message="tns:IRentalCore_FlatSearch_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/FlatSearchResponse" message="tns:IRentalCore_FlatSearch_OutputMessage" />
@@ -173,15 +163,6 @@
     </wsdl:operation>
     <wsdl:operation name="FileDownload">
       <soap:operation soapAction="http://tempuri.org/IRentalCore/FileDownload" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="FlatList">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/FlatList" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

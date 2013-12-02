@@ -32,8 +32,6 @@ namespace RentalCommon
         [EnumMember]
         STATE = 9,
         [EnumMember]
-        MECHANIC = 10,
-        [EnumMember]
         NAME = 11,
         [EnumMember]
         PRICE = 12,

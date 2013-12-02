@@ -39,8 +39,6 @@ namespace Rental
                     return "МЕБЕЛЬ";
                 case Fields.STATE:
                     return "СОСТОЯНИЕ";
-                case Fields.MECHANIC:
-                    return "МЕБЕЛЬ";
                 case Fields.NAME:
                     return "ФИО";
                 case Fields.PRICE:
@@ -120,28 +118,27 @@ namespace Rental
                 case Fields.TV:
                 case Fields.WASHER:
                 case Fields.COOLER:
+                case Fields.BATH_UNIT:
+                case Fields.BUILD:
+                case Fields.STATE:
+                case Fields.TERM:
+                case Fields.LESSOR:
+                case Fields.REGION:
+                case Fields.CATEGORY:
+                case Fields.TYPE:
+                case Fields.PAYMENT:
                     return new FilterConditions[] { FilterConditions.EQUAL };
 
 
                 case Fields.ADDRESS:
-                case Fields.BATH_UNIT:
-                case Fields.BUILD:
                 case Fields.FURNITURE:
-                case Fields.STATE:
-                case Fields.MECHANIC:
                 case Fields.NAME:
                 case Fields.PRICE:
                 case Fields.PHONE:
                 case Fields.COMMENT:
                 case Fields.CONTENT:
                 case Fields.LINK:
-                case Fields.TERM:
-                case Fields.LESSOR:
-                case Fields.REGION:
                 case Fields.EMAIL:
-                case Fields.CATEGORY:
-                case Fields.TYPE:
-                case Fields.PAYMENT:
                     return new FilterConditions[] { FilterConditions.CONTAIN, FilterConditions.EQUAL };
 
                 default:

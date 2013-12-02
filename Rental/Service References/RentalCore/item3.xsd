@@ -2,30 +2,30 @@
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RentalCommon" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RentalCommon" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
   <xs:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DAL" />
-  <xs:complexType name="ArrayOfFilter">
+  <xs:complexType name="SearchQuery">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Filter" nillable="true" type="tns:Filter" />
+      <xs:element minOccurs="0" name="Ascending" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Filters" nillable="true" type="tns:ArrayOfFilter1" />
+      <xs:element minOccurs="0" name="Page" type="xs:int" />
+      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
+      <xs:element minOccurs="0" name="SortField" type="tns:Fields" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfFilter" nillable="true" type="tns:ArrayOfFilter" />
-  <xs:complexType name="Filter">
+  <xs:element name="SearchQuery" nillable="true" type="tns:SearchQuery" />
+  <xs:complexType name="ArrayOfFilter1">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Comparator" type="tns:ComapreType" />
-      <xs:element minOccurs="0" name="EndValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Filter1" nillable="true" type="tns:Filter1" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFilter1" nillable="true" type="tns:ArrayOfFilter1" />
+  <xs:complexType name="Filter1">
+    <xs:sequence>
       <xs:element minOccurs="0" name="Field" type="tns:Fields" />
-      <xs:element minOccurs="0" name="StartValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilterCondition" type="tns:FilterConditions" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:anyType" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="Filter" nillable="true" type="tns:Filter" />
-  <xs:simpleType name="ComapreType">
-    <xs:restriction base="xs:string">
-      <xs:enumeration value="NONE" />
-      <xs:enumeration value="MORE" />
-      <xs:enumeration value="LESS" />
-      <xs:enumeration value="BETWEEN" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:element name="ComapreType" nillable="true" type="tns:ComapreType" />
+  <xs:element name="Filter1" nillable="true" type="tns:Filter1" />
   <xs:simpleType name="Fields">
     <xs:restriction base="xs:string">
       <xs:enumeration value="ID">
@@ -88,13 +88,6 @@
         <xs:annotation>
           <xs:appinfo>
             <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">9</EnumerationValue>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:enumeration>
-      <xs:enumeration value="MECHANIC">
-        <xs:annotation>
-          <xs:appinfo>
-            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">10</EnumerationValue>
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>
@@ -234,30 +227,6 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Fields" nillable="true" type="tns:Fields" />
-  <xs:complexType name="SearchQuery">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Ascending" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Filters" nillable="true" type="tns:ArrayOfFilter1" />
-      <xs:element minOccurs="0" name="Page" type="xs:int" />
-      <xs:element minOccurs="0" name="PageSize" type="xs:int" />
-      <xs:element minOccurs="0" name="SortField" type="tns:Fields" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="SearchQuery" nillable="true" type="tns:SearchQuery" />
-  <xs:complexType name="ArrayOfFilter1">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="Filter1" nillable="true" type="tns:Filter1" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfFilter1" nillable="true" type="tns:ArrayOfFilter1" />
-  <xs:complexType name="Filter1">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Field" type="tns:Fields" />
-      <xs:element minOccurs="0" name="FilterCondition" type="tns:FilterConditions" />
-      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:anyType" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="Filter1" nillable="true" type="tns:Filter1" />
   <xs:simpleType name="FilterConditions">
     <xs:restriction base="xs:string">
       <xs:enumeration value="MORE">
@@ -291,18 +260,18 @@
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="FilterConditions" nillable="true" type="tns:FilterConditions" />
-  <xs:complexType name="SearchResultOfflat_infowaVWVNS2">
+  <xs:complexType name="SearchResultOfview_flat_infowaVWVNS2">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="SearchResultOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/RentalCommon" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="flat_info" Namespace="http://schemas.datacontract.org/2004/07/DAL" />
+          <GenericParameter Name="view_flat_info" Namespace="http://schemas.datacontract.org/2004/07/DAL" />
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="Items" nillable="true" type="q1:ArrayOfflat_info" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="Items" nillable="true" type="q1:ArrayOfview_flat_info" />
       <xs:element minOccurs="0" name="TotallCount" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="SearchResultOfflat_infowaVWVNS2" nillable="true" type="tns:SearchResultOfflat_infowaVWVNS2" />
+  <xs:element name="SearchResultOfview_flat_infowaVWVNS2" nillable="true" type="tns:SearchResultOfview_flat_infowaVWVNS2" />
 </xs:schema>

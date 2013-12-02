@@ -4,20 +4,131 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="rentalModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="rentalModelStoreContainer">
-          <EntitySet Name="black_list" EntityType="rentalModel.Store.black_list" store:Type="Tables" Schema="rental" />
-          <EntitySet Name="flat_info" EntityType="rentalModel.Store.flat_info" store:Type="Tables" Schema="rental" />
-          <EntitySet Name="image_list" EntityType="rentalModel.Store.image_list" store:Type="Tables" Schema="rental" />
+    <Schema Namespace="gb_x_amiravrnModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="gb_x_amiravrnModelStoreContainer">
+          <EntitySet Name="bath_unit" EntityType="gb_x_amiravrnModel.Store.bath_unit" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="black_list" EntityType="gb_x_amiravrnModel.Store.black_list" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="build_type" EntityType="gb_x_amiravrnModel.Store.build_type" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="category_type" EntityType="gb_x_amiravrnModel.Store.category_type" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="flat_info" EntityType="gb_x_amiravrnModel.Store.flat_info" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="image_list" EntityType="gb_x_amiravrnModel.Store.image_list" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="lessor_type" EntityType="gb_x_amiravrnModel.Store.lessor_type" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="payment_type" EntityType="gb_x_amiravrnModel.Store.payment_type" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="region_type" EntityType="gb_x_amiravrnModel.Store.region_type" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="rent_type" EntityType="gb_x_amiravrnModel.Store.rent_type" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="state_type" EntityType="gb_x_amiravrnModel.Store.state_type" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="term_type" EntityType="gb_x_amiravrnModel.Store.term_type" store:Type="Tables" Schema="gb_x_amiravrn" />
+          <EntitySet Name="view_flat_info" EntityType="gb_x_amiravrnModel.Store.view_flat_info" store:Type="Views" store:Schema="gb_x_amiravrn" store:Name="view_flat_info">
+            <DefiningQuery>SELECT
+      `view_flat_info`.`ID`, 
+      `view_flat_info`.`DATA`, 
+      `view_flat_info`.`ROOM_COUNT`, 
+      `view_flat_info`.`ADDRESS`, 
+      `view_flat_info`.`FLOOR`, 
+      `view_flat_info`.`BATH_UNIT`, 
+      `view_flat_info`.`BUILD`, 
+      `view_flat_info`.`FURNITURE`, 
+      `view_flat_info`.`STATE`, 
+      `view_flat_info`.`NAME`, 
+      `view_flat_info`.`PRICE`, 
+      `view_flat_info`.`PHONE`, 
+      `view_flat_info`.`COMMENT`, 
+      `view_flat_info`.`CONTENT`, 
+      `view_flat_info`.`LINK`, 
+      `view_flat_info`.`TERM`, 
+      `view_flat_info`.`RENT_FROM`, 
+      `view_flat_info`.`RENT_TO`, 
+      `view_flat_info`.`LESSOR`, 
+      `view_flat_info`.`FRIDGE`, 
+      `view_flat_info`.`TV`, 
+      `view_flat_info`.`WASHER`, 
+      `view_flat_info`.`COOLER`, 
+      `view_flat_info`.`REGION`, 
+      `view_flat_info`.`EMAIL`, 
+      `view_flat_info`.`CATEGORY`, 
+      `view_flat_info`.`TYPE`, 
+      `view_flat_info`.`PAYMENT`, 
+      `view_flat_info`.`bathunit_type_id`, 
+      `view_flat_info`.`buld_type_id`, 
+      `view_flat_info`.`state_type_id`, 
+      `view_flat_info`.`term_type_id`, 
+      `view_flat_info`.`lessor_type_id`, 
+      `view_flat_info`.`region_type_id`, 
+      `view_flat_info`.`category_type_id`, 
+      `view_flat_info`.`rent_type_id`, 
+      `view_flat_info`.`payment_type_id`
+      FROM `view_flat_info` AS `view_flat_info`</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_bathunit_type" Association="gb_x_amiravrnModel.Store.FK_bathunit_type">
+            <End Role="bath_unit" EntitySet="bath_unit" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_build_type" Association="gb_x_amiravrnModel.Store.FK_build_type">
+            <End Role="build_type" EntitySet="build_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_type" Association="gb_x_amiravrnModel.Store.FK_category_type">
+            <End Role="category_type" EntitySet="category_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_images_flat" Association="gb_x_amiravrnModel.Store.FK_images_flat">
+            <End Role="flat_info" EntitySet="flat_info" />
+            <End Role="image_list" EntitySet="image_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_lessor_type" Association="gb_x_amiravrnModel.Store.FK_lessor_type">
+            <End Role="lessor_type" EntitySet="lessor_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_payment_type" Association="gb_x_amiravrnModel.Store.FK_payment_type">
+            <End Role="payment_type" EntitySet="payment_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_region_type" Association="gb_x_amiravrnModel.Store.FK_region_type">
+            <End Role="region_type" EntitySet="region_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rent_type" Association="gb_x_amiravrnModel.Store.FK_rent_type">
+            <End Role="rent_type" EntitySet="rent_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_state_type" Association="gb_x_amiravrnModel.Store.FK_state_type">
+            <End Role="state_type" EntitySet="state_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_term_type" Association="gb_x_amiravrnModel.Store.FK_term_type">
+            <End Role="term_type" EntitySet="term_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="bath_unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="black_list">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="STOP" Type="text" />
           <Property Name="COMMENT" Type="text" />
           <Property Name="TYPE_ID" Type="double" />
+        </EntityType>
+        <EntityType Name="build_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="category_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="flat_info">
           <Key>
@@ -28,30 +139,29 @@
           <Property Name="ROOM_COUNT" Type="int" />
           <Property Name="ADDRESS" Type="text" />
           <Property Name="FLOOR" Type="int" />
-          <Property Name="BATH_UNIT" Type="text" />
-          <Property Name="BUILD" Type="text" />
           <Property Name="FURNITURE" Type="text" />
-          <Property Name="STATE" Type="text" />
-          <Property Name="MECHANIC" Type="text" />
           <Property Name="NAME" Type="text" />
           <Property Name="PRICE" Type="text" />
           <Property Name="PHONE" Type="text" />
           <Property Name="COMMENT" Type="text" />
           <Property Name="CONTENT" Type="text" />
           <Property Name="LINK" Type="text" />
-          <Property Name="TERM" Type="text" />
           <Property Name="RENT_FROM" Type="date" />
           <Property Name="RENT_TO" Type="date" />
-          <Property Name="LESSOR" Type="text" />
-          <Property Name="FRIDGE" Type="bool" />
-          <Property Name="TV" Type="bool" />
-          <Property Name="WASHER" Type="bool" />
-          <Property Name="COOLER" Type="bool" />
-          <Property Name="REGION" Type="text" />
+          <Property Name="FRIDGE" Type="bool" Nullable="false" />
+          <Property Name="TV" Type="bool" Nullable="false" />
+          <Property Name="WASHER" Type="bool" Nullable="false" />
+          <Property Name="COOLER" Type="bool" Nullable="false" />
           <Property Name="EMAIL" Type="text" />
-          <Property Name="CATEGORY" Type="text" />
-          <Property Name="TYPE" Type="text" />
-          <Property Name="PAYMENT" Type="text" />
+          <Property Name="bathunit_type_id" Type="int" />
+          <Property Name="buld_type_id" Type="int" />
+          <Property Name="state_type_id" Type="int" />
+          <Property Name="term_type_id" Type="int" />
+          <Property Name="lessor_type_id" Type="int" />
+          <Property Name="region_type_id" Type="int" />
+          <Property Name="category_type_id" Type="int" />
+          <Property Name="rent_type_id" Type="int" />
+          <Property Name="payment_type_id" Type="int" />
         </EntityType>
         <EntityType Name="image_list">
           <Key>
@@ -61,23 +171,310 @@
           <Property Name="FLAT_ID" Type="int" />
           <Property Name="IMAGE_PATH" Type="text" />
         </EntityType>
+        <EntityType Name="lessor_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="payment_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="region_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="rent_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="state_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="term_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'def.gb_x_amiravrn.view_flat_info' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="view_flat_info">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FRIDGE" />
+            <PropertyRef Name="TV" />
+            <PropertyRef Name="WASHER" />
+            <PropertyRef Name="COOLER" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="DATA" Type="date" />
+          <Property Name="ROOM_COUNT" Type="int" />
+          <Property Name="ADDRESS" Type="text" />
+          <Property Name="FLOOR" Type="int" />
+          <Property Name="BATH_UNIT" Type="varchar" MaxLength="255" />
+          <Property Name="BUILD" Type="varchar" MaxLength="255" />
+          <Property Name="FURNITURE" Type="text" />
+          <Property Name="STATE" Type="varchar" MaxLength="255" />
+          <Property Name="NAME" Type="text" />
+          <Property Name="PRICE" Type="text" />
+          <Property Name="PHONE" Type="text" />
+          <Property Name="COMMENT" Type="text" />
+          <Property Name="CONTENT" Type="text" />
+          <Property Name="LINK" Type="text" />
+          <Property Name="TERM" Type="varchar" MaxLength="255" />
+          <Property Name="RENT_FROM" Type="date" />
+          <Property Name="RENT_TO" Type="date" />
+          <Property Name="LESSOR" Type="varchar" MaxLength="255" />
+          <Property Name="FRIDGE" Type="bool" Nullable="false" />
+          <Property Name="TV" Type="bool" Nullable="false" />
+          <Property Name="WASHER" Type="bool" Nullable="false" />
+          <Property Name="COOLER" Type="bool" Nullable="false" />
+          <Property Name="REGION" Type="varchar" MaxLength="255" />
+          <Property Name="EMAIL" Type="text" />
+          <Property Name="CATEGORY" Type="varchar" MaxLength="255" />
+          <Property Name="TYPE" Type="varchar" MaxLength="255" />
+          <Property Name="PAYMENT" Type="varchar" MaxLength="255" />
+          <Property Name="bathunit_type_id" Type="int" />
+          <Property Name="buld_type_id" Type="int" />
+          <Property Name="state_type_id" Type="int" />
+          <Property Name="term_type_id" Type="int" />
+          <Property Name="lessor_type_id" Type="int" />
+          <Property Name="region_type_id" Type="int" />
+          <Property Name="category_type_id" Type="int" />
+          <Property Name="rent_type_id" Type="int" />
+          <Property Name="payment_type_id" Type="int" />
+        </EntityType>
+        <Association Name="FK_bathunit_type">
+          <End Role="bath_unit" Type="gb_x_amiravrnModel.Store.bath_unit" Multiplicity="0..1" />
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bath_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="bathunit_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_build_type">
+          <End Role="build_type" Type="gb_x_amiravrnModel.Store.build_type" Multiplicity="0..1" />
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="build_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="buld_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_type">
+          <End Role="category_type" Type="gb_x_amiravrnModel.Store.category_type" Multiplicity="0..1" />
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="category_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_images_flat">
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="image_list" Type="gb_x_amiravrnModel.Store.image_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="flat_info">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="image_list">
+              <PropertyRef Name="FLAT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_lessor_type">
+          <End Role="lessor_type" Type="gb_x_amiravrnModel.Store.lessor_type" Multiplicity="0..1" />
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lessor_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="lessor_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_payment_type">
+          <End Role="payment_type" Type="gb_x_amiravrnModel.Store.payment_type" Multiplicity="0..1" />
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="payment_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_region_type">
+          <End Role="region_type" Type="gb_x_amiravrnModel.Store.region_type" Multiplicity="0..1" />
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="region_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rent_type">
+          <End Role="rent_type" Type="gb_x_amiravrnModel.Store.rent_type" Multiplicity="0..1" />
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rent_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="rent_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_state_type">
+          <End Role="state_type" Type="gb_x_amiravrnModel.Store.state_type" Multiplicity="0..1" />
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="state_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_term_type">
+          <End Role="term_type" Type="gb_x_amiravrnModel.Store.term_type" Multiplicity="0..1" />
+          <End Role="flat_info" Type="gb_x_amiravrnModel.Store.flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="term_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="term_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="rentalModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+      <Schema Namespace="gb_x_amiravrnModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="rentalEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="black_list" EntityType="rentalModel.black_list" />
-          <EntitySet Name="flat_info" EntityType="rentalModel.flat_info" />
-          <EntitySet Name="image_list" EntityType="rentalModel.image_list" />
+          <EntitySet Name="bath_unit" EntityType="gb_x_amiravrnModel.bath_unit" />
+          <EntitySet Name="black_list" EntityType="gb_x_amiravrnModel.black_list" />
+          <EntitySet Name="build_type" EntityType="gb_x_amiravrnModel.build_type" />
+          <EntitySet Name="category_type" EntityType="gb_x_amiravrnModel.category_type" />
+          <EntitySet Name="flat_info" EntityType="gb_x_amiravrnModel.flat_info" />
+          <EntitySet Name="image_list" EntityType="gb_x_amiravrnModel.image_list" />
+          <EntitySet Name="lessor_type" EntityType="gb_x_amiravrnModel.lessor_type" />
+          <EntitySet Name="payment_type" EntityType="gb_x_amiravrnModel.payment_type" />
+          <EntitySet Name="region_type" EntityType="gb_x_amiravrnModel.region_type" />
+          <EntitySet Name="rent_type" EntityType="gb_x_amiravrnModel.rent_type" />
+          <EntitySet Name="state_type" EntityType="gb_x_amiravrnModel.state_type" />
+          <EntitySet Name="term_type" EntityType="gb_x_amiravrnModel.term_type" />
+          <EntitySet Name="view_flat_info" EntityType="gb_x_amiravrnModel.view_flat_info" />
+          <AssociationSet Name="FK_bathunit_type" Association="gb_x_amiravrnModel.FK_bathunit_type">
+            <End Role="bath_unit" EntitySet="bath_unit" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_build_type" Association="gb_x_amiravrnModel.FK_build_type">
+            <End Role="build_type" EntitySet="build_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_category_type" Association="gb_x_amiravrnModel.FK_category_type">
+            <End Role="category_type" EntitySet="category_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_images_flat" Association="gb_x_amiravrnModel.FK_images_flat">
+            <End Role="flat_info" EntitySet="flat_info" />
+            <End Role="image_list" EntitySet="image_list" />
+          </AssociationSet>
+          <AssociationSet Name="FK_lessor_type" Association="gb_x_amiravrnModel.FK_lessor_type">
+            <End Role="lessor_type" EntitySet="lessor_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_payment_type" Association="gb_x_amiravrnModel.FK_payment_type">
+            <End Role="payment_type" EntitySet="payment_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_region_type" Association="gb_x_amiravrnModel.FK_region_type">
+            <End Role="region_type" EntitySet="region_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_rent_type" Association="gb_x_amiravrnModel.FK_rent_type">
+            <End Role="rent_type" EntitySet="rent_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_state_type" Association="gb_x_amiravrnModel.FK_state_type">
+            <End Role="state_type" EntitySet="state_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
+          <AssociationSet Name="FK_term_type" Association="gb_x_amiravrnModel.FK_term_type">
+            <End Role="term_type" EntitySet="term_type" />
+            <End Role="flat_info" EntitySet="flat_info" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="bath_unit">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_bathunit_type" FromRole="bath_unit" ToRole="flat_info" />
+        </EntityType>
         <EntityType Name="black_list">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="String" Name="STOP" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="COMMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="Double" Name="TYPE_ID" />
+        </EntityType>
+        <EntityType Name="build_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_build_type" FromRole="build_type" ToRole="flat_info" />
+        </EntityType>
+        <EntityType Name="category_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_category_type" FromRole="category_type" ToRole="flat_info" />
         </EntityType>
         <EntityType Name="flat_info">
           <Key>
@@ -88,30 +485,29 @@
           <Property Type="Int32" Name="ROOM_COUNT" />
           <Property Type="String" Name="ADDRESS" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="Int32" Name="FLOOR" />
-          <Property Type="String" Name="BATH_UNIT" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="BUILD" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="FURNITURE" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="STATE" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="MECHANIC" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="NAME" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="PRICE" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="PHONE" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="COMMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="CONTENT" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="String" Name="LINK" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="TERM" MaxLength="65535" FixedLength="false" Unicode="false" />
           <Property Type="DateTime" Name="RENT_FROM" />
           <Property Type="DateTime" Name="RENT_TO" />
-          <Property Type="String" Name="LESSOR" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Type="Boolean" Name="FRIDGE" />
-          <Property Type="Boolean" Name="TV" />
-          <Property Type="Boolean" Name="WASHER" />
-          <Property Type="Boolean" Name="COOLER" />
-          <Property Type="String" Name="REGION" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="FRIDGE" Nullable="false" />
+          <Property Type="Boolean" Name="TV" Nullable="false" />
+          <Property Type="Boolean" Name="WASHER" Nullable="false" />
+          <Property Type="Boolean" Name="COOLER" Nullable="false" />
           <Property Type="String" Name="EMAIL" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="CATEGORY" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="TYPE" MaxLength="65535" FixedLength="false" Unicode="false" />
-          <Property Type="String" Name="PAYMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="bathunit_type_id" />
+          <Property Type="Int32" Name="buld_type_id" />
+          <Property Type="Int32" Name="state_type_id" />
+          <Property Type="Int32" Name="term_type_id" />
+          <Property Type="Int32" Name="lessor_type_id" />
+          <Property Type="Int32" Name="region_type_id" />
+          <Property Type="Int32" Name="category_type_id" />
+          <Property Type="Int32" Name="rent_type_id" />
+          <Property Type="Int32" Name="payment_type_id" />
         </EntityType>
         <EntityType Name="image_list">
           <Key>
@@ -120,15 +516,240 @@
           <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int32" Name="FLAT_ID" />
           <Property Type="String" Name="IMAGE_PATH" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_images_flat" FromRole="image_list" ToRole="flat_info" />
         </EntityType>
+        <EntityType Name="lessor_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_lessor_type" FromRole="lessor_type" ToRole="flat_info" />
+        </EntityType>
+        <EntityType Name="payment_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_payment_type" FromRole="payment_type" ToRole="flat_info" />
+        </EntityType>
+        <EntityType Name="region_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_region_type" FromRole="region_type" ToRole="flat_info" />
+        </EntityType>
+        <EntityType Name="rent_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_rent_type" FromRole="rent_type" ToRole="flat_info" />
+        </EntityType>
+        <EntityType Name="state_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_state_type" FromRole="state_type" ToRole="flat_info" />
+        </EntityType>
+        <EntityType Name="term_type">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="flat_info" Relationship="gb_x_amiravrnModel.FK_term_type" FromRole="term_type" ToRole="flat_info" />
+        </EntityType>
+        <EntityType Name="view_flat_info">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FRIDGE" />
+            <PropertyRef Name="TV" />
+            <PropertyRef Name="WASHER" />
+            <PropertyRef Name="COOLER" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="DateTime" Name="DATA" />
+          <Property Type="Int32" Name="ROOM_COUNT" />
+          <Property Type="String" Name="ADDRESS" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FLOOR" />
+          <Property Type="String" Name="BATH_UNIT" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BUILD" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FURNITURE" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="STATE" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NAME" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PRICE" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PHONE" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COMMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LINK" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TERM" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="RENT_FROM" />
+          <Property Type="DateTime" Name="RENT_TO" />
+          <Property Type="String" Name="LESSOR" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="FRIDGE" Nullable="false" />
+          <Property Type="Boolean" Name="TV" Nullable="false" />
+          <Property Type="Boolean" Name="WASHER" Nullable="false" />
+          <Property Type="Boolean" Name="COOLER" Nullable="false" />
+          <Property Type="String" Name="REGION" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMAIL" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CATEGORY" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TYPE" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PAYMENT" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="bathunit_type_id" />
+          <Property Type="Int32" Name="buld_type_id" />
+          <Property Type="Int32" Name="state_type_id" />
+          <Property Type="Int32" Name="term_type_id" />
+          <Property Type="Int32" Name="lessor_type_id" />
+          <Property Type="Int32" Name="region_type_id" />
+          <Property Type="Int32" Name="category_type_id" />
+          <Property Type="Int32" Name="rent_type_id" />
+          <Property Type="Int32" Name="payment_type_id" />
+        </EntityType>
+        <Association Name="FK_bathunit_type">
+          <End Type="gb_x_amiravrnModel.bath_unit" Role="bath_unit" Multiplicity="0..1" />
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="bath_unit">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="bathunit_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_build_type">
+          <End Type="gb_x_amiravrnModel.build_type" Role="build_type" Multiplicity="0..1" />
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="build_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="buld_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_category_type">
+          <End Type="gb_x_amiravrnModel.category_type" Role="category_type" Multiplicity="0..1" />
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="category_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_images_flat">
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="gb_x_amiravrnModel.image_list" Role="image_list" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="flat_info">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="image_list">
+              <PropertyRef Name="FLAT_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_lessor_type">
+          <End Type="gb_x_amiravrnModel.lessor_type" Role="lessor_type" Multiplicity="0..1" />
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="lessor_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="lessor_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_payment_type">
+          <End Type="gb_x_amiravrnModel.payment_type" Role="payment_type" Multiplicity="0..1" />
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="payment_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="payment_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_region_type">
+          <End Type="gb_x_amiravrnModel.region_type" Role="region_type" Multiplicity="0..1" />
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="region_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="region_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_rent_type">
+          <End Type="gb_x_amiravrnModel.rent_type" Role="rent_type" Multiplicity="0..1" />
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="rent_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="rent_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_state_type">
+          <End Type="gb_x_amiravrnModel.state_type" Role="state_type" Multiplicity="0..1" />
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="state_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="state_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_term_type">
+          <End Type="gb_x_amiravrnModel.term_type" Role="term_type" Multiplicity="0..1" />
+          <End Type="gb_x_amiravrnModel.flat_info" Role="flat_info" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="term_type">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="flat_info">
+              <PropertyRef Name="term_type_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="rentalModelStoreContainer" CdmEntityContainer="rentalEntities">
+        <EntityContainerMapping StorageEntityContainer="gb_x_amiravrnModelStoreContainer" CdmEntityContainer="rentalEntities">
+          <EntitySetMapping Name="bath_unit">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.bath_unit">
+              <MappingFragment StoreEntitySet="bath_unit">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="black_list">
-            <EntityTypeMapping TypeName="rentalModel.black_list">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.black_list">
               <MappingFragment StoreEntitySet="black_list">
                 <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
                 <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
@@ -137,9 +758,125 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="build_type">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.build_type">
+              <MappingFragment StoreEntitySet="build_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category_type">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.category_type">
+              <MappingFragment StoreEntitySet="category_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="flat_info">
-            <EntityTypeMapping TypeName="rentalModel.flat_info">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.flat_info">
               <MappingFragment StoreEntitySet="flat_info">
+                <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+                <ScalarProperty Name="rent_type_id" ColumnName="rent_type_id" />
+                <ScalarProperty Name="category_type_id" ColumnName="category_type_id" />
+                <ScalarProperty Name="region_type_id" ColumnName="region_type_id" />
+                <ScalarProperty Name="lessor_type_id" ColumnName="lessor_type_id" />
+                <ScalarProperty Name="term_type_id" ColumnName="term_type_id" />
+                <ScalarProperty Name="state_type_id" ColumnName="state_type_id" />
+                <ScalarProperty Name="buld_type_id" ColumnName="buld_type_id" />
+                <ScalarProperty Name="bathunit_type_id" ColumnName="bathunit_type_id" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="COOLER" ColumnName="COOLER" />
+                <ScalarProperty Name="WASHER" ColumnName="WASHER" />
+                <ScalarProperty Name="TV" ColumnName="TV" />
+                <ScalarProperty Name="FRIDGE" ColumnName="FRIDGE" />
+                <ScalarProperty Name="RENT_TO" ColumnName="RENT_TO" />
+                <ScalarProperty Name="RENT_FROM" ColumnName="RENT_FROM" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="FURNITURE" ColumnName="FURNITURE" />
+                <ScalarProperty Name="FLOOR" ColumnName="FLOOR" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="ROOM_COUNT" ColumnName="ROOM_COUNT" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="image_list">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.image_list">
+              <MappingFragment StoreEntitySet="image_list">
+                <ScalarProperty Name="IMAGE_PATH" ColumnName="IMAGE_PATH" />
+                <ScalarProperty Name="FLAT_ID" ColumnName="FLAT_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="lessor_type">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.lessor_type">
+              <MappingFragment StoreEntitySet="lessor_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="payment_type">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.payment_type">
+              <MappingFragment StoreEntitySet="payment_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="region_type">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.region_type">
+              <MappingFragment StoreEntitySet="region_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rent_type">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.rent_type">
+              <MappingFragment StoreEntitySet="rent_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="state_type">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.state_type">
+              <MappingFragment StoreEntitySet="state_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="term_type">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.term_type">
+              <MappingFragment StoreEntitySet="term_type">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="view_flat_info">
+            <EntityTypeMapping TypeName="gb_x_amiravrnModel.view_flat_info">
+              <MappingFragment StoreEntitySet="view_flat_info">
+                <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+                <ScalarProperty Name="rent_type_id" ColumnName="rent_type_id" />
+                <ScalarProperty Name="category_type_id" ColumnName="category_type_id" />
+                <ScalarProperty Name="region_type_id" ColumnName="region_type_id" />
+                <ScalarProperty Name="lessor_type_id" ColumnName="lessor_type_id" />
+                <ScalarProperty Name="term_type_id" ColumnName="term_type_id" />
+                <ScalarProperty Name="state_type_id" ColumnName="state_type_id" />
+                <ScalarProperty Name="buld_type_id" ColumnName="buld_type_id" />
+                <ScalarProperty Name="bathunit_type_id" ColumnName="bathunit_type_id" />
                 <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
                 <ScalarProperty Name="TYPE" ColumnName="TYPE" />
                 <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
@@ -159,7 +896,6 @@
                 <ScalarProperty Name="PHONE" ColumnName="PHONE" />
                 <ScalarProperty Name="PRICE" ColumnName="PRICE" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="MECHANIC" ColumnName="MECHANIC" />
                 <ScalarProperty Name="STATE" ColumnName="STATE" />
                 <ScalarProperty Name="FURNITURE" ColumnName="FURNITURE" />
                 <ScalarProperty Name="BUILD" ColumnName="BUILD" />
@@ -168,15 +904,6 @@
                 <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
                 <ScalarProperty Name="ROOM_COUNT" ColumnName="ROOM_COUNT" />
                 <ScalarProperty Name="DATA" ColumnName="DATA" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="image_list">
-            <EntityTypeMapping TypeName="rentalModel.image_list">
-              <MappingFragment StoreEntitySet="image_list">
-                <ScalarProperty Name="IMAGE_PATH" ColumnName="IMAGE_PATH" />
-                <ScalarProperty Name="FLAT_ID" ColumnName="FLAT_ID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -201,12 +928,6 @@
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams>
-      <Diagram Name="rental" ZoomLevel="93">
-        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7879850260416657" />
-        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="2.75" PointY="0.75" Height="6.5955208333333317" />
-        <EntityTypeShape EntityType="rentalModel.image_list" Width="1.5" PointX="4.75" PointY="0.75" Height="1.5956835937499996" />
-      </Diagram>
-    </Diagrams>
+    <Diagrams></Diagrams>
   </Designer>
 </edmx:Edmx>

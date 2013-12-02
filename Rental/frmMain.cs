@@ -86,7 +86,6 @@ namespace Rental
             Common.SetColumlOption(grdFlats, Fields.BATH_UNIT, 80, ref displayIndex);
             Common.SetColumlOption(grdFlats, Fields.BUILD, 85, ref displayIndex);
             Common.SetColumlOption(grdFlats, Fields.STATE, 85, ref displayIndex);
-            Common.SetColumlOption(grdFlats, Fields.MECHANIC, 85, ref displayIndex);
             Common.SetColumlOption(grdFlats, Fields.NAME, 100, ref displayIndex);
             Common.SetColumlOption(grdFlats, Fields.TERM, 80, ref displayIndex);
             Common.SetColumlOption(grdFlats, Fields.RENT_FROM, 80, ref displayIndex);

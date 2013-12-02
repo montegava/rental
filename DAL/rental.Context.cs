@@ -25,8 +25,18 @@ namespace DAL
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<bath_unit> bath_unit { get; set; }
         public DbSet<black_list> black_list { get; set; }
+        public DbSet<build_type> build_type { get; set; }
+        public DbSet<category_type> category_type { get; set; }
         public DbSet<flat_info> flat_info { get; set; }
         public DbSet<image_list> image_list { get; set; }
+        public DbSet<lessor_type> lessor_type { get; set; }
+        public DbSet<payment_type> payment_type { get; set; }
+        public DbSet<region_type> region_type { get; set; }
+        public DbSet<rent_type> rent_type { get; set; }
+        public DbSet<state_type> state_type { get; set; }
+        public DbSet<term_type> term_type { get; set; }
+        public DbSet<view_flat_info> view_flat_info { get; set; }
     }
 }

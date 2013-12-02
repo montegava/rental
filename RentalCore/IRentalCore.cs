@@ -12,7 +12,7 @@ namespace RentalCore
 {
     // NOTE: You can use the "Rename" command on the "Refactor" menu to change the interface name "IService1" in both code and config file together.
     [ServiceContract]
-    public interface IRentalCore
+    public partial interface IRentalCore
     {
 
         [OperationContract(IsOneWay = false)]
@@ -22,11 +22,7 @@ namespace RentalCore
         byte[] FileDownload(string remotePath);
 
         [OperationContract]
-        void FlatList(List<Filter> filters, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber);
-
-        [OperationContract]
-        SearchResult<flat_info> FlatSearch(SearchQuery query);
-
+        SearchResult<view_flat_info> FlatSearch(SearchQuery query);
 
         [OperationContract]
         flat_info FlatByUrl(string url);
@@ -62,6 +58,8 @@ namespace RentalCore
         int BlackListAdd(black_list blackList);
 
     }
+
+
 
 
 }

@@ -21,11 +21,8 @@ namespace Rental.RentalCore {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FileDownload", ReplyAction="http://tempuri.org/IRentalCore/FileDownloadResponse")]
         byte[] FileDownload(string remotePath);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatList", ReplyAction="http://tempuri.org/IRentalCore/FlatListResponse")]
-        void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize);
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatSearch", ReplyAction="http://tempuri.org/IRentalCore/FlatSearchResponse")]
-        RentalCommon.SearchResult<DAL.flat_info> FlatSearch(RentalCommon.SearchQuery query);
+        RentalCommon.SearchResult<DAL.view_flat_info> FlatSearch(RentalCommon.SearchQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatByUrl", ReplyAction="http://tempuri.org/IRentalCore/FlatByUrlResponse")]
         DAL.flat_info FlatByUrl(string url);
@@ -96,11 +93,7 @@ namespace Rental.RentalCore {
             return base.Channel.FileDownload(remotePath);
         }
         
-        public void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize) {
-            base.Channel.FlatList(filters, startDate, endDate, sortBy, orderBy, ref activePage, out flats, out pageCount, out totalRowsNumber, pageSize);
-        }
-        
-        public RentalCommon.SearchResult<DAL.flat_info> FlatSearch(RentalCommon.SearchQuery query) {
+        public RentalCommon.SearchResult<DAL.view_flat_info> FlatSearch(RentalCommon.SearchQuery query) {
             return base.Channel.FlatSearch(query);
         }
         

@@ -14,7 +14,7 @@ using RentalCommon;
 namespace RentalCore
 {
     [AspNetCompatibilityRequirements(RequirementsMode = AspNetCompatibilityRequirementsMode.Allowed)]
-    public class RentalCore : IRentalCore
+    public partial class RentalCore : IRentalCore
     {
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(RentalCore));
 
@@ -37,12 +37,7 @@ namespace RentalCore
             return new byte[]{};
         }
 
-        public void FlatList(List<Filter> filterBy, DateTime startDate, DateTime endDate, Int32 sortBy, bool orderBy, ref Int32 activePage, Int32 pageSize, out List<flat_info> flats, out Int32 pageCount, out Int32 totalRowsNumber)
-        {
-            FlatManager.FlatList(filterBy, startDate, endDate, sortBy, orderBy, ref activePage, pageSize, out flats, out pageCount, out totalRowsNumber);
-        }
-
-        public SearchResult<flat_info> FlatSearch(SearchQuery query)
+        public SearchResult<view_flat_info> FlatSearch(SearchQuery query)
         {
             return FlatManager.FlatSearch(query);
         }
@@ -54,7 +49,8 @@ namespace RentalCore
 
         public flat_info FlatById(int id)
         {
-            return FlatManager.FlatById(id);
+            var flat  = FlatManager.FlatById(id);
+            return flat;
         }
 
         public int FlatAdd(flat_info flat)
