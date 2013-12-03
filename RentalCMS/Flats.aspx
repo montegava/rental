@@ -111,7 +111,7 @@
 
 
 
-    <div style="overflow: auto; overflow-y: hidden;">
+    
 
         <asp:ListView ID="_lwInfoListEdit" runat="server" OnSorting="_lwInfoList_Sorting" OnItemCommand="_lwInfoList_ItemCommand">
             <LayoutTemplate>
@@ -192,54 +192,74 @@
                 <tr>
 
                     <td runat="server" id="trNumber">
-                        <asp:HiddenField ID="hfID" Value='<%# Eval("ID") %>' runat="server" />
-                        <asp:Label runat="server" ID="lbId">  <%# Eval("ID") %> </asp:Label>
+                        <div style="width: 35px; word-wrap: break-word;">
+                            <asp:HiddenField ID="hfID" Value='<%# Eval("ID") %>' runat="server" />
+                            <asp:Label runat="server" ID="lbId">  <%# Eval("ID") %> </asp:Label>
+                        </div>
                     </td>
 
                     <td>
-                        <asp:Label runat="server" ID="lbData"> <%# ((DateTime)Eval("DATA")).ToShortDateString() %> </asp:Label>
-                    </td>
-
-
-                    <td>
-                        <asp:Label runat="server" ID="lblRoomCount"> <%# Eval("ROOM_COUNT") %> </asp:Label>
-                    </td>
-
-
-                    <td>
-                        <asp:Label runat="server" ID="lbAddress"> <%# Eval("ADDRESS") %> </asp:Label>
-                    </td>
-
-                    <td>
-                        <asp:Label runat="server" ID="lbDistinct"> <%# Eval("REGION") %> </asp:Label>
+                        <div style="width: 65px; word-wrap: break-word;">
+                            <asp:Label runat="server" ID="lbData"> <%# ((DateTime)Eval("DATA")).ToShortDateString() %> </asp:Label>
+                        </div>
                     </td>
 
 
                     <td>
-                        <asp:Label runat="server" ID="lbFloor"> <%# Eval("FLOOR") %> </asp:Label>
+                        <div style="width: 30px; word-wrap: break-word;">
+                            <asp:Label runat="server" ID="lblRoomCount"> <%# Eval("ROOM_COUNT") %> </asp:Label>
+                        </div>
+                    </td>
+
+
+                    <td>
+                        <div style="width: 160px; word-wrap: break-word;">
+                            <asp:Label runat="server" ID="lbAddress"> <%# Eval("ADDRESS") %> </asp:Label>
+                        </div>
                     </td>
 
                     <td>
-                        <asp:Label runat="server" ID="lbPrice"> <%# Eval("PRICE") %> </asp:Label>
+                        <div style="width: 100px; word-wrap: break-word;">
+                            <asp:Label runat="server" ID="lbDistinct"> <%# Eval("REGION") %> </asp:Label>
+                        </div>
+                    </td>
+
+
+
+                    <td>
+                        <div style="width: 30px; word-wrap: break-word;">
+                            <asp:Label runat="server" ID="lbFloor"> <%# Eval("FLOOR") %> </asp:Label>
+                        </div>
                     </td>
 
                     <td>
-                        <asp:Label runat="server" ID="lbFurniture"> <%# Eval("FURNITURE") %> </asp:Label>
+                        <div style="width: 60px; word-wrap: break-word;">
+                            <asp:Label runat="server" ID="lbPrice"> <%# Eval("PRICE") %> </asp:Label>
+                        </div>
+                    </td>
+
+                    <td>
+                        <div style="width: 50px; word-wrap: break-word;">
+                            <asp:Label runat="server" ID="lbFurniture"> <%# Eval("FURNITURE") %> </asp:Label>
+                        </div>
                     </td>
 
 
 
                     <td class="icon">
-                        <asp:LinkButton ID="lbEdit" runat="server" CommandName="Action" CommandArgument="Edit" title='Посмотреть'>
+                        <div style="width: 30px; word-wrap: break-word;">
+                            <asp:LinkButton ID="lbEdit" runat="server" CommandName="Action" CommandArgument="Edit" title='Посмотреть'>
                          <image src="/images/icon_view.png" width="21" height="20" title='Просмотреть' alt=""/>
-                        </asp:LinkButton>
+                            </asp:LinkButton>
+                        </div>
+
                     </td>
 
                 </tr>
             </ItemTemplate>
         </asp:ListView>
 
-    </div>
+    
 
     <section class="footer-tbl" id="_navPag" runat="server">
         <div class="itemsPg">
@@ -269,11 +289,12 @@
 
 
     <script type="text/javascript">
-        $.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '26px', 1: '64px', 2: '60px', 3: '180px', 4: '90px', 5: '60px', 6: '60px', 7: '60px', 8: '21px' });
+        //$.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '26px', 1: '64px', 2: '60px', 3: '180px', 4: '90px', 5: '60px', 6: '60px', 7: '60px', 8: '21px' });
 
 
-        $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
+       $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
 
+      
 
     </script>
 </asp:Content>

@@ -95,15 +95,25 @@
     <Content Include="images\state3.png" />
     <Content Include="Properties\DataSources\DAL.flat_info.datasource" />
     <Content Include="RealPricing.aspx" />
+    <Content Include="Properties\DataSources\DAL.bath_unit.datasource" />
     <None Include="Properties\DataSources\DAL.black_list.datasource" />
+    <Content Include="Properties\DataSources\DAL.build_type.datasource" />
+    <Content Include="Properties\DataSources\DAL.category_type.datasource" />
     <None Include="Properties\DataSources\DAL.image_list.datasource" />
-    <None Include="Service References\RentalCore\item.disco" />
-    <None Include="Service References\RentalCore\configuration91.svcinfo" />
-    <None Include="Service References\RentalCore\configuration.svcinfo" />
-    <None Include="Service References\RentalCore\Reference.svcmap">
+    <Content Include="Properties\DataSources\DAL.lessor_type.datasource" />
+    <Content Include="Properties\DataSources\DAL.payment_type.datasource" />
+    <Content Include="Properties\DataSources\DAL.region_type.datasource" />
+    <Content Include="Properties\DataSources\DAL.rent_type.datasource" />
+    <Content Include="Properties\DataSources\DAL.state_type.datasource" />
+    <Content Include="Properties\DataSources\DAL.term_type.datasource" />
+    <Content Include="Properties\DataSources\DAL.view_flat_info.datasource" />
+    <Content Include="Service References\RentalCore\item.disco" />
+    <Content Include="Service References\RentalCore\configuration91.svcinfo" />
+    <Content Include="Service References\RentalCore\configuration.svcinfo" />
+    <Content Include="Service References\RentalCore\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
+    </Content>
     <Content Include="src\general.js" />
     <Content Include="src\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="src\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -211,10 +221,7 @@
     <None Include="Service References\RentalCore\item3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RentalCore\item4.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\RentalCore\RentalCore.wsdl" />
+    <Content Include="Service References\RentalCore\RentalCore.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

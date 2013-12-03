@@ -15,14 +15,41 @@ namespace RentalCMS.RentalCore {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RentalCore.IRentalCore")]
     public interface IRentalCore {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/Upload", ReplyAction="http://tempuri.org/IRentalCore/UploadResponse")]
-        string Upload(System.IO.Stream data);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/BuldTypeAll", ReplyAction="http://tempuri.org/IRentalCore/BuldTypeAllResponse")]
+        DAL.build_type[] BuldTypeAll();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/DownloadFile", ReplyAction="http://tempuri.org/IRentalCore/DownloadFileResponse")]
-        System.IO.Stream DownloadFile(string remotePath);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/BathunitTypeAll", ReplyAction="http://tempuri.org/IRentalCore/BathunitTypeAllResponse")]
+        DAL.bath_unit[] BathunitTypeAll();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatList", ReplyAction="http://tempuri.org/IRentalCore/FlatListResponse")]
-        void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/StateTypeAll", ReplyAction="http://tempuri.org/IRentalCore/StateTypeAllResponse")]
+        DAL.state_type[] StateTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/TermTypeAll", ReplyAction="http://tempuri.org/IRentalCore/TermTypeAllResponse")]
+        DAL.term_type[] TermTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/LessorTypeAll", ReplyAction="http://tempuri.org/IRentalCore/LessorTypeAllResponse")]
+        DAL.lessor_type[] LessorTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/RegionTypeAll", ReplyAction="http://tempuri.org/IRentalCore/RegionTypeAllResponse")]
+        DAL.region_type[] RegionTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/CategoryTypeAll", ReplyAction="http://tempuri.org/IRentalCore/CategoryTypeAllResponse")]
+        DAL.category_type[] CategoryTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/RentTypeAll", ReplyAction="http://tempuri.org/IRentalCore/RentTypeAllResponse")]
+        DAL.rent_type[] RentTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/PaymentTypeAll", ReplyAction="http://tempuri.org/IRentalCore/PaymentTypeAllResponse")]
+        DAL.payment_type[] PaymentTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FileUpload", ReplyAction="http://tempuri.org/IRentalCore/FileUploadResponse")]
+        void FileUpload(string fileName, byte[] data);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FileDownload", ReplyAction="http://tempuri.org/IRentalCore/FileDownloadResponse")]
+        byte[] FileDownload(string remotePath);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatSearch", ReplyAction="http://tempuri.org/IRentalCore/FlatSearchResponse")]
+        RentalCommon.SearchResult<DAL.view_flat_info> FlatSearch(RentalCommon.SearchQuery query);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FlatByUrl", ReplyAction="http://tempuri.org/IRentalCore/FlatByUrlResponse")]
         DAL.flat_info FlatByUrl(string url);
@@ -85,16 +112,52 @@ namespace RentalCMS.RentalCore {
                 base(binding, remoteAddress) {
         }
         
-        public string Upload(System.IO.Stream data) {
-            return base.Channel.Upload(data);
+        public DAL.build_type[] BuldTypeAll() {
+            return base.Channel.BuldTypeAll();
         }
         
-        public System.IO.Stream DownloadFile(string remotePath) {
-            return base.Channel.DownloadFile(remotePath);
+        public DAL.bath_unit[] BathunitTypeAll() {
+            return base.Channel.BathunitTypeAll();
         }
         
-        public void FlatList(RentalCommon.Filter[] filters, System.DateTime startDate, System.DateTime endDate, int sortBy, bool orderBy, ref int activePage, out DAL.flat_info[] flats, out int pageCount, out int totalRowsNumber, int pageSize) {
-            base.Channel.FlatList(filters, startDate, endDate, sortBy, orderBy, ref activePage, out flats, out pageCount, out totalRowsNumber, pageSize);
+        public DAL.state_type[] StateTypeAll() {
+            return base.Channel.StateTypeAll();
+        }
+        
+        public DAL.term_type[] TermTypeAll() {
+            return base.Channel.TermTypeAll();
+        }
+        
+        public DAL.lessor_type[] LessorTypeAll() {
+            return base.Channel.LessorTypeAll();
+        }
+        
+        public DAL.region_type[] RegionTypeAll() {
+            return base.Channel.RegionTypeAll();
+        }
+        
+        public DAL.category_type[] CategoryTypeAll() {
+            return base.Channel.CategoryTypeAll();
+        }
+        
+        public DAL.rent_type[] RentTypeAll() {
+            return base.Channel.RentTypeAll();
+        }
+        
+        public DAL.payment_type[] PaymentTypeAll() {
+            return base.Channel.PaymentTypeAll();
+        }
+        
+        public void FileUpload(string fileName, byte[] data) {
+            base.Channel.FileUpload(fileName, data);
+        }
+        
+        public byte[] FileDownload(string remotePath) {
+            return base.Channel.FileDownload(remotePath);
+        }
+        
+        public RentalCommon.SearchResult<DAL.view_flat_info> FlatSearch(RentalCommon.SearchQuery query) {
+            return base.Channel.FlatSearch(query);
         }
         
         public DAL.flat_info FlatByUrl(string url) {

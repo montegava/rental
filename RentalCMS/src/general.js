@@ -2,42 +2,7 @@
 
     $.fn.addHints = function () {
 
-        $(this).each(function () {
-            if ($(this).parent("label").length) {
-                return;
-            }
-            var filename = window.location.href.match(/.*\/(.*)\..*?$/)[1];
-
-            var div = $("#tooltip");
-            if (div.length == 0) {
-                div = $('<div id="tooltip">').toggle(false).appendTo(document.body);
-            }
-
-            var text = $(this).text().replace(/^[\s\*]+|[\s*]+$/g, ""); ;
-            var hint = SpiderLanguage["HINT_" + text] || SpiderLanguage["HINT_" + filename + "_" + text] || "Tooltip for text <b>" + filename + "_" + text + "</b>";
-
-            //DEBUG
-
-            if (hint) {
-                $(this).removeAttr("title");
-                $('<a class="hint">ⓘ</a>').appendTo(this)
-                    .hover(
-                        function (event) {
-                            div.html(hint)
-                                .stop(true, true)
-                                .fadeIn()
-                                .position({
-                                    my: "left top",
-                                    at: "right bottom",
-                                    of: event,
-                                    offset: "2 2"
-                                });
-                        },
-                        function () {
-                            div.stop(true, true).fadeOut();
-                        });
-            }
-        });
+      
     };
 
 

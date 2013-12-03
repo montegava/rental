@@ -1,56 +1,153 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd0" namespace="http://schemas.microsoft.com/Message" />
+  <xs:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DAL" />
   <xs:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RentalCommon" />
-  <xs:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/DAL" />
-  <xs:element name="Upload">
+  <xs:element name="BuldTypeAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BuldTypeAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.microsoft.com/Message" name="data" type="q1:StreamBody" />
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="BuldTypeAllResult" nillable="true" type="q1:ArrayOfbuild_type" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UploadResponse">
+  <xs:element name="BathunitTypeAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="BathunitTypeAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="UploadResult" nillable="true" type="xs:string" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="BathunitTypeAllResult" nillable="true" type="q2:ArrayOfbath_unit" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DownloadFile">
+  <xs:element name="StateTypeAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="StateTypeAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="StateTypeAllResult" nillable="true" type="q3:ArrayOfstate_type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TermTypeAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="TermTypeAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="TermTypeAllResult" nillable="true" type="q4:ArrayOfterm_type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LessorTypeAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LessorTypeAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="LessorTypeAllResult" nillable="true" type="q5:ArrayOflessor_type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegionTypeAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegionTypeAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="RegionTypeAllResult" nillable="true" type="q6:ArrayOfregion_type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CategoryTypeAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CategoryTypeAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="CategoryTypeAllResult" nillable="true" type="q7:ArrayOfcategory_type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RentTypeAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RentTypeAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="RentTypeAllResult" nillable="true" type="q8:ArrayOfrent_type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PaymentTypeAll">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="PaymentTypeAllResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="PaymentTypeAllResult" nillable="true" type="q9:ArrayOfpayment_type" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FileUpload">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="fileName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="data" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FileUploadResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="FileDownload">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="remotePath" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="DownloadFileResponse">
+  <xs:element name="FileDownloadResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.microsoft.com/Message" name="DownloadFileResult" type="q2:StreamBody" />
+        <xs:element minOccurs="0" name="FileDownloadResult" nillable="true" type="xs:base64Binary" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="FlatList">
+  <xs:element name="FlatSearch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/RentalCommon" minOccurs="0" name="filters" nillable="true" type="q3:ArrayOfFilter" />
-        <xs:element minOccurs="0" name="startDate" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="endDate" type="xs:dateTime" />
-        <xs:element minOccurs="0" name="sortBy" type="xs:int" />
-        <xs:element minOccurs="0" name="orderBy" type="xs:boolean" />
-        <xs:element minOccurs="0" name="activePage" type="xs:int" />
-        <xs:element minOccurs="0" name="pageSize" type="xs:int" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/RentalCommon" minOccurs="0" name="query" nillable="true" type="q10:SearchQuery" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="FlatListResponse">
+  <xs:element name="FlatSearchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="activePage" type="xs:int" />
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="flats" nillable="true" type="q4:ArrayOfflat_info" />
-        <xs:element minOccurs="0" name="pageCount" type="xs:int" />
-        <xs:element minOccurs="0" name="totalRowsNumber" type="xs:int" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/RentalCommon" minOccurs="0" name="FlatSearchResult" nillable="true" type="q11:SearchResultOfview_flat_infowaVWVNS2" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -64,7 +161,7 @@
   <xs:element name="FlatByUrlResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="FlatByUrlResult" nillable="true" type="q5:flat_info" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="FlatByUrlResult" nillable="true" type="q12:flat_info" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -78,14 +175,14 @@
   <xs:element name="FlatByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="FlatByIdResult" nillable="true" type="q6:flat_info" />
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="FlatByIdResult" nillable="true" type="q13:flat_info" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="FlatAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="flat" nillable="true" type="q7:flat_info" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="flat" nillable="true" type="q14:flat_info" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -99,7 +196,7 @@
   <xs:element name="FlatUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="flat" nillable="true" type="q8:flat_info" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="flat" nillable="true" type="q15:flat_info" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -123,7 +220,7 @@
   <xs:element name="ImageUpdate">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="images" nillable="true" type="q9:ArrayOfimage_list" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="images" nillable="true" type="q16:ArrayOfimage_list" />
         <xs:element minOccurs="0" name="flatId" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
@@ -143,7 +240,7 @@
   <xs:element name="ImagesByFlatIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="ImagesByFlatIdResult" nillable="true" type="q10:ArrayOfimage_list" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="ImagesByFlatIdResult" nillable="true" type="q17:ArrayOfimage_list" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -155,7 +252,7 @@
   <xs:element name="BlackListAllResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="BlackListAllResult" nillable="true" type="q11:ArrayOfblack_list" />
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="BlackListAllResult" nillable="true" type="q18:ArrayOfblack_list" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -169,7 +266,7 @@
   <xs:element name="BlackListByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="BlackListByIdResult" nillable="true" type="q12:black_list" />
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="BlackListByIdResult" nillable="true" type="q19:black_list" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -188,7 +285,7 @@
   <xs:element name="BlackListAdd">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="blackList" nillable="true" type="q13:black_list" />
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/DAL" minOccurs="0" name="blackList" nillable="true" type="q20:black_list" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

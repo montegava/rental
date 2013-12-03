@@ -57,6 +57,33 @@ namespace RentalCore
         [OperationContract]
         int BlackListAdd(black_list blackList);
 
+
+        [OperationContract]
+        build_type[] BuldTypeAll();
+
+        [OperationContract]
+        bath_unit[] BathunitTypeAll();
+
+        [OperationContract]
+        state_type[] StateTypeAll();
+
+        [OperationContract]
+        term_type[] TermTypeAll();
+
+        [OperationContract]
+        lessor_type[] LessorTypeAll();
+
+        [OperationContract]
+        region_type[] RegionTypeAll();
+
+        [OperationContract]
+        category_type[] CategoryTypeAll();
+
+        [OperationContract]
+        rent_type[] RentTypeAll();
+
+        [OperationContract]
+        payment_type[] PaymentTypeAll();
     }
 
 

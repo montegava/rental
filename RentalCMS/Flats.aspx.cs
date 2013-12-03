@@ -35,51 +35,71 @@ namespace RentalCMS
 
         public static string sel_dw = "sort-down";
 
-        public List<Filter> GetFilters()
+        public SearchQuery GetFilters()
         {
-            List<Filter> result = new List<Filter>();
+           var result = new SearchQuery();
+
+           var filters = new List<Filter1>();
 
             //Кол-во комнат
             if ((ddlRoomCount.SelectedIndex) > 0)
             {
                 var field = this.CreateFilter(ddlRoomCount.SelectedItem.Text, Fields.ROOM_COUNT);
-                result.Add(field);
+                filters.AddRange(field);
             }
 
             //Адрес
             if (!string.IsNullOrEmpty(tbAddress.Text))
             {
                 var field = this.CreateFilter(tbAddress.Text, Fields.ADDRESS);
-                result.Add(field);
+                filters.AddRange(field);
             }
 
             //Район 
             if ( (ddlRegion.SelectedIndex) > 0)
             {
                 var field = this.CreateFilter(ddlRegion.SelectedItem.Text, Fields.REGION);
-                result.Add(field);
+                filters.AddRange(field);
             }
 
             //Этаж
             if (ddlFloor.SelectedIndex > 0)
             {
                 var field = this.CreateFilter(ddlFloor.SelectedItem.Text, Fields.FLOOR);
-                result.Add(field);
+                filters.AddRange(field);
             }
 
             //Мебель
             if ( ddlFurniture.SelectedIndex > 0)
             {
                 var field = this.CreateFilter(ddlFurniture.SelectedItem.Text, Fields.FURNITURE);
-                result.Add(field);
+                filters.AddRange(field);
             }
 
             //Цена
             if (!string.IsNullOrEmpty(tbPrice.Text))
             {
                 var field = this.CreateFilter(tbPrice.Text, Fields.PRICE);
-                result.Add(field);
+                filters.AddRange(field);
             }
+
+            DateTime selectedStartDate = UIConvert.ToDateTime(_tbStartDateText.Text);
+            DateTime selectedEndDate = UIConvert.ToDateTime(_tbEndDateText.Text);
+
+            if (selectedStartDate != DateTime.MinValue)
+            {
+                filters.Add(new Filter1(Fields.DATA, FilterConditions.MORE, selectedStartDate.AddSeconds(-1)));
+                
+            }
+
+            if (selectedEndDate != DateTime.MinValue)
+            {
+                filters.Add(new Filter1(Fields.DATA, FilterConditions.LESS, selectedEndDate.AddSeconds(1)));
+
+            }
+
+
+            result.Filters = filters.ToArray();
 
             return result;
         }
@@ -93,8 +113,7 @@ namespace RentalCMS
         private void SetDefaulData()
         {
 
-            DateTime selectedStartDate = UIConvert.ToDateTime(_tbStartDateText.Text);
-            DateTime selectedEndDate = UIConvert.ToDateTime(_tbEndDateText.Text);
+          
 
             // -- pagination info
             int selectedActivePage = _plInfoGrid.PageSelected != 0 ? _plInfoGrid.PageSelected : 1;
@@ -102,44 +121,39 @@ namespace RentalCMS
             int pageCount = 0;
             int totalRowsNumber = 0;
 
-            errorLog.Debug("IN the function");
+            var query = this.GetFilters();
+            query.Page = selectedActivePage;
+            query.PageSize =selectedPageSize;
 
-            DAL.flat_info[] flats;// = DAL.FlatManager.GetAllFlats();
+            if ( Convert.ToInt32(SortExpression) > 0)
+                query.SortField = (Fields) Convert.ToInt32(SortExpression);
+            query.Ascending = SortAscending;
+            
+               
 
-
-            errorLog.Debug("Try to get");
+                //ref selectedActivePage,
+                //out flats,
+                //out pageCount,
+                //out totalRowsNumber, selectedPageSize
 
 
             var core = new RentalCoreClient();
-            core.FlatList(this.GetFilters().ToArray(),
+            var flats =  core.FlatSearch(query);
 
-                selectedStartDate,
-                selectedEndDate,
+            totalRowsNumber = flats.TotallCount;
 
-                Convert.ToInt32(SortExpression),
-
-                SortAscending,
-
-                ref selectedActivePage,
-                out flats,
-                out pageCount,
-                out totalRowsNumber, selectedPageSize);
-
-
-
-
-
+            
 
             errorLog.Debug("Set data source");
-            this._lwInfoListEdit.DataSource = flats;
+            this._lwInfoListEdit.DataSource = flats.Items;
             this._lwInfoListEdit.DataBind();
 
 
-            if (flats != null && flats.Any())
+            if (flats != null && flats.Items.Any())
             {
                 ShowNavigation();
                 // Show number rows per page with spec settings
-                lbSelNumPerPage.Text = getCurrentPageNumberRows(selectedActivePage, flats.Count(), totalRowsNumber, selectedPageSize);
+                lbSelNumPerPage.Text = getCurrentPageNumberRows(selectedActivePage, flats.Items.Count(), totalRowsNumber, selectedPageSize);
                 // -- set pagging data
                 _plInfoGrid.Visible = true;
                 _plInfoGrid.PageCount = pageCount;
@@ -234,55 +248,29 @@ namespace RentalCMS
         }
 
 
-        private Filter CreateFilter(string value, Fields field)
+        private Filter1[] CreateFilter(string value, Fields field)
         {
 
-            var result = new Filter();
-            result.Field = field;
-
-            var comparator = this.GetComparator(value);
-            result.Comparator = comparator;
-
-            switch (comparator)
+            var result = new List<Filter1>();
+            if (!string.IsNullOrEmpty(value))
             {
-                case ComapreType.NONE:
-                    result.StartValue = value;
-                    break;
-                case ComapreType.MORE:
-                    result.StartValue = value.Split('>')[1];
-                    break;
-                case ComapreType.LESS:
-                    result.StartValue = value.Split( '<')[0];
-                    break;
-                case ComapreType.BETWEEN:
+                if (value.Contains('>'))
+                    result.Add(new Filter1(field,FilterConditions.MORE, value));
+                if (value.Contains('<'))
+                    result.Add(new Filter1(field,FilterConditions.LESS, value));
+                if (value.Contains('-'))
+                {
                     string[] vals = value.Split('-');
-                    var start = (vals[0]);
-                    var end = (vals[1]);
-                    result.StartValue = start;
-                    result.EndValue = end;
-                    break;
-                default:
-                    break;
+                    var start = Convert.ToInt32(vals[0]) -1;
+                    var end = Convert.ToInt32(vals[1]) + 1;
+                    result.Add(new Filter1(field,FilterConditions.MORE, start));
+                    result.Add(new Filter1(field,FilterConditions.LESS, end));
+                }
             }
-            return result;
+            return result.ToArray();
         }
 
-        private ComapreType GetComparator(string text)
-        {
-            var result = ComapreType.NONE;
-
-            if (!string.IsNullOrEmpty(text))
-            {
-                if (text.Contains('>'))
-                    result = ComapreType.MORE;
-                if (text.Contains('<'))
-                    result = ComapreType.LESS;
-                if (text.Contains('-'))
-                    result = ComapreType.BETWEEN;
-            }
-            return result;
-        }
-
+   
 
         #region ONBase
 

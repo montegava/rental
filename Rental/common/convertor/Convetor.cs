@@ -103,7 +103,6 @@ namespace Rental
         {
 
             var result = new List<FilterConditions>();
-
             switch (field)
             {
                 case Fields.ID:
@@ -145,8 +144,6 @@ namespace Rental
                     throw new Exception("Unknown condition " + field.ToString());
             }
 
-
-            return result.ToArray();
         }
 
 

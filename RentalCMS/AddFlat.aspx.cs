@@ -36,18 +36,19 @@ namespace RentalCMS
                 NAME = tbName.Text,
                 EMAIL = tbEmail.Text,
                 PHONE = tbPhone.Text,
-                REGION = EnumConvertor.Convert((Region)ddlRegion.SelectedEnum),
-                CATEGORY = EnumConvertor.Convert((Category)ddlCategory.SelectedEnum),
-                TYPE = EnumConvertor.Convert((DAL.Type)ddlCategory.SelectedEnum),
                 ROOM_COUNT = ddlRoomCount.SelectedIntValue,
                 FLOOR = ddlFloor.SelectedIntValue,
-                BUILD = EnumConvertor.Convert((DAL.HouseType)ddlHouseType.SelectedEnum),
-                TERM = EnumConvertor.Convert((DAL.RentType)ddlRentType.SelectedEnum),
-                //squery = 
                 ADDRESS = tbAdres.Text,
                 CONTENT = tbDescription.Text,
                 PRICE = tbPrice.Text,
-                PAYMENT = EnumConvertor.Convert((DAL.Payment)ddlPayment.SelectedEnum),
+
+                //PAYMENT = EnumConvertor.Convert((DAL.Payment)ddlPayment.SelectedEnum),
+                //REGION = EnumConvertor.Convert((Region)ddlRegion.SelectedEnum),
+                //CATEGORY = EnumConvertor.Convert((Category)ddlCategory.SelectedEnum),
+                //TYPE = EnumConvertor.Convert((DAL.Type)ddlCategory.SelectedEnum),
+                //BUILD = EnumConvertor.Convert((DAL.HouseType)ddlHouseType.SelectedEnum),
+                //TERM = EnumConvertor.Convert((DAL.RentType)ddlRentType.SelectedEnum),
+            
             };
 
 
