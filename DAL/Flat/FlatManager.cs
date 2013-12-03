@@ -358,8 +358,7 @@ namespace DAL
                                     expr = expr.And(c => c.RENT_TO == dvalue);
                                     break;
                                 case FilterConditions.CONTAIN:
-                                    throw new Exception("CONTAIN not applicable for RENT_TO");
-                                    break;
+                                    throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                             }
                             break;
                         #endregion
