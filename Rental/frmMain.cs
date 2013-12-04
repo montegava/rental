@@ -37,8 +37,7 @@ namespace Rental
         private List<black_list> BlackList = new List<black_list>();
 
         NameListCache Cache = null;
-        const int PAGE_SIZE = 5000;
-
+        
 
         #region LoadSaveClose
         public frmMain()
@@ -70,7 +69,7 @@ namespace Rental
             pnlSearch.Visible = false;
             SearchDate.Visible = false;
 
-            this.Cache = new NameListCache(PAGE_SIZE);
+            this.Cache = new NameListCache();
 
 
             int displayIndex = 0;
@@ -147,44 +146,44 @@ namespace Rental
                     break;
 
                 case Fields.BATH_UNIT:
-                      cbSearch.Visible = true;
+                    cbSearch.Visible = true;
                     Common.FillComboBox(cbSearch, NameListCache.BathunitTypeAll, "name", "id");
                     SearchDate.Visible = SearchText.Visible = false;
                     break;
                 case Fields.STATE:
-                      cbSearch.Visible = true;
+                    cbSearch.Visible = true;
                     Common.FillComboBox(cbSearch, NameListCache.StateTypeAll, "name", "id");
                     SearchDate.Visible = SearchText.Visible = false;
                     break;
                 case Fields.TYPE:
-                      cbSearch.Visible = true;
+                    cbSearch.Visible = true;
                     Common.FillComboBox(cbSearch, NameListCache.RentTypeAll, "name", "id");
                     SearchDate.Visible = SearchText.Visible = false;
                     break;
 
                 case Fields.TERM:
-                      cbSearch.Visible = true;
+                    cbSearch.Visible = true;
                     Common.FillComboBox(cbSearch, NameListCache.TermTypeAll, "name", "id");
                     SearchDate.Visible = SearchText.Visible = false;
                     break;
                 case Fields.BUILD:
-                      cbSearch.Visible = true;
+                    cbSearch.Visible = true;
                     Common.FillComboBox(cbSearch, NameListCache.BuldTypeAll, "name", "id");
                     SearchDate.Visible = SearchText.Visible = false;
                     break;
 
                 case Fields.CATEGORY:
-                      cbSearch.Visible = true;
+                    cbSearch.Visible = true;
                     Common.FillComboBox(cbSearch, NameListCache.CategoryTypeAll, "name", "id");
                     SearchDate.Visible = SearchText.Visible = false;
                     break;
                 case Fields.LESSOR:
-                      cbSearch.Visible = true;
+                    cbSearch.Visible = true;
                     Common.FillComboBox(cbSearch, NameListCache.LessorTypeAll, "name", "id");
                     SearchDate.Visible = SearchText.Visible = false;
                     break;
                 case Fields.PAYMENT:
-                      cbSearch.Visible = true;
+                    cbSearch.Visible = true;
                     Common.FillComboBox(cbSearch, NameListCache.PaymentTypeAll, "name", "id");
                     SearchDate.Visible = SearchText.Visible = false;
                     break;
@@ -199,7 +198,7 @@ namespace Rental
                     SearchText.Visible = true;
                     break;
             }
-      
+
 
             cbCondition.DataSource = Convetor.GetConditions((Fields)cbFields.SelectedValue)
             .Select(p => new KeyValuePair<FilterConditions, string>(p, Convetor.ConditionToString(p)))
@@ -777,10 +776,20 @@ namespace Rental
         /// </summary>
         private void FlatRefresh()
         {
+            grdFlats.SuspendLayout();
+
+            NameListCache.Query.Filters = this.Filters.ToArray();
             this.Cache.CachedData.RemoveAll();
             Cache.LoadPage(0);
+            lblCount.Text = Cache.TotalRowsNumber.ToString();
+
+            if (this.Filters.Any())
+                lbFilters.Text = "Применено условий: " + this.Filters.Count().ToString();
+            else
+                lbFilters.Text = "";
             grdFlats.RowCount = Cache.TotalRowsNumber;
             grdFlats.Refresh();
+            grdFlats.ResumeLayout();
         }
 
         /// <summary>
@@ -1026,7 +1035,7 @@ namespace Rental
             {
                 var cell = row.Cells[field.ToString()].Value;
                 if (cell != null)
-                result = cell.ToString();
+                    result = cell.ToString();
             }
             return result;
         }
@@ -1038,13 +1047,13 @@ namespace Rental
                 inputNAME.Text = GetCurrentRowValue(Fields.NAME);
                 inputCONTENT.Text = GetCurrentRowValue(Fields.CONTENT);
                 intupROOM_COUNT.Text = GetCurrentRowValue(Fields.ROOM_COUNT);
-                intupFLOOR.Text =GetCurrentRowValue(Fields.FLOOR);
+                intupFLOOR.Text = GetCurrentRowValue(Fields.FLOOR);
                 intupADDRESS.Text = GetCurrentRowValue(Fields.ADDRESS);
                 intupBATH_UNIT.Text = GetCurrentRowValue(Fields.BATH_UNIT);
                 intupBUILD.Text = GetCurrentRowValue(Fields.BUILD);
                 intupSTATE.Text = GetCurrentRowValue(Fields.STATE);
                 intupPRICE.Text = GetCurrentRowValue(Fields.PRICE);
-                
+
                 inputPHONE.Items.Clear();
                 inputPHONE.Items.AddRange(GetCurrentRowValue(Fields.PHONE).Split(';'));
 
@@ -1183,26 +1192,18 @@ namespace Rental
 
         private void btnAddFilter_Click(object sender, EventArgs e)
         {
-            if (cbFields.SelectedValue != null && cbCondition.SelectedValue != null && cbCondition.SelectedIndex > -1 &&  !string.IsNullOrEmpty(cbCondition.Text))
+            if (cbFields.SelectedValue != null && cbCondition.SelectedValue != null && cbCondition.SelectedIndex > -1 && !string.IsNullOrEmpty(cbCondition.Text))
             {
                 if (SearchText.Visible)
-                {
                     Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, SearchText.Text));
-                }
                 else if (SearchDate.Visible)
-                {
                     Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, SearchDate.Value));
-                }
                 else if (cbSearch.Visible)
-                {
                     Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, cbSearch.SelectedValue));
-                }
 
-             
-
-
-
+                pnlSearch.SuspendLayout();
                 pnlSearch.Height = 31 * (Filters.Count() + 1);
+
                 var lbl = new Label()
                  {
                      Text = String.Format("[{0}]   {1}   [{2}] ",
@@ -1215,15 +1216,12 @@ namespace Rental
                  };
 
                 pnlSearch.Controls.Add(lbl);
-                pnlSearch.Refresh();
+                pnlSearch.ResumeLayout();
 
                 SearchText.Text = "";
                 cbCondition.SelectedItem = -1;
-           
-                
-                NameListCache.Query.Filters = this.Filters.ToArray();
-                FlatRefresh();
 
+                FlatRefresh();
             }
             else
                 MessageBox.Show("Не выбрано поле либо условие", "Внимание", MessageBoxButtons.OK, MessageBoxIcon.Warning);

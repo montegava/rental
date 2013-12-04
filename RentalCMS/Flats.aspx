@@ -29,13 +29,8 @@
             <div class="row">
                 <asp:Literal>Район</asp:Literal>
                 <asp:DropDownList runat="server" ID="ddlRegion">
-                    <asp:ListItem Selected="True" Text="-- не важно --" Value="0"></asp:ListItem>
-                    <asp:ListItem Text="Коминтерновский" Value="1"></asp:ListItem>
-                    <asp:ListItem Text="Ж/Д" Value="2"></asp:ListItem>
-                    <asp:ListItem Text="Левобережный" Value="3"></asp:ListItem>
-                    <asp:ListItem Text="Советский" Value="4"></asp:ListItem>
-                    <asp:ListItem Text="Ленинский" Value="5"></asp:ListItem>
                 </asp:DropDownList>
+               
                 <asp:Literal>Этаж</asp:Literal>
                 <asp:DropDownList runat="server" ID="ddlFloor">
                     <asp:ListItem Selected="True" Text="-- не важно --" Value="0"></asp:ListItem>
@@ -44,6 +39,7 @@
                     <asp:ListItem Text="9-12" Value="9-12"></asp:ListItem>
                     <asp:ListItem Text=">13" Value="13"></asp:ListItem>
                 </asp:DropDownList>
+
                 <asp:Literal>Мебель</asp:Literal>
                 <asp:DropDownList runat="server" ID="ddlFurniture">
                     <asp:ListItem Selected="True" Text="-- не важно --" Value="0"></asp:ListItem>
@@ -289,12 +285,6 @@
 
 
     <script type="text/javascript">
-        //$.fn.adaptTableWidth('grid', { 'grid': '670px' }, { 0: '26px', 1: '64px', 2: '60px', 3: '180px', 4: '90px', 5: '60px', 6: '60px', 7: '60px', 8: '21px' });
-
-
        $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
-
-      
-
     </script>
 </asp:Content>

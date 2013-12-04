@@ -151,3 +151,12 @@
 2013-12-03 15:04:26,970 [24] DEBUG RentalCMS.Flats - Set data source
 2013-12-03 15:04:50,616 [27] DEBUG RentalCMS.Flats - Set data source
 2013-12-03 15:08:37,248 [38] DEBUG RentalCMS.Flats - Set data source
+2013-12-03 15:15:08,084 [5] DEBUG RentalCMS.Flats - Set data source
+2013-12-03 15:19:00,191 [17] DEBUG RentalCMS.Flats - Set data source
+2013-12-03 15:23:08,690 [25] DEBUG RentalCMS.Flats - Set data source
+2013-12-03 15:25:08,716 [30] DEBUG RentalCMS.Flats - Set data source
+2013-12-03 15:25:27,321 [29] DEBUG RentalCMS.Flats - Set data source
+2013-12-03 15:25:29,831 [30] DEBUG RentalCMS.Flats - Set data source
+2013-12-03 15:29:27,160 [34] DEBUG RentalCMS.Flats - Set data source
+2013-12-03 15:29:35,260 [36] DEBUG RentalCMS.Flats - Set data source
+2013-12-03 15:31:25,221 [39] DEBUG RentalCMS.Flats - Set data source

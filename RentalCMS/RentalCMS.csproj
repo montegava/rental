@@ -138,7 +138,6 @@
     <Content Include="src\jquery.ui.core.js" />
     <Content Include="src\jquery.ui.stars.js" />
     <Content Include="src\jquery.ui.widget.js" />
-    <Content Include="src\jquery.validate.js" />
     <Content Include="src\refresh.png" />
     <Content Include="src\style.css" />
     <Content Include="Web.config">

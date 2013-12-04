@@ -136,7 +136,7 @@ namespace Rental.src
         Dictionary<int, FlatRow> FlatRows = new Dictionary<int, FlatRow>();
 
         public int TotalRowsNumber;
-
+        
         public FlatRow this[int i]
         {
             get
@@ -144,7 +144,7 @@ namespace Rental.src
 
                 if (!FlatRows.ContainsKey(i))
                 {
-                    NameListCache.Query.Page = (int)(i / 50);
+                    NameListCache.Query.Page = (int)(i / NameListCache.Query.PageSize);
                     var result = NameListCache.proxy.FlatSearch(NameListCache.Query);
                     if (!result.Items.Any())
                     {
@@ -183,7 +183,7 @@ namespace Rental.src
 
     public class NameListCache
     {
-        public int PageSize = 50;
+        public static int pageSize = 30;
         public int TotalRowsNumber { get { return CachedData.TotalRowsNumber; } }
         public Cache CachedData;
 
@@ -213,18 +213,18 @@ namespace Rental.src
 
         public static RentalCore.RentalCoreClient proxy = new RentalCore.RentalCoreClient();
 
-        public static SearchQuery Query = new SearchQuery() { SortField = Fields.ID, Ascending = false, Page = 0, PageSize = 50 };
+        public static SearchQuery Query = new SearchQuery() { SortField = Fields.ID, Ascending = false, Page = 0, PageSize = pageSize };
 
 
-        public NameListCache(int pageSize)
+        public NameListCache()
         {
             CachedData = new Cache();
-            PageSize = pageSize;
+          
 
 
             BuldTypeAll = NameListCache.proxy.BuldTypeAll();
 
-            BathunitTypeAll  = NameListCache.proxy.BathunitTypeAll();
+            BathunitTypeAll = NameListCache.proxy.BathunitTypeAll();
             StateTypeAll = NameListCache.proxy.StateTypeAll();
             TermTypeAll = NameListCache.proxy.TermTypeAll();
             LessorTypeAll = NameListCache.proxy.LessorTypeAll();

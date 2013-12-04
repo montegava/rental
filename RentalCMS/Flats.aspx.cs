@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using log4net;
 using System.Web.UI.HtmlControls;
 using RentalCMS.RentalCore;
+using DAL;
 
 using RentalCommon;
 
@@ -22,6 +23,8 @@ namespace RentalCMS
 
 
         public static ILog errorLog = log4net.LogManager.GetLogger(typeof(Flats));
+
+        public static RentalCoreClient core = new RentalCoreClient();
 
         protected bool isFilterInitiated = false;
 
@@ -51,14 +54,13 @@ namespace RentalCMS
             //Адрес
             if (!string.IsNullOrEmpty(tbAddress.Text))
             {
-                var field = this.CreateFilter(tbAddress.Text, Fields.ADDRESS);
-                filters.AddRange(field);
+                filters.Add(new Filter1(Fields.ADDRESS, FilterConditions.CONTAIN, tbAddress.Text));
             }
 
             //Район 
-            if ( (ddlRegion.SelectedIndex) > 0)
+            if ((ddlRegion.SelectedIndex) > 0 && Convert.ToInt32(ddlRegion.SelectedValue) > 0)
             {
-                var field = this.CreateFilter(ddlRegion.SelectedItem.Text, Fields.REGION);
+                var field = this.CreateFilter(ddlRegion.SelectedValue, Fields.REGION);
                 filters.AddRange(field);
             }
 
@@ -79,8 +81,7 @@ namespace RentalCMS
             //Цена
             if (!string.IsNullOrEmpty(tbPrice.Text))
             {
-                var field = this.CreateFilter(tbPrice.Text, Fields.PRICE);
-                filters.AddRange(field);
+                filters.Add(new Filter1(Fields.PRICE, FilterConditions.CONTAIN, tbAddress.Text));
             }
 
             DateTime selectedStartDate = UIConvert.ToDateTime(_tbStartDateText.Text);
@@ -107,7 +108,19 @@ namespace RentalCMS
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
+            {
+                var regions = new List<region_type>();
+                regions.Add(new region_type() { id = -1, name = "-- неизвестно --" });
+                regions.AddRange(core.RegionTypeAll());
+
+                ddlRegion.DataSource = regions;
+                ddlRegion.DataTextField = "name";
+                ddlRegion.DataValueField = "id";
+                ddlRegion.DataBind();
+
                 SetDefaulData();
+                
+            }
         }
 
         private void SetDefaulData()
@@ -118,33 +131,16 @@ namespace RentalCMS
             // -- pagination info
             int selectedActivePage = _plInfoGrid.PageSelected != 0 ? _plInfoGrid.PageSelected : 1;
             int selectedPageSize = UIConvert.ToInt32(pageItems.SelectedValue, PageSize);
-            int pageCount = 0;
-            int totalRowsNumber = 0;
-
+           
             var query = this.GetFilters();
-            query.Page = selectedActivePage;
+            query.Page = selectedActivePage -1 ;
             query.PageSize =selectedPageSize;
 
             if ( Convert.ToInt32(SortExpression) > 0)
                 query.SortField = (Fields) Convert.ToInt32(SortExpression);
             query.Ascending = SortAscending;
-            
-               
-
-                //ref selectedActivePage,
-                //out flats,
-                //out pageCount,
-                //out totalRowsNumber, selectedPageSize
-
-
-            var core = new RentalCoreClient();
             var flats =  core.FlatSearch(query);
 
-            totalRowsNumber = flats.TotallCount;
-
-            
-
-            errorLog.Debug("Set data source");
             this._lwInfoListEdit.DataSource = flats.Items;
             this._lwInfoListEdit.DataBind();
 
@@ -152,9 +148,11 @@ namespace RentalCMS
             if (flats != null && flats.Items.Any())
             {
                 ShowNavigation();
-                // Show number rows per page with spec settings
-                lbSelNumPerPage.Text = getCurrentPageNumberRows(selectedActivePage, flats.Items.Count(), totalRowsNumber, selectedPageSize);
-                // -- set pagging data
+                lbSelNumPerPage.Text = getCurrentPageNumberRows(selectedActivePage, flats.Items.Count(), flats.TotallCount, selectedPageSize);
+
+                var pageCount = flats.TotallCount / selectedPageSize;
+                if (flats.TotallCount % selectedPageSize != 0) pageCount++;
+
                 _plInfoGrid.Visible = true;
                 _plInfoGrid.PageCount = pageCount;
                 _plInfoGrid.PageActive = selectedActivePage;
@@ -255,10 +253,12 @@ namespace RentalCMS
             if (!string.IsNullOrEmpty(value))
             {
                 if (value.Contains('>'))
-                    result.Add(new Filter1(field,FilterConditions.MORE, value));
-                if (value.Contains('<'))
-                    result.Add(new Filter1(field,FilterConditions.LESS, value));
-                if (value.Contains('-'))
+                    result.Add(new Filter1(field,FilterConditions.MORE, value.Replace(">","")));
+
+                else if (value.Contains('<'))
+                    result.Add(new Filter1(field, FilterConditions.LESS, value.Replace("<", "")));
+
+                else if (value.Contains('-'))
                 {
                     string[] vals = value.Split('-');
                     var start = Convert.ToInt32(vals[0]) -1;
@@ -266,6 +266,9 @@ namespace RentalCMS
                     result.Add(new Filter1(field,FilterConditions.MORE, start));
                     result.Add(new Filter1(field,FilterConditions.LESS, end));
                 }
+                else
+                    result.Add(new Filter1(field, FilterConditions.EQUAL, value));
+
             }
             return result.ToArray();
         }
