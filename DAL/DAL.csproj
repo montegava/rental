@@ -78,17 +78,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bath_unit.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="BlackList\BlackListManager.cs" />
     <Compile Include="black_list.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="build_type.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="category_type.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="Enums.cs" />
     <Compile Include="Extension.cs" />
@@ -97,53 +97,53 @@
     </Compile>
     <Compile Include="Flat\FlatManager.cs" />
     <Compile Include="flat_info.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="image_list.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="Instance.cs" />
     <Compile Include="lessor_type.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="payment_type.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="region_type.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
-    <Compile Include="rentalEntities.Context.cs">
+    <Compile Include="rental.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rentalEntities.Context.tt</DependentUpon>
+      <DependentUpon>rental.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="rentalEntities.cs">
+    <Compile Include="rental.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
-    <Compile Include="rentalEntities.Designer.cs">
+    <Compile Include="rental.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>rentalEntities.edmx</DependentUpon>
+      <DependentUpon>rental.edmx</DependentUpon>
     </Compile>
     <Compile Include="rent_type.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="state_type.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="term_type.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="Types\TypesManager.cs" />
     <Compile Include="user.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="Users\UserManagment.cs" />
     <Compile Include="view_flat_info.cs">
-      <DependentUpon>rentalEntities.tt</DependentUpon>
+      <DependentUpon>rental.tt</DependentUpon>
     </Compile>
     <Compile Include="WcfOperationContext.cs" />
   </ItemGroup>
@@ -152,22 +152,22 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="packages.config" />
-    <EntityDeploy Include="rentalEntities.edmx">
+    <EntityDeploy Include="rental.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>rentalEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>rental.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="rentalEntities.Context.tt">
+    <None Include="rental.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>rentalEntities.edmx</DependentUpon>
-      <LastGenOutput>rentalEntities.Context.cs</LastGenOutput>
+      <DependentUpon>rental.edmx</DependentUpon>
+      <LastGenOutput>rental.Context.cs</LastGenOutput>
     </None>
-    <None Include="rentalEntities.edmx.diagram">
-      <DependentUpon>rentalEntities.edmx</DependentUpon>
+    <None Include="rental.edmx.diagram">
+      <DependentUpon>rental.edmx</DependentUpon>
     </None>
-    <None Include="rentalEntities.tt">
+    <None Include="rental.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>rentalEntities.edmx</DependentUpon>
-      <LastGenOutput>rentalEntities.cs</LastGenOutput>
+      <DependentUpon>rental.edmx</DependentUpon>
+      <LastGenOutput>rental.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>
