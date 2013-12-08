@@ -38,10 +38,10 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>11/21/2013 22:01:47</publishTime>
     </File>
     <File Include="bin/PageControls.dll">
-      <publishTime>12/04/2013 20:23:09</publishTime>
+      <publishTime>12/09/2013 01:00:45</publishTime>
     </File>
     <File Include="bin/RentalCMS.dll">
-      <publishTime>12/09/2013 00:25:15</publishTime>
+      <publishTime>12/09/2013 01:00:46</publishTime>
     </File>
     <File Include="bin/RentalCommon.dll">
       <publishTime>12/04/2013 23:00:35</publishTime>
@@ -176,7 +176,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>09/10/2013 07:08:54</publishTime>
     </File>
     <File Include="Rental.Master">
-      <publishTime>12/03/2013 15:12:26</publishTime>
+      <publishTime>12/09/2013 00:48:47</publishTime>
     </File>
     <File Include="Service References/RentalCore/configuration.svcinfo">
       <publishTime>12/08/2013 23:29:33</publishTime>
@@ -200,7 +200,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
     <File Include="src/general.js">
-      <publishTime>12/03/2013 15:03:29</publishTime>
+      <publishTime>12/09/2013 00:59:54</publishTime>
     </File>
     <File Include="src/hit">
       <publishTime>07/26/2013 02:32:20</publishTime>
@@ -298,11 +298,14 @@ by editing this MSBuild file. In order to learn more about this please visit htt
     <File Include="src/send.png">
       <publishTime>07/26/2013 02:32:20</publishTime>
     </File>
+    <File Include="src/SmartImages.jquery.js">
+      <publishTime>12/09/2013 00:47:51</publishTime>
+    </File>
     <File Include="src/style.css">
       <publishTime>12/04/2013 19:56:30</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/09/2013 00:37:50</publishTime>
+      <publishTime>12/09/2013 00:51:36</publishTime>
     </File>
   </ItemGroup>
 </Project>

@@ -100,7 +100,6 @@ namespace Rental
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Login";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmLogin_FormClosing);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,14 +159,6 @@ namespace Rental
 
 
         }
-
-        private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (!(txtusername.Text == "pangasius" && txtPassword.Text == "amira23121978"))
-                m_main_form.Close();
-        }
-
-
 
     }
 }

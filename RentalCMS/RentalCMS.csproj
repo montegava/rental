@@ -135,10 +135,12 @@
     <Content Include="src\jquery-ui.datepicker.min.js" />
     <Content Include="src\jquery.lightbox.css" />
     <Content Include="src\jquery.MultiFile.js" />
+    <EmbeddedResource Include="src\jquery.pajinate.js" />
     <Content Include="src\jquery.ui.core.js" />
     <Content Include="src\jquery.ui.stars.js" />
     <Content Include="src\jquery.ui.widget.js" />
     <Content Include="src\refresh.png" />
+    <Content Include="src\SmartImages.jquery.js" />
     <Content Include="src\style.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

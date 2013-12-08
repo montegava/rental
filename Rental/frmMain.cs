@@ -1183,12 +1183,23 @@ namespace Rental
         {
             if (cbFields.SelectedValue != null && cbCondition.SelectedValue != null && cbCondition.SelectedIndex > -1 && !string.IsNullOrEmpty(cbCondition.Text))
             {
+                string value = string.Empty;
+
                 if (SearchText.Visible)
+                {
+                    value = SearchText.Text;
                     Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, SearchText.Text));
+                }
                 else if (SearchDate.Visible)
+                {
+                    value = SearchDate.Value.ToString();
                     Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, SearchDate.Value));
+                }
                 else if (cbSearch.Visible)
+                {
+                    value = cbSearch.Text;
                     Filters.Add(new Filter1((Fields)cbFields.SelectedValue, (FilterConditions)cbCondition.SelectedValue, cbSearch.SelectedValue));
+                }
 
                 pnlSearch.SuspendLayout();
                 pnlSearch.Height = 31 * (Filters.Count() + 1);
@@ -1198,7 +1209,7 @@ namespace Rental
                      Text = String.Format("[{0}]   {1}   [{2}] ",
                      Convetor.FieldToString((Fields)cbFields.SelectedValue),
                      Convetor.ConditionToString((FilterConditions)cbCondition.SelectedValue),
-                     SearchDate.Visible ? SearchDate.Value.ToString() : SearchText.Text),
+                     value),
                      Top = 31 * Filters.Count() + 2,
                      Left = 10,
                      AutoSize = true,

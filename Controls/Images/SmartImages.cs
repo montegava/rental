@@ -106,11 +106,11 @@ namespace PageControls
             {
                 // Add Javascript include
 
-                string scriptUrl1 = Page.ClientScript.GetWebResourceUrl(this.GetType(), "PageControls.jquery.pajinate.js");
-                Page.ClientScript.RegisterClientScriptInclude("SmartImages1", scriptUrl1);
+                //string scriptUrl1 = Page.ClientScript.GetWebResourceUrl(this.GetType(), "PageControls.jquery.pajinate.js");
+                //Page.ClientScript.RegisterClientScriptInclude("SmartImages1", scriptUrl1);
 
-                string scriptUrl2 = Page.ClientScript.GetWebResourceUrl(this.GetType(), "PageControls.SmartImages.jquery.js");
-                Page.ClientScript.RegisterClientScriptInclude("SmartImages2", scriptUrl2);
+                //string scriptUrl2 = Page.ClientScript.GetWebResourceUrl(this.GetType(), "PageControls.SmartImages.jquery.js");
+                //Page.ClientScript.RegisterClientScriptInclude("SmartImages2", scriptUrl2);
 
                 // Call the jQuery script (for each added webcontrol in the page)
                 StringBuilder csText = new StringBuilder();

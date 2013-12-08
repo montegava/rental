@@ -709,7 +709,7 @@ jQuery(function ($) {
     //$.fn.workingWithTableCheckboxes();
     $.fn.workingWithPanelButtons();
     $.fn.actionLinksFromTable();
-    $('TEXTAREA:not(.charCounter)').each(function (index) { $(this).cs(); });
+    //$('TEXTAREA:not(.charCounter)').each(function (index) { $(this).cs(); });
 
     // 'Character counter input' control related jquery code.
     //    $('.charCounter').each(function (index) {
