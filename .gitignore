@@ -71,3 +71,10 @@ obj
 /DAL/bin/Release/Omu.ValueInjecter.xml
 /RentalCMS/bin/EntityFramework.xml
 /RentalCMS/bin/Omu.ValueInjecter.xml
+/Controls/bin/Release/*.dll
+/DAL/bin/Release/*.dll
+/DAL/bin/Release/*.dll
+/DAL/bin/Release/*.dll
+/DAL/bin/Release/*.dll
+/DAL/bin/Release/*.dll
+/DAL/bin/Release/*.dll

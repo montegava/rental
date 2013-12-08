@@ -14,7 +14,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/04/2013 20:53:49</publishTime>
     </File>
     <File Include="bin/DAL.dll">
-      <publishTime>12/08/2013 22:37:07</publishTime>
+      <publishTime>12/09/2013 00:25:14</publishTime>
     </File>
     <File Include="bin/EntityFramework.dll">
       <publishTime>07/26/2013 04:00:52</publishTime>
@@ -41,7 +41,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/04/2013 20:23:09</publishTime>
     </File>
     <File Include="bin/RentalCMS.dll">
-      <publishTime>12/08/2013 22:37:09</publishTime>
+      <publishTime>12/09/2013 00:25:15</publishTime>
     </File>
     <File Include="bin/RentalCommon.dll">
       <publishTime>12/04/2013 23:00:35</publishTime>
@@ -179,19 +179,19 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/03/2013 15:12:26</publishTime>
     </File>
     <File Include="Service References/RentalCore/configuration.svcinfo">
-      <publishTime>12/04/2013 21:53:03</publishTime>
+      <publishTime>12/08/2013 23:29:33</publishTime>
     </File>
     <File Include="Service References/RentalCore/configuration91.svcinfo">
-      <publishTime>12/04/2013 21:53:03</publishTime>
+      <publishTime>12/08/2013 23:29:33</publishTime>
     </File>
     <File Include="Service References/RentalCore/item.disco">
-      <publishTime>12/04/2013 21:53:03</publishTime>
+      <publishTime>12/08/2013 23:29:33</publishTime>
     </File>
     <File Include="Service References/RentalCore/Reference.svcmap">
-      <publishTime>12/05/2013 09:42:42</publishTime>
+      <publishTime>12/08/2013 23:29:33</publishTime>
     </File>
     <File Include="Service References/RentalCore/RentalCore.wsdl">
-      <publishTime>12/04/2013 21:53:03</publishTime>
+      <publishTime>12/08/2013 23:29:33</publishTime>
     </File>
     <File Include="Service References/RentalCore/service.wsdl">
       <publishTime>08/08/2013 21:47:25</publishTime>
@@ -302,7 +302,7 @@ by editing this MSBuild file. In order to learn more about this please visit htt
       <publishTime>12/04/2013 19:56:30</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>12/08/2013 22:37:12</publishTime>
+      <publishTime>12/09/2013 00:37:50</publishTime>
     </File>
   </ItemGroup>
 </Project>
