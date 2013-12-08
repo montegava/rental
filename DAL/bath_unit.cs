@@ -14,7 +14,7 @@ namespace DAL
     
     public partial class bath_unit
     {
-        public int? id { get; set; }
+        public int id { get; set; }
         public string name { get; set; }
     }
 }

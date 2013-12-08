@@ -37,6 +37,7 @@ namespace DAL
         public DbSet<rent_type> rent_type { get; set; }
         public DbSet<state_type> state_type { get; set; }
         public DbSet<term_type> term_type { get; set; }
+        public DbSet<user> users { get; set; }
         public DbSet<view_flat_info> view_flat_info { get; set; }
     }
 }

@@ -20,6 +20,13 @@ namespace RentalCore
 
         public static string RepositoryDirectory = @"d:\hst\amiravrn-ru_bd4c5401\http\Media";
 
+        public bool Login(string login, string password)
+        {
+          return  UserManagment.Login(login, password);
+        }
+
+
+
         public void FileUpload(string fileName, byte[] data)
         {
                 string filePath = Path.Combine(RepositoryDirectory, fileName);
@@ -136,6 +143,8 @@ namespace RentalCore
         {
             return TypesManager.PaymentTypeAll();
         }
+
+
 
     }
 }

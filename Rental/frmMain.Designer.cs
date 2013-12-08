@@ -30,10 +30,10 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
-            System.Windows.Forms.ListViewGroup listViewGroup5 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
-            System.Windows.Forms.ListViewGroup listViewGroup6 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup3 = new System.Windows.Forms.ListViewGroup("ListViewGroup", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup4 = new System.Windows.Forms.ListViewGroup("sdfasd", System.Windows.Forms.HorizontalAlignment.Left);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.программаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,6 +83,10 @@
             this.lbContacts = new System.Windows.Forms.ListBox();
             this.tabStar = new System.Windows.Forms.TabPage();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lblCount = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbFilters = new System.Windows.Forms.ToolStripStatusLabel();
             this.grdFlats = new System.Windows.Forms.DataGridView();
             this.pnlSearch = new System.Windows.Forms.Panel();
             this.cbSearch = new System.Windows.Forms.ComboBox();
@@ -148,10 +152,6 @@
             this.toolStripSeparator13 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.cbSites = new System.Windows.Forms.ToolStripComboBox();
-            this.statusStrip2 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lblCount = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbFilters = new System.Windows.Forms.ToolStripStatusLabel();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -172,6 +172,7 @@
             this.groupBox2.SuspendLayout();
             this.tabStar.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.statusStrip2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdFlats)).BeginInit();
             this.pnlSearch.SuspendLayout();
             this.tsSearch.SuspendLayout();
@@ -186,7 +187,6 @@
             this.btnAddBadPhone.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.toolStrip3.SuspendLayout();
-            this.statusStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -378,13 +378,13 @@
             this.lvAdverts.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvAdverts.FullRowSelect = true;
             this.lvAdverts.GridLines = true;
-            listViewGroup5.Header = "ListViewGroup";
-            listViewGroup5.Name = "listViewGroup1";
-            listViewGroup6.Header = "sdfasd";
-            listViewGroup6.Name = "sdf";
+            listViewGroup1.Header = "ListViewGroup";
+            listViewGroup1.Name = "listViewGroup1";
+            listViewGroup2.Header = "sdfasd";
+            listViewGroup2.Name = "sdf";
             this.lvAdverts.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup5,
-            listViewGroup6});
+            listViewGroup1,
+            listViewGroup2});
             this.lvAdverts.Location = new System.Drawing.Point(3, 28);
             this.lvAdverts.Name = "lvAdverts";
             this.lvAdverts.Size = new System.Drawing.Size(731, 247);
@@ -483,13 +483,13 @@
             this.lvStars.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lvStars.FullRowSelect = true;
             this.lvStars.GridLines = true;
-            listViewGroup1.Header = "ListViewGroup";
-            listViewGroup1.Name = "listViewGroup1";
-            listViewGroup2.Header = "sdfasd";
-            listViewGroup2.Name = "sdf";
+            listViewGroup3.Header = "ListViewGroup";
+            listViewGroup3.Name = "listViewGroup1";
+            listViewGroup4.Header = "sdfasd";
+            listViewGroup4.Name = "sdf";
             this.lvStars.Groups.AddRange(new System.Windows.Forms.ListViewGroup[] {
-            listViewGroup1,
-            listViewGroup2});
+            listViewGroup3,
+            listViewGroup4});
             this.lvStars.Location = new System.Drawing.Point(3, 28);
             this.lvStars.Name = "lvStars";
             this.lvStars.Size = new System.Drawing.Size(731, 247);
@@ -677,6 +677,36 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(745, 255);
             this.panel3.TabIndex = 0;
+            // 
+            // statusStrip2
+            // 
+            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1,
+            this.lblCount,
+            this.lbFilters});
+            this.statusStrip2.Location = new System.Drawing.Point(0, 233);
+            this.statusStrip2.Name = "statusStrip2";
+            this.statusStrip2.Size = new System.Drawing.Size(745, 22);
+            this.statusStrip2.TabIndex = 6;
+            this.statusStrip2.Text = "statusStrip2";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(134, 17);
+            this.toolStripStatusLabel1.Text = "Всего записей найдено";
+            // 
+            // lblCount
+            // 
+            this.lblCount.Name = "lblCount";
+            this.lblCount.Size = new System.Drawing.Size(0, 17);
+            // 
+            // lbFilters
+            // 
+            this.lbFilters.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lbFilters.ForeColor = System.Drawing.Color.DeepPink;
+            this.lbFilters.Name = "lbFilters";
+            this.lbFilters.Size = new System.Drawing.Size(0, 17);
             // 
             // grdFlats
             // 
@@ -1330,36 +1360,6 @@
             this.cbSites.Size = new System.Drawing.Size(200, 23);
             this.cbSites.SelectedIndexChanged += new System.EventHandler(this.cbSites_SelectedIndexChanged);
             // 
-            // statusStrip2
-            // 
-            this.statusStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1,
-            this.lblCount,
-            this.lbFilters});
-            this.statusStrip2.Location = new System.Drawing.Point(0, 233);
-            this.statusStrip2.Name = "statusStrip2";
-            this.statusStrip2.Size = new System.Drawing.Size(745, 22);
-            this.statusStrip2.TabIndex = 6;
-            this.statusStrip2.Text = "statusStrip2";
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(134, 17);
-            this.toolStripStatusLabel1.Text = "Всего записей найдено";
-            // 
-            // lblCount
-            // 
-            this.lblCount.Name = "lblCount";
-            this.lblCount.Size = new System.Drawing.Size(0, 17);
-            // 
-            // lbFilters
-            // 
-            this.lbFilters.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
-            this.lbFilters.ForeColor = System.Drawing.Color.DeepPink;
-            this.lbFilters.Name = "lbFilters";
-            this.lbFilters.Size = new System.Drawing.Size(0, 17);
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1403,6 +1403,8 @@
             this.tabStar.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.statusStrip2.ResumeLayout(false);
+            this.statusStrip2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdFlats)).EndInit();
             this.pnlSearch.ResumeLayout(false);
             this.pnlSearch.PerformLayout();
@@ -1427,8 +1429,6 @@
             this.statusStrip1.PerformLayout();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
-            this.statusStrip2.ResumeLayout(false);
-            this.statusStrip2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

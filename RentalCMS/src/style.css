@@ -1782,11 +1782,6 @@ float: left;
 width: 90px;
 }
 
-ARTICLE.details INPUT[type="text"], textarea {
-width: 255px !important;
-}
-
-
 .span16 {
   width: 1180px;
 }

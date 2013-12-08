@@ -64,7 +64,7 @@
     <Compile Include="PagingLink\SmartPagingLink.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\SmartImages.css" />
+    <None Include="Images\SmartImages.css" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="PagingLink\SmartPagingLink.css" />
@@ -73,7 +73,7 @@
     <EmbeddedResource Include="Images\jquery.pajinate.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\SmartImages.jquery.js" />
+    <None Include="Images\SmartImages.jquery.js" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ImageBrowser\SmartImageBrowser.css" />

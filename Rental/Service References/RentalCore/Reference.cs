@@ -15,32 +15,8 @@ namespace Rental.RentalCore {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="RentalCore.IRentalCore")]
     public interface IRentalCore {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/BuldTypeAll", ReplyAction="http://tempuri.org/IRentalCore/BuldTypeAllResponse")]
-        DAL.build_type[] BuldTypeAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/BathunitTypeAll", ReplyAction="http://tempuri.org/IRentalCore/BathunitTypeAllResponse")]
-        DAL.bath_unit[] BathunitTypeAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/StateTypeAll", ReplyAction="http://tempuri.org/IRentalCore/StateTypeAllResponse")]
-        DAL.state_type[] StateTypeAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/TermTypeAll", ReplyAction="http://tempuri.org/IRentalCore/TermTypeAllResponse")]
-        DAL.term_type[] TermTypeAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/LessorTypeAll", ReplyAction="http://tempuri.org/IRentalCore/LessorTypeAllResponse")]
-        DAL.lessor_type[] LessorTypeAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/RegionTypeAll", ReplyAction="http://tempuri.org/IRentalCore/RegionTypeAllResponse")]
-        DAL.region_type[] RegionTypeAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/CategoryTypeAll", ReplyAction="http://tempuri.org/IRentalCore/CategoryTypeAllResponse")]
-        DAL.category_type[] CategoryTypeAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/RentTypeAll", ReplyAction="http://tempuri.org/IRentalCore/RentTypeAllResponse")]
-        DAL.rent_type[] RentTypeAll();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/PaymentTypeAll", ReplyAction="http://tempuri.org/IRentalCore/PaymentTypeAllResponse")]
-        DAL.payment_type[] PaymentTypeAll();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/Login", ReplyAction="http://tempuri.org/IRentalCore/LoginResponse")]
+        bool Login([System.ServiceModel.MessageParameterAttribute(Name="login")] string login1, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/FileUpload", ReplyAction="http://tempuri.org/IRentalCore/FileUploadResponse")]
         void FileUpload(string fileName, byte[] data);
@@ -83,6 +59,33 @@ namespace Rental.RentalCore {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/BlackListAdd", ReplyAction="http://tempuri.org/IRentalCore/BlackListAddResponse")]
         int BlackListAdd(DAL.black_list blackList);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/BuldTypeAll", ReplyAction="http://tempuri.org/IRentalCore/BuldTypeAllResponse")]
+        DAL.build_type[] BuldTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/BathunitTypeAll", ReplyAction="http://tempuri.org/IRentalCore/BathunitTypeAllResponse")]
+        DAL.bath_unit[] BathunitTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/StateTypeAll", ReplyAction="http://tempuri.org/IRentalCore/StateTypeAllResponse")]
+        DAL.state_type[] StateTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/TermTypeAll", ReplyAction="http://tempuri.org/IRentalCore/TermTypeAllResponse")]
+        DAL.term_type[] TermTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/LessorTypeAll", ReplyAction="http://tempuri.org/IRentalCore/LessorTypeAllResponse")]
+        DAL.lessor_type[] LessorTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/RegionTypeAll", ReplyAction="http://tempuri.org/IRentalCore/RegionTypeAllResponse")]
+        DAL.region_type[] RegionTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/CategoryTypeAll", ReplyAction="http://tempuri.org/IRentalCore/CategoryTypeAllResponse")]
+        DAL.category_type[] CategoryTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/RentTypeAll", ReplyAction="http://tempuri.org/IRentalCore/RentTypeAllResponse")]
+        DAL.rent_type[] RentTypeAll();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRentalCore/PaymentTypeAll", ReplyAction="http://tempuri.org/IRentalCore/PaymentTypeAllResponse")]
+        DAL.payment_type[] PaymentTypeAll();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -112,40 +115,8 @@ namespace Rental.RentalCore {
                 base(binding, remoteAddress) {
         }
         
-        public DAL.build_type[] BuldTypeAll() {
-            return base.Channel.BuldTypeAll();
-        }
-        
-        public DAL.bath_unit[] BathunitTypeAll() {
-            return base.Channel.BathunitTypeAll();
-        }
-        
-        public DAL.state_type[] StateTypeAll() {
-            return base.Channel.StateTypeAll();
-        }
-        
-        public DAL.term_type[] TermTypeAll() {
-            return base.Channel.TermTypeAll();
-        }
-        
-        public DAL.lessor_type[] LessorTypeAll() {
-            return base.Channel.LessorTypeAll();
-        }
-        
-        public DAL.region_type[] RegionTypeAll() {
-            return base.Channel.RegionTypeAll();
-        }
-        
-        public DAL.category_type[] CategoryTypeAll() {
-            return base.Channel.CategoryTypeAll();
-        }
-        
-        public DAL.rent_type[] RentTypeAll() {
-            return base.Channel.RentTypeAll();
-        }
-        
-        public DAL.payment_type[] PaymentTypeAll() {
-            return base.Channel.PaymentTypeAll();
+        public bool Login(string login1, string password) {
+            return base.Channel.Login(login1, password);
         }
         
         public void FileUpload(string fileName, byte[] data) {
@@ -202,6 +173,42 @@ namespace Rental.RentalCore {
         
         public int BlackListAdd(DAL.black_list blackList) {
             return base.Channel.BlackListAdd(blackList);
+        }
+        
+        public DAL.build_type[] BuldTypeAll() {
+            return base.Channel.BuldTypeAll();
+        }
+        
+        public DAL.bath_unit[] BathunitTypeAll() {
+            return base.Channel.BathunitTypeAll();
+        }
+        
+        public DAL.state_type[] StateTypeAll() {
+            return base.Channel.StateTypeAll();
+        }
+        
+        public DAL.term_type[] TermTypeAll() {
+            return base.Channel.TermTypeAll();
+        }
+        
+        public DAL.lessor_type[] LessorTypeAll() {
+            return base.Channel.LessorTypeAll();
+        }
+        
+        public DAL.region_type[] RegionTypeAll() {
+            return base.Channel.RegionTypeAll();
+        }
+        
+        public DAL.category_type[] CategoryTypeAll() {
+            return base.Channel.CategoryTypeAll();
+        }
+        
+        public DAL.rent_type[] RentTypeAll() {
+            return base.Channel.RentTypeAll();
+        }
+        
+        public DAL.payment_type[] PaymentTypeAll() {
+            return base.Channel.PaymentTypeAll();
         }
     }
 }

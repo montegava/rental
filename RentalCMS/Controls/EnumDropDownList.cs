@@ -28,7 +28,6 @@ namespace RentalCMS.Controls
             {
                 var name = Enum.GetName(this.type, value);
 
-                name = DAL.EnumConvertor.Convert((Enum)value);
 
                 this.Items.Add(new ListItem(name, ((int)value).ToString(CultureInfo.InvariantCulture)));
             }

@@ -6,11 +6,11 @@ using System.Web.UI;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("SmartControls")]
+[assembly: AssemblyTitle("PageControls")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SmartControls")]
+[assembly: AssemblyProduct("PageControls")]
 [assembly: AssemblyCopyright("Copyright ©  2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -36,68 +36,8 @@ using System.Web.UI;
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
 
-// -- SmartCounter.jquery.js is contained in the 'SmartCounter' folder
-[assembly: WebResource("SmartControls.SmartCounter.SmartCounter.jquery.js", "text/javascript")]
-// -- SmartCounter.css is contained in the 'SmartCounter' folder
-[assembly: WebResource("SmartControls.SmartCounter.SmartCounter.css", "text/css")]
+[assembly: WebResource("PageControls.SmartImages.jquery.js", "text/javascript")]
+[assembly: WebResource("PageControls.jquery.pajinate.js", "text/javascript")]
+[assembly: WebResource("PageControls.SmartImages.css", "text/css")]
 
-[assembly: WebResource("SmartControls.SmartTransfer.SmartTransfer.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartTransfer.SmartTransfer.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartCollectionV1.SmartCollectionV1.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartCollectionV1.SmartCollectionV1.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartTextBox.SmartTextBox.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartTextBox.SmartTextBox.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartDropDown.SmartDropDown.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartDropDown.SmartDropDown.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartPagingLink.SmartPagingLink.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartImages.SmartImages.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartImages.jquery.pajinate.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartImages.SmartImages.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartCollectionV2.SmartCollectionV2.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartCollectionV2.SmartCollectionV2.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartCollectionV3.SmartCollectionV3.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartCollectionV3.SmartCollectionV3.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartTooltip.SmartTooltip.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartTooltip.SmartTooltip.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartComposite.SmartComposite.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartComposite.SmartComposite.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartTransferExtended.SmartTransferExtended.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartTransferExtended.SmartTransferExtended.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartCompositeV2.SmartCompositeV2.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartCompositeV2.SmartCompositeV2.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartCollectionV4.SmartCollectionV4.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartCollectionV4.SmartCollectionV4.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartImageBrowser.SmartImageBrowser.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartImageBrowser.SmartImageBrowser.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartCollectionV5.SmartCollectionV5.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartCollectionV5.SmartCollectionV5.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartCollectionV6.SmartCollectionV6.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartCollectionV6.SmartCollectionV6.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartCategorizedTransfer.SmartCategorizedTransfer.jquery.js", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartCategorizedTransfer.SmartCategorizedTransfer.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartTableEditor.SmartTableEditor.jquery.js", "text/javascript")]
-//[assembly: WebResource("SmartControls.SmartCategorizedTransfer.SmartCategorizedTransfer.css", "text/css")]
-
-[assembly: WebResource("SmartControls.SmartEditableDropDown.SmartEditableDropDown.jquery.js", "text/javascript")]
-
-
-[assembly: WebResource("SmartControls.SmartVideo.player.swf", "text/javascript")]
-[assembly: WebResource("SmartControls.SmartVideo.skin.swf", "text/javascript")]
 

@@ -41,6 +41,7 @@ namespace RentalCMS
         public SearchQuery GetFilters()
         {
            var result = new SearchQuery();
+        
 
            var filters = new List<Filter1>();
 
@@ -125,10 +126,6 @@ namespace RentalCMS
 
         private void SetDefaulData()
         {
-
-          
-
-            // -- pagination info
             int selectedActivePage = _plInfoGrid.PageSelected != 0 ? _plInfoGrid.PageSelected : 1;
             int selectedPageSize = UIConvert.ToInt32(pageItems.SelectedValue, PageSize);
            
@@ -136,8 +133,13 @@ namespace RentalCMS
             query.Page = selectedActivePage -1 ;
             query.PageSize =selectedPageSize;
 
-            if ( Convert.ToInt32(SortExpression) > 0)
-                query.SortField = (Fields) Convert.ToInt32(SortExpression);
+            if (Convert.ToInt32(SortExpression) > 0)
+                query.SortField = (Fields)Convert.ToInt32(SortExpression);
+            else
+                query.SortField = Fields.ID;
+
+
+
             query.Ascending = SortAscending;
             var flats =  core.FlatSearch(query);
 
@@ -287,7 +289,10 @@ namespace RentalCMS
             get
             {
                 object obj = ViewState["SortAscending"];
-                return (obj == null) || System.Convert.ToBoolean(obj);
+                if (obj == null)
+                    return false;
+                else
+                    return System.Convert.ToBoolean(obj);
             }
         }
 

@@ -5,21 +5,45 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using DAL;
+using RentalCMS.RentalCore;
 
 namespace RentalCMS
 {
     public partial class AddFlat : System.Web.UI.Page
     {
+
+        public static RentalCoreClient core = new RentalCoreClient();
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            this.ddlCategory.DataBind();
-            this.ddlRegion.DataBind();
-            this.ddlType.DataBind();
-            this.ddlFloor.DataBind();
-            this.ddlHouseType.DataBind();
-            this.ddlRentType.DataBind();
-            this.ddlRoomCount.DataBind();
-            this.ddlPayment.DataBind();
+            if (!IsPostBack)
+            {
+                Bind(ddlRegion, core.RegionTypeAll());
+                Bind(ddlCategory, core.CategoryTypeAll());
+                Bind(ddlType, core.RentTypeAll());
+                Bind(ddlHouseType, core.BuldTypeAll());
+                Bind(ddlTermType, core.TermTypeAll());
+                Bind(ddlPayment, core.PaymentTypeAll());
+                this.ddlFloor.DataBind();
+                this.ddlRoomCount.DataBind();
+            }
+         
+
+          
+        }
+
+        private void Bind(DropDownList ddl, object data)
+        {
+            ddl.DataSource = data;
+            ddl.DataTextField = "name";
+            ddl.DataValueField = "id";
+            ddl.DataBind();
+        }
+
+        private int? Selected(DropDownList ddl)
+        {
+            return ddl.SelectedIndex != -1 && Convert.ToInt32(ddl.SelectedValue) > 0 ? (int?)Convert.ToInt32(ddl.SelectedValue) : null;
         }
 
         protected void CancelClick(object sender, EventArgs e)
@@ -36,26 +60,25 @@ namespace RentalCMS
                 NAME = tbName.Text,
                 EMAIL = tbEmail.Text,
                 PHONE = tbPhone.Text,
-                ROOM_COUNT = ddlRoomCount.SelectedIntValue,
-                FLOOR = ddlFloor.SelectedIntValue,
+                ROOM_COUNT = Convert.ToInt32( ddlRoomCount.SelectedValue),
+                FLOOR =  Convert.ToInt32(ddlFloor.SelectedIntValue),
                 ADDRESS = tbAdres.Text,
-                CONTENT = tbDescription.Text,
+                COMMENT = System.Text.RegularExpressions.Regex.Replace(tbDescription.Text, @"/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/", "+7 (903) 652-90-28"),
                 PRICE = tbPrice.Text,
 
-                //PAYMENT = EnumConvertor.Convert((DAL.Payment)ddlPayment.SelectedEnum),
-                //REGION = EnumConvertor.Convert((Region)ddlRegion.SelectedEnum),
-                //CATEGORY = EnumConvertor.Convert((Category)ddlCategory.SelectedEnum),
-                //TYPE = EnumConvertor.Convert((DAL.Type)ddlCategory.SelectedEnum),
-                //BUILD = EnumConvertor.Convert((DAL.HouseType)ddlHouseType.SelectedEnum),
-                //TERM = EnumConvertor.Convert((DAL.RentType)ddlRentType.SelectedEnum),
-            
+                payment_type_id = Selected(ddlPayment),
+                region_type_id = Selected(ddlRegion),
+                category_type_id = Selected(ddlCategory),
+                rent_type_id = Selected(ddlType),
+                buld_type_id = Selected(ddlHouseType),
+                term_type_id = Selected(ddlTermType),
             };
 
 
             var flatId = DAL.FlatManager.FlatAdd(flat);
 
 
-            var RepositoryDirectory = @"d:\hst\amiravrn-ru_bd4c5401\http\";
+            var RepositoryDirectory = @"d:\hst\amiravrn-ru_bd4c5401\http\Media";
 
             var images = new List<image_list>();
 
@@ -65,12 +88,9 @@ namespace RentalCMS
                 HttpPostedFile hpf = hfc[i];
                 if (hpf.ContentLength > 0)
                 {
-                    var imgName = "Media\\"+Guid.NewGuid().ToString() + System.IO.Path.GetExtension(hpf.FileName);
+                    var imgName = Guid.NewGuid().ToString() + System.IO.Path.GetExtension(hpf.FileName);
                     images.Add(new image_list() { ID = -1, IMAGE_PATH = imgName, FLAT_ID = flatId });
                     hpf.SaveAs(RepositoryDirectory + "\\" + imgName);
-                    //lblMsg.Text += " <br/> <b>File: </b>" + hpf.FileName +
-                    //  " <b>Size:</b> " + hpf.ContentLength + " <b>Type:</b> " +
-                    //  hpf.ContentType + " Uploaded Successfully!";
                 }
             }
 

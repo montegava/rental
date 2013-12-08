@@ -46,7 +46,7 @@ namespace RentalCMS {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RentalCMS.Controls.EnumDropDownList ddlRegion;
+        protected global::System.Web.UI.WebControls.DropDownList ddlRegion;
         
         /// <summary>
         /// ddlCategory control.
@@ -55,7 +55,7 @@ namespace RentalCMS {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RentalCMS.Controls.EnumDropDownList ddlCategory;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCategory;
         
         /// <summary>
         /// ddlType control.
@@ -64,7 +64,7 @@ namespace RentalCMS {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RentalCMS.Controls.EnumDropDownList ddlType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlType;
         
         /// <summary>
         /// ddlRoomCount control.
@@ -91,16 +91,16 @@ namespace RentalCMS {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RentalCMS.Controls.EnumDropDownList ddlHouseType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlHouseType;
         
         /// <summary>
-        /// ddlRentType control.
+        /// ddlTermType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RentalCMS.Controls.EnumDropDownList ddlRentType;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTermType;
         
         /// <summary>
         /// tbSquare control.
@@ -145,7 +145,7 @@ namespace RentalCMS {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::RentalCMS.Controls.EnumDropDownList ddlPayment;
+        protected global::System.Web.UI.WebControls.DropDownList ddlPayment;
         
         /// <summary>
         /// fuPhoto control.

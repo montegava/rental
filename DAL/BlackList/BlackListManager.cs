@@ -10,33 +10,10 @@ namespace DAL
     public static class BlackListManager
     {
 
-        public static DataTable GetAllBlackListsAsDataTable()
-        {
-            DataTable dt = null;
-            using (MySqlConnection sqlConn = new MySqlConnection(ConnectionManager.ConnectionStringSQLite))
-            {
-                string query = "SELECT * FROM  black_list ORDER BY id";
-                sqlConn.Open();
-                using (MySqlCommand command = new MySqlCommand(query, sqlConn))
-                {
-                    DataSet ds = new DataSet();
-                    MySqlDataAdapter ret = new MySqlDataAdapter();
-                    ret.SelectCommand = command;
-                    ret.Fill(ds);
-
-                    if (ds != null && ds.Tables.Count > 0)
-                        dt = ds.Tables[0];
-                }
-                sqlConn.Close();
-            }
-            return dt;
-        }
-
         public static  black_list[] BlackListAll()
         {
            return WcfOperationContext.Current.Context.black_list.ToArray();
         }
-
 
         public static black_list BlackListById(int id)
         {
@@ -54,7 +31,6 @@ namespace DAL
         public static int BlackListAdd(black_list blackList)
         {
             var context = WcfOperationContext.Current.Context;
-
             var finded = context.black_list.Where(b => b.ID == blackList.ID).FirstOrDefault();
             if (finded != null)
             {
@@ -64,10 +40,8 @@ namespace DAL
             }
             else
                 context.black_list.Add(blackList);
-
             context.SaveChanges();
             return blackList.ID;
-
         }
     }
 }

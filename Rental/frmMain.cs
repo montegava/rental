@@ -47,15 +47,20 @@ namespace Rental
 
         private void frmMain_Load(object sender, EventArgs e)
         {
+            frmLogin frm = new frmLogin(this);
+            if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                 Application.Exit();
+
+
+
+
             Log.Debug("Application started.");
 
             Worker.DoWork += this.DoWork;
             Worker.RunWorkerCompleted += this.RunWorkerCompleted;
             Worker.WorkerSupportsCancellation = true;
             //Login
-            frmLogin frm = new frmLogin(this);
-            // frm.ShowDialog();
-
+            
 
             LoadFormSize();
             tabControlAdvList.SelectedIndex = 1;
@@ -1123,32 +1128,7 @@ namespace Rental
             catch (Exception) { }
         }
 
-        public void OnLoadLoginLogin(string username, string password, object sender)
-        {
-            try
-            {
-                frmLogin loginForm = null;
-                if (sender != null && sender is frmLogin)
-                    loginForm = (frmLogin)sender;
-
-                if (!(username == "pangasius" && password == "amira23121978"))
-                {
-                    if (loginForm == null)
-                        new frmLogin(this).ShowDialog();
-                    else
-                    {
-                        loginForm.BringToFront();
-                        loginForm.ButtonLoginEnabled = true;
-                    }
-                }
-                else if (loginForm != null)
-                    loginForm.Close();
-            }
-            catch (Exception Ex)
-            {
-                MessageBox.Show("Detailed Error Message:\r\n" + Ex + "\r\n\r\nClick \"OK\" to exit the application", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
+       
 
         /// <summary>
         /// Сохранить размеры экрана перед закрытием
@@ -1157,12 +1137,21 @@ namespace Rental
         /// <param name="e"></param>
         private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Properties.Settings.Default.cbSites = ((int)cbSites.ComboBox.SelectedValue);
-            Properties.Settings.Default.Width = this.Width;
-            Properties.Settings.Default.Length = this.Height;
-            Properties.Settings.Default.Top = this.Top;
-            Properties.Settings.Default.Left = this.Left;
-            Properties.Settings.Default.Save();
+            try
+            {
+                Properties.Settings.Default.cbSites = ((int)cbSites.ComboBox.SelectedValue);
+                Properties.Settings.Default.Width = this.Width;
+                Properties.Settings.Default.Length = this.Height;
+                Properties.Settings.Default.Top = this.Top;
+                Properties.Settings.Default.Left = this.Left;
+                Properties.Settings.Default.Save();
+            }
+            catch (Exception)
+            {
+
+                return;
+            }
+         
         }
 
         private void grdFlats_KeyDown(object sender, KeyEventArgs e)

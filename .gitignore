@@ -63,3 +63,11 @@ obj
 
 /Rental/bin/Debug/*.manifest
 /Rental/publish/Application Files/Rental_1_0_0_0
+/Rental/bin/Debug/*.application
+/Rental/publish/*.application
+
+/DAL/bin/Debug/*.xml
+
+/DAL/bin/Release/Omu.ValueInjecter.xml
+/RentalCMS/bin/EntityFramework.xml
+/RentalCMS/bin/Omu.ValueInjecter.xml

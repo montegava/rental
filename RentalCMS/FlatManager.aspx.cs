@@ -44,7 +44,10 @@ namespace RentalCMS
                     tblAddress.Text = flat.ADDRESS;
                     lblRoomCount.Text = Convert.ToString(flat.ROOM_COUNT);
                     lblPhone.Text = "+7 (903) 652-90-28";
+                    tbContent.Text = flat.COMMENT;
                 }
+
+
                 
 
 

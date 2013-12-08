@@ -12,7 +12,13 @@
         <div class="row">
             <label runat="server" text="Адресс" >Адрес</label>
             
-            <asp:TextBox ID="tblAddress" TextMode="multiline" Rows="3" runat="server"></asp:TextBox>
+            <asp:TextBox ID="tblAddress" TextMode="multiline" Rows="2" runat="server"></asp:TextBox>
+        </div>
+
+          <div class="row">
+            <label runat="server" >Описание</label>
+            
+            <asp:TextBox ID="tbContent" TextMode="multiline" Rows="12" runat="server"></asp:TextBox>
         </div>
 
         <div class="row">

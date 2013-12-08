@@ -15,6 +15,9 @@ namespace RentalCore
     public partial interface IRentalCore
     {
 
+        [OperationContract]
+        bool Login(string login, string password);
+
         [OperationContract(IsOneWay = false)]
         void FileUpload(string fileName, byte[] data);
 

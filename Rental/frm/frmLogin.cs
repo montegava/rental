@@ -1,3 +1,4 @@
+using Rental.src;
 using System;
 using System.Windows.Forms;
 
@@ -124,32 +125,40 @@ namespace Rental
         protected override void Dispose(bool disposing)
         {
             if (disposing && components != null)
-                    components.Dispose();
+                components.Dispose();
             base.Dispose(disposing);
         }
 
         private void btnLogin_Click(object sender, System.EventArgs e)
         {
+
+
+
             try
             {
-               //btnLogin.Enabled = false;
-                m_main_form.OnLoadLoginLogin(txtusername.Text, txtPassword.Text, this);
-                if (!(txtusername.Text == "pangasius" && txtPassword.Text == "amira23121978"))
-                    lblError.Text = "Неверный логин/пароль";
+                var result = NameListCache.proxy.Login(txtusername.Text, txtPassword.Text);
+
+                if (!result)
+                {
+                    lblError.Text = "Error on login";
+                }
                 else
                 {
                     Properties.Settings.Default.login = this.txtusername.Text;
                     Properties.Settings.Default.Save();
-                    Close();
-                }//pangasius  и amira23121978
-
-                
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                }
             }
-            catch (Exception Ex)
+            catch (Exception)
             {
-                btnLogin.Enabled = true;
-                MessageBox.Show("Detailed Error Message:\r\n" + Ex + "\r\n\r\nClick \"OK\" to exit the application", "Fatal Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                this.DialogResult = DialogResult.Cancel;
             }
+
+
+
+
+
         }
 
         private void frmLogin_FormClosing(object sender, FormClosingEventArgs e)

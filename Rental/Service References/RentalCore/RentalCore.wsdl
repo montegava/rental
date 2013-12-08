@@ -4,63 +4,15 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-      <xsd:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/DAL" />
-      <xsd:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/RentalCommon" />
+      <xsd:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/RentalCommon" />
+      <xsd:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DAL" />
     </xsd:schema>
   </wsdl:types>
-  <wsdl:message name="IRentalCore_BuldTypeAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:BuldTypeAll" />
+  <wsdl:message name="IRentalCore_Login_InputMessage">
+    <wsdl:part name="parameters" element="tns:Login" />
   </wsdl:message>
-  <wsdl:message name="IRentalCore_BuldTypeAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:BuldTypeAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_BathunitTypeAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:BathunitTypeAll" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_BathunitTypeAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:BathunitTypeAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_StateTypeAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:StateTypeAll" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_StateTypeAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:StateTypeAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_TermTypeAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:TermTypeAll" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_TermTypeAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:TermTypeAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_LessorTypeAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:LessorTypeAll" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_LessorTypeAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:LessorTypeAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_RegionTypeAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:RegionTypeAll" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_RegionTypeAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RegionTypeAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_CategoryTypeAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:CategoryTypeAll" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_CategoryTypeAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:CategoryTypeAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_RentTypeAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:RentTypeAll" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_RentTypeAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:RentTypeAllResponse" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_PaymentTypeAll_InputMessage">
-    <wsdl:part name="parameters" element="tns:PaymentTypeAll" />
-  </wsdl:message>
-  <wsdl:message name="IRentalCore_PaymentTypeAll_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PaymentTypeAllResponse" />
+  <wsdl:message name="IRentalCore_Login_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
   </wsdl:message>
   <wsdl:message name="IRentalCore_FileUpload_InputMessage">
     <wsdl:part name="parameters" element="tns:FileUpload" />
@@ -146,42 +98,64 @@
   <wsdl:message name="IRentalCore_BlackListAdd_OutputMessage">
     <wsdl:part name="parameters" element="tns:BlackListAddResponse" />
   </wsdl:message>
+  <wsdl:message name="IRentalCore_BuldTypeAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:BuldTypeAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BuldTypeAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BuldTypeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BathunitTypeAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:BathunitTypeAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_BathunitTypeAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:BathunitTypeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_StateTypeAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:StateTypeAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_StateTypeAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:StateTypeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_TermTypeAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:TermTypeAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_TermTypeAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TermTypeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_LessorTypeAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:LessorTypeAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_LessorTypeAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LessorTypeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_RegionTypeAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegionTypeAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_RegionTypeAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegionTypeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_CategoryTypeAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:CategoryTypeAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_CategoryTypeAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CategoryTypeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_RentTypeAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:RentTypeAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_RentTypeAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RentTypeAllResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_PaymentTypeAll_InputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentTypeAll" />
+  </wsdl:message>
+  <wsdl:message name="IRentalCore_PaymentTypeAll_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PaymentTypeAllResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRentalCore">
-    <wsdl:operation name="BuldTypeAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BuldTypeAll" message="tns:IRentalCore_BuldTypeAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/BuldTypeAllResponse" message="tns:IRentalCore_BuldTypeAll_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="BathunitTypeAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BathunitTypeAll" message="tns:IRentalCore_BathunitTypeAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/BathunitTypeAllResponse" message="tns:IRentalCore_BathunitTypeAll_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="StateTypeAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/StateTypeAll" message="tns:IRentalCore_StateTypeAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/StateTypeAllResponse" message="tns:IRentalCore_StateTypeAll_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="TermTypeAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/TermTypeAll" message="tns:IRentalCore_TermTypeAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/TermTypeAllResponse" message="tns:IRentalCore_TermTypeAll_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="LessorTypeAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/LessorTypeAll" message="tns:IRentalCore_LessorTypeAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/LessorTypeAllResponse" message="tns:IRentalCore_LessorTypeAll_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RegionTypeAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/RegionTypeAll" message="tns:IRentalCore_RegionTypeAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/RegionTypeAllResponse" message="tns:IRentalCore_RegionTypeAll_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="CategoryTypeAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/CategoryTypeAll" message="tns:IRentalCore_CategoryTypeAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/CategoryTypeAllResponse" message="tns:IRentalCore_CategoryTypeAll_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="RentTypeAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/RentTypeAll" message="tns:IRentalCore_RentTypeAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/RentTypeAllResponse" message="tns:IRentalCore_RentTypeAll_OutputMessage" />
-    </wsdl:operation>
-    <wsdl:operation name="PaymentTypeAll">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/PaymentTypeAll" message="tns:IRentalCore_PaymentTypeAll_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/PaymentTypeAllResponse" message="tns:IRentalCore_PaymentTypeAll_OutputMessage" />
+    <wsdl:operation name="Login">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/Login" message="tns:IRentalCore_Login_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/LoginResponse" message="tns:IRentalCore_Login_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="FileUpload">
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/FileUpload" message="tns:IRentalCore_FileUpload_InputMessage" />
@@ -239,83 +213,47 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BlackListAdd" message="tns:IRentalCore_BlackListAdd_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/BlackListAddResponse" message="tns:IRentalCore_BlackListAdd_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="BuldTypeAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BuldTypeAll" message="tns:IRentalCore_BuldTypeAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/BuldTypeAllResponse" message="tns:IRentalCore_BuldTypeAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="BathunitTypeAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/BathunitTypeAll" message="tns:IRentalCore_BathunitTypeAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/BathunitTypeAllResponse" message="tns:IRentalCore_BathunitTypeAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="StateTypeAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/StateTypeAll" message="tns:IRentalCore_StateTypeAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/StateTypeAllResponse" message="tns:IRentalCore_StateTypeAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TermTypeAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/TermTypeAll" message="tns:IRentalCore_TermTypeAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/TermTypeAllResponse" message="tns:IRentalCore_TermTypeAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LessorTypeAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/LessorTypeAll" message="tns:IRentalCore_LessorTypeAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/LessorTypeAllResponse" message="tns:IRentalCore_LessorTypeAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegionTypeAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/RegionTypeAll" message="tns:IRentalCore_RegionTypeAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/RegionTypeAllResponse" message="tns:IRentalCore_RegionTypeAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CategoryTypeAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/CategoryTypeAll" message="tns:IRentalCore_CategoryTypeAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/CategoryTypeAllResponse" message="tns:IRentalCore_CategoryTypeAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RentTypeAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/RentTypeAll" message="tns:IRentalCore_RentTypeAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/RentTypeAllResponse" message="tns:IRentalCore_RentTypeAll_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PaymentTypeAll">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRentalCore/PaymentTypeAll" message="tns:IRentalCore_PaymentTypeAll_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRentalCore/PaymentTypeAllResponse" message="tns:IRentalCore_PaymentTypeAll_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRentalCore" type="tns:IRentalCore">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
-    <wsdl:operation name="BuldTypeAll">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/BuldTypeAll" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="BathunitTypeAll">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/BathunitTypeAll" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="StateTypeAll">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/StateTypeAll" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="TermTypeAll">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/TermTypeAll" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="LessorTypeAll">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/LessorTypeAll" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RegionTypeAll">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/RegionTypeAll" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="CategoryTypeAll">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/CategoryTypeAll" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="RentTypeAll">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/RentTypeAll" style="document" />
-      <wsdl:input>
-        <soap:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="PaymentTypeAll">
-      <soap:operation soapAction="http://tempuri.org/IRentalCore/PaymentTypeAll" style="document" />
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/Login" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -442,6 +380,87 @@
     </wsdl:operation>
     <wsdl:operation name="BlackListAdd">
       <soap:operation soapAction="http://tempuri.org/IRentalCore/BlackListAdd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BuldTypeAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/BuldTypeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BathunitTypeAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/BathunitTypeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="StateTypeAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/StateTypeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TermTypeAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/TermTypeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LessorTypeAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/LessorTypeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegionTypeAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/RegionTypeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CategoryTypeAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/CategoryTypeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RentTypeAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/RentTypeAll" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="PaymentTypeAll">
+      <soap:operation soapAction="http://tempuri.org/IRentalCore/PaymentTypeAll" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
