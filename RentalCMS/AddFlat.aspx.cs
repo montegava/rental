@@ -53,6 +53,10 @@ namespace RentalCMS
 
         protected void Upload_Click(object sender, EventArgs e)
         {
+            var phone = @"\+*[\d-\s()]{5,}";
+            
+            var r = System.Text.RegularExpressions.Regex.Replace(tbDescription.Text, phone, "");
+
             var flat = new flat_info()
             {
                 ID = -1,
@@ -63,8 +67,8 @@ namespace RentalCMS
                 ROOM_COUNT = Convert.ToInt32( ddlRoomCount.SelectedValue),
                 FLOOR =  Convert.ToInt32(ddlFloor.SelectedIntValue),
                 ADDRESS = tbAdres.Text,
-                COMMENT = System.Text.RegularExpressions.Regex.Replace(tbDescription.Text, @"/\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{4})/", "+7 (903) 652-90-28"),
-                PRICE = tbPrice.Text,
+                COMMENT = r,
+                PRICE = Convert.ToInt32(tbPrice.Text),
 
                 payment_type_id = Selected(ddlPayment),
                 region_type_id = Selected(ddlRegion),

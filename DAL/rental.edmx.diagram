@@ -4,31 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ae2ad8e9310a4254a51846f5619676e9" Name="Diagram1" ZoomLevel="63">
-        <EntityTypeShape EntityType="rentalModel.bath_unit" Width="1.5" PointX="0.75" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.build_type" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.category_type" Width="1.5" PointX="0.75" PointY="10.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.image_list" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.lessor_type" Width="1.5" PointX="0.75" PointY="12.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.payment_type" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.region_type" Width="1.5" PointX="0.75" PointY="17.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.rent_type" Width="1.5" PointX="0.75" PointY="19.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.state_type" Width="1.5" PointX="0.75" PointY="21.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.term_type" Width="1.5" PointX="0.75" PointY="24.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.user" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="rentalModel.view_flat_info" Width="1.5" PointX="7.75" PointY="3.75" IsExpanded="true" />
-        <AssociationConnector Association="rentalModel.FK_bathunit_type" ManuallyRouted="false" />
-        <AssociationConnector Association="rentalModel.FK_build_type" ManuallyRouted="false" />
-        <AssociationConnector Association="rentalModel.FK_category_type" ManuallyRouted="false" />
-        <AssociationConnector Association="rentalModel.FK_images_flat" ManuallyRouted="false" />
-        <AssociationConnector Association="rentalModel.FK_lessor_type" ManuallyRouted="false" />
-        <AssociationConnector Association="rentalModel.FK_payment_type" ManuallyRouted="false" />
-        <AssociationConnector Association="rentalModel.FK_region_type" ManuallyRouted="false" />
-        <AssociationConnector Association="rentalModel.FK_rent_type" ManuallyRouted="false" />
-        <AssociationConnector Association="rentalModel.FK_state_type" ManuallyRouted="false" />
-        <AssociationConnector Association="rentalModel.FK_term_type" ManuallyRouted="false" />
+      <Diagram DiagramId="ae2ad8e9310a4254a51846f5619676e9" Name="Diagram1" ZoomLevel="40">
+        <EntityTypeShape EntityType="rentalModel.bath_unit" Width="1.5" PointX="1.0708569237360996" PointY="17.344338499635615" />
+        <EntityTypeShape EntityType="rentalModel.black_list" Width="1.5" PointX="3.8545962906696816" PointY="15.673339940455435" />
+        <EntityTypeShape EntityType="rentalModel.build_type" Width="1.5" PointX="11.345836026289424" PointY="23.39057528571718" />
+        <EntityTypeShape EntityType="rentalModel.category_type" Width="1.5" PointX="9.4653794567405143" PointY="15.744872636974264" />
+        <EntityTypeShape EntityType="rentalModel.image_list" Width="1.5" PointX="8.69433586704281" PointY="24.789088841895147" />
+        <EntityTypeShape EntityType="rentalModel.lessor_type" Width="1.5" PointX="9.9573533469612485" PointY="0.6998670700471229" />
+        <EntityTypeShape EntityType="rentalModel.payment_type" Width="1.5" PointX="9.3175741663750138" PointY="12.663914999302437" />
+        <EntityTypeShape EntityType="rentalModel.region_type" Width="1.5" PointX="1.3759063432812255" PointY="6.7166904391332949" />
+        <EntityTypeShape EntityType="rentalModel.rent_type" Width="1.5" PointX="7.125" PointY="30.125" />
+        <EntityTypeShape EntityType="rentalModel.state_type" Width="1.5" PointX="10.542835430494899" PointY="22.245839025008419" />
+        <EntityTypeShape EntityType="rentalModel.term_type" Width="1.5" PointX="0.83809265160844326" PointY="29.52828216437636" />
+        <EntityTypeShape EntityType="rentalModel.user" Width="1.5" PointX="2.2190872124485148" PointY="30.579956635171527" />
+        <EntityTypeShape EntityType="rentalModel.flat_info" Width="1.5" PointX="5.2690831428715414" PointY="7.6427224761074051" />
+        <AssociationConnector Association="rentalModel.FK_bathunit_type" />
+        <AssociationConnector Association="rentalModel.FK_build_type" />
+        <AssociationConnector Association="rentalModel.FK_category_type" />
+        <AssociationConnector Association="rentalModel.FK_images_flat" />
+        <AssociationConnector Association="rentalModel.FK_lessor_type" />
+        <AssociationConnector Association="rentalModel.FK_payment_type" />
+        <AssociationConnector Association="rentalModel.FK_region_type" />
+        <AssociationConnector Association="rentalModel.FK_rent_type" />
+        <AssociationConnector Association="rentalModel.FK_state_type" />
+        <AssociationConnector Association="rentalModel.FK_term_type" />
+        <EntityTypeShape EntityType="rentalModel.view_flat_info" Width="1.5" PointX="3.375" PointY="1.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

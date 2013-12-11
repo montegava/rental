@@ -70,8 +70,14 @@ namespace DAL
                                 case FilterConditions.MORE:
                                     expr = expr.And(c => c.DATA > dvalue);
                                     break;
+                                case FilterConditions.MOREEQUAL:
+                                    expr = expr.And(c => c.DATA >= dvalue);
+                                    break;
                                 case FilterConditions.LESS:
                                     expr = expr.And(c => c.DATA < dvalue);
+                                    break;
+                                case FilterConditions.LESSEQUAL:
+                                    expr = expr.And(c => c.DATA <= dvalue);
                                     break;
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.DATA == dvalue);
@@ -90,8 +96,14 @@ namespace DAL
                                 case FilterConditions.MORE:
                                     expr = expr.And(c => c.ROOM_COUNT > value);
                                     break;
+                                case FilterConditions.MOREEQUAL:
+                                    expr = expr.And(c => c.ROOM_COUNT >= value);
+                                    break;
                                 case FilterConditions.LESS:
                                     expr = expr.And(c => c.ROOM_COUNT < value);
+                                    break;
+                                case FilterConditions.LESSEQUAL:
+                                    expr = expr.And(c => c.ROOM_COUNT <= value);
                                     break;
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.ROOM_COUNT == value);
@@ -107,7 +119,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.ADDRESS.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
@@ -127,8 +141,14 @@ namespace DAL
                                 case FilterConditions.MORE:
                                     expr = expr.And(c => c.FLOOR > value);
                                     break;
+                                case FilterConditions.MOREEQUAL:
+                                    expr = expr.And(c => c.FLOOR >= value);
+                                    break;
                                 case FilterConditions.LESS:
                                     expr = expr.And(c => c.FLOOR < value);
+                                    break;
+                                case FilterConditions.LESSEQUAL:
+                                    expr = expr.And(c => c.FLOOR <= value);
                                     break;
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.FLOOR == value);
@@ -145,7 +165,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -161,7 +183,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -176,7 +200,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.FURNITURE.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
@@ -194,7 +220,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -209,7 +237,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.NAME.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
@@ -223,17 +253,26 @@ namespace DAL
 
                         #region Fields.PRICE
                         case Fields.PRICE:
+                            value = filter.Value == null ? null : (int?)Convert.ToInt32(filter.Value);
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                    expr = expr.And(c => c.PRICE > value);
+                                    break;
+                                case FilterConditions.MOREEQUAL:
+                                    expr = expr.And(c => c.PRICE >= value);
+                                    break;
                                 case FilterConditions.LESS:
-                                    throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
+                                    expr = expr.And(c => c.PRICE < value);
+                                    break;
+                                case FilterConditions.LESSEQUAL:
+                                    expr = expr.And(c => c.PRICE <= value);
+                                    break;
                                 case FilterConditions.EQUAL:
-                                    expr = expr.And(c => c.PRICE.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
+                                    expr = expr.And(c => c.PRICE == value);
                                     break;
                                 case FilterConditions.CONTAIN:
-                                    expr = expr.And(c => c.PRICE.ToUpper().Contains(((string)filter.Value).ToUpper()));
-                                    break;
+                                    throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                             }
                             break;
                         #endregion
@@ -243,7 +282,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.PHONE.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
@@ -260,7 +301,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.COMMENT.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
@@ -277,7 +320,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.CONTENT.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
@@ -295,6 +340,8 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.LESS:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -313,7 +360,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -331,8 +380,14 @@ namespace DAL
                                 case FilterConditions.MORE:
                                     expr = expr.And(c => c.RENT_FROM > dvalue);
                                     break;
+                                case FilterConditions.MOREEQUAL:
+                                    expr = expr.And(c => c.RENT_FROM >= dvalue);
+                                    break;
                                 case FilterConditions.LESS:
                                     expr = expr.And(c => c.RENT_FROM < dvalue);
+                                    break;
+                                case FilterConditions.LESSEQUAL:
+                                    expr = expr.And(c => c.RENT_FROM <= dvalue);
                                     break;
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.RENT_FROM == dvalue);
@@ -351,8 +406,11 @@ namespace DAL
                                 case FilterConditions.MORE:
                                     expr = expr.And(c => c.RENT_TO > dvalue);
                                     break;
-                                case FilterConditions.LESS:
-                                    expr = expr.And(c => c.RENT_TO < dvalue);
+                                case FilterConditions.MOREEQUAL:
+                                    expr = expr.And(c => c.RENT_TO >= dvalue);
+                                    break;
+                                case FilterConditions.LESSEQUAL:
+                                    expr = expr.And(c => c.RENT_TO <= dvalue);
                                     break;
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.RENT_TO == dvalue);
@@ -369,7 +427,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -384,7 +444,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -399,7 +461,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -415,7 +479,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -430,7 +496,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -446,7 +514,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
 
@@ -462,7 +532,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
                                     expr = expr.And(c => c.EMAIL.Equals((string)filter.Value, StringComparison.InvariantCultureIgnoreCase));
@@ -480,7 +552,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -496,7 +570,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:
@@ -512,7 +588,9 @@ namespace DAL
                             switch (filter.FilterCondition)
                             {
                                 case FilterConditions.MORE:
+                                case FilterConditions.MOREEQUAL:
                                 case FilterConditions.LESS:
+                                case FilterConditions.LESSEQUAL:
                                 case FilterConditions.CONTAIN:
                                     throw new Exception(String.Format("{0} not applicable for {1}", filter.FilterCondition.ToString(), filter.Field.ToString()));
                                 case FilterConditions.EQUAL:

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="rentalModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="rentalModel.Store" Alias="Self" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="rentalModelStoreContainer">
           <EntitySet Name="bath_unit" EntityType="rentalModel.Store.bath_unit" store:Type="Tables" Schema="gb_x_amiravrn" />
           <EntitySet Name="black_list" EntityType="rentalModel.Store.black_list" store:Type="Tables" Schema="gb_x_amiravrn" />
@@ -49,12 +49,12 @@
       `view_flat_info`.`CATEGORY`, 
       `view_flat_info`.`TYPE`, 
       `view_flat_info`.`PAYMENT`, 
-      `view_flat_info`.`bathunit_type_id`, 
+      `view_flat_info`.`region_type_id`, 
       `view_flat_info`.`buld_type_id`, 
+      `view_flat_info`.`bathunit_type_id`, 
       `view_flat_info`.`state_type_id`, 
       `view_flat_info`.`term_type_id`, 
       `view_flat_info`.`lessor_type_id`, 
-      `view_flat_info`.`region_type_id`, 
       `view_flat_info`.`category_type_id`, 
       `view_flat_info`.`rent_type_id`, 
       `view_flat_info`.`payment_type_id`
@@ -142,7 +142,7 @@
           <Property Name="FLOOR" Type="int" />
           <Property Name="FURNITURE" Type="text" />
           <Property Name="NAME" Type="text" />
-          <Property Name="PRICE" Type="text" />
+          <Property Name="PRICE" Type="int" />
           <Property Name="PHONE" Type="text" />
           <Property Name="COMMENT" Type="text" />
           <Property Name="CONTENT" Type="text" />
@@ -245,7 +245,7 @@
           <Property Name="FURNITURE" Type="text" />
           <Property Name="STATE" Type="varchar" MaxLength="255" />
           <Property Name="NAME" Type="text" />
-          <Property Name="PRICE" Type="text" />
+          <Property Name="PRICE" Type="int" />
           <Property Name="PHONE" Type="text" />
           <Property Name="COMMENT" Type="text" />
           <Property Name="CONTENT" Type="text" />
@@ -263,12 +263,12 @@
           <Property Name="CATEGORY" Type="varchar" MaxLength="255" />
           <Property Name="TYPE" Type="varchar" MaxLength="255" />
           <Property Name="PAYMENT" Type="varchar" MaxLength="255" />
-          <Property Name="bathunit_type_id" Type="int" />
+          <Property Name="region_type_id" Type="int" />
           <Property Name="buld_type_id" Type="int" />
+          <Property Name="bathunit_type_id" Type="int" />
           <Property Name="state_type_id" Type="int" />
           <Property Name="term_type_id" Type="int" />
           <Property Name="lessor_type_id" Type="int" />
-          <Property Name="region_type_id" Type="int" />
           <Property Name="category_type_id" Type="int" />
           <Property Name="rent_type_id" Type="int" />
           <Property Name="payment_type_id" Type="int" />
@@ -395,8 +395,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="rentalModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -405,7 +404,6 @@
           <EntitySet Name="black_list" EntityType="rentalModel.black_list" />
           <EntitySet Name="build_type" EntityType="rentalModel.build_type" />
           <EntitySet Name="category_type" EntityType="rentalModel.category_type" />
-          <EntitySet Name="flat_info" EntityType="rentalModel.flat_info" />
           <EntitySet Name="image_list" EntityType="rentalModel.image_list" />
           <EntitySet Name="lessor_type" EntityType="rentalModel.lessor_type" />
           <EntitySet Name="payment_type" EntityType="rentalModel.payment_type" />
@@ -414,7 +412,7 @@
           <EntitySet Name="state_type" EntityType="rentalModel.state_type" />
           <EntitySet Name="term_type" EntityType="rentalModel.term_type" />
           <EntitySet Name="users" EntityType="rentalModel.user" />
-          <EntitySet Name="view_flat_info" EntityType="rentalModel.view_flat_info" />
+          <EntitySet Name="flat_info" EntityType="rentalModel.flat_info" />
           <AssociationSet Name="FK_bathunit_type" Association="rentalModel.FK_bathunit_type">
             <End Role="bath_unit" EntitySet="bath_unit" />
             <End Role="flat_info" EntitySet="flat_info" />
@@ -455,179 +453,134 @@
             <End Role="term_type" EntitySet="term_type" />
             <End Role="flat_info" EntitySet="flat_info" />
           </AssociationSet>
+          <EntitySet Name="view_flat_info" EntityType="rentalModel.view_flat_info" />
         </EntityContainer>
         <EntityType Name="bath_unit">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="black_list">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="STOP" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="COMMENT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="TYPE_ID" Type="Double" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="STOP" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COMMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Double" Name="TYPE_ID" />
         </EntityType>
         <EntityType Name="build_type">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="category_type">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-        </EntityType>
-        <EntityType Name="flat_info">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DATA" Type="DateTime" />
-          <Property Name="ROOM_COUNT" Type="Int32" />
-          <Property Name="ADDRESS" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="FLOOR" Type="Int32" />
-          <Property Name="FURNITURE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="NAME" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="PRICE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="PHONE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="COMMENT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="CONTENT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="LINK" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="RENT_FROM" Type="DateTime" />
-          <Property Name="RENT_TO" Type="DateTime" />
-          <Property Name="FRIDGE" Type="Boolean" Nullable="false" />
-          <Property Name="TV" Type="Boolean" Nullable="false" />
-          <Property Name="WASHER" Type="Boolean" Nullable="false" />
-          <Property Name="COOLER" Type="Boolean" Nullable="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="bathunit_type_id" Type="Int32" />
-          <Property Name="buld_type_id" Type="Int32" />
-          <Property Name="state_type_id" Type="Int32" />
-          <Property Name="term_type_id" Type="Int32" />
-          <Property Name="lessor_type_id" Type="Int32" />
-          <Property Name="region_type_id" Type="Int32" />
-          <Property Name="category_type_id" Type="Int32" />
-          <Property Name="rent_type_id" Type="Int32" />
-          <Property Name="payment_type_id" Type="Int32" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="image_list">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FLAT_ID" Type="Int32" />
-          <Property Name="IMAGE_PATH" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="FLAT_ID" />
+          <Property Type="String" Name="IMAGE_PATH" MaxLength="65535" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="lessor_type">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="payment_type">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="region_type">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="rent_type">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="state_type">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="term_type">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="user">
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="login" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="password" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Type="Int32" Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="String" Name="name" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="login" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="password" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="type" Nullable="false" />
         </EntityType>
-        <EntityType Name="view_flat_info">
+        <EntityType Name="flat_info">
           <Key>
             <PropertyRef Name="ID" />
-            <PropertyRef Name="FRIDGE" />
-            <PropertyRef Name="TV" />
-            <PropertyRef Name="WASHER" />
-            <PropertyRef Name="COOLER" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="DATA" Type="DateTime" />
-          <Property Name="ROOM_COUNT" Type="Int32" />
-          <Property Name="ADDRESS" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="FLOOR" Type="Int32" />
-          <Property Name="BATH_UNIT" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="BUILD" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="FURNITURE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="STATE" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="NAME" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="PRICE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="PHONE" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="COMMENT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="CONTENT" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="LINK" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="TERM" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="RENT_FROM" Type="DateTime" />
-          <Property Name="RENT_TO" Type="DateTime" />
-          <Property Name="LESSOR" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="FRIDGE" Type="Boolean" Nullable="false" />
-          <Property Name="TV" Type="Boolean" Nullable="false" />
-          <Property Name="WASHER" Type="Boolean" Nullable="false" />
-          <Property Name="COOLER" Type="Boolean" Nullable="false" />
-          <Property Name="REGION" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="EMAIL" Type="String" MaxLength="65535" Unicode="false" FixedLength="false" />
-          <Property Name="CATEGORY" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="TYPE" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="PAYMENT" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="bathunit_type_id" Type="Int32" />
-          <Property Name="buld_type_id" Type="Int32" />
-          <Property Name="state_type_id" Type="Int32" />
-          <Property Name="term_type_id" Type="Int32" />
-          <Property Name="lessor_type_id" Type="Int32" />
-          <Property Name="region_type_id" Type="Int32" />
-          <Property Name="category_type_id" Type="Int32" />
-          <Property Name="rent_type_id" Type="Int32" />
-          <Property Name="payment_type_id" Type="Int32" />
+          <Property Type="Int32" Name="ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="DateTime" Name="DATA" />
+          <Property Type="Int32" Name="ROOM_COUNT" />
+          <Property Type="String" Name="ADDRESS" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FLOOR" />
+          <Property Type="String" Name="FURNITURE" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NAME" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PRICE" />
+          <Property Type="String" Name="PHONE" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COMMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LINK" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="RENT_FROM" />
+          <Property Type="DateTime" Name="RENT_TO" />
+          <Property Type="Boolean" Name="FRIDGE" Nullable="false" />
+          <Property Type="Boolean" Name="TV" Nullable="false" />
+          <Property Type="Boolean" Name="WASHER" Nullable="false" />
+          <Property Type="Boolean" Name="COOLER" Nullable="false" />
+          <Property Type="String" Name="EMAIL" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="bathunit_type_id" />
+          <Property Type="Int32" Name="buld_type_id" />
+          <Property Type="Int32" Name="state_type_id" />
+          <Property Type="Int32" Name="term_type_id" />
+          <Property Type="Int32" Name="lessor_type_id" />
+          <Property Type="Int32" Name="region_type_id" />
+          <Property Type="Int32" Name="category_type_id" />
+          <Property Type="Int32" Name="rent_type_id" />
+          <Property Type="Int32" Name="payment_type_id" />
         </EntityType>
         <Association Name="FK_bathunit_type">
-          <End Role="bath_unit" Type="rentalModel.bath_unit" Multiplicity="0..1" />
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="*" />
+          <End Type="rentalModel.bath_unit" Role="bath_unit" Multiplicity="0..1" />
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="bath_unit">
               <PropertyRef Name="id" />
@@ -638,8 +591,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_build_type">
-          <End Role="build_type" Type="rentalModel.build_type" Multiplicity="0..1" />
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="*" />
+          <End Type="rentalModel.build_type" Role="build_type" Multiplicity="0..1" />
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="build_type">
               <PropertyRef Name="id" />
@@ -650,8 +603,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_category_type">
-          <End Role="category_type" Type="rentalModel.category_type" Multiplicity="0..1" />
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="*" />
+          <End Type="rentalModel.category_type" Role="category_type" Multiplicity="0..1" />
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="category_type">
               <PropertyRef Name="id" />
@@ -662,10 +615,10 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_images_flat">
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="0..1">
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="0..1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Role="image_list" Type="rentalModel.image_list" Multiplicity="*" />
+          <End Type="rentalModel.image_list" Role="image_list" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="flat_info">
               <PropertyRef Name="ID" />
@@ -676,8 +629,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_lessor_type">
-          <End Role="lessor_type" Type="rentalModel.lessor_type" Multiplicity="0..1" />
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="*" />
+          <End Type="rentalModel.lessor_type" Role="lessor_type" Multiplicity="0..1" />
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="lessor_type">
               <PropertyRef Name="id" />
@@ -688,8 +641,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_payment_type">
-          <End Role="payment_type" Type="rentalModel.payment_type" Multiplicity="0..1" />
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="*" />
+          <End Type="rentalModel.payment_type" Role="payment_type" Multiplicity="0..1" />
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="payment_type">
               <PropertyRef Name="id" />
@@ -700,8 +653,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_region_type">
-          <End Role="region_type" Type="rentalModel.region_type" Multiplicity="0..1" />
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="*" />
+          <End Type="rentalModel.region_type" Role="region_type" Multiplicity="0..1" />
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="region_type">
               <PropertyRef Name="id" />
@@ -712,8 +665,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_rent_type">
-          <End Role="rent_type" Type="rentalModel.rent_type" Multiplicity="0..1" />
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="*" />
+          <End Type="rentalModel.rent_type" Role="rent_type" Multiplicity="0..1" />
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="rent_type">
               <PropertyRef Name="id" />
@@ -724,8 +677,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_state_type">
-          <End Role="state_type" Type="rentalModel.state_type" Multiplicity="0..1" />
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="*" />
+          <End Type="rentalModel.state_type" Role="state_type" Multiplicity="0..1" />
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="state_type">
               <PropertyRef Name="id" />
@@ -736,8 +689,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_term_type">
-          <End Role="term_type" Type="rentalModel.term_type" Multiplicity="0..1" />
-          <End Role="flat_info" Type="rentalModel.flat_info" Multiplicity="*" />
+          <End Type="rentalModel.term_type" Role="term_type" Multiplicity="0..1" />
+          <End Type="rentalModel.flat_info" Role="flat_info" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="term_type">
               <PropertyRef Name="id" />
@@ -747,7 +700,53 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        <EntityType Name="view_flat_info">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="FRIDGE" />
+            <PropertyRef Name="TV" />
+            <PropertyRef Name="WASHER" />
+            <PropertyRef Name="COOLER" />
+          </Key>
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="DateTime" Name="DATA" />
+          <Property Type="Int32" Name="ROOM_COUNT" />
+          <Property Type="String" Name="ADDRESS" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="FLOOR" />
+          <Property Type="String" Name="BATH_UNIT" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="BUILD" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="FURNITURE" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="STATE" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="NAME" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="PRICE" />
+          <Property Type="String" Name="PHONE" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="COMMENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CONTENT" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="LINK" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TERM" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="RENT_FROM" />
+          <Property Type="DateTime" Name="RENT_TO" />
+          <Property Type="String" Name="LESSOR" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Boolean" Name="FRIDGE" Nullable="false" />
+          <Property Type="Boolean" Name="TV" Nullable="false" />
+          <Property Type="Boolean" Name="WASHER" Nullable="false" />
+          <Property Type="Boolean" Name="COOLER" Nullable="false" />
+          <Property Type="String" Name="REGION" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="EMAIL" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="CATEGORY" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="TYPE" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="String" Name="PAYMENT" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Type="Int32" Name="region_type_id" />
+          <Property Type="Int32" Name="buld_type_id" />
+          <Property Type="Int32" Name="bathunit_type_id" />
+          <Property Type="Int32" Name="state_type_id" />
+          <Property Type="Int32" Name="term_type_id" />
+          <Property Type="Int32" Name="lessor_type_id" />
+          <Property Type="Int32" Name="category_type_id" />
+          <Property Type="Int32" Name="rent_type_id" />
+          <Property Type="Int32" Name="payment_type_id" />
+        </EntityType>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -756,179 +755,179 @@
           <EntitySetMapping Name="bath_unit">
             <EntityTypeMapping TypeName="rentalModel.bath_unit">
               <MappingFragment StoreEntitySet="bath_unit">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="black_list">
             <EntityTypeMapping TypeName="rentalModel.black_list">
               <MappingFragment StoreEntitySet="black_list">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="STOP" ColumnName="STOP" />
-                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
                 <ScalarProperty Name="TYPE_ID" ColumnName="TYPE_ID" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+                <ScalarProperty Name="STOP" ColumnName="STOP" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="build_type">
             <EntityTypeMapping TypeName="rentalModel.build_type">
               <MappingFragment StoreEntitySet="build_type">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="category_type">
             <EntityTypeMapping TypeName="rentalModel.category_type">
               <MappingFragment StoreEntitySet="category_type">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="flat_info">
-            <EntityTypeMapping TypeName="rentalModel.flat_info">
-              <MappingFragment StoreEntitySet="flat_info">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="DATA" ColumnName="DATA" />
-                <ScalarProperty Name="ROOM_COUNT" ColumnName="ROOM_COUNT" />
-                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
-                <ScalarProperty Name="FLOOR" ColumnName="FLOOR" />
-                <ScalarProperty Name="FURNITURE" ColumnName="FURNITURE" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
-                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
-                <ScalarProperty Name="LINK" ColumnName="LINK" />
-                <ScalarProperty Name="RENT_FROM" ColumnName="RENT_FROM" />
-                <ScalarProperty Name="RENT_TO" ColumnName="RENT_TO" />
-                <ScalarProperty Name="FRIDGE" ColumnName="FRIDGE" />
-                <ScalarProperty Name="TV" ColumnName="TV" />
-                <ScalarProperty Name="WASHER" ColumnName="WASHER" />
-                <ScalarProperty Name="COOLER" ColumnName="COOLER" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="bathunit_type_id" ColumnName="bathunit_type_id" />
-                <ScalarProperty Name="buld_type_id" ColumnName="buld_type_id" />
-                <ScalarProperty Name="state_type_id" ColumnName="state_type_id" />
-                <ScalarProperty Name="term_type_id" ColumnName="term_type_id" />
-                <ScalarProperty Name="lessor_type_id" ColumnName="lessor_type_id" />
-                <ScalarProperty Name="region_type_id" ColumnName="region_type_id" />
-                <ScalarProperty Name="category_type_id" ColumnName="category_type_id" />
-                <ScalarProperty Name="rent_type_id" ColumnName="rent_type_id" />
-                <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="image_list">
             <EntityTypeMapping TypeName="rentalModel.image_list">
               <MappingFragment StoreEntitySet="image_list">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="FLAT_ID" ColumnName="FLAT_ID" />
                 <ScalarProperty Name="IMAGE_PATH" ColumnName="IMAGE_PATH" />
+                <ScalarProperty Name="FLAT_ID" ColumnName="FLAT_ID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="lessor_type">
             <EntityTypeMapping TypeName="rentalModel.lessor_type">
               <MappingFragment StoreEntitySet="lessor_type">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="payment_type">
             <EntityTypeMapping TypeName="rentalModel.payment_type">
               <MappingFragment StoreEntitySet="payment_type">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="region_type">
             <EntityTypeMapping TypeName="rentalModel.region_type">
               <MappingFragment StoreEntitySet="region_type">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="rent_type">
             <EntityTypeMapping TypeName="rentalModel.rent_type">
               <MappingFragment StoreEntitySet="rent_type">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="state_type">
             <EntityTypeMapping TypeName="rentalModel.state_type">
               <MappingFragment StoreEntitySet="state_type">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="term_type">
             <EntityTypeMapping TypeName="rentalModel.term_type">
               <MappingFragment StoreEntitySet="term_type">
-                <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="users">
             <EntityTypeMapping TypeName="rentalModel.user">
               <MappingFragment StoreEntitySet="users">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="login" ColumnName="login" />
-                <ScalarProperty Name="password" ColumnName="password" />
                 <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="flat_info">
+            <EntityTypeMapping TypeName="rentalModel.flat_info">
+              <MappingFragment StoreEntitySet="flat_info">
+                <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+                <ScalarProperty Name="rent_type_id" ColumnName="rent_type_id" />
+                <ScalarProperty Name="category_type_id" ColumnName="category_type_id" />
+                <ScalarProperty Name="region_type_id" ColumnName="region_type_id" />
+                <ScalarProperty Name="lessor_type_id" ColumnName="lessor_type_id" />
+                <ScalarProperty Name="term_type_id" ColumnName="term_type_id" />
+                <ScalarProperty Name="state_type_id" ColumnName="state_type_id" />
+                <ScalarProperty Name="buld_type_id" ColumnName="buld_type_id" />
+                <ScalarProperty Name="bathunit_type_id" ColumnName="bathunit_type_id" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="COOLER" ColumnName="COOLER" />
+                <ScalarProperty Name="WASHER" ColumnName="WASHER" />
+                <ScalarProperty Name="TV" ColumnName="TV" />
+                <ScalarProperty Name="FRIDGE" ColumnName="FRIDGE" />
+                <ScalarProperty Name="RENT_TO" ColumnName="RENT_TO" />
+                <ScalarProperty Name="RENT_FROM" ColumnName="RENT_FROM" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="FURNITURE" ColumnName="FURNITURE" />
+                <ScalarProperty Name="FLOOR" ColumnName="FLOOR" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="ROOM_COUNT" ColumnName="ROOM_COUNT" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="view_flat_info">
             <EntityTypeMapping TypeName="rentalModel.view_flat_info">
               <MappingFragment StoreEntitySet="view_flat_info">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="DATA" ColumnName="DATA" />
-                <ScalarProperty Name="ROOM_COUNT" ColumnName="ROOM_COUNT" />
-                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
-                <ScalarProperty Name="FLOOR" ColumnName="FLOOR" />
-                <ScalarProperty Name="BATH_UNIT" ColumnName="BATH_UNIT" />
-                <ScalarProperty Name="BUILD" ColumnName="BUILD" />
-                <ScalarProperty Name="FURNITURE" ColumnName="FURNITURE" />
-                <ScalarProperty Name="STATE" ColumnName="STATE" />
-                <ScalarProperty Name="NAME" ColumnName="NAME" />
-                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
-                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
-                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
-                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
-                <ScalarProperty Name="LINK" ColumnName="LINK" />
-                <ScalarProperty Name="TERM" ColumnName="TERM" />
-                <ScalarProperty Name="RENT_FROM" ColumnName="RENT_FROM" />
-                <ScalarProperty Name="RENT_TO" ColumnName="RENT_TO" />
-                <ScalarProperty Name="LESSOR" ColumnName="LESSOR" />
-                <ScalarProperty Name="FRIDGE" ColumnName="FRIDGE" />
-                <ScalarProperty Name="TV" ColumnName="TV" />
-                <ScalarProperty Name="WASHER" ColumnName="WASHER" />
-                <ScalarProperty Name="COOLER" ColumnName="COOLER" />
-                <ScalarProperty Name="REGION" ColumnName="REGION" />
-                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
-                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
-                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
-                <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
+                <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+                <ScalarProperty Name="rent_type_id" ColumnName="rent_type_id" />
+                <ScalarProperty Name="category_type_id" ColumnName="category_type_id" />
+                <ScalarProperty Name="lessor_type_id" ColumnName="lessor_type_id" />
+                <ScalarProperty Name="term_type_id" ColumnName="term_type_id" />
+                <ScalarProperty Name="state_type_id" ColumnName="state_type_id" />
                 <ScalarProperty Name="bathunit_type_id" ColumnName="bathunit_type_id" />
                 <ScalarProperty Name="buld_type_id" ColumnName="buld_type_id" />
-                <ScalarProperty Name="state_type_id" ColumnName="state_type_id" />
-                <ScalarProperty Name="term_type_id" ColumnName="term_type_id" />
-                <ScalarProperty Name="lessor_type_id" ColumnName="lessor_type_id" />
                 <ScalarProperty Name="region_type_id" ColumnName="region_type_id" />
-                <ScalarProperty Name="category_type_id" ColumnName="category_type_id" />
-                <ScalarProperty Name="rent_type_id" ColumnName="rent_type_id" />
-                <ScalarProperty Name="payment_type_id" ColumnName="payment_type_id" />
+                <ScalarProperty Name="PAYMENT" ColumnName="PAYMENT" />
+                <ScalarProperty Name="TYPE" ColumnName="TYPE" />
+                <ScalarProperty Name="CATEGORY" ColumnName="CATEGORY" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="REGION" ColumnName="REGION" />
+                <ScalarProperty Name="COOLER" ColumnName="COOLER" />
+                <ScalarProperty Name="WASHER" ColumnName="WASHER" />
+                <ScalarProperty Name="TV" ColumnName="TV" />
+                <ScalarProperty Name="FRIDGE" ColumnName="FRIDGE" />
+                <ScalarProperty Name="LESSOR" ColumnName="LESSOR" />
+                <ScalarProperty Name="RENT_TO" ColumnName="RENT_TO" />
+                <ScalarProperty Name="RENT_FROM" ColumnName="RENT_FROM" />
+                <ScalarProperty Name="TERM" ColumnName="TERM" />
+                <ScalarProperty Name="LINK" ColumnName="LINK" />
+                <ScalarProperty Name="CONTENT" ColumnName="CONTENT" />
+                <ScalarProperty Name="COMMENT" ColumnName="COMMENT" />
+                <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+                <ScalarProperty Name="PRICE" ColumnName="PRICE" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="STATE" ColumnName="STATE" />
+                <ScalarProperty Name="FURNITURE" ColumnName="FURNITURE" />
+                <ScalarProperty Name="BUILD" ColumnName="BUILD" />
+                <ScalarProperty Name="BATH_UNIT" ColumnName="BATH_UNIT" />
+                <ScalarProperty Name="FLOOR" ColumnName="FLOOR" />
+                <ScalarProperty Name="ADDRESS" ColumnName="ADDRESS" />
+                <ScalarProperty Name="ROOM_COUNT" ColumnName="ROOM_COUNT" />
+                <ScalarProperty Name="DATA" ColumnName="DATA" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -946,7 +945,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>

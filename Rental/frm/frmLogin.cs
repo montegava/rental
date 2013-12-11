@@ -10,8 +10,8 @@ namespace Rental
         #region Windows Form Designer generated code
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtusername;
-        private System.Windows.Forms.TextBox txtPassword;
+        private System.Windows.Forms.TextBox tbLogin;
+        private System.Windows.Forms.TextBox tbPassword;
         private System.Windows.Forms.Button btnLogin;
         private Label lblError;
         private System.ComponentModel.Container components = null;
@@ -21,8 +21,8 @@ namespace Rental
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtusername = new System.Windows.Forms.TextBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.tbLogin = new System.Windows.Forms.TextBox();
+            this.tbPassword = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.lblError = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -47,19 +47,19 @@ namespace Rental
             // 
             // txtusername
             // 
-            this.txtusername.Location = new System.Drawing.Point(80, 8);
-            this.txtusername.Name = "txtusername";
-            this.txtusername.PasswordChar = '*';
-            this.txtusername.Size = new System.Drawing.Size(104, 20);
-            this.txtusername.TabIndex = 4;
+            this.tbLogin.Location = new System.Drawing.Point(80, 8);
+            this.tbLogin.Name = "txtusername";
+            this.tbLogin.PasswordChar = '*';
+            this.tbLogin.Size = new System.Drawing.Size(104, 20);
+            this.tbLogin.TabIndex = 4;
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(80, 32);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(104, 20);
-            this.txtPassword.TabIndex = 5;
+            this.tbPassword.Location = new System.Drawing.Point(80, 32);
+            this.tbPassword.Name = "txtPassword";
+            this.tbPassword.PasswordChar = '*';
+            this.tbPassword.Size = new System.Drawing.Size(104, 20);
+            this.tbPassword.TabIndex = 5;
             // 
             // btnLogin
             // 
@@ -89,8 +89,8 @@ namespace Rental
             this.ClientSize = new System.Drawing.Size(194, 125);
             this.Controls.Add(this.lblError);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.txtPassword);
-            this.Controls.Add(this.txtusername);
+            this.Controls.Add(this.tbPassword);
+            this.Controls.Add(this.tbLogin);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
@@ -106,19 +106,10 @@ namespace Rental
         }
         #endregion
 
-        private frmMain m_main_form;
-
-        public frmLogin(frmMain main_form)
+        public frmLogin()
         {
             InitializeComponent();
-            m_main_form = main_form;
-            this.txtusername.Text = Properties.Settings.Default.login;
-        }
-
-        public bool ButtonLoginEnabled
-        {
-            get { return this.btnLogin.Enabled; }
-            set { this.btnLogin.Enabled = value; }
+            this.tbLogin.Text = Properties.Settings.Default.login;
         }
 
         protected override void Dispose(bool disposing)
@@ -130,34 +121,29 @@ namespace Rental
 
         private void btnLogin_Click(object sender, System.EventArgs e)
         {
-
-
-
-            try
+            if (string.IsNullOrEmpty(tbLogin.Text) || string.IsNullOrEmpty(tbPassword.Text))
             {
-                var result = NameListCache.proxy.Login(txtusername.Text, txtPassword.Text);
-
-                if (!result)
+                lblError.Text = "Login or password is empty";
+            }
+            else
+            {
+                try
                 {
-                    lblError.Text = "Error on login";
+                    var result = NameListCache.proxy.Login(tbLogin.Text, tbPassword.Text);
+                    if (!result)
+                        lblError.Text = "Error on login";
+                    else
+                    {
+                        Properties.Settings.Default.login = this.tbLogin.Text;
+                        Properties.Settings.Default.Save();
+                        this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    }
                 }
-                else
+                catch (Exception)
                 {
-                    Properties.Settings.Default.login = this.txtusername.Text;
-                    Properties.Settings.Default.Save();
-                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                    this.DialogResult = DialogResult.Cancel;
                 }
             }
-            catch (Exception)
-            {
-
-                this.DialogResult = DialogResult.Cancel;
-            }
-
-
-
-
-
         }
 
     }

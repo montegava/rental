@@ -747,7 +747,6 @@
             // chCooler
             // 
             this.chCooler.AutoSize = true;
-            this.chCooler.Enabled = false;
             this.chCooler.Location = new System.Drawing.Point(458, 280);
             this.chCooler.Name = "chCooler";
             this.chCooler.Size = new System.Drawing.Size(96, 17);
@@ -758,7 +757,6 @@
             // chWasher
             // 
             this.chWasher.AutoSize = true;
-            this.chWasher.Enabled = false;
             this.chWasher.Location = new System.Drawing.Point(325, 280);
             this.chWasher.Name = "chWasher";
             this.chWasher.Size = new System.Drawing.Size(129, 17);
@@ -769,7 +767,6 @@
             // chTV
             // 
             this.chTV.AutoSize = true;
-            this.chTV.Enabled = false;
             this.chTV.Location = new System.Drawing.Point(282, 280);
             this.chTV.Name = "chTV";
             this.chTV.Size = new System.Drawing.Size(40, 17);
@@ -780,7 +777,6 @@
             // chFridge
             // 
             this.chFridge.AutoSize = true;
-            this.chFridge.Enabled = false;
             this.chFridge.Location = new System.Drawing.Point(191, 280);
             this.chFridge.Name = "chFridge";
             this.chFridge.Size = new System.Drawing.Size(93, 17);

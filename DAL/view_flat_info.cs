@@ -24,7 +24,7 @@ namespace DAL
         public string FURNITURE { get; set; }
         public string STATE { get; set; }
         public string NAME { get; set; }
-        public string PRICE { get; set; }
+        public Nullable<int> PRICE { get; set; }
         public string PHONE { get; set; }
         public string COMMENT { get; set; }
         public string CONTENT { get; set; }
@@ -42,12 +42,12 @@ namespace DAL
         public string CATEGORY { get; set; }
         public string TYPE { get; set; }
         public string PAYMENT { get; set; }
-        public Nullable<int> bathunit_type_id { get; set; }
+        public Nullable<int> region_type_id { get; set; }
         public Nullable<int> buld_type_id { get; set; }
+        public Nullable<int> bathunit_type_id { get; set; }
         public Nullable<int> state_type_id { get; set; }
         public Nullable<int> term_type_id { get; set; }
         public Nullable<int> lessor_type_id { get; set; }
-        public Nullable<int> region_type_id { get; set; }
         public Nullable<int> category_type_id { get; set; }
         public Nullable<int> rent_type_id { get; set; }
         public Nullable<int> payment_type_id { get; set; }

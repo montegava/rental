@@ -58,13 +58,22 @@ namespace RentalCMS {
         protected global::System.Web.UI.WebControls.DropDownList ddlFurniture;
         
         /// <summary>
-        /// tbPrice control.
+        /// tbPriceFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox tbPrice;
+        protected global::System.Web.UI.WebControls.TextBox tbPriceFrom;
+        
+        /// <summary>
+        /// tbPriceTo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox tbPriceTo;
         
         /// <summary>
         /// _tbStartDateText control.

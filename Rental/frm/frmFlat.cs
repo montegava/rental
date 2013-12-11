@@ -50,6 +50,7 @@ namespace Rental
 
         private void LoadFlatInfo()
         {
+
             var flat = NameListCache.proxy.FlatById(FlatId);
             if (flat != null)
             {
@@ -68,7 +69,7 @@ namespace Rental
                 this.inputLINK.Text = flat.LINK;
                 this.inputNAME.Text = flat.NAME;
                 this.inputPHONE.Items.AddRange(flat.PHONE.Split(new Char[] { ';' }));
-                this.intupPRICE.Text = flat.PRICE;
+                this.intupPRICE.Text = flat.PRICE.ToString();
                 this.inputRENT_FROM.Text = flat.RENT_FROM.ToString();
                 this.inputRENT_TO.Text = flat.RENT_TO.ToString();
                 this.intupROOM_COUNT.Text = flat.ROOM_COUNT.ToString();
@@ -91,6 +92,8 @@ namespace Rental
 
         private void frmFlat_Load()
         {
+            intupPRICE.KeyPress += Common.DigitalAllow;
+
             FillComboBoxes();
 
             intupBUILD.SelectedIndex = 0;
@@ -178,7 +181,9 @@ namespace Rental
 
             result.FURNITURE = intupFURNITURE.Text;
             result.NAME = inputNAME.Text;
-            result.PRICE = intupPRICE.Text;
+
+            int price;
+            result.PRICE = int.TryParse(intupPRICE.Text, out price) ? (int?)price : null;  
 
             result.PHONE = String.Join(";", inputPHONE.Items.Cast<string>().ToArray());
             result.CONTENT = inputCONTENT.Text;

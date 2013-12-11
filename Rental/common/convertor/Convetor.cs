@@ -88,8 +88,12 @@ namespace Rental
             {
                 case FilterConditions.MORE:
                     return "больше";
+                case FilterConditions.MOREEQUAL:
+                    return "больше-равно";
                 case FilterConditions.LESS:
                     return "меньше";
+                case FilterConditions.LESSEQUAL:
+                    return "меньше-равно";
                 case FilterConditions.EQUAL:
                     return "равно";
                 case FilterConditions.CONTAIN:
@@ -111,7 +115,8 @@ namespace Rental
                 case Fields.DATA:
                 case Fields.RENT_FROM:
                 case Fields.RENT_TO:
-                    return new FilterConditions[] { FilterConditions.MORE, FilterConditions.LESS, FilterConditions.EQUAL };
+                case Fields.PRICE:
+                    return new FilterConditions[] { FilterConditions.MORE, FilterConditions.MOREEQUAL, FilterConditions.LESS,  FilterConditions.LESSEQUAL, FilterConditions.EQUAL };
 
                 case Fields.FRIDGE:
                 case Fields.TV:
@@ -132,7 +137,7 @@ namespace Rental
                 case Fields.ADDRESS:
                 case Fields.FURNITURE:
                 case Fields.NAME:
-                case Fields.PRICE:
+               
                 case Fields.PHONE:
                 case Fields.COMMENT:
                 case Fields.CONTENT:

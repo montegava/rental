@@ -15,6 +15,7 @@ using log4net;
 using log4net.Config;
 using Rental.src;
 using RentalCommon;
+using DgvFilterPopup;
 
 namespace Rental
 {
@@ -47,9 +48,9 @@ namespace Rental
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            frmLogin frm = new frmLogin(this);
-            if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-                 Application.Exit();
+            //frmLogin frm = new frmLogin();
+            //if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+            //     Application.Exit();
 
 
 
@@ -877,9 +878,15 @@ namespace Rental
 
         private void BlackListRefresh()
         {
-            dataGridViewContactList.DataSource = NameListCache.proxy.BlackListAll();
-            dataGridViewContactList.Columns["ID"].Visible = dataGridViewContactList.Columns["TYPE_ID"].Visible = false;
+
+            var list = NameListCache.proxy.BlackListAll();
+            var ds = TowardsNext.ListConvertor.CreateDataSet<black_list>(list.ToList());
+
+            dataGridViewContactList.DataSource = ds.Tables[0];
+            
+            dataGridViewContactList.Columns["ID"].Visible =  false;
             dataGridViewContactList.Columns["STOP"].Width = dataGridViewContactList.Columns["COMMENT"].Width = 200;
+            new DgvFilterManager(dataGridViewContactList);
         }
 
         private void btnStart_Click(object sender, EventArgs e)

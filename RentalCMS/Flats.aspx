@@ -30,7 +30,7 @@
                 <asp:Literal>Район</asp:Literal>
                 <asp:DropDownList runat="server" ID="ddlRegion">
                 </asp:DropDownList>
-               
+
                 <asp:Literal>Этаж</asp:Literal>
                 <asp:DropDownList runat="server" ID="ddlFloor">
                     <asp:ListItem Selected="True" Text="-- не важно --" Value="0"></asp:ListItem>
@@ -50,8 +50,10 @@
             </div>
 
             <div class="row">
-                <asp:Literal>Цена</asp:Literal>
-                <asp:TextBox runat="server" ID="tbPrice"></asp:TextBox>
+                <asp:Literal>Цена от:</asp:Literal>
+                <asp:TextBox runat="server" ID="tbPriceFrom"></asp:TextBox>
+                <asp:Literal>до:</asp:Literal>
+                <asp:TextBox runat="server" ID="tbPriceTo"></asp:TextBox>
             </div>
 
             <div class="nrmRow">
@@ -107,155 +109,155 @@
 
 
 
-    
-
-        <asp:ListView ID="_lwInfoListEdit" runat="server" OnSorting="_lwInfoList_Sorting" OnItemCommand="_lwInfoList_ItemCommand">
-            <LayoutTemplate>
-                <table class="grid">
-                    <thead>
-                        <tr>
-                            <th>
-                                <asp:LinkButton ID="lkId" runat="server" CommandName="Sort" CommandArgument='1'>
-                                    <span id="sort1" runat="server" class="sort">&nbsp;</span>
-                                    #
-                                </asp:LinkButton>
-                            </th>
-
-                            <th>
-                                <asp:LinkButton ID="lkData" runat="server" CommandName="Sort" CommandArgument='2'>
-                                    Дата
-                                <span id="sort2" runat="server" class="sort">&nbsp;</span>
-                                </asp:LinkButton>
-                            </th>
-
-                            <th>
-                                <asp:LinkButton ID="lkRoomCount" runat="server" CommandName="Sort" CommandArgument='3'>
-                                    Комнат
-                                <span id="sort3" runat="server" class="sort">&nbsp;</span>
-                                </asp:LinkButton>
-                            </th>
-
-                            <th>
-                                <asp:LinkButton ID="lkAddress" runat="server" CommandName="Sort" CommandArgument='4'>
-                                    Адрес
-                                <span id="sort4" runat="server" class="sort">&nbsp;</span>
-                                </asp:LinkButton>
-                            </th>
-
-                            <th>
-                                <asp:LinkButton ID="lbRegion" runat="server" CommandName="Sort" CommandArgument='25'>
-                                    Район
-                                <span id="sort25" runat="server" class="sort">&nbsp;</span>
-                                </asp:LinkButton>
-                            </th>
-
-                            <th>
-                                <asp:LinkButton ID="lbFloor" runat="server" CommandName="Sort" CommandArgument='5'>
-                                    Этаж
-                                <span id="sort5" runat="server" class="sort">&nbsp;</span>
-                                </asp:LinkButton>
-                            </th>
-
-                            <th>
-                                <asp:LinkButton ID="lbPrice" runat="server" CommandName="Sort" CommandArgument='12'>
-                                    Цена
-                                <span id="sort12" runat="server" class="sort">&nbsp;</span>
-                                </asp:LinkButton>
-                            </th>
 
 
-                            <th>
-                                <asp:LinkButton ID="lbFurniture" runat="server" CommandName="Sort" CommandArgument='8'>
-                                    Мебель
-                                <span id="sort8" runat="server" class="sort">&nbsp;</span>
-                                </asp:LinkButton>
-                            </th>
-
-
-
-
-
-
-                            <th>Фото</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="itemPlaceholder" runat="server"></tr>
-                    </tbody>
-                </table>
-            </LayoutTemplate>
-            <ItemTemplate>
-                <tr>
-
-                    <td runat="server" id="trNumber">
-                        <div style="width: 35px; word-wrap: break-word;">
-                            <asp:HiddenField ID="hfID" Value='<%# Eval("ID") %>' runat="server" />
-                            <asp:Label runat="server" ID="lbId">  <%# Eval("ID") %> </asp:Label>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div style="width: 65px; word-wrap: break-word;">
-                            <asp:Label runat="server" ID="lbData"> <%# ((DateTime)Eval("DATA")).ToShortDateString() %> </asp:Label>
-                        </div>
-                    </td>
-
-
-                    <td>
-                        <div style="width: 30px; word-wrap: break-word;">
-                            <asp:Label runat="server" ID="lblRoomCount"> <%# Eval("ROOM_COUNT") %> </asp:Label>
-                        </div>
-                    </td>
-
-
-                    <td>
-                        <div style="width: 160px; word-wrap: break-word;">
-                            <asp:Label runat="server" ID="lbAddress"> <%# Eval("ADDRESS") %> </asp:Label>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div style="width: 100px; word-wrap: break-word;">
-                            <asp:Label runat="server" ID="lbDistinct"> <%# Eval("REGION") %> </asp:Label>
-                        </div>
-                    </td>
-
-
-
-                    <td>
-                        <div style="width: 30px; word-wrap: break-word;">
-                            <asp:Label runat="server" ID="lbFloor"> <%# Eval("FLOOR") %> </asp:Label>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div style="width: 60px; word-wrap: break-word;">
-                            <asp:Label runat="server" ID="lbPrice"> <%# Eval("PRICE") %> </asp:Label>
-                        </div>
-                    </td>
-
-                    <td>
-                        <div style="width: 50px; word-wrap: break-word;">
-                            <asp:Label runat="server" ID="lbFurniture"> <%# Eval("FURNITURE") %> </asp:Label>
-                        </div>
-                    </td>
-
-
-
-                    <td class="icon">
-                        <div style="width: 30px; word-wrap: break-word;">
-                            <asp:LinkButton ID="lbEdit" runat="server" CommandName="Action" CommandArgument="Edit" title='Посмотреть'>
-                         <image src="/images/icon_view.png" width="21" height="20" title='Просмотреть' alt=""/>
+    <asp:ListView ID="_lwInfoListEdit" runat="server" OnSorting="_lwInfoList_Sorting" OnItemCommand="_lwInfoList_ItemCommand">
+        <LayoutTemplate>
+            <table class="grid">
+                <thead>
+                    <tr>
+                        <th>
+                            <asp:LinkButton ID="lkId" runat="server" CommandName="Sort" CommandArgument='1'>
+                                <span id="sort1" runat="server" class="sort">&nbsp;</span>
+                                #
                             </asp:LinkButton>
-                        </div>
+                        </th>
 
-                    </td>
+                        <th>
+                            <asp:LinkButton ID="lkData" runat="server" CommandName="Sort" CommandArgument='2'>
+                                Дата
+                                <span id="sort2" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
 
-                </tr>
-            </ItemTemplate>
-        </asp:ListView>
+                        <th>
+                            <asp:LinkButton ID="lkRoomCount" runat="server" CommandName="Sort" CommandArgument='3'>
+                                Комнат
+                                <span id="sort3" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
 
-    
+                        <th>
+                            <asp:LinkButton ID="lkAddress" runat="server" CommandName="Sort" CommandArgument='4'>
+                                Адрес
+                                <span id="sort4" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+                        <th>
+                            <asp:LinkButton ID="lbRegion" runat="server" CommandName="Sort" CommandArgument='25'>
+                                Район
+                                <span id="sort25" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+                        <th>
+                            <asp:LinkButton ID="lbFloor" runat="server" CommandName="Sort" CommandArgument='5'>
+                                Этаж
+                                <span id="sort5" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+                        <th>
+                            <asp:LinkButton ID="lbPrice" runat="server" CommandName="Sort" CommandArgument='12'>
+                                Цена
+                                <span id="sort12" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+
+                        <th>
+                            <asp:LinkButton ID="lbFurniture" runat="server" CommandName="Sort" CommandArgument='8'>
+                                Мебель
+                                <span id="sort8" runat="server" class="sort">&nbsp;</span>
+                            </asp:LinkButton>
+                        </th>
+
+
+
+
+
+
+                        <th>Фото</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="itemPlaceholder" runat="server"></tr>
+                </tbody>
+            </table>
+        </LayoutTemplate>
+        <ItemTemplate>
+            <tr>
+
+                <td runat="server" id="trNumber">
+                    <div style="width: 35px; word-wrap: break-word;">
+                        <asp:HiddenField ID="hfID" Value='<%# Eval("ID") %>' runat="server" />
+                        <asp:Label runat="server" ID="lbId">  <%# Eval("ID") %> </asp:Label>
+                    </div>
+                </td>
+
+                <td>
+                    <div style="width: 65px; word-wrap: break-word;">
+                        <asp:Label runat="server" ID="lbData"> <%# ((DateTime)Eval("DATA")).ToShortDateString() %> </asp:Label>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div style="width: 30px; word-wrap: break-word;">
+                        <asp:Label runat="server" ID="lblRoomCount"> <%# Eval("ROOM_COUNT") %> </asp:Label>
+                    </div>
+                </td>
+
+
+                <td>
+                    <div style="width: 160px; word-wrap: break-word;">
+                        <asp:Label runat="server" ID="lbAddress"> <%# Eval("ADDRESS") %> </asp:Label>
+                    </div>
+                </td>
+
+                <td>
+                    <div style="width: 100px; word-wrap: break-word;">
+                        <asp:Label runat="server" ID="lbDistinct"> <%# Eval("REGION") %> </asp:Label>
+                    </div>
+                </td>
+
+
+
+                <td>
+                    <div style="width: 30px; word-wrap: break-word;">
+                        <asp:Label runat="server" ID="lbFloor"> <%# Eval("FLOOR") %> </asp:Label>
+                    </div>
+                </td>
+
+                <td>
+                    <div style="width: 60px; word-wrap: break-word;">
+                        <asp:Label runat="server" ID="lbPrice"> <%# Eval("PRICE") %> </asp:Label>
+                    </div>
+                </td>
+
+                <td>
+                    <div style="width: 50px; word-wrap: break-word;">
+                        <asp:Label runat="server" ID="lbFurniture"> <%# Eval("FURNITURE") %> </asp:Label>
+                    </div>
+                </td>
+
+
+
+                <td class="icon">
+                    <div style="width: 30px; word-wrap: break-word;">
+                        <asp:LinkButton ID="lbEdit" runat="server" CommandName="Action" CommandArgument="Edit" title='Посмотреть'>
+                         <image src="/images/icon_view.png" width="21" height="20" title='Просмотреть' alt=""/>
+                        </asp:LinkButton>
+                    </div>
+
+                </td>
+
+            </tr>
+        </ItemTemplate>
+    </asp:ListView>
+
+
 
     <section class="footer-tbl" id="_navPag" runat="server">
         <div class="itemsPg">
@@ -285,6 +287,6 @@
 
 
     <script type="text/javascript">
-       $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
+        $(".datePicker").datepicker({ appendText: '(dd.mm.yyyy)', dateFormat: 'dd.mm.yy' }).val();
     </script>
 </asp:Content>

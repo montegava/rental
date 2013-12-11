@@ -80,9 +80,15 @@ namespace RentalCMS
             }
 
             //Цена
-            if (!string.IsNullOrEmpty(tbPrice.Text))
+            int priceFrom;
+            if (!string.IsNullOrEmpty(tbPriceFrom.Text) && int.TryParse(tbPriceFrom.Text.Trim(), out priceFrom))
             {
-                filters.Add(new Filter1(Fields.PRICE, FilterConditions.CONTAIN, tbAddress.Text));
+                filters.Add(new Filter1(Fields.PRICE, FilterConditions.MOREEQUAL, priceFrom));
+            }
+            int priceTo;
+            if (!string.IsNullOrEmpty(tbPriceTo.Text) && int.TryParse(tbPriceTo.Text.Trim(), out priceTo))
+            {
+                filters.Add(new Filter1(Fields.PRICE, FilterConditions.LESSEQUAL, priceTo));
             }
 
             DateTime selectedStartDate = UIConvert.ToDateTime(_tbStartDateText.Text);
@@ -194,7 +200,8 @@ namespace RentalCMS
             ddlRegion.SelectedIndex = 0;
             ddlRoomCount.SelectedIndex = 0;
             ddlFurniture.SelectedIndex = 0;
-            tbPrice.Text = string.Empty;
+            tbPriceFrom.Text = string.Empty;
+            tbPriceTo.Text = string.Empty;
             SetDefaulData();
         }
 
@@ -263,10 +270,10 @@ namespace RentalCMS
                 else if (value.Contains('-'))
                 {
                     string[] vals = value.Split('-');
-                    var start = Convert.ToInt32(vals[0]) -1;
-                    var end = Convert.ToInt32(vals[1]) + 1;
-                    result.Add(new Filter1(field,FilterConditions.MORE, start));
-                    result.Add(new Filter1(field,FilterConditions.LESS, end));
+                    var start = Convert.ToInt32(vals[0]) ;
+                    var end = Convert.ToInt32(vals[1]) ;
+                    result.Add(new Filter1(field,FilterConditions.MOREEQUAL, start));
+                    result.Add(new Filter1(field,FilterConditions.LESSEQUAL, end));
                 }
                 else
                     result.Add(new Filter1(field, FilterConditions.EQUAL, value));

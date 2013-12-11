@@ -21,7 +21,7 @@ namespace DAL
         public Nullable<int> FLOOR { get; set; }
         public string FURNITURE { get; set; }
         public string NAME { get; set; }
-        public string PRICE { get; set; }
+        public Nullable<int> PRICE { get; set; }
         public string PHONE { get; set; }
         public string COMMENT { get; set; }
         public string CONTENT { get; set; }

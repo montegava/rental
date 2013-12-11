@@ -6,7 +6,7 @@ using System.Runtime.Serialization;
 
 namespace RentalCommon
 {
-   [DataContract]
+    [DataContract]
     public enum FilterConditions
     {
         // a > 1
@@ -23,7 +23,14 @@ namespace RentalCommon
 
         //a like '%1%'
         [EnumMember]
-        CONTAIN = 4
+        CONTAIN = 4,
+
+        [EnumMember]
+        MOREEQUAL = 5,
+
+        [EnumMember]
+        LESSEQUAL = 6,
+
 
     }
 
