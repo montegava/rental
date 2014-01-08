@@ -28,7 +28,7 @@
 
         <div class="row">
             <label runat="server" text="Телефон">Телефон</label>
-            <asp:TextBox runat="server" ID="lblPhone" name="tbID"></asp:TextBox>
+            <asp:TextBox runat="server" ID="lblPhone" name="tbID" Text="+7 (903) 652-90-28"></asp:TextBox>
         </div>
 
     </article>

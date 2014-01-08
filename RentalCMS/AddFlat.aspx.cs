@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 using DAL;
 using RentalCMS.RentalCore;
@@ -28,9 +26,6 @@ namespace RentalCMS
                 this.ddlFloor.DataBind();
                 this.ddlRoomCount.DataBind();
             }
-         
-
-          
         }
 
         private void Bind(DropDownList ddl, object data)
@@ -98,7 +93,7 @@ namespace RentalCMS
                 }
             }
 
-            DAL.ImageManager.ImageUpdate(images.ToArray(), flatId);
+            ImageManager.ImageUpdate(images.ToArray(), flatId);
 
             Response.Redirect("~/FlatManager.aspx?id="+ flatId);
         
