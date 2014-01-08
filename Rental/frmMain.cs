@@ -48,9 +48,9 @@ namespace Rental
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            //frmLogin frm = new frmLogin();
-            //if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
-            //     Application.Exit();
+            frmLogin frm = new frmLogin();
+            if (frm.ShowDialog() != System.Windows.Forms.DialogResult.OK)
+                Application.Exit();
 
 
 

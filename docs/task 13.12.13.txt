@@ -1,0 +1,20 @@
+1. Редактирования нет.(и если человек сдающий квартиру сразу забыл добавить фотки - то ему получается надо заново добавлять квартиру ???) - (300р.)
+2. добавлено фото то отмечать значком в базе и на сайте  (100р.)
+3. в поиске в избранном изменить слово регион на слово Район. (0р.)
+4. про мебель забыла на сайте при подаче обьявления (100р.)
+5. просила сделать возможность грузить сайты выборочно т.е либо Авито и камелот,или моя реклама и авито,или ИРР и моя реклама или ИРР и камелот.  (300р.)
+6. Сайты не грузятся
+
+	http://realty.yandex.ru/search.xml?type=RENT&category=APARTMENT&roomsTotal=1&roomsTotal=2&roomsTotal=3&roomsTotal=PLUS_4&rentTime=LARGE&rgid=569171
+	http://arenda.mirkvartir.ru/%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6%D1%81%D0%BA%D0%B0%D1%8F+%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C/%D0%92%D0%BE%D1%80%D0%BE%D0%BD%D0%B5%D0%B6/?search=flats&period=%D0%BC%D0%B5%D0%BD%D0%B5%D0%B5+%D1%81%D1%83%D1%82%D0%BE%D0%BA
+	http://search.afy.ru/object/arenda/?type_cost=r&limit=30&id_street_to_item=0&count_room[2]=y&count_room[3]=y&count_room[4]=y&count_room[5]=y&count_room[6]=y&count_room[1]=y&cost_type_1=r&period_rent_select=0&years_own_select=0&id_country_to_item=1&id_oblast_to_item=52&id_city_to_item=892&id_position_to_item=892&view_page=4&get_metro=f&filter=easy&input_2=%C2%EE%F0%EE%ED%E5%E6&sort_by=date&type_sort=desc#list
+	http://voronezh.irr.ru/real-estate/out-of-town-rent/search/rooms=1,2,3,4,100/currency=RUR/
+	http://www.net-agenta.ru/voronezh/kvartiri/offers.html
+	http://www.vrx.ru/data/base.php?city=36&apptype=3
+	http://voronezh.gde.ru/nedvizhimost/kvartiryi/sdam/
+	http://voronezh.sindom.ru/nedvizhimost-arenda-kvartir-c52.html
+
+	http://www.rosrealt.ru/poisk.php
+	http://www.avito.ru/voronezh/komnaty/sdam/na_dlitelnyy_srok?user=1
+	http://voronezh.irr.ru/real-estate/rooms-rent/search/currency=RUR/rent_period=3674653711/
+	http://www.cmlt.ru/ads--rubric-1943-type-%EF%F0%E5%E4%EB%EE%E6%E5%ED%E8%E5
