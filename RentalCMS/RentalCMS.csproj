@@ -107,13 +107,13 @@
     <Content Include="Properties\DataSources\DAL.state_type.datasource" />
     <Content Include="Properties\DataSources\DAL.term_type.datasource" />
     <Content Include="Properties\DataSources\DAL.view_flat_info.datasource" />
-    <Content Include="Service References\RentalCore\item.disco" />
-    <Content Include="Service References\RentalCore\configuration91.svcinfo" />
-    <Content Include="Service References\RentalCore\configuration.svcinfo" />
-    <Content Include="Service References\RentalCore\Reference.svcmap">
+    <None Include="Service References\RentalCore\RentalCore.disco" />
+    <None Include="Service References\RentalCore\configuration91.svcinfo" />
+    <None Include="Service References\RentalCore\configuration.svcinfo" />
+    <None Include="Service References\RentalCore\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
-    </Content>
+    </None>
     <Content Include="src\general.js" />
     <Content Include="src\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
     <Content Include="src\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
@@ -210,19 +210,19 @@
     <Content Include="Rental.Master" />
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\amiravrn.pubxml" />
-    <None Include="Service References\RentalCore\item.xsd">
+    <None Include="Service References\RentalCore\RentalCore.wsdl" />
+    <None Include="Service References\RentalCore\RentalCore.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RentalCore\item1.xsd">
+    <None Include="Service References\RentalCore\RentalCore1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RentalCore\item2.xsd">
+    <None Include="Service References\RentalCore\RentalCore2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\RentalCore\item3.xsd">
+    <None Include="Service References\RentalCore\RentalCore3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Service References\RentalCore\RentalCore.wsdl" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

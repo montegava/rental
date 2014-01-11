@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/RentalCommon" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/RentalCommon" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
-  <xs:import schemaLocation="http://localhost:8732/RentalCore/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DAL" />
+  <xs:import schemaLocation="http://localhost:8007/RentalCore.RentalCore.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:import schemaLocation="http://localhost:8007/RentalCore.RentalCore.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/DAL" />
   <xs:complexType name="SearchQuery">
     <xs:sequence>
       <xs:element minOccurs="0" name="Ascending" type="xs:boolean" />
@@ -254,6 +254,20 @@
         <xs:annotation>
           <xs:appinfo>
             <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">4</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="MOREEQUAL">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">5</EnumerationValue>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="LESSEQUAL">
+        <xs:annotation>
+          <xs:appinfo>
+            <EnumerationValue xmlns="http://schemas.microsoft.com/2003/10/Serialization/">6</EnumerationValue>
           </xs:appinfo>
         </xs:annotation>
       </xs:enumeration>

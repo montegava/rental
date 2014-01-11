@@ -26,7 +26,7 @@
       <xs:element minOccurs="0" name="NAME" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PAYMENT" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PHONE" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PRICE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRICE" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="REGION" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="RENT_FROM" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="RENT_TO" nillable="true" type="xs:dateTime" />
@@ -63,64 +63,24 @@
       <xs:element minOccurs="0" name="LINK" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NAME" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="PHONE" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="PRICE" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PRICE" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="RENT_FROM" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="RENT_TO" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="ROOM_COUNT" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="TV" type="xs:boolean" />
       <xs:element minOccurs="0" name="WASHER" type="xs:boolean" />
-      <xs:element minOccurs="0" name="bath_unit" nillable="true" type="tns:bath_unit" />
       <xs:element minOccurs="0" name="bathunit_type_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="build_type" nillable="true" type="tns:build_type" />
       <xs:element minOccurs="0" name="buld_type_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="category_type" nillable="true" type="tns:category_type" />
       <xs:element minOccurs="0" name="category_type_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="image_list" nillable="true" type="tns:ArrayOfimage_list" />
-      <xs:element minOccurs="0" name="lessor_type" nillable="true" type="tns:lessor_type" />
       <xs:element minOccurs="0" name="lessor_type_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="payment_type" nillable="true" type="tns:payment_type" />
       <xs:element minOccurs="0" name="payment_type_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="region_type" nillable="true" type="tns:region_type" />
       <xs:element minOccurs="0" name="region_type_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="rent_type" nillable="true" type="tns:rent_type" />
       <xs:element minOccurs="0" name="rent_type_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="state_type" nillable="true" type="tns:state_type" />
       <xs:element minOccurs="0" name="state_type_id" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="term_type" nillable="true" type="tns:term_type" />
       <xs:element minOccurs="0" name="term_type_id" nillable="true" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="flat_info" nillable="true" type="tns:flat_info" />
-  <xs:complexType name="bath_unit">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:ArrayOfflat_info" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="bath_unit" nillable="true" type="tns:bath_unit" />
-  <xs:complexType name="ArrayOfflat_info">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="flat_info" nillable="true" type="tns:flat_info" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfflat_info" nillable="true" type="tns:ArrayOfflat_info" />
-  <xs:complexType name="build_type">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:ArrayOfflat_info" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="build_type" nillable="true" type="tns:build_type" />
-  <xs:complexType name="category_type">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:ArrayOfflat_info" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="category_type" nillable="true" type="tns:category_type" />
   <xs:complexType name="ArrayOfimage_list">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="image_list" nillable="true" type="tns:image_list" />
@@ -132,58 +92,9 @@
       <xs:element minOccurs="0" name="FLAT_ID" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ID" type="xs:int" />
       <xs:element minOccurs="0" name="IMAGE_PATH" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:flat_info" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="image_list" nillable="true" type="tns:image_list" />
-  <xs:complexType name="lessor_type">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:ArrayOfflat_info" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="lessor_type" nillable="true" type="tns:lessor_type" />
-  <xs:complexType name="payment_type">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:ArrayOfflat_info" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="payment_type" nillable="true" type="tns:payment_type" />
-  <xs:complexType name="region_type">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:ArrayOfflat_info" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="region_type" nillable="true" type="tns:region_type" />
-  <xs:complexType name="rent_type">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:ArrayOfflat_info" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="rent_type" nillable="true" type="tns:rent_type" />
-  <xs:complexType name="state_type">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:ArrayOfflat_info" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="state_type" nillable="true" type="tns:state_type" />
-  <xs:complexType name="term_type">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="flat_info" nillable="true" type="tns:ArrayOfflat_info" />
-      <xs:element minOccurs="0" name="id" type="xs:int" />
-      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="term_type" nillable="true" type="tns:term_type" />
   <xs:complexType name="ArrayOfblack_list">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="black_list" nillable="true" type="tns:black_list" />
@@ -205,52 +116,115 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfbuild_type" nillable="true" type="tns:ArrayOfbuild_type" />
+  <xs:complexType name="build_type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="build_type" nillable="true" type="tns:build_type" />
   <xs:complexType name="ArrayOfbath_unit">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="bath_unit" nillable="true" type="tns:bath_unit" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfbath_unit" nillable="true" type="tns:ArrayOfbath_unit" />
+  <xs:complexType name="bath_unit">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="bath_unit" nillable="true" type="tns:bath_unit" />
   <xs:complexType name="ArrayOfstate_type">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="state_type" nillable="true" type="tns:state_type" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfstate_type" nillable="true" type="tns:ArrayOfstate_type" />
+  <xs:complexType name="state_type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="state_type" nillable="true" type="tns:state_type" />
   <xs:complexType name="ArrayOfterm_type">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="term_type" nillable="true" type="tns:term_type" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfterm_type" nillable="true" type="tns:ArrayOfterm_type" />
+  <xs:complexType name="term_type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="term_type" nillable="true" type="tns:term_type" />
   <xs:complexType name="ArrayOflessor_type">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="lessor_type" nillable="true" type="tns:lessor_type" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOflessor_type" nillable="true" type="tns:ArrayOflessor_type" />
+  <xs:complexType name="lessor_type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="lessor_type" nillable="true" type="tns:lessor_type" />
   <xs:complexType name="ArrayOfregion_type">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="region_type" nillable="true" type="tns:region_type" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfregion_type" nillable="true" type="tns:ArrayOfregion_type" />
+  <xs:complexType name="region_type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="region_type" nillable="true" type="tns:region_type" />
   <xs:complexType name="ArrayOfcategory_type">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="category_type" nillable="true" type="tns:category_type" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfcategory_type" nillable="true" type="tns:ArrayOfcategory_type" />
+  <xs:complexType name="category_type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="category_type" nillable="true" type="tns:category_type" />
   <xs:complexType name="ArrayOfrent_type">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="rent_type" nillable="true" type="tns:rent_type" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfrent_type" nillable="true" type="tns:ArrayOfrent_type" />
+  <xs:complexType name="rent_type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="rent_type" nillable="true" type="tns:rent_type" />
   <xs:complexType name="ArrayOfpayment_type">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="payment_type" nillable="true" type="tns:payment_type" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfpayment_type" nillable="true" type="tns:ArrayOfpayment_type" />
+  <xs:complexType name="payment_type">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="id" type="xs:int" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="payment_type" nillable="true" type="tns:payment_type" />
 </xs:schema>

@@ -79,3 +79,6 @@ obj
 /DAL/bin/Release/*.dll
 /DAL/bin/Release/*.dll
 *.suo
+/RentalCMS/bin/RentalCMS.dll.config
+
+/Migration/bin/Debug/Migration.exe
