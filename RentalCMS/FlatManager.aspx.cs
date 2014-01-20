@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -44,17 +46,23 @@ namespace RentalCMS
                     tblAddress.Text = flat.ADDRESS;
                     lblRoomCount.Text = Convert.ToString(flat.ROOM_COUNT);
                     lblPhone.Text = "+7 (903) 652-90-28";
-                    tbContent.Text = flat.COMMENT;
+
+
+
+                    if (string.IsNullOrEmpty(flat.CONTENT))
+                        tbContent.Text = flat.COMMENT;
+                    else
+                    {
+                        var content = Regex.Replace(flat.CONTENT, "[+]{0,1}[-\\d()\\s]{8,}", "+7 (903) 652-90-28");
+                        tbContent.Text = String.Format("Содержание: {0} \r\n Комментарий {1}",content , flat.COMMENT);
+                    }
+                    
+
+
+
+
                 }
 
-
-                
-
-
-                //var img = FlatImageManager.GetFlatImagesByFlatId(SelectedId);
-
-                // -- fill smart image control, with all images
-                //_fyImage.VisibleName = GetTextByCulture("TM_Images");
                 _fyImage.PageActive = "0";
                 _fyImage.NoImgUrl = "/images/no_image.png";
 
